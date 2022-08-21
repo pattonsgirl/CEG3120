@@ -1,0 +1,17 @@
+Host ceg3120
+	HostName 3.214.193.69
+	User ubuntu
+	IdentityFile /home/kduncan/ceg3120-key.pem
+Host ldap16
+	HostName 3.95.41.145
+	User ubuntu
+	IdentityFile /home/kduncan/contest-key.pem
+Host ldap20
+	HostName 18.232.7.73
+	User ubuntu
+	IdentityFile /home/kduncan/contest-key.pem
+# 2021 Fall Keys
+Host aws-ceg3120
+	HostName 54.208.165.165
+	User ubuntu
+	IdentityFile /home/kduncan/ceg3120-f21.pem

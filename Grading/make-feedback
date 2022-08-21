@@ -1,0 +1,37 @@
+#! /bin/bash
+
+if [[ $1 == '-h' ]]
+then
+	echo "Program creates fillable rubrics from list of student names and a Rubric template"
+	echo "Requires file of names in name file"
+	echo "Requires rubric and known path (relative or absolute)"
+    echo "Sometimes Windows gets its hands on this script.  To fix special Windows characters:"
+    echo "sed -i -e 's/\r$//' filename"
+    echo "sed -i -e 's/^M$//' filename"
+	exit
+fi
+
+echo "Enter a new or existing directory"
+
+read folder
+
+if [[ -d $folder ]]
+then
+	echo "Directory $folder exists"
+else
+	echo "Directory $folder in the making"
+	mkdir $folder
+fi
+
+echo "Specify a rubric to copy from"
+
+read rubric
+
+if [[ -f $rubric ]]
+then	
+	echo "Rubric found in $rubric  Bulk create in progress"
+	while read line
+	do	
+		cp $rubric $folder/$line-rubric.md
+	done < names
+fi
