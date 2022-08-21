@@ -1,8 +1,8 @@
 # Project 0 - Git Guide
 
-In your repo for this course, create a file named `git-guide.md`. In this file, write up a quick guide to using git & GitHub. For each command, include a brief definition of what it does, and a sample of how to use it.
+In your repo for this course, create a file named `git-guide.md`. In this file, write up a quick guide to using git & GitHub. For each command, include a brief definition of what it does, and a sample of how to use it. `status` has a sample of what a well done filled in entry looks like.
 
-Entries that are currently crossed out we will either get to later in the course that you could go back and write some details on later.
+Entries that are currently crossed out we will get to later in the course that you could go back and write some details on later.
 
 ## Command line git
 
