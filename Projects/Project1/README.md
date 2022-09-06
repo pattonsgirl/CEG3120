@@ -57,7 +57,7 @@ Your job is to put the project into your repository (`WSU-kduncan/ceg3120-patton
 
 ## Part 3 - R&D (Research & Documentation)
 
-- In `Discord-Bot` folder, add a `README.md` file. Document the following:
+1. In `Discord-Bot` folder, add a `README.md` file. Document the following:
   - Setup
     - dependencies (what packages need to be installed to run the project)
     - how to get an API token
@@ -71,6 +71,7 @@ Your job is to put the project into your repository (`WSU-kduncan/ceg3120-patton
     - you may have realized that it is lame that the bot only runs when you run the program - it turns off if you disconnect or need to switch tasks.
     - In the real world, things are "always on", not waiting for Bob to turn his PC on and make sure the program is running.
     - **Research** some possible solutions that would solve this, and discuss why you think it would work.
+2. Check out the [Rubric](Rubric.md) to make sure you hit all elements
 
 ## Submission
 
