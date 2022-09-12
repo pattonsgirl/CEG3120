@@ -7,6 +7,16 @@
 - Build projects locally, then deploy them to your AWS instance
 - Explore long term solutions to serving content that do not involve being connected to the terminal 24/7
 
+## Updates:
+
+Package version headaches are now part of this project's scope.  Here are notes to keep in mind:
+- To roll between versions of discord.py
+  - `pip3 install -U discord.py==1.7.3` - this gets the version that works with the Discord API v9 (the one that works with bot.py)
+  - `pip3 install -U discord.py==2.0.1` - this gets the version that works with Discord API v10, the one that needs bots to have intents.
+  - 2.0.1 requires a rewrite to the code - [intentsbot.py](intentsbot.py)
+- You can check which version you have installed with:
+  - `pip3 show discord.py`
+
 ## The Story
 
 A developer is handing a project off to you for deployment.  The project is a Discord Bot that he wrote.  The boss liked it, so now you need to deploy it on the company Discord server.  
