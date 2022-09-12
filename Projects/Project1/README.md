@@ -117,3 +117,10 @@ Resources:
 
 - [How to remove a file from git tracking](https://www.codegrepper.com/code-examples/shell/how+to+remove+a+file+from+git+tracking)
 - [git rm documentation](https://git-scm.com/docs/git-rm)
+
+## Additional Project Resources
+- [Priveleged intents](https://discordpy.readthedocs.io/en/stable/intents.html)
+- [Creating a bot account](https://discordpy.readthedocs.io/en/stable/discord.html#discord-intro)
+  - Note, this does not mention intent granting, may need to "enable" Message Intent for bot
+- [Quickstart of chat bot](https://discordpy.readthedocs.io/en/stable/quickstart.html)
+- [More examples of message content usage](https://discordpy.readthedocs.io/en/stable/api.html#discord.Message.content)
