@@ -8,7 +8,7 @@ File "path to bot", line 45, in <module>
 TypeError: expected token to be str, received <class 'NoneType'> instead
 ```
 - Meaning: Your token is not in a .env file or special characters are around token
-- Fix 1: Your .env file with the token needs to be in the folder with your code.  The python-dotenv library is then used to load the token from the .env file so your program can use it.
+- Fix 1: Your .env file with the token needs to be in the folder with your code.  The python-dotenv library is then used to load the token from the .env file so your program can use it.  The file can only be named `.env`
 - Fix 2: No special characters in token: `DISCORD_TOKEN=token_text` NOT `DISCORD_TOKEN={token_text}` or `DISCORD_TOKEN="token_text"`
 
 ```
