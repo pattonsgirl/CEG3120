@@ -28,3 +28,4 @@ This is actually a giant angry message about what versions that version of pip d
   - update pip for python3.8 `python3.8 -m pip install --upgrade pip`
   - install discord.py v 2.0.1 `python3.8 -m pip install -U discord.py==2.0.1`
   - Run code in `python3.8` since it will refer to the correct pip libraries
+- [Source for workaround](https://stackoverflow.com/questions/59997065/pip-python-normal-site-packages-is-not-writeable)
