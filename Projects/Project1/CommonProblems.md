@@ -29,3 +29,6 @@ This is actually a giant angry message about what versions that version of pip d
   - install discord.py v 2.0.1 `python3.8 -m pip install -U discord.py==2.0.1`
   - Run code in `python3.8` since it will refer to the correct pip libraries
 - [Source for workaround](https://stackoverflow.com/questions/59997065/pip-python-normal-site-packages-is-not-writeable)
+
+# Other
+There is some mad hatter YouTuber who gives "instructions" on how to get your bot token, and uses Chrome inspection tools to do it.  This is not how to generate a bot token.  This may get the token associated with **you** being signed in to Discord, as in your person's authorization token.  The RealPython page contains instructions for generating a bot token via discord.com/developers/applications
