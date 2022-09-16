@@ -30,8 +30,16 @@ This is actually a giant angry message about what versions that version of pip d
 - Fix: install python3.8 `sudo apt install python3.8`
   - update pip for python3.8 `python3.8 -m pip install --upgrade pip`
   - install discord.py v 2.0.1 `python3.8 -m pip install -U discord.py==2.0.1`
+    - Reminder to also get the other library ;)
   - Run code in `python3.8` since it will refer to the correct pip libraries
 - [Source for workaround](https://stackoverflow.com/questions/59997065/pip-python-normal-site-packages-is-not-writeable)
+
+## 4. Privileged Intents Required
+```
+discord.errors.PrivilegedIntentsRequired: Shard ID None is requesting privileged intents that have not been explicitly enabled in the developer portal. It is recommended to go to https://discord.com/developers/applications/ and explicitly enable the privileged intents within your application's page. If this is not possible, then consider disabling the privileged intents instead.
+```
+- Back where you create your token, check if "Message Content Intent" is enabled (blue light is on).  
+  - A fresh token may not be be required.
 
 # Other
 There is some mad hatter YouTuber who gives "instructions" on how to get your bot token, and uses Chrome inspection tools to do it.  This is not how to generate a bot token.  This may get the token associated with **you** being signed in to Discord, as in your person's authorization token.  The RealPython page contains instructions for generating a bot token via discord.com/developers/applications
