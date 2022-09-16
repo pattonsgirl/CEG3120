@@ -1,5 +1,6 @@
 # Common error log for Project 1
 
+## 1. Not finding TOKEN
 ```
 File "path to bot", line 45, in <module>
 .
@@ -11,6 +12,7 @@ TypeError: expected token to be str, received <class 'NoneType'> instead
 - Fix 1: Your .env file with the token needs to be in the folder with your code.  The python-dotenv library is then used to load the token from the .env file so your program can use it.  The file can only be named `.env`
 - Fix 2: No special characters in token: `DISCORD_TOKEN=token_text` NOT `DISCORD_TOKEN={token_text}` or `DISCORD_TOKEN="token_text"`
 
+## 2. No module named ___
 ```
 Traceback (most recent call last):
   File "bot.py", line 4, in <module>
@@ -19,6 +21,7 @@ ModuleNotFoundError: No module named 'discord'`
 ```
 - Meaning: the module `discord` only exists if you installed `discord.py` with pip
 
+## 3. Intents & needing discord.py v 2.0.1
 ```
 pip cannot install discord.py 2.0.1
 This is actually a giant angry message about what versions that version of pip does know about, and 2.0.1 is not one of them
