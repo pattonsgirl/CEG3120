@@ -41,5 +41,16 @@ discord.errors.PrivilegedIntentsRequired: Shard ID None is requesting privileged
 - Back where you create your token, check if "Message Content Intent" is enabled (blue light is on).  
   - A fresh token may not be be required.
 
+## 5. SSL Cert for discord.com not valid (seen on Mac)
+```
+ClientConnectorCertificateError(aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host discordapp.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1108)')]
+```
+- Need to manually install the cerificate?  Student solved, but we lacking good fix it documentation
+- https://github.com/Rapptz/discord.py/issues/4159#issuecomment-640107584
+- If Mac, need to `Install certificates.command` https://stackoverflow.com/questions/62108183/discord-py-bot-dont-have-certificate
+  - recommended to just search for the file in the file explorer
+
 # Other
 There is some mad hatter YouTuber who gives "instructions" on how to get your bot token, and uses Chrome inspection tools to do it.  This is not how to generate a bot token.  This may get the token associated with **you** being signed in to Discord, as in your person's authorization token.  The RealPython page contains instructions for generating a bot token via discord.com/developers/applications
+
+
