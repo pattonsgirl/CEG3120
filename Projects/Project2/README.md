@@ -7,7 +7,9 @@
 
 ## Assignment Notes / Hints
 
-For this project you need access to your AWS console. [Return to here and click "Start Lab"](https://awsacademy.instructure.com/courses/24169/modules/items/1983042). **Once the icon next to "AWS" is green, click "AWS" to open the console.**
+For this project you need access to your AWS console. [Return to here and click "Start Lab"](https://awsacademy.instructure.com/courses/24169/modules/items/1983042).
+
+**Once the icon next to "AWS" is green, click "AWS" to open the console.**
 
 Create a `Project2` folder in your GitHub Classrooms repo. This project is mostly documentation of work, so you are welcome to work on your documentation and in your repo wherever you are comfortable. I would float towards VSCode myself.
 
