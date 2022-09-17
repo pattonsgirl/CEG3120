@@ -1,4 +1,4 @@
-# Project 2 - NOT FINALIZED
+# Project 2
 
 ## Objectives:
 
