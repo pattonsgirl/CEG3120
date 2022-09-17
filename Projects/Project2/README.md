@@ -7,16 +7,16 @@
 
 ## Assignment Notes / Hints
 
-For this project you need access to your AWS console. [Return to here and click "Start Lab"](https://awsacademy.instructure.com/courses/13269/modules/items/1137325). **Once the icon next to "AWS" is green, click "AWS" to open the console.**
+For this project you need access to your AWS console. [Return to here and click "Start Lab"](https://awsacademy.instructure.com/courses/24169/modules/items/1983042). **Once the icon next to "AWS" is green, click "AWS" to open the console.**
 
-Create a `Project2` folder in your GitHub Classrooms repo. This project is mostly documentation of work, so you are welcome to work wherever you are comfortable. I would float towards VSCode myself.
+Create a `Project2` folder in your GitHub Classrooms repo. This project is mostly documentation of work, so you are welcome to work on your documentation and in your repo wherever you are comfortable. I would float towards VSCode myself.
 
 In your `Project2` folder, create a file named `README.md` Do you work for Parts 1 & 2 here.
 
 - It will be handy, but not necessary, to compare / contrast the resources you are making with the working "stack" you have. That stack is based on a template, and that template defined all of these resources - and worked.
-- When asked to create "tags", you want to make a "Name" tag and then write the name in the value field. Sometimes the "Name" tag will be autofilled for you. Sometimes not.
+- When asked to create "tags", you want to make a "Name" tag and then write the name in the value field. Sometimes the "Name" tag will be auto-filled for you. Sometimes not.
 - If you get to a point where you need to start over, carefully go through and delete the resources you have already created.
-  1. This is good maintainence. Leaving behind junk is frowned upon in any industry
+  1. This is good maintenance. Leaving behind junk is frowned upon in any industry
   2. This will keep you from running resources you can be charged for (like unused instances and elastic IPs)
 
 ## Part 1 - Build a VPC
@@ -65,7 +65,7 @@ For each step below, provide a screenshot that shows the network resource has be
    ![sample instance details](sample.png)
 9. `ssh` in to your instance. Change the hostname to "YOURLASTNAME-AMI" where AMI is some version of the AMI you chose. Say how you did it.
    1. It is wise to copy config files you are about to change to filename.old For `/etc/hostname`, for example, I would first copy the current `hostname` file to `/etc/hostname.old`
-   2. You should not change permissions on any files you are modifying. They are system config files. You may need to access them with adminisrative privileges.
+   2. You should not change permissions on any files you are modifying. They are system config files. You may need to access them with administrative privileges.
    3. Here is a helpful resource: https://www.tecmint.com/set-hostname-permanently-in-linux/ I did not modify `/etc/hosts` on mine - do so or not as you wish.
 10. Create a screenshot your ssh connection to your instance and add it to your project write up - make sure it shows your new hostname.
 
@@ -79,7 +79,7 @@ For each step below, provide a screenshot that shows the network resource has be
 
 2. In Pilot, paste the link to your project folder. Sample link: https://github.com/WSU-kduncan/ceg3120-YOURGITHUBUSERNAME/blob/main/Projects/Project2
 
-3. You may delete all created resources once done to save monies. No really, trash it - especially the instance and disassociate and release the elastic ip
+3. You may delete all created resources once done to save monies. No really, trash it - especially the instance and disassociate and release the elastic IP
 
 ## Rubric
 
