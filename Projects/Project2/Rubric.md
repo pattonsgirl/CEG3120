@@ -1,13 +1,5 @@
 # Project 2 Rubric
 
-Common feedback:
-
-To communicate over Port 22 in the VPC, You need a security group rule like allow 10.0.0.0/24 + port 22
-
-Once photos are in a folder, as you have, then you can add them to your documentation with ![photo description](Images/imagename.PNG)
-
-192.168 is your internal network IP, not the public IP your ISP is translating you to.  `curl ipinfo.io` to see the public IP you use
-
 / 15
 
 ## Part 1 ( / 5)
