@@ -50,6 +50,16 @@ ClientConnectorCertificateError(aiohttp.client_exceptions.ClientConnectorCertifi
 - If Mac, need to `Install certificates.command` https://stackoverflow.com/questions/62108183/discord-py-bot-dont-have-certificate
   - recommended to just search for the file in the file explorer
 
+## 6. Improper token has been passed
+```
+discord.errors.HTTPException: 401 Unauthorized (error code: 0): 401: Unauthorized
+.
+.
+.
+discord.errors.LoginFailure: Improper token has been passed.
+```
+- No special characters in token: `DISCORD_TOKEN=token_text` NOT `DISCORD_TOKEN={token_text}` or `DISCORD_TOKEN="token_text"`
+
 # Other
 There is some mad hatter YouTuber who gives "instructions" on how to get your bot token, and uses Chrome inspection tools to do it.  This is not how to generate a bot token.  This may get the token associated with **you** being signed in to Discord, as in your person's authorization token.  The RealPython page contains instructions for generating a bot token via discord.com/developers/applications
 
