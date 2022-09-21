@@ -22,6 +22,6 @@
 
 5. Screenshot of Discord Bot operational ( / 1)
 
-5. Point reductions 
+6. Point reductions 
    - Documentation not nicely formatted in markdown for readability - ( / 1)
    - .env file visible in GitHub (being part of an old commit will not be penalized) - ( / 1)
