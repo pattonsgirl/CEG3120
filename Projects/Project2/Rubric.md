@@ -25,3 +25,7 @@
 8. Screenshot with instance details
 9. How to change hostname via commands on instance
 10. Screenshot of successful SSH connection to instance (with your new hostname instead of ip-##-##-##-##)
+
+## Point Deductions ( / 1)
+
+- images not included in markdown documentation

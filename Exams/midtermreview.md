@@ -1,22 +1,15 @@
 # Midterm Review for CEG 3120
 
-## Spring 2022
-
-Why protect OAuth tokens?
-
-OAuth tokens handle authorization, not authentication. You can authorize a third party do actions within a scope by giving the third party a token based access. For example, the Discord bot used an authorization token. It was authorized with administrative access, but we discussed that we could have limited it to message reading or writing, allowing or disallowing adding users to a server, and so on.
-
-If an OAuth token is exposed (such as publicly displayed on GitHub), any third party service can do any action within the scope of that token.
+## Fall 2022
 
 ## Da Rules
 
-Midterm: Friday, 2/25
+Midterm: Friday, 10/7
 
-- Available 8:00 AM to 11:59 PM
-- 1 attempt, 1 hour once started
+- Available 9:05 AM to 10:00 AM
+- 1 attempt, 55 minutes once started
 - Open note, open terminal
 - No class - only exam.
-- I will be in Russ 355 from 1:20 to 2:20 PM if you want to take the exam in the room
 
 ## Week 1 & 2
 
@@ -108,7 +101,7 @@ Midterm: Friday, 2/25
   - instance type & AMI
   - EIP to instance
 
-## Week 6
+## Week 6 / 7
 
 - intro to contents of CloudFormation Template
   - using YAML/JSON formatted files
