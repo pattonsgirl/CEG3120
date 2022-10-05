@@ -54,8 +54,8 @@ Midterm: Friday, 10/7
   - Requesting and using OAuth keys
 - authentication vs authorization
   - OAuth - allow third party to do x y z
-  - JSON Web Tokens & session cookies
-    - keeping you logged in and maintaining session details
+  - ~~JSON Web Tokens & session cookies~~
+    - ~~keeping you logged in and maintaining session details~~
 - process exploration
   - bot runs as long as starting terminal is open
   - screen / background jobs (2350) - detaching processes
@@ -88,7 +88,7 @@ Midterm: Friday, 10/7
   - types of cloud services
   - regions
   - access management of cloud resources
-    - token based can create(?) access(?) delete(?) view billing(?)
+    - token based **authorization** can create(?) access(?) delete(?) view billing(?)
 - intro to navigating AWS
   - EC2 instance types
   - images / AMI
@@ -108,13 +108,13 @@ Midterm: Friday, 10/7
 - system logs & service control
 - installing and configuring a webserver
   - apache vs nginx
-  - status / control of services (systemctl)
-  - service logs (apache & ssh)
-  - security groups
-  - iptables? system level firewalls
-  - nmap -p 1-5000 server
+  - ~~status / control of services (systemctl)~~
+  - ~~service logs (apache & ssh)~~
+  - ~~security groups~~
+  - ~~iptables? system level firewalls~~
+  - ~~nmap -p 1-5000 server~~
 
-### Project
+### ~~Project~~
 
 - Create CloudFormation template
   - should mimic what was manually created

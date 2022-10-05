@@ -1,18 +1,5 @@
 # Project 3 Rubric
 
-Common notes:
-
-- Leaving this in with the default location of 0.0.0.0/0 for SSHLocation = SSH from anywhere
-
-```
-        - IpProtocol: tcp
-          FromPort: '22'
-          ToPort: '22'
-          CidrIp: !Ref SSHLocation
-```
-
-- (-0.25) apt install pip3 does not install pip3. apt install python3-pip does
-
 / 12
 
 ## CloudFormation template submitted ( / 1)
