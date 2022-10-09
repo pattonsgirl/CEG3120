@@ -61,6 +61,8 @@ Begin defining all resources to be created by using this template when creating 
 
 Define VPC, CIDR block, and `Name` of VPC
 
+- `!Ref` will refer to another resource (or parameter name). Think "refer to value stored in variable". You'll see `!Ref`'s throughout the CF template
+
 ```
 Resources:
   VPC:

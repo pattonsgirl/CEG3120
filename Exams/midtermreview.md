@@ -33,7 +33,7 @@ Midterm: Friday, 10/7
   - branch
   - fetch / merge
   - checkout
-  - merge conficts
+  - merge conflicts
   - Pull Requests
   - .gitignore
   - markdown essentials
@@ -79,8 +79,9 @@ Midterm: Friday, 10/7
   - gateways
   - NAT
   - Firewalls
-    - network wide (AWS Security Groups)
+    - network wide
     - per machine (iptables)
+      - AWS Security Groups associated with instance
 
 ## Week 5
 
@@ -105,7 +106,7 @@ Midterm: Friday, 10/7
 
 - intro to contents of CloudFormation Template
   - using YAML/JSON formatted files
-- system logs & service control
+- ~~system logs & service control~~
 - installing and configuring a webserver
   - apache vs nginx
   - ~~status / control of services (systemctl)~~

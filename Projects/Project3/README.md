@@ -1,11 +1,11 @@
-# Project 3 - NOT FINALIZED
+# Project 3
 
 ## Objectives:
 
 - Create a CloudFormation to specification to remove manual creation
 - Understand the role of Infrastructure as Code (IaC)
 
-## Assignment Notes / Hints
+## Getting Started
 
 For this project you need access to your AWS console. [Return to here and click "Start Lab"](https://awsacademy.instructure.com/courses/24169/modules/items/1983042).
 
@@ -15,52 +15,43 @@ Create a `Project3` folder in your GitHub Classrooms repo. This project is mostl
 
 You are welcome to include notes in a README.md file in your folder in your repo if you need to write notes for partial credit.
 
-- It will be handy, but not necessary, to compare / contrast the resources you are making with the working "stack" you created way back when. That stack is based on a template, and that template defined all of these resources - and worked.
-- When asked to create "tags", you want to make a "Name" tag and then write the name in the value field. Sometimes the "Name" tag will be autofilled for you. Sometimes not.
-- If you get to a point where you need to start over, carefully go through and delete the resources you have already created. Using CloudFormation templates, you can now delete stacks, which is a big improvement.
-  1. This is good maintenance. Leaving behind junk is frowned upon in any industry
-  2. This will keep you from leaving up resources you can be charged for (like unused instances and elastic IPs)
-- Remember you only get 5 elastic IPs...
-- This stack can be deleted once your CloudFormation template can successfully create it
-
 ## Your first CloudFormation template
 
 I think we can agree that manually creating a VPC network to host an instance and the instance itself was a lot of menus to go through and things to check. If you were working for, say, a web development company, and you had to do that every time you got a new customer who wanted a webpage, there would be some frustrations. The "cloud" agrees, and therefore cloud services created templates. In AWS, these are called CloudFormation templates. In these files, you layout every detail of how you want your EC2 setup to be, from VPC to instance(s). AWS CloudFormation can take these files as input, and feed the values into API calls that create and configure the resources.
 
-A [base template](cf-template.yml) has been provided for you. Due to how many things are in these templates, I would use this base and make the modifications requested. You can Google how these are defined the way they are, additional parameters, etc.
+**Your deliverable is a CloudFormation template named YOURNAME-CF.yml**. A [base YAML template - cf-template.yml](cf-template.yml) has been provided for you. Due to how many things are in these templates, I would use this base and make the modifications requested. You can Google how these are defined the way they are, additional parameters, etc.
 
-Your deliverable is a CloudFormation template. Make sure you include it in your repository. Your CloudFormation template should build a VPC (including subnet, gateway, route table, security group) and an instance with an elastic IP address:
+- If you prefer JSON, you may convert the provided template to JSON. Your deliverable you be the `json` file. Have fun ;)
+- Check out [cf-template.md](cf-template.md) for a breakdown of what is inside of these templates and what is in each section, as well as syntax notes and hints.
+- I strongly recommend using Visual Studio Code. The YAML and CloudFormation extensions have not been super useful to me. The CloudFormation Designer tool has been the most useful at debugging if needed.
 
 1. Description:
 
-   - Modify Description string to state that this is your template and creates the following
-   - Example description:
-   - `Duncan CF Template to create a VPC, allow SSH access from trusted networks, and create a single instance with an Elastic IP address`
+- Modify Description string to state that this is your template and creates the following
+  - Example description:
+  - `Duncan CF Template to create a VPC, allow SSH access from trusted networks, and create a single instance with an Elastic IP address`
 
 2. Mappings:
-   - Adjust AMI to be the AMI of your choice
-   - This section:
-   ```
-   AWSRegionUbuntu: # AMI for Ubuntu server in each supported region
-   us-east-1:   # N. Virginia
-     PV64: NOT_SUPPORTED
-     HVM64: ami-07d0cf3af28718ef8
-     HVMG2: NOT_SUPPORTED
-   ```
+
+- Adjust AMI to be the AMI of your choice (yes, it must be changed)
+  - Remember, the provided AMI is to an out of date Ubuntu, which has caused headaches.
+
 3. Resources:
 
-   - VPC range to be /24
-   - Subnet range to be /28
-   - Tag each resource with a name - last name, cloudformation, resource: `Duncan-CF-VPC`
+- Make the following modification for `Resources`
+  - VPC range to be /24
+  - Subnet range to be /28
+  - "Tag" each resource with a "Name": `YOURNAME-CF-VPC`
 
 4. Security Group Settings:
 
    - Allow SSH for a set of trusted networks including:
      - Your home / where you usually connect to your instances from
      - Wright State (addresses starting with 130.108)
-     - Instances within the VPC
+     - Instances within the VPC or subnet
 
 5. Instance settings:
+
    - Set "Tag" "Name" to "LastName-CF-instance"
    - Set a private IP in your subnet range
    - Using the configuration script built into the cf-template
@@ -68,20 +59,14 @@ Your deliverable is a CloudFormation template. Make sure you include it in your 
      - Install `git`, `python3`, `pip3`
 
 - Use the "CloudFormation" in the AWS console to test your CloudFormation template.
-
-  1. Do not leave stacks running.
-  2. If a stack fails during creation, associated resources will also be deleted (it is an all or nothing creation process)
-  3. Once your template creates a stack successfully, you may delete the stack
-
-- Extra notes:
-  - Anytime you see `!Ref`, there is a reference being made to a value defined elsewhere. These are fun to track down.
-  - The configuration script uses some bash syntax.
-    - space \ ` \` means the command continues on a new line. Very nice for readability
-    - && `&&` need to go inbetween commands. You will see space && \ ` && \` in between commands - again, readability
+  - If a stack fails during creation, associated resources (even if create was a success) will also be deleted (it is an all or nothing creation process)
 
 ## Identifying Success
 
-A successful stack will (once created) have an instance you can ssh into.
+A successful stack will (once created) have an instance you can `ssh` into. Your instance created by the stack should have the specified software installed & the hostname changed via the configuration script.
+
+- You can check for installed software by querying its version once you `ssh` in
+  You can check that hostname was changed by looking at the command prompt once you `ssh` in
 
 ## Submission
 
@@ -89,6 +74,8 @@ A successful stack will (once created) have an instance you can ssh into.
 
    - Your repo should contain:
    - `YOURLASTNAME-cf.yml`
-   - `README.md` (optional for notes)
+   - `README.md` (optional for notes for partial credit)
 
 2. In Pilot, paste the link to your project folder. Sample link: https://github.com/WSU-kduncan/ceg3120-YOURGITHUBUSERNAME/blob/main/Projects/Project3
+
+3. Do not leave stacks running. Once your template creates a stack successfully, you may delete the stack

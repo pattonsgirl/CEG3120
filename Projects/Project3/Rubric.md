@@ -7,7 +7,7 @@
 ## Modifications required for credit ( / 11)
 
 1. description of template
-2. ami replaced to AMI selected in project 2
+2. ami replaced
 3. VPC range to 10.0.0.0/24
 4. subnet range to 10.0.0.0/28
 5. resources tagged with names
