@@ -1,4 +1,4 @@
-# Project 4 - NOT FINALIZED
+# Project 4
 
 - [Objectives](#Objectives)
 - [Project Description](#Project-Description)
