@@ -140,7 +140,7 @@ Resources:
         - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
-          CidrIp: 108.222.118.252/32  # Replace with home / trusted public IP
+          CidrIp: 0.0.0.0/32  # TODO Replace with home / trusted public IP
           # TODO Need more rules for port 80 access
       Tags: 
         - Key: Name
@@ -170,7 +170,7 @@ Resources:
           DeviceIndex: '0'
           DeleteOnTermination: 'true'
           SubnetId: !Ref PublicSubnet
-          PrivateIpAddress: 10.0.0.10 # EC Private ip 15 or lower
+          PrivateIpAddress: 10.0.0.10 # EC Private ip between 0 and 15
       UserData:
         Fn::Base64:
           !Sub |

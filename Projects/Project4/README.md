@@ -12,21 +12,21 @@
 ## Objectives:
 
 - Modify the CF template to meet updated requirements
-- Run a website of choice using nginx or apache2
-- Configure the HAProxy load balancer to direct traffic to two backend systems
+- Run a website of choice using nginx or apache2 on hosts in the pool
+- Configure the HAProxy load balancer to direct traffic to the pool
 
 ## Project Description
 
 In your repository, create a `Project4` folder.
 
-For this project, you will be creating resources to use for a load balancing setup. This project will  
-keep things simple - you will have one server accessible from the world. You will have two more servers  
-that are accessible only within your VPC.
+For this project, you will have two deliverables:
 
-As mentioned in class, you are welcome to use your own website for this project. **However** in order to  
-visually check that load balancing is working, you will need to include screenshots that show different content  
-fetched from each server. If you look at the `html` files provided, which you are welcome to use, you'll  
-see that one has text that is is from server 1 and the other text that it is from server 2.
+1. CloudFormation template that makes the recourses required for a load balancing setup: an application delivery controller (ADC) and two backend hosts in a pool.
+2. Documentation for configuring the ADC and hosts. In order to visually check that load balancing is working, you will need to include screenshots that show different content  
+   fetched from each server.
+
+As mentioned in class, you are welcome to use your own website for this project. **However** in order to visually check that load balancing is working, you will need to include screenshots that show different content  
+fetched from each server. If you look at the `html` files provided, which you are welcome to use, you'll see that one has text that is is from server 1 and the other text that it is from server 2.
 
 ### Provided Resources
 
@@ -35,15 +35,16 @@ The following is provided in this project folder:
 - [cf-template.yml](cf-template.yml)
   - Note: this templated is updated from previous versions to get you started on this project
 - [index.srv1.html](index.srv1.html)
-  - Note: you can use your own webpage, but for this project you'll need the files to be "different"  
-    so that you can tell the content is coming from a different server
+  - Note: you can use your own webpage, but for this project you'll need the files to be "different" so that you can tell the content is coming from a different server
 - [index.srv2.html](index.srv2.html)
 
 ## Part 1 - CloudFormation Template TODOs
 
-The CloudFormation template provided in this project folder is updated to get you started on this project.
+The CloudFormation template provided in this project folder is **updated from Project 3** to get you started on this project.
 
-Sections you should pay attention to have comments with TODO
+Sections you should pay attention to have comments with `TODO`
+
+- No really, go in there and do a "Find" for `TODO`
 
 All said and done, your template should do the following:
 
@@ -63,13 +64,13 @@ All said and done, your template should do the following:
      - apache2 or nginx is fine
    - on each instance, change the hostname and Tag name to be unique for each system
 
-The deliverable for this part is the CloudFormation template included in your repo folder.
+**The deliverable for this part is the CloudFormation template in your Project 4 folder.**
 
 ## Part 2 - Setup Load Balancing TODOs
 
-Setup the following and add documentation or screenshots to your `README.md` file as specified.
+**Using the instances created by your CloudFormation template, setup the following and add documentation or screenshots to your `README.md` file as specified.**
 
-1. Create an `/etc/hosts` OR `.ssh/config` file on each system that correlates hostnames to private IPs.
+1. Create an `/etc/hosts` OR `.ssh/config` file on each system that correlates hostnames to private IPs of systems within the subnet (your instances).
    - Description of how file is configured
 2. Document how to SSH in between the systems utilizing their private IPs.
 3. **_HAProxy configuration & documentation requirements_**
