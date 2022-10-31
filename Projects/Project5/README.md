@@ -103,14 +103,13 @@ data to the Dropbox for Project 5 in Pilot.
 
 - Update `README.md` in main folder of your repo to include:
 
-- Container restart script
-  - what it does
-- Webhook task definition file
-  - what it does
+- Description of container restart script
 - Setting up a webhook on the server
   - How you created you own listener
-  - How you installed and are running the [webhook on GitHub](https://github.com/adnanh/webhook)
-- Setting up a notifier in GitHub or DockerHub
+  - How you installed the [webhook on GitHub](https://github.com/adnanh/webhook)
+  - How to keep the webhook running if the instance is on
+- Description of Webhook task definition file
+- Steps to set up a notifier in GitHub or DockerHub
 
 ### Resources
 
