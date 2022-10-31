@@ -7,7 +7,7 @@
 - [Part 3 - Deployment](#Part-3---Deployment)
 - [Part 4 - Diagramming](#Part-4---Diagramming)
 - [Submission](#Submission)
-- [Extra Credit - DIY](#Extra-Credit---DIY)
+- [Extra Credit - By Proxy](#Extra-Credit---By-Proxy)
 - [Rubric](Rubric.md)
 
 ## Objectives
