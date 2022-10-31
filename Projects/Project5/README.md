@@ -1,4 +1,4 @@
-# Project 5 - NOT FINALIZED
+# Project 5
 
 - [Objectives](#Objectives)
 - [Project Overview](#Project-Overview)
@@ -13,18 +13,31 @@
 ## Objectives
 
 - Containerize an application with Docker
-- Automate the project pipeline with GitHub Actions
-- Explore usage of webhooks to keep production up to date
+- Automate the project pipeline with GitHub Actions - continuous integration
+- Use webhooks to keep production up to date - continuous deployment
 
 ## Project Overview
 
 For this project you will be creating a fresh repository - the link is in Pilot under Content - Projects - Project 5. This is the repo you will be using for this project.
 
-You will notice that each part has "Milestone" labels and dates. This project is not due until 4/22. Completion of each milestone **by the date specificied for the milestone** will get you 10% of extra credit per milestone date met. To qualify, you must submit your project to the Dropbox for Project 5 in Pilot.
+You will notice that each part has "Milestone" labels and dates. This project is not due until
+12/2. Completion of each milestone **by the date specified for the milestone** will get you 10%
+of extra credit per milestone date met. To qualify, you must submit your project on the milestone
+data to the Dropbox for Project 5 in Pilot.
+
+## Parts & Milestones
+
+- [Part 1 - Dockerize it](#Part-1---Dockerize-it)
+  - Milestone due 11/14
+- [Part 2 - GitHub Actions and DockerHub](#Part-2---GitHub-Actions-and-DockerHub)
+  - Milestone due 11/21
+- [Part 3 - Deployment](#Part-3---Deployment)
+  - Milestone due 11/28
+- [Part 4 - Diagramming](#Part-4---Diagramming)
+  - All parts are due 12/2 - Friday, December 2nd.
+  - No EC
 
 ## Part 1 - Dockerize it
-
-- **Milestone Participation due 3/30**
 
 ### Tasks
 
@@ -44,17 +57,16 @@ You will notice that each part has "Milestone" labels and dates. This project is
 - Project Overview
 - Run Project Locally
   - how you installed docker + dependencies (WSL2, for example)
-  - how to build the container
+  - how to build the container from the Dockerfile
   - how to run the container
-  - how to view the project (open a browser...go to ip and port...)
+  - how to view the project running in the container (open a browser...go to ip and port...)
 
 ## Part 2 - GitHub Actions and DockerHub
 
-- **Milestone Participation due 4/8**
-
 ### Tasks
 
-- Create DockerHub account: https://hub.docker.com/ (select Free tier if prompted)
+- Create DockerHub account: https://hub.docker.com/
+  - select Free tier if prompted
 - Create Public Repository in DockerHub
 - Set GitHub Secrets named DOCKER_USERNAME and DOCKER_PASSWORD with your respective information filled out.
 - Set up GitHub Actions workflow to build and push docker image to DockerHub
@@ -64,16 +76,16 @@ You will notice that each part has "Milestone" labels and dates. This project is
 
 - Update `README.md` in main folder of your repo to include:
 
-- Create DockerHub public repo
-  - process to create
-- How to authenticate with DockerHub via CLI using Dockhub credentials
+- Process to create public repo in DockerHub
+- How to authenticate with DockerHub via CLI using Dockerhub credentials
   - what credentials would you recommend providing?
+- How to push container to Dockerhub
 - Configuring GitHub Secrets
-  - what credentials are needed
-  - set secrets and secret names
+  - What secrets were set based on what info
 - Behavior of GitHub workflow
   - what does it do and when
-  - variables to change (repository, etc.)
+  - what variables in workflow are custom to your project
+    - think may need to be changed if someone else is going to use it or you reuse it
 
 ### Resources
 
@@ -81,13 +93,11 @@ You will notice that each part has "Milestone" labels and dates. This project is
 
 ## Part 3 - Deployment
 
-- **Milestone Participation due 4/20**
-
 ### Tasks
 
 - For this piece, use an EC2 instance.
 - Install docker on the instance
-- Create a webhook set up to automatically deploy updates to the container image
+- Create a webhook set up to automatically deploy updates to the container image - see Resources for this part
 
 ### Documentation
 
@@ -104,7 +114,7 @@ You will notice that each part has "Milestone" labels and dates. This project is
 
 ### Resources
 
-Note: the challenging part here is getting the webhook reciever running and happy on the server. You can lean on lectures and notes left in the PowerPoint slides, but make sure you add your own notes to your documentation
+Note: the challenging part here is getting the webhook receiver running and happy on the server. You can lean on lectures and notes left in the PowerPoint slides, but make sure you add your own notes to your documentation
 
 - [Using GitHub actions and webhooks](https://levelup.gitconnected.com/automated-deployment-using-docker-github-actions-and-webhooks-54018fc12e32)
 - [Using DockerHub and webhooks](https://blog.devgenius.io/build-your-first-ci-cd-pipeline-using-docker-github-actions-and-webhooks-while-creating-your-own-da783110e151)
@@ -116,11 +126,12 @@ Include a diagram (or diagrams) of your entire workflow. Meaning it should start
 
 ### Resources
 
-You can use whatever tools you would like, here are some recommend tools that people use
+You can use whatever tools you would like, here are some recommended tools that people use
 
 - [Lucid Charts](https://www.lucidchart.com/pages/)
 - [Textographo](https://textografo.com/)
 - [Mermaid - new markdown feature](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
+- [Eraser - Cloud Diagrams](https://docs.tryeraser.com/docs/cloud-diagrams)
 - PowerPoint and OneNote are still good choices
 
 ## Submission
@@ -139,19 +150,12 @@ You can use whatever tools you would like, here are some recommend tools that pe
 
 2. In Pilot, paste the link to your project folder.
 
-## Extra Credit - DIY
+## Extra Credit - By Proxy
 
 Worth 10%
 
-Pick a project of yours or that you are interested in, and create a docker container of your project.
+Create a file, `ExtraCredit.md` in your project repository.
 
-- Database
-- Java program
-- php site
-- something else?
+You now have a whole workflow, assuming an instance with a public IP (and Elastic IP). Revisit your load balancing project (project 4) and create a continuous deployment workflow for your backend hosts.
 
-Document and include:
-
-- Dockerfile that builds your project and environment
-- Image with your project (link from DockerHub) / `docker pull` command
-- Instructions to run container from image
+Document your continuous deployment solution for your load balancer in `ExtraCredit.md`.

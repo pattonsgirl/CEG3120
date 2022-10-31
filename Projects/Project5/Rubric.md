@@ -47,5 +47,5 @@
 
 ## Diagramming ( / 2)
 
-- Locigically diagrammed steps for continuous integration workflow
-- Locigically diagrammed steps for continuous deployment workflow
+- Logically diagrammed steps for continuous integration workflow
+- Logically diagrammed steps for continuous deployment workflow
