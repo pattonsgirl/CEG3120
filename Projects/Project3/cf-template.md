@@ -242,6 +242,22 @@ Can create a do-on-boot script. `root` will be the user while this runs
   - `\` = new line
   - `&&` = then do the next command
   - `&& \` = do the next command on the next line
+- With respect to "when to use &&":
+  - `&& \` needs to be between full commands
+  - The `&&` says "and do this command next"
+  - The `\` says it will be on the next line
+
+As a sample, let's say I want to install two packages:
+- `apt install cowsay apt-get install git` is bad (check in your own terminal)
+- `apt install cowsay && apt-get install git` is good
+
+In your script, this may look like:
+```
+apt install cowsay && \
+apt install git && \
+reboot
+# note, there is no "next" command after reboot, thus no \
+```
 
 ```
       UserData:
