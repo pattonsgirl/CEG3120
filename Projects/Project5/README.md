@@ -7,6 +7,7 @@
 - [Part 3 - Deployment](#Part-3---Deployment)
 - [Part 4 - Diagramming](#Part-4---Diagramming)
 - [Submission](#Submission)
+- [Extra Credit - BYOP](#Extra-Credit---BYOP)
 - [Extra Credit - By Proxy](#Extra-Credit---By-Proxy)
 - [Rubric](Rubric.md)
 
@@ -148,6 +149,13 @@ You can use whatever tools you would like, here are some recommended tools that 
      - webhook definition file
 
 2. In Pilot, paste the link to your project folder.
+
+## Extra Credit - BYOP
+
+BYOP = Bring Your Own Project
+
+Containerize a web based application of your own. Needs to be way cooler than
+a single `index.html` file.
 
 ## Extra Credit - By Proxy
 
