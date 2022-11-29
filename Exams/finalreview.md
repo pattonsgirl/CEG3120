@@ -1,15 +1,14 @@
 # Final Review for CEG 3120
 
-## Spring 2022
+## Fall 2022
 
 ## Da Rules
 
-Midterm: Monday, 2/25
+Final: Friday 12/9
 
-- Available 8:00 AM to 11:59 PM
+- Available 8:00 AM to 10:00 AM
 - 1 attempt, 2 hours once started
 - Open note, open terminal
-- I will be in Russ 355 from 12:30 to 2:30 PM if you want to take the exam in the room
 
 ## Week 1 & 2
 
@@ -201,12 +200,12 @@ Midterm: Monday, 2/25
   - URL for payload delivery
 - events that should trigger a container refresh
   - DockerHub webhook
-  - GitHub webhook + using a secret
-  - GitHub Action job to run webhook
+  - ~~GitHub webhook + using a secret~~
+  - ~~GitHub Action job to run webhook~~
 
 ## Week 14
 
-- secret sharing and containers
+- ~~secret sharing and containers~~
   - Have secret on individual host, share with container on run using a bind mount (-v HOST:CONTAINER)
 
 ### Project
