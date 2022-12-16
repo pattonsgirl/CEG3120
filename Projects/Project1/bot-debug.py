@@ -5,7 +5,7 @@ import random
 from dotenv import load_dotenv
 
 load_dotenv()
-#print(os.getenv('DISCORD_TOKEN'))
+print("Discord Bot token to prove it is being read in: \n" + os.getenv('DISCORD_TOKEN'))
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 

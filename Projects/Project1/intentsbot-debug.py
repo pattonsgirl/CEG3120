@@ -9,6 +9,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 load_dotenv()
+print("Discord Bot token to prove it is being read in: \n" + os.getenv('DISCORD_TOKEN'))
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
