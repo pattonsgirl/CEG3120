@@ -1,10 +1,10 @@
 # Project 0 - Git Guide
 
-In your repo for this course, create a file named `git-guide.md`. In this file, write up a quick guide to using git & GitHub. For each command, include a brief definition of what it does, and a sample of how to use it. `status` has a sample of what a well done filled in entry looks like.
+In your repo for this course, create a folder named `git-guide` with a file named `README.md`. In this file, write up a quick guide to using git & GitHub. For each command, include a brief definition of what it does, and a sample of how to use it. `status` has a sample of what a well done filled in entry looks like.
 
 You may use markdown to format this in a way that is clean for you.  If you would prefer tables, you can make tables in markdown.
 
-Entries that are currently crossed out we will get to later in the course that you could go back and write some details on later.
+Entries that are currently crossed out we will get to later in the course.  You are welcome to revisit this guide and add details to it.
 
 ## Command line git
 
@@ -29,17 +29,22 @@ Entries that are currently crossed out we will get to later in the course that y
 
 ## git files & folders
 
+Provide descriptions of expected contents and what these are used for
+
 - .git folder
 - .gitignore file
 - ~~.git/hooks~~
 
 ## GitHub
 
+Provide basic how-to-use guides for both.  This should be short and sweet so that you can refer to it as a quick guide.
+
 - Pull requests
 - SSH authentication to repositories
 - ~~Actions~~
 
 ## Resources
+Other resources are welcome, just cite them (you can do lazy citations here, or use markdown to make links throughout your guide)
 
 - [Pro Git Book](https://git-scm.com/book/en/v2)
 
@@ -47,4 +52,4 @@ Entries that are currently crossed out we will get to later in the course that y
 
 1. Commit and push your changes to your repository. Verify that these changes show in your course repository, https://github.com/WSU-kduncan/ceg3120-YOURGITHUBNAME
 
-2. In Pilot, paste the link to your project folder. Sample link: https://github.com/WSU-kduncan/ceg3120-YOURGITHUBUSERNAME/blob/main/Projects/Project0
+2. In Pilot, paste the link to your project folder. Sample link: https://github.com/WSU-kduncan/ceg3120-YOURGITHUBUSERNAME/tree/main/git-guide
