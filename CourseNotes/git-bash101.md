@@ -42,10 +42,12 @@ Important files:
 - `authorized_keys`
 - `config`
   - the config file allows proper setup of private keys, usernames, and system names (or IPs) 
-  - https://linuxize.com/post/using-the-ssh-config-file/
+  - [linuxize - the ssh config file](https://linuxize.com/post/using-the-ssh-config-file/)
 
 Other resources:
-- https://www.ssh.com/academy/ssh/protocol
+- [ssh official - SSH Protocol](https://www.ssh.com/academy/ssh/protocol)
+- [hostinger - how does SSH work](https://www.hostinger.com/tutorials/ssh-tutorial-how-does-ssh-work)
+- [redhat - basics of setting up SSH on client and server](https://www.redhat.com/sysadmin/access-remote-systems-ssh)
 
 ## Command Line Essentials
 
