@@ -1,7 +1,7 @@
 # git & bash 101
 
 The purpose of this first chunk is to refresh or learn 
-- the essential set of bash commmands
+- the essential set of bash commands
 - how to use ssh and how SSH works
 - setting up your first AWS environment for this course
 - git: from commits to pulls and merges
