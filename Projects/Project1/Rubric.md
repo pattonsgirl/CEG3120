@@ -1,27 +1,32 @@
 # Project 1 Rubric
 
-/ 10
+/ 15
 
-1. python bot code exists ( / 1)
-2. bot outputs from a set of quotes OR a set of pictures ( / 1)
-3. README.md in Discord-Bot folder
-   - Setup ( / 3)
-     - how to get an API token
-     - where to put it to work with the code
-     - dependencies (what packages need to be installed to run the code)
-   - Usage ( / 3)
-     - with your changes to the code in place, describe
-     - what commands you can type in your Discord server
-     - what response this will provide (from your bot)
-   - Research ( / 1)
-     - you may have realized that it is lame that it only runs when you run the program.
-     - In the real world, things are "always on", not waiting for Bob to turn his PC on and make sure the program is running.
-     - Research some possible solutions that would solve this, and discuss why you think it would work.
-4. GitHub ( / 1)
-   - shows proof of branch
+## Part 1 ( / 5)
 
-5. Screenshot of Discord Bot operational ( / 1)
+1. VPC created & configured & role described
+2. Subnet created & configured & role described
+3. Internet gateway created & configured & role described
+4. Route table created and configured & role described
+5. Security group created and configured & role described
 
-6. Point reductions 
-   - Documentation not nicely formatted in markdown for readability - ( / 1)
-   - .env file visible in GitHub (being part of an old commit will not be penalized) - ( / 1)
+## Part 2 ( / 10)
+
+1. Instance details
+   - AMI selected - id & human friendly details
+   - default username of the instance type selected
+   - instance type selected 
+   - keypair selected - include a brief description of how this works
+2. How to attach instance to VPC
+3. Public IP address auto-assign - yay or nay and why?
+4. How to create and attach storage volume to instance
+5. How to tag instance with "Name" of "YOURLASTNAME-instance"
+6. How to associate VPC security group (your security group) with your instance
+7. How to create / reserve and associate and Elastic IP address with your instance
+8. Screenshot with instance details
+9. How to change hostname via commands on instance
+10. Screenshot of successful SSH connection to instance (with your new hostname instead of `ip-##-##-##-##`)
+
+## Point Deductions ( / 1)
+
+- images not included in markdown documentation

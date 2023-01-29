@@ -2,125 +2,97 @@
 
 ## Objectives:
 
-- Protect files with secret information (in this case, an API token for a Discord bot)
-- Deploy a project using basic tools (GitHub & git)
-- Build projects locally, then deploy them to your AWS instance
-- Explore long term solutions to serving content that do not involve being connected to the terminal 24/7
+- Understand and build a private cloud network
+- Understand and build an EC2 instance
 
-## Updates:
+## Assignment Notes / Hints
 
-Package version headaches are now part of this project's scope.  Here are notes to keep in mind:
-- To roll between versions of discord.py
-  - `pip3 install -U discord.py==1.7.3` - this gets the version that works with the Discord API v9 (the one that works with bot.py)
-  - `pip3 install -U discord.py==2.0.1` - this gets the version that works with Discord API v10, the one that needs bots to have intents.
-  - 2.0.1 requires a rewrite to the code - [intentsbot.py](intentsbot.py)
-- You can check which version you have installed with:
-  - `pip3 show discord.py`
+For this project you need access to your AWS "console". Return to the AWS Learner Lab page and click "Start Lab".  **Once the icon next to "AWS" is green (or timer countdown begins), click "AWS" to open the console.**
 
-## The Story
+Create a `Project1` folder in your GitHub Classrooms repo. This project is mostly documentation of work, so you are welcome to work on your documentation and in your repo wherever you are comfortable. I would float towards VSCode myself.
 
-A developer is handing a project off to you for deployment.  The project is a Discord Bot that he wrote.  The boss liked it, so now you need to deploy it on the company Discord server.  
-The developer has left you [documentation](https://realpython.com/how-to-make-a-discord-bot-python/) of how to setup a Discord Bot and how the code works, the [core code](bot.py), and some changes to make before the project goes live.
+In your `Project1` folder, create a file named `README.md` Do you work for Parts 1 & 2 here.
 
-Your job is to put the project into your repository (`WSU-kduncan/ceg3120-pattonsgirl-3`) in a folder named `Discord-Bot`. Read through the [documentation](https://realpython.com/how-to-make-a-discord-bot-python/) and figure out:
+- It will be handy, but not necessary, to compare / contrast the resources you are making with the working "stack" you have. That stack is based on a template, and that template defined all of these resources - and worked.
+- When asked to create "tags", you want to make a "Name" tag and then write the name in the value field. Sometimes the "Name" tag will be auto-filled for you. Sometimes not.
+- If you get to a point where you need to start over, carefully go through and delete the resources you have already created.
+  1. This is good maintenance. Leaving behind junk is frowned upon in any industry
+  2. This will keep you from running resources you can be charged for (like unused instances and elastic IPs)
 
-- how to generate an API token for your Bot from Discord
-- where to store the API token for the project to run
-- how to use OAuth2 to add/authenticate your Bot with your server
-- keep the API key / secret information off GitHub
-  - If you mess up, you'll need to create a new Discord API token, then tread carefully
-  - See [Extra Info](#Extra-Info) for instructions on removal a file from tracking on GitHub
-- configure your local environment to run the project (and later do the same on your AWS instance)
-- change the bot to respond to prompts using a set of quotes of your choice
-  - your changes will first be tested in a `branch`
-  - once tested, your changes can then be merged with `main`
+## Part 1 - Build a VPC
 
-## Part 1 - Discord Bot Setup
+For each step below, provide a screenshot that shows the network resource has been created according to specification along with a description of what the resource does (what is its role). You may add whatever additional notes you would like. **The screenshot and description of each network component is required**. Any other notes you leave behind may make this project more useful in the future. Getting a good screenshot can be done by clicking on the resource and showing configurations in the details menu.
 
-**NOTE** You do need a Discord account with 2FA (Two factor authentication) enabled with either Authy OR Google Autheniticator. [Discord has 2FA setup instructions](https://support.discord.com/hc/en-us/articles/219576828-Setting-up-Two-Factor-Authentication).  Any time you are prompted for a `6 digit authentication code`, it is a reference to the code displayed in the authenticator app.
+1. Create a VPC.
+   - Tag it with "YOURLASTNAME-VPC"
+   - Specify a CIDR block of 192.168.0.0/23
+2. Create a subnet
+   - Tag it with "YOURLASTNAME-Subnet"
+   - Reserve 192.168.0.0 - 192.168.0.255 for use on this subnet
+   - Attach it to your VPC
+3. Create an internet gateway
+   - Tag it with "YOURLASTNAME-gw"
+   - Attach it to your VPC
+4. Create a route table
+   - Tag it with "YOURLASTNAME-rttable"
+   - Attach it to your VPC
+   - Associate it with your subnet
+   - Add a routing table rule that sends traffic to destinations external to your subnet CIDR block to your internet gateway
+5. Create a security group
+   - Tag it with "YOURLASTNAME-sg"
+   - Allow SSH for a set of trusted networks including:
+     - Your home / where you usually connect to your instances from
+     - Wright State (addresses in CIDR block 130.108.0.0/16)
+     - Instances within the VPC
+   - Attach it to your VPC
+   - Image should include your Inbound rules
+6. (If necessary/ wanted, else skip) Create a key pair
 
-1. Create a folder in your repository called `Discord-Bot`
-2. Get the core code from [bot.py](bot.py) and copy / paste in into a `.py` file in your repo
-  - Don't go getting exctied and making modifications YET - you'll be needing to put changes on a `branch`
+## Part 2 - EC2 instances
 
-3. [Follow this guide](https://realpython.com/how-to-make-a-discord-bot-python/) to create a Discord bot in a Discord server you control.
-  - This documentation covers a lot, including:
-    - Setup in the [Discord Developer Portal](https://discord.com/developers/applications) & create a key
-    - The special name and file your key will go in (hint: it's a `.env`)
-    - The python libraries that you need to add / install
-    - How the code is working to make API calls to Discord (because it is fun to look at, and the code itself is not heavily commented)
-4. Test that your bot, when running locally, can connect to your Discord server and responds to messages if they contain the right keyword
-
-## Part 2 - Discord Bot Modifications
-
-1. Clone your repo (which should include the Discord bot project) and run your code on the AWS instance.
-
-2. Create a `branch` and make one of the modifications to the code listed below:
-
-  - outputs quotes based on a command of your choice
-    - note that this _must_ be a different command and set of quotes from the demo
-  - outputs pictures based on a command of your choice
-    - for an example, see `!corgme` in the Department server under Discussion. Please spam #cute-pets only
-  - Note: you are allowed to both, or pay around beyond just these, but at minimum one of these
-
-3. Test your changes while on the `branch`. When your changes are tested and working, `merge` your `branch` changes with `main`
-
-## Part 3 - R&D (Research & Documentation)
-
-1. In `Discord-Bot` folder, add a `README.md` file. Document the following:
-  - Setup
-    - dependencies (what packages need to be installed to run the project)
-    - how to get an API token
-    - where to put it to work with the code
-  - Usage
-    - with your changes to the code in place, describe
-      - what commands you can type in your Discord server
-      - what response this will provide (from your bot)
-    - screenshots are welcome here
-  - Research
-    - you may have realized that it is lame that the bot only runs when you run the program - it turns off if you disconnect or need to switch tasks.
-    - In the real world, things are "always on", not waiting for Bob to turn his PC on and make sure the program is running.
-    - **Research** some possible solutions that would solve this, and discuss why you think it would work.
-2. Check out the [Rubric](Rubric.md) to make sure you hit all elements
+1. Create a new instance. Give a write up of the following information:
+   - AMI selected - id & human friendly details
+   - default username of the instance type selected
+   - instance type selected 
+   - keypair selected - include a brief description of how this works
+2. Attach the instance to your VPC. 
+   - Document how you did it.
+3. Determine whether a Public IPv4 address will be auto-assigned to the instance. 
+   - Justify your choice to do so (or not do so)
+   - **NOTE** - in the next few steps, you will be required to request an Elastic IP address and associate it to the instance. Factor that in to your discussion here.
+4. Attach a volume to your instance. 
+   - Document how you did it.
+5. Tag your instance with a "Name" of "YOURLASTNAME-instance". 
+   - Document how you did it.
+6. Associate your security group, "YOURLASTNAME-sg" to your instance.
+   - Document how you did it.
+7. Reserve an Elastic IP address. 
+   - Tag it with "YOURLASTNAME-EIP". 
+   - Associate the Elastic IP with your instance.
+   - Document how you did it.
+8. Create a screenshot your instance details and add it to your project write up. Example below:
+   ![sample instance details](sample.png)
+9. `ssh` in to your instance. 
+   - Change the hostname to "YOURLASTNAME-AMI" where AMI is some identifier of the AMI you chose. 
+   - Document how you did it.
+   - Notes on changing a system hostname: 
+      1. It is wise to copy config files you are about to change to filename.old For `/etc/hostname`, for example, I would first copy the current `hostname` file to `/etc/hostname.old`
+      2. You should not change permissions on any files you are modifying. They are system config files. You may need to access them with administrative privileges.
+      3. Here is a helpful resource: https://www.tecmint.com/set-hostname-permanently-in-linux/ I did not modify `/etc/hosts` on mine - do so or not as you wish.
+10. Create a screenshot your `ssh` connection to your instance and add it to your project write up - make sure it shows your new hostname.
 
 ## Submission
 
 1. Commit and push your changes to your repository. Verify that these changes show in your course repository, https://github.com/WSU-kduncan/ceg3120-YOURGITHUBNAME
 
-2. In Pilot, paste the link to your project folder. Sample link: https://github.com/WSU-kduncan/ceg3120-YOURGITHUBUSERNAME/blob/main/Discord-Bot
+   - Your repo should contain:
+   - `images` folder (optional depending on how you implement including screenshots)
+   - `README.md`
+
+2. In Pilot, paste the link to your project folder. Sample link: https://github.com/WSU-kduncan/ceg3120-YOURGITHUBUSERNAME/blob/main/Projects/Project1
+
+3. You may delete all created resources once done to save monies. No really, trash it - especially the instance and disassociate and release the elastic IP.  If I have questions about your work, your documentation should be good enough to quickly rebuild.
 
 ## Rubric
 
 [Link to Rubric](Rubric.md)
-
-## Extra Info
-
-### Create a Discord server
-
-You are welcome to use any Discord server you are an admin of. Otherwise you can create a new server:
-
-- Open Discord
-- In your list of servers (those icons on the sidebar), click the "+" button to "Add a server"
-- Click "Create My Own", then "For me and my friends"
-- Give your server a name
-
-### Get a file off `git` / GitHub tracking
-
-Mistakes happen. If you made your API key public (up to GitHub), Discord killed it. Make a new key in the Discord Developer Portal, eat some ice cream (as needed), and deal with untracking a tracked file, below.
-
-- The command you need is `git rm --cached filename`
-- Check your `git status` output.
-- Make sure you add it to `.gitignore` to prevent this in the future
-- `push` your changes to GitHub - you should see the file disappear
-
-Resources:
-
-- [How to remove a file from git tracking](https://www.codegrepper.com/code-examples/shell/how+to+remove+a+file+from+git+tracking)
-- [git rm documentation](https://git-scm.com/docs/git-rm)
-
-## Additional Project Resources
-- [Priveleged intents](https://discordpy.readthedocs.io/en/stable/intents.html)
-- [Creating a bot account](https://discordpy.readthedocs.io/en/stable/discord.html#discord-intro)
-  - Note, this does not mention intent granting, may need to "enable" Message Intent for bot
-- [Quickstart of chat bot](https://discordpy.readthedocs.io/en/stable/quickstart.html)
-- [More examples of message content usage](https://discordpy.readthedocs.io/en/stable/api.html#discord.Message.content)
