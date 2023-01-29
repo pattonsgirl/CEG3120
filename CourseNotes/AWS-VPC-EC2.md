@@ -37,7 +37,7 @@ AWS has made a happy [chart of comparison between Security Groups & Network ACLs
 
 ### NAT Gateways
 
-A NAT gateway is a Network Address Translation (NAT) service. You can use a NAT gateway so that instances in a private subnet can connect to services outside your VPC (instance updates, installations, etc.) but external services cannot initiate a connection with those instances (ie. you cannot directly `ssh` to them from your system because they are not publicly accessible, but instances inside the VPC could be used to `ssh` within the private network).
+A NAT gateway is a Network Address Translation (NAT) service. You can use a NAT gateway so that instances in a private subnet can connect to services outside your VPC (instance updates, installations, etc.) but external services cannot initiate a connection with those instances (i.e. you cannot directly `ssh` to them from your system because they are not publicly accessible, but instances inside the VPC could be used to `ssh` within the private network).
 
 For this course, we will utilize **public NAT gateways**.  **private** NAT gateways could be used to connect to other VPCs.  A *public* NAT gateway allows instances in private subnets can connect to the internet through a public NAT gateway, but cannot receive unsolicited inbound connections from the internet. 
 
@@ -73,7 +73,22 @@ As an alternative to an EIP, AWS can assign [public IP addresses](https://docs.a
 
 ## AWS EC2
 
-AWS Elastic Cloud Compute (EC2)
-- instance type
-- volumes
-- AMI
+AWS [Elastic Cloud Compute (EC2)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html) provides scalable computing in the cloud.  Note that VPC, EIP, Security Groups, etc. are all a part of the EC2 tool suite.  Key features:
+- [**instances**](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Instances.html) - Virtual computing environments
+- [**Amazon Machine Images (AMIs)**](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) - Preconfigured templates for your instances that package the bits you need for your server (including the operating system and additional software)
+- [**instance types**](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) - Various configurations of CPU, memory, storage, and networking capacity for your instances
+    - Available instance types will vary by region
+    - Fun note, [Mac is now an option](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-mac-instances.html) but not available to Education accounts
+- [**key pairs**](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) - Secure login information for instances. AWS stores the public key, and you store the private key in a secure place
+- [**Elastic Block Store (EBS) volumes**](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html) - persistent data storage
+- [**Regions & Availability Zones**](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/) - multiple physical locations for instances & EBS volumes
+    - For this course, we are using `us-east-1` aka. N. Virginia.  
+        - Availability Zones: 6
+        - Local Zones: 12 
+        - Wavelength Zones: 8
+    - **Region** are a physical location around the world where AWS clusters data centers. Each group of logical data centers is an Availability Zone.
+    - **Availability Zone (AZ)** is one or more discrete data centers with redundant power, networking, and connectivity in an AWS Region.  Each region has min of 3 AZs
+    - *Local Zones* place compute, storage, database, and other select AWS services closer to end-users (think media delivery & gaming).
+    - *Wavelength* enables developers to build applications that deliver single-digit millisecond latencies to mobile devices and end-users (think telecommunications & cellular).
+- [**tags**](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) - metadata for resources
+
