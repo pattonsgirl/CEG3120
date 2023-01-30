@@ -24,6 +24,8 @@ Every VPC must have one or more [subnets](https://docs.aws.amazon.com/vpc/latest
 
 Each subnet is assigned a [routing table](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html#subnet-route-tables) which defines traffic rules for network traffic within the subnet.  In general, there are two rules - one for traffic internal to the VPC, and one for traffic destined for outside the VPC - in other words, what traffic needs to go through the **internet gateway**.  
 
+![Stack AWS Route Table](../Images/AWS-RT.PNG)
+
 An [internet gateway](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html) allows communication between your VPC and the internet.  An internet gateway provides a target in your VPC route tables for internet-routable traffic. 
 
 
