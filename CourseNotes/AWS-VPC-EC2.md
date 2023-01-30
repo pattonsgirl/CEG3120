@@ -52,6 +52,8 @@ Network security & NAT gateways:
 
 When you provision a NAT gateway, you are charged for each hour that your NAT gateway is available and each Gigabyte of data that it processes.  [Play with the calculator](https://aws.amazon.com/vpc/pricing/)
 
+[NAT Gateway vs NAT instance](https://www.tinystacks.com/blog-post/aws-cost-optimization-nat-instances-vs-nat-gateways/) - there are some cost saving arguments here - this article dives into a bit on managing and instance for NAT versus using the AWS gateway device and pros and cons of each.
+
 ### IP Addressing
 
 An [Elastic IP Address (EIP)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) is a static IPv4 address designed for dynamic cloud computing. An Elastic IP address is allocated to your AWS account, and is yours until you release it.  By default, all AWS accounts are limited to **five (5) Elastic IP addresses per Region**.  Once an EIP is reserved, you can [associate it with an instance or network interface](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-eips-associating)
