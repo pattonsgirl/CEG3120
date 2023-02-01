@@ -84,6 +84,10 @@ Resources:
 - [learn git branching - interactive tutorial](https://learngitbranching.js.org/?locale=en_US)
 - [Anatomy of a git commit](https://blog.thoughtram.io/git/2014/11/18/the-anatomy-of-a-git-commit.html)
 - [git commands you do not need](https://myme.no/posts/2023-01-22-git-commands-you-do-not-need.html)
+- git-sim - neat tool to visualize your own commits
+  - [dependencies](https://docs.manim.community/en/stable/installation/linux.html)
+  - [git-sim github repo](https://github.com/initialcommit-com/git-sim)
+  - [blog on git-sim](https://initialcommit.com/blog/git-sim) 
 
 ## GitHub Essentials
 
