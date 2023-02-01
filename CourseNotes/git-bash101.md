@@ -82,6 +82,8 @@ Resources:
 - [git - the simple guide](https://rogerdudler.github.io/git-guide/)
 - [Git Essentials - Sankalp Swami](https://dev.to/sankalpswami1122/git-essentials-4kff)
 - [learn git branching - interactive tutorial](https://learngitbranching.js.org/?locale=en_US)
+- [Anatomy of a git commit](https://blog.thoughtram.io/git/2014/11/18/the-anatomy-of-a-git-commit.html)
+- [git commands you do not need](https://myme.no/posts/2023-01-22-git-commands-you-do-not-need.html)
 
 ## GitHub Essentials
 
