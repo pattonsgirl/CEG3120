@@ -51,7 +51,7 @@ For each step below, provide a screenshot that shows the network resource has be
 ## Part 2 - EC2 instances
 
 1. Create a new instance. Give a write up of the following information:
-   - AMI selected - id & human friendly details
+   - AMI selected - id & OS with version
    - default username of the instance type selected
    - instance type selected 
    - keypair selected - include a brief description of how this works
