@@ -4,6 +4,8 @@
 
 ## Part 1 ( / 5)
 
+Screenshot of configuration captures creation & configuration
+
 1. VPC created & configured & role described
 2. Subnet created & configured & role described
 3. Internet gateway created & configured & role described
