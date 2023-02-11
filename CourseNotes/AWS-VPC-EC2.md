@@ -13,8 +13,6 @@ This is a fairly dry, info only page.  Companion drawings are in the OneNote Not
 
 AWS [Virtual Private Cloud (VPC)](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html) allows you to launch resources to a network you define.  The VPC menu in AWS focuses on the network resources in the VPC, while the EC2 menu (discussed later) focuses on instances.
 
-In class, we are digging into the resources reserved when you created a stack in order to understand what a working environment created.
-
 Every VPC must have one or more [subnets](https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html), each of which contains a range of IP addresses in your VPC.  The first 4 and last 1 IPv4 address in each subnet cannot be used.  For example, in a subnet with CIDR block of 10.0.0.0/24:
 - 10.0.0.0: Network address.
 - 10.0.0.1: Reserved by AWS for the VPC router.
@@ -37,6 +35,27 @@ An [internet gateway](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Inter
 
 AWS has made a happy [chart of comparison between Security Groups & Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Security.html#VPC_Security_Comparison)
 
+### Public vs Private Subnets
+
+| Public subnet | Private subnet |
+| -- | -- |
+| route to Internet Gateway | no route to Internet Gateway | 
+| Internet addressable resources (i.e. resources with EIP associated) | resources only have private IP on subnet | 
+| public NAT Gateway (with EIP) would be attached if private subnet needs Internet access | route table would define outbound traffic goes to NAT Gateway device on public subnet |
+
+Things that can create traps:
+1. route table for either subnet defines traffic local to subnet, but not traffic to other subnets.
+    - for example: VPC is 10.0.0.0/16, public subnet is 10.0.0.0/24, private subnet is 10.0.1.0/24, in order to enable communication between the two (if you don't want the whole VPC) the local route needs to allow 10.0.0.0/23 (or 10.0.1.0/23 would state the same block)
+2. Security Groups need to allow port access if there is a restricted ruleset.
+    - for example: VPC is 10.0.0.0/16, public subnet is 10.0.0.0/24, private subnet is 10.0.1.0/24, in order to enable SSH (port 22) communication between the two (if you don't want the whole VPC) there needs to be a rule to allow 10.0.0.0/23 (or 10.0.1.0/23 would state the same block) to use SSH
+3. Network ACL rules
+    - see examples above
+
+Resources:
+- [devopsmania - Difference between public and private subnets](https://devopsmania.com/the-difference-between-public-and-private-subnets-in-amazon-vpc/)
+- [1cloudhub - create VPC with public & private subnet](https://www.1cloudhub.com/aws-vpc-101-creation-of-public-subnet-and-private-subnet-in-vpc-and-test-connectivity)
+- [AWS - VPC with public and private subnets (NAT)](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Scenario2.html)
+
 ### NAT Gateways
 
 A NAT gateway is a Network Address Translation (NAT) service. You can use a NAT gateway so that instances in a private subnet can connect to services outside your VPC (instance updates, installations, etc.) but external services cannot initiate a connection with those instances (i.e. you cannot directly `ssh` to them from your system because they are not publicly accessible, but instances inside the VPC could be used to `ssh` within the private network).
@@ -54,7 +73,10 @@ Network security & NAT gateways:
 
 When you provision a NAT gateway, you are charged for each hour that your NAT gateway is available and each Gigabyte of data that it processes.  [Play with the calculator](https://aws.amazon.com/vpc/pricing/)
 
-[NAT Gateway vs NAT instance](https://www.tinystacks.com/blog-post/aws-cost-optimization-nat-instances-vs-nat-gateways/) - there are some cost saving arguments here - this article dives into a bit on managing and instance for NAT versus using the AWS gateway device and pros and cons of each.
+[NAT Gateway vs NAT instance](https://www.tinystacks.com/blog-post/aws-cost-optimization-nat-instances-vs-nat-gateways/) - there are some cost saving arguments here - this article dives into a bit on managing an instance for NAT versus using the AWS gateway device and pros and cons of each.
+
+Resources:
+- [AWS NAT Gateway - Access the internet from a private subnet](https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-scenarios.html)
 
 ### IP Addressing
 
