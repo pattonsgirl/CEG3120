@@ -118,3 +118,7 @@ AWS [Elastic Cloud Compute (EC2)](https://docs.aws.amazon.com/AWSEC2/latest/User
     - *Wavelength* enables developers to build applications that deliver single-digit millisecond latencies to mobile devices and end-users (think telecommunications & cellular).
 - [**tags**](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) - metadata for resources
 
+## Other Interesting Things
+
+- [Visually Create a VPC](https://aws.amazon.com/blogs/aws/new-visualize-your-vpc-resources-from-amazon-vpc-creation-experience/)
+

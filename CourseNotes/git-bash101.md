@@ -62,7 +62,7 @@ Know how to:
 Resources:
 - [Linux Journey - interactive practice](https://notes.siira.io/)
 - [Mozilla - Command Line crash course](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Command_line)
-- [The Obin Project - Foundations of Command LIne Basics](https://www.theodinproject.com/lessons/foundations-command-line-basics)
+- [The Odin Project - Foundations of Command Line Basics](https://www.theodinproject.com/lessons/foundations-command-line-basics)
 
 ## git Essentials
 
@@ -81,6 +81,7 @@ Resources:
 - [git official docs](https://git-scm.com/docs/gittutorial)
 - [git - the simple guide](https://rogerdudler.github.io/git-guide/)
 - [Git Essentials - Sankalp Swami](https://dev.to/sankalpswami1122/git-essentials-4kff)
+- [DZone - Top 20 git commands with examples](https://dzone.com/articles/top-20-git-commands-with-examples)
 - [learn git branching - interactive tutorial](https://learngitbranching.js.org/?locale=en_US)
 - [Anatomy of a git commit](https://blog.thoughtram.io/git/2014/11/18/the-anatomy-of-a-git-commit.html)
 - [git commands you do not need](https://myme.no/posts/2023-01-22-git-commands-you-do-not-need.html)
