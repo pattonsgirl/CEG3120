@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: >-
-   Creates 3 instances and 1 VPC.  Each instance gets a private IP and is pre-installed with required software.  The proxy server gets a public IP as does a NAT gateway.  The backend servers use the NAT gateway for world communications, but they do not have individual public IPs.
+   Creates 4 instances and 1 VPC.  Each instance gets a private IP and is pre-installed with required software.  The proxy server gets a public IP as does a NAT gateway.  The backend servers use the NAT gateway for world communications, but they do not have individual public IPs.
 Parameters:
   KeyName:
     Description: Name of an existing EC2 KeyPair to enable SSH access to the instance

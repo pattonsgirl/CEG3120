@@ -44,6 +44,7 @@ Specify region, instance type, and AMI ID
 
 - The AMI in this template (`ami-07d0cf3af28718ef8`) will pull what?
 - Remember different AMIs can have different default users
+- [AWS CF Mappings](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/mappings-section-structure.html)
 
 ```
 Mappings:
