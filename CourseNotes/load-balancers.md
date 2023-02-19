@@ -10,7 +10,9 @@
 
 Web Content Services:
 - Apache HTTP Server aka. apache2
+    - [How to Install the Apache Web Server on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-20-04)
 - NGINX
+    - [How to Install Nginx on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04)
 
 Useful commands:
 ```bash
@@ -137,7 +139,7 @@ VPN connections encrypt and secure all of your network traffic, not just the HTT
     - Each frontend keyword is followed by a label, such as www.mysite.com, to differentiate it from others.
 
 **Resources**
-- [haproxy - the four essential sections of an haproxy configuration](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration/)
+- [HAProxy - The Four Essential Sections of an HAProxy Configuration](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration/)
 - [DigitalOcean - Intro to HAProxy and LB Concepts](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts)
 
 ### Health Monitoring & Fault Tolerance:

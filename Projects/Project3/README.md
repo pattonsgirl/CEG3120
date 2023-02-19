@@ -99,6 +99,7 @@ In your `Project3` folder, create a `README.md` file.  This document will focus 
 - [How to edit /etc/hosts](https://linuxize.com/post/how-to-edit-your-hosts-file/)
 - [The SSH config file](https://linuxize.com/post/using-the-ssh-config-file/)
 - [How to SFTP](https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server)
+- [Create & Extract with `tar`](https://linuxize.com/post/how-to-create-and-extract-archives-using-the-tar-command-in-linux)
 
 ## Submission
 
