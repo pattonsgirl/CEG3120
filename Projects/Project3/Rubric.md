@@ -1,28 +1,31 @@
-# Project 4 Rubric
+# Project 3 Rubric
 
 / 20
 
-## README.md and CF Template exist in Project 5 folder in repo ( / 1)
+## README.md and CF Template exist in Project 3 folder in repo ( / 1)
 
-## CloudFormation template ( / 8)
+## CloudFormation template ( / 15)
 
-Note: 1 pt per bullet
+Note: 1 point per bullet / task
 
-1. Replace CIDR blocks in template with:
-   - VPC: 192.168.0.0/23
-   - Public Subnet: 192.168.0.0 - 192.168.0.255
-   - Private Subnet: 192.168.1.0 - 192.168.1.255
-1. Modify the Security Group Ingress rules to have the following additional rules:
-   - Access HTTP from any IP address
-   - Access HTTP from within the VPC
-2. For the HAProxy instance:
-   - install haproxy
-3. For the pool of content servers:
-   - create THREE total backend host instances
-   - attach them to the private subnet
-   - assign each instance a unique private IP within the private subnet
-   - install webserver of choice on each instance
-   - on each instance, change the hostname and Tag name to be unique for each system
+1. Use AMI of your choice (from P1/P2 for example)
+2. VPC CIDR block: `192.168.0.0/23`
+3. Public subnet range: `192.168.0.0 - 192.168.0.255`
+4. Private subnet range: `192.168.1.0 - 192.168.1.255`
+5. Modifications for Security Group:
+   - Allow `ssh` requests within VPC CIDR block
+   - Allow `ssh` requests from your home IP
+   - Allow `http` requests from within VPC CIDR block
+   - Allow `http` requests from any IP
+6. For the load balancer (proxy) instance:
+   - assign private IP on public subnet
+   - install `haproxy`
+7. For host instances:
+   - create three total instances
+   - tag with a unique name
+   - assign private IP on private subnet
+   - install `apache2` or `nginx`
+   - configure a unique `hostname` on the instance
 
 ## README.md documentation for configuration ( / 11)
 

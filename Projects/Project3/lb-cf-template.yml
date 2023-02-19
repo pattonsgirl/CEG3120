@@ -156,7 +156,7 @@ Resources:
       NetworkInterfaces:
         - GroupSet:
             - !Ref SecurityGroup
-          AssociatePublicIpAddress: 'true'
+          AssociatePublicIpAddress: 'false'
           DeviceIndex: '0'
           DeleteOnTermination: 'true'
           SubnetId: !Ref PublicSubnet

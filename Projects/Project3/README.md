@@ -1,4 +1,4 @@
-# Project 4
+# Project 3
 
 - [Objectives](#Objectives)
 - [Project Description](#Project-Description)
@@ -12,63 +12,59 @@
 ## Objectives:
 
 - Modify the CF template to meet updated requirements
-- Run a website of choice using nginx or apache2 on hosts in the pool
-- Configure the HAProxy load balancer to direct traffic to the pool
+- Run a website of choice using `nginx` or `apache2` on hosts in the pool
+- Configure `haproxy` as a load balancer to direct traffic to the pool
 
 ## Project Description
 
-In your repository, create a `Project4` folder.
+In your repository, create a `Project3` folder.
 
 For this project, you will have two deliverables:
 
-1. CloudFormation template that makes the recourses required for a load balancing setup: an application delivery controller (ADC) and two backend hosts in a pool.
-2. Documentation for configuring the ADC and hosts. In order to visually check that load balancing is working, you will need to include screenshots that show different content  
-   fetched from each server.
-
-As mentioned in class, you are welcome to use your own website for this project. **However** in order to visually check that load balancing is working, you will need to include screenshots that show different content  
-fetched from each server. If you look at the `html` files provided, which you are welcome to use, you'll see that one has text that is is from server 1 and the other text that it is from server 2.
+1. CloudFormation template with modifications for project
+2. Documentation (and specified screenshots) for configuring the ADC and hosts post stack creation. 
 
 ### Provided Resources
 
 The following is provided in this project folder:
 
-- [cf-template.yml](cf-template.yml)
+- [`lb-cf-template.yml`](lb-cf-template.yml)
   - Note: this templated is updated from previous versions to get you started on this project
-- [index.srv1.html](index.srv1.html)
-  - Note: you can use your own webpage, but for this project you'll need the files to be "different" so that you can tell the content is coming from a different server
-- [index.srv2.html](index.srv2.html)
+- [`site.tar.gz`](site.tar.gz)
+  - Note: you can use your own site content, but for this project you'll need the site content on each host to be "different" so that you can tell the content is coming from a different server.
 
 ## Part 1 - CloudFormation Template TODOs
 
-The CloudFormation template provided in this project folder is **updated from Project 3** to get you started on this project.
+The CloudFormation template provided in this project folder is **updated from Project 2** to get you started on this project.
 
-Sections you should pay attention to have comments with `TODO`
+Your deliverable for this portion is only **your CloudFormation template**.
 
-- No really, go in there and do a "Find" for `TODO`
+Modify the template in the following ways:
 
-All said and done, your template should do the following:
+1. Use AMI of your choice (from P1/P2 for example)
+2. VPC CIDR block: `192.168.0.0/23`
+3. Public subnet range: `192.168.0.0 - 192.168.0.255`
+4. Private subnet range: `192.168.1.0 - 192.168.1.255`
+5. Modifications for Security Group:
+   - Allow `ssh` requests within VPC CIDR block
+   - Allow `ssh` requests from your home IP
+   - Allow `http` requests from within VPC CIDR block
+   - Allow `http` requests from any IP
+6. For the load balancer (proxy) instance:
+   - assign private IP on public subnet
+   - install `haproxy`
+7. For host instances:
+   - create three total instances
+   - tag with a unique name
+   - assign private IP on private subnet
+   - install `apache2` or `nginx`
+   - configure a unique `hostname` on the instance
 
-1. Modify the Security Group Ingress rules to have the following additional rules:
-   - Access HTTP from any IP address
-     - I will allow trusted IPs if you're feeling shy
-   - Access HTTP from within the VPC
-2. For the HAProxy instance:
-   - install haproxy
-3. For the pool of content servers:
-   - create two total backend host instances
-     - one is created already as a template to refer to
-   - attach them to the private subnet
-     - the private subnet is already configured to route traffic through the NAT gateway
-   - assign each instance a unique private IP within the private subnet
-   - install webserver of choice on each instance
-     - apache2 or nginx is fine
-   - on each instance, change the hostname and Tag name to be unique for each system
-
-**The deliverable for this part is the CloudFormation template in your Project 4 folder.**
+**The deliverable for this part is the CloudFormation template in your Project 3 folder.**
 
 ## Part 2 - Setup Load Balancing TODOs
 
-**Using the instances created by your CloudFormation template, setup the following and add documentation or screenshots to your `README.md` file as specified.**
+**Using the stack created by your CloudFormation template, setup the following and add documentation or screenshots to your `README.md` file as specified.**
 
 1. Create an `/etc/hosts` OR `.ssh/config` file on each system that correlates hostnames to private IPs of systems within the subnet (your instances).
    - Description of how file is configured
