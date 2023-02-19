@@ -64,35 +64,34 @@ Modify the template in the following ways:
 
 ## Part 2 - Setup Load Balancing TODOs
 
-**Using the stack created by your CloudFormation template, setup the following and add documentation or screenshots to your `README.md` file as specified.**
+In your `Project3` folder, create a `README.md` file.  This document will focus on finishing configuration after your stack builds.
 
-1. Create an `/etc/hosts` OR `.ssh/config` file on each system that correlates hostnames to private IPs of systems within the subnet (your instances).
-   - Description of how file is configured
-2. Document how to SSH in between the systems utilizing their private IPs.
-3. **_HAProxy configuration & documentation requirements_**
-   - How to set up a HAProxy load balancer
-     - What file(s) where modified & their location
-     - What configuration(s) were set (if any)
-     - How to restart the service after a configuration change
-     - Resources used (websites)
-4. **_Webserver 1 & 2 configuration & documentation requirements_**
-   - How set up a webserver
-     - What file(s) were modified & their location
-     - What configuration(s) were set (if any)
-     - Where site content files were located (and why)
-     - How to restart the service after a configuration change
-     - Resources used (websites)
-5. From the browser, when connecting to the proxy server, take two screenshots.
-   - one screenshot that shows content from "server 1"
-   - one screenshot that shows content from "server 2"
-6. (Optional) - link to your proxy so I can click it.
+1. Project description
+   - Provide an overview of the project goal
+   - Provide a description of how to use the CF template to create a stack and what resources are created.
+2. `ssh` within VPC:
+   - Configure `/etc/hosts` OR `.ssh/config` on each instance
+      - I like to do both, but that's me
+   - Describe how the file is configured on each instance and what the benefit is
+   - Document how to `ssh` among the instances
+3. How to set up a HAProxy load balancer:
+   - What file(s) where modified & their location
+   - What configuration(s) were set (if any)
+   - How to restart the service after a configuration change
+   - Resources used (websites)
+4. How to set up Hosts 1, 2, & 3 to serve web content
+   - What file(s) were modified & their location
+   - What configuration(s) were set (if any)
+   - Where site content files were located (and why)
+   - How to restart the service after a configuration change
+   - Resources used (websites)
+5. From the browser, when connecting to the proxy server, take screenshots that prove the load balancer is configured and uses the allocation strategy set.
+   - image must include proxy IP (i.e. URL bar)
 
 ## Resources and Warnings
 
 - You **DO NOT** need to mess with UFW rules. You may lock yourself out of SSH access.
 - You can have a maximum of **FIVE Elastic IP Addresses and FIVE VPCs**
-- To manage resources & keep costs down, you will need to delete your CloudFormation stack in between build & test
-- Note: feel free to share additional resources over in Discord. I'll be updating this if I see you guys sharing something useful
 - [An Introduction to HAProxy and Load Balancing Concepts](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts)
 - [The Four Essential Sections of an HAProxy Configuration](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration/)
 - [How to Install the Apache Web Server on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-20-04)
@@ -103,12 +102,13 @@ Modify the template in the following ways:
 
 ## Submission
 
-1. Commit and push your changes to your repository. Verify that these changes show in your course  
-   repository, https://github.com/WSU-kduncan/ceg3120-YOURGITHUBNAME
-
-   - Your repo should contain:
-   - `YOURLASTNAME-cf.yml`
+1. Your repo should contain:
+   - `YOURLASTNAME-cf.yml` (your modified CloudFormation template)
    - `README.md`
 
 2. In Pilot, paste the link to your project folder.  
-   Sample link: https://github.com/WSU-kduncan/ceg3120-YOURGITHUBUSERNAME/blob/main/Projects/Project4
+   - Sample link: https://github.com/WSU-kduncan/ceg3120-YOURGITHUBUSERNAME/blob/main/Projects/Project3
+
+## Rubric
+
+[Rubric](Rubric.md)

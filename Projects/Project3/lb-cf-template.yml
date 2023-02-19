@@ -21,7 +21,7 @@ Resources:
         - Key: Application
           Value: !Ref 'AWS::StackId'
         - Key: Name
-          Value: P4-VPC
+          Value: LB-VPC
   PublicSubnet:
     Type: 'AWS::EC2::Subnet'
     Properties:
@@ -31,7 +31,7 @@ Resources:
         - Key: Application
           Value: !Ref 'AWS::StackId'
         - Key: Name
-          Value: P4-public-subnet
+          Value: LB-public-subnet
   PrivateSubnet:
     Type: 'AWS::EC2::Subnet'
     Properties:
@@ -41,7 +41,7 @@ Resources:
         - Key: Application
           Value: !Ref 'AWS::StackId'
         - Key: Name
-          Value: P4-private-subnet
+          Value: LB-private-subnet
   InternetGateway:
     Type: 'AWS::EC2::InternetGateway'
     Properties:
@@ -49,7 +49,7 @@ Resources:
         - Key: Application
           Value: !Ref 'AWS::StackId'
         - Key: Name
-          Value: P4-ig
+          Value: LB-ig
   AttachGateway:
     Type: 'AWS::EC2::VPCGatewayAttachment'
     Properties:
@@ -63,7 +63,7 @@ Resources:
         - Key: Application
           Value: !Ref 'AWS::StackId'
         - Key: Name
-          Value: P4-public-rt
+          Value: LB-public-rt
   PublicRouteToIG:
     Type: 'AWS::EC2::Route'
     DependsOn: AttachGateway
@@ -91,7 +91,7 @@ Resources:
         - Key: Application
           Value: !Ref 'AWS::StackId'
         - Key: Name
-          Value: P4-natgw
+          Value: LB-natgw
   PrivateRouteTable:
     Type: 'AWS::EC2::RouteTable'
     Properties:
@@ -100,7 +100,7 @@ Resources:
         - Key: Application
           Value: !Ref 'AWS::StackId'
         - Key: Name
-          Value: P4-private-rt
+          Value: LB-private-rt
   PrivateRouteToNAT:
     Type: 'AWS::EC2::Route'
     DependsOn: NATGateway
@@ -140,10 +140,10 @@ Resources:
           # TODO Need more rules for port 80 access
       Tags: 
         - Key: Name
-          Value: P4-sg
+          Value: LB-sg
   ProxyInstance:
     Type: 'AWS::EC2::Instance'
-    DependsOn: AttachGateway
+    DependsOn: PublicRouteToIG
     Properties:
       ImageId: !FindInMap [AWSRegionAMI, !Ref "AWS::Region", HVM64]
       InstanceType: t2.micro
@@ -156,7 +156,6 @@ Resources:
       NetworkInterfaces:
         - GroupSet:
             - !Ref SecurityGroup
-          AssociatePublicIpAddress: 'false'
           DeviceIndex: '0'
           DeleteOnTermination: 'true'
           SubnetId: !Ref PublicSubnet

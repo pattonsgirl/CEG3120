@@ -1,8 +1,6 @@
 # Project 3 Rubric
 
-/ 20
-
-## README.md and CF Template exist in Project 3 folder in repo ( / 1)
+/ 30
 
 ## CloudFormation template ( / 15)
 
@@ -27,24 +25,25 @@ Note: 1 point per bullet / task
    - install `apache2` or `nginx`
    - configure a unique `hostname` on the instance
 
-## README.md documentation for configuration ( / 11)
+## README.md documentation for configuration ( / 15)
 
-1. Create an `/etc/hosts` OR `.ssh/config` file on each system that correlates hostnames to private IPs  
-   Description on how file is configured ( / 1)
-2. Document how to SSH in between the systems utilizing their private IPs. ( / 1)
-3. **_HAProxy configuration & documentation requirements_** ( / 3)
-   - How to set up a HAProxy load balancer
-     - What file(s) where modified & their location
-     - What configuration(s) were set (if any)
-     - How to restart the service after a configuration change
-     - Resources used (websites)
-4. **_Webserver 1 & 2 configuration & documentation requirements_** ( / 4)
-   - How set up a webserver
-     - What file(s) were modified & their location
-     - What configuration(s) were set (if any)
-     - Where site content files were located (and why)
-     - How to restart the service after a configuration change
-     - Resources used (websites)
-5. From the browser, when connecting to the proxy server, take two screenshots. ( / 2)
-   - one screenshot that shows content from "server 1"
-   - one screenshot that shows content from "server 2"
+1. Project description
+   - Provide an overview of the project goal
+   - Provide a description of how to use the CF template to create a stack and what resources are created.
+2. `ssh` within VPC:
+   - Configure `/etc/hosts` OR `.ssh/config` on each instance
+      - I like to do both, but that's me
+   - Describe how the file is configured on each instance and what the benefit is
+   - Document how to `ssh` among the instances
+3. How to set up a HAProxy load balancer:
+   - What file(s) where modified & their location
+   - What configuration(s) were set (if any)
+   - How to restart the service after a configuration change
+   - Resources used (websites)
+4. How to set up Hosts 1, 2, & 3 to serve web content
+   - What file(s) were modified & their location
+   - What configuration(s) were set (if any)
+   - Where site content files were located (and why)
+   - How to restart the service after a configuration change
+   - Resources used (websites)
+5. From the browser, when connecting to the proxy server, take screenshots that prove the load balancer is configured and uses the allocation strategy set.
