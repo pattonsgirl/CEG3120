@@ -1,21 +1,21 @@
 # Midterm Review for CEG 3120
 
-## Fall 2022
+## Spring 2022
 
 ## Da Rules
 
-Midterm: Friday, 10/7
+Midterm: Friday, 2/24
 
-- Available 9:05 AM to 10:00 AM
+- Available 1:25 PM to 2:20 PM
 - 1 attempt, 55 minutes once started
 - Open note, open terminal
 - No class - only exam.
 
-## Week 1 & 2
+## Week 1 / 2
 
 - create aws stack
 - terminal command reminder
-- users
+- users & groups
 - permissions
 - ssh keys
   - private vs public
@@ -38,84 +38,79 @@ Midterm: Friday, 10/7
   - .gitignore
   - markdown essentials
 
-### Project
+### Project 0
 
 - git guide
 
-## Week 3
+## Week 2 / 3
 
-- crash course python notes
-- package version dependencies and usage
-- APIs
-  - REST APIs
-    - querying
-    - version dependent (how queries are requested can change)
-  - syncronous vs asyncronous APIs
-  - Requesting and using OAuth keys
-- authentication vs authorization
-  - OAuth - allow third party to do x y z
-  - ~~JSON Web Tokens & session cookies~~
-    - ~~keeping you logged in and maintaining session details~~
-- process exploration
-  - bot runs as long as starting terminal is open
-  - screen / background jobs (2350) - detaching processes
-  - cloud solutions?
-  - containers?
-
-### Project
-
-- Discord Bot using Discord API w/ discord.py
-- managing secrets for a project
-- using branches for changes
-
-## Week 4
-
-- linters and unit tests
-  - using hooks to trigger
 - networking review
   - IPv4 addresses
-  - Subnets & CIDR notation
+  - Subnets & CIDR blocks
   - routes
   - gateways
   - NAT
   - Firewalls
     - network wide
     - per machine (iptables)
-      - AWS Security Groups associated with instance
 
-## Week 5
+## Week 3 / 4
 
 - the cloud
   - types of cloud services
   - regions
   - access management of cloud resources
-    - token based **authorization** can create(?) access(?) delete(?) view billing(?)
-- intro to navigating AWS
-  - EC2 instance types
-  - images / AMI
-  - networking (VPC, subnet, gateways, routes, security group)
+    - IAM tokens for **authorization** 
+      - can create(?) access(?) delete(?) view billing(?)
+- AWS
+  - VPC
+  - Subnets (private vs public)
+  - Routes & route tables
+  - Internet Gateway
+  - Security Group vs Network ACLs
+  - Elastic IPs vs public IP
+  - NAT Gateway (focus on public)
+  - Instance types
+  - AMIs
+  - Volumes
 
-### Project
+### Project 1
 
 - Manually creating the resources
   - VPC
   - instance type & AMI
   - EIP to instance
 
-## Week 6 / 7
+## Week 5 / 6
 
-- intro to contents of CloudFormation Template
+- Using CloudFormation Templates
   - using YAML/JSON formatted files
-- ~~system logs & service control~~
-- installing and configuring a webserver
-  - apache vs nginx
-  - ~~status / control of services (systemctl)~~
-  - ~~service logs (apache & ssh)~~
-  - ~~security groups~~
-  - ~~iptables? system level firewalls~~
-  - ~~nmap -p 1-5000 server~~
+- Debugging CF Templates
 
-### ~~Project~~
+### Project
 
 - Create CloudFormation template
   - should mimic what was manually created
+
+## Week 6 / 7
+
+- system logs & service control
+- installing and configuring a webserver
+  - apache vs nginx
+  - status / control of services (systemctl)
+  - service logs (apache & ssh)
+- proxies
+  - forward vs reverse
+- load balancers  
+  - terminology
+  - function
+  - Layer 4 vs Layer 7
+
+### Project 2
+
+- CF Template
+  - create one instance with public IP
+  - create one NAT gateway
+  - connect host instances to private subnet
+- Configure load balancer
+- Configure hosts in backend pool to serve content

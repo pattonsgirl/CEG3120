@@ -1,26 +1,22 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: >-
-   Creates 4 instances and 1 VPC.  Each instance gets a private IP and is pre-installed with required software.  The proxy server gets a public IP as does a NAT gateway.  The backend servers use the NAT gateway for world communications, but they do not have individual public IPs.
+   Creates 2 instances and 1 VPC.  Each instance gets a private IPon it's subnet and installs required software before logon.  The proxy server gets a public IP as does a NAT gateway.  The backend servers use the NAT gateway for world communications, but they do not have individual public IPs.
 Parameters:
   KeyName:
     Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
     Type: 'AWS::EC2::KeyPair::KeyName'
     ConstraintDescription: must be the name of an existing EC2 KeyPair.
-  # Removed SSH location
+  # Removed SSH location, it's useless
 Mappings:
-  AWSInstanceType2Arch:  # Supported architectures (x64bit only)
-    t2.micro:
-      Arch: HVM64
-  AWSRegionUbuntu: # AMI for Ubuntu server in each supported region 
+  AWSRegionAMI: # AMI for Ubuntu server in each supported region 
     us-east-1:   # N. Virginia
-      PV64: NOT_SUPPORTED
-      HVM64: ami-09e67e426f25ce0d7 # AMI ID for Ubuntu 20 (ubuntu + apt) - Amazon Linux 2 AMI ami-02e136e904f3da870 (ec2-user + yum)
-      HVMG2: NOT_SUPPORTED
+    # AMI ID for Ubuntu 20 (ubuntu + apt) - Amazon Linux 2 AMI ami-02e136e904f3da870 (ec2-user + yum)
+      HVM64: ami-09e67e426f25ce0d7 # TODO use AMI ID of choice
 Resources:
   VPC:
     Type: 'AWS::EC2::VPC'
     Properties:
-      CidrBlock: 10.0.0.0/16
+      CidrBlock: 10.0.0.0/16 # TODO: check CIDR block
       Tags:
         - Key: Application
           Value: !Ref 'AWS::StackId'
@@ -68,7 +64,7 @@ Resources:
           Value: !Ref 'AWS::StackId'
         - Key: Name
           Value: P4-public-rt
-  PublicRoute:
+  PublicRouteToIG:
     Type: 'AWS::EC2::Route'
     DependsOn: AttachGateway
     Properties:
@@ -105,9 +101,9 @@ Resources:
           Value: !Ref 'AWS::StackId'
         - Key: Name
           Value: P4-private-rt
-  PrivateRoute:
+  PrivateRouteToNAT:
     Type: 'AWS::EC2::Route'
-    DependsOn: AttachGateway
+    DependsOn: NATGateway
     Properties:
       RouteTableId: !Ref PrivateRouteTable
       DestinationCidrBlock: 0.0.0.0/0
@@ -147,15 +143,9 @@ Resources:
           Value: P4-sg
   ProxyInstance:
     Type: 'AWS::EC2::Instance'
-    DependsOn: NATGateway
+    DependsOn: AttachGateway
     Properties:
-      ImageId: !FindInMap 
-        - AWSRegionUbuntu
-        - !Ref 'AWS::Region'
-        - !FindInMap 
-          - AWSInstanceType2Arch
-          - t2.micro
-          - Arch
+      ImageId: !FindInMap [AWSRegionAMI, !Ref "AWS::Region", HVM64]
       InstanceType: t2.micro
       KeyName: !Ref KeyName
       Tags:
@@ -170,27 +160,21 @@ Resources:
           DeviceIndex: '0'
           DeleteOnTermination: 'true'
           SubnetId: !Ref PublicSubnet
-          PrivateIpAddress: 10.0.0.10 # EC Private ip between 0 and 15
+          PrivateIpAddress: 10.0.0.10 # TODO
       UserData:
         Fn::Base64:
           !Sub |
             #!/bin/bash -xe
             apt-get update && \
             # TODO need to install haproxy
-            apt-get install -y git python3 python3-pip && \
+            apt-get install -y git && \
             hostnamectl set-hostname proxy && \
             reboot
   WebServ1Instance:
     Type: 'AWS::EC2::Instance'
     DependsOn: NATGateway
     Properties:
-      ImageId: !FindInMap 
-        - AWSRegionUbuntu
-        - !Ref 'AWS::Region'
-        - !FindInMap 
-          - AWSInstanceType2Arch
-          - t2.micro
-          - Arch
+      ImageId: !FindInMap [AWSRegionAMI, !Ref "AWS::Region", HVM64]
       InstanceType: t2.micro
       KeyName: !Ref KeyName
       Tags:
@@ -215,4 +199,4 @@ Resources:
             apt-get install -y git && \
             # TODO give it a hostname - hostnamectl  && \
             reboot
-# TODO: create another webserver instance attached to the private subnet
+# TODO: create 2 more instances attached to the private subnet

@@ -8,13 +8,17 @@
 
 Note: 1 pt per bullet
 
+1. Replace CIDR blocks in template with:
+   - VPC: 192.168.0.0/23
+   - Public Subnet: 192.168.0.0 - 192.168.0.255
+   - Private Subnet: 192.168.1.0 - 192.168.1.255
 1. Modify the Security Group Ingress rules to have the following additional rules:
    - Access HTTP from any IP address
    - Access HTTP from within the VPC
 2. For the HAProxy instance:
    - install haproxy
 3. For the pool of content servers:
-   - create two total backend host instances
+   - create THREE total backend host instances
    - attach them to the private subnet
    - assign each instance a unique private IP within the private subnet
    - install webserver of choice on each instance

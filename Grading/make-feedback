@@ -33,5 +33,5 @@ then
 	while read line
 	do	
 		cp $rubric $folder/$line-rubric.md
-	done < names
+	done < names.txt
 fi
