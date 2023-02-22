@@ -150,6 +150,7 @@ VPN connections encrypt and secure all of your network traffic, not just the HTT
     - check port bind is open on firewall (Security Groups)
     - `stats uri ` of `/haproxy?stats` or `/stats` needs to be configured in `frontend`
     - access with `EIP:port/uri`
+- [managing hosts with `haproxy` via command line](https://serverfault.com/questions/249316/how-can-i-remove-balanced-node-from-haproxy-via-command-line)
 
 Useful commands:
 - `ping hostname`
