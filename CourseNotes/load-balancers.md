@@ -145,8 +145,11 @@ VPN connections encrypt and secure all of your network traffic, not just the HTT
 ### Health Monitoring & Fault Tolerance:
 - `ssh` and check things?
 - `cron` job running a check report?
+- [configure and view `haproxy` logs](https://www.haproxy.com/blog/introduction-to-haproxy-logging/)
 - [`haproxy` `stats` page](https://www.haproxy.com/blog/exploring-the-haproxy-stats-page/)
-    - `stats uri /haproxy?stats` needs to be configured in `frontend`
+    - check port bind is open on firewall (Security Groups)
+    - `stats uri ` of `/haproxy?stats` or `/stats` needs to be configured in `frontend`
+    - access with `EIP:port/uri`
 
 Useful commands:
 - `ping hostname`
@@ -158,7 +161,7 @@ Useful commands:
 
 `source/ip hash` is an allocation strategy that reconnects you with the server you were communicating with.
 
-But what about those shopping carts?  How about remembering you log on session?
+How about remembering you logged on?
 
 #### JSON Web Tokens
 
@@ -174,6 +177,11 @@ But what about those shopping carts?  How about remembering you log on session?
 - [auth0 - id vs access token](https://auth0.com/blog/id-token-access-token-what-is-the-difference/)
 - [openid - what is it?](https://openid.net/connect/)
 - [auth0 - using openid connect protocol](https://auth0.com/docs/authenticate/protocols/openid-connect-protocol)
+
+### Dashboards
+
+- [Grafana](https://grafana.com/grafana/dashboards/12693-haproxy-2-full/)
+- [Datadogs](https://www.datadoghq.com/dashboards/haproxy-dashboard/)
 
 ### Case Studies
 
