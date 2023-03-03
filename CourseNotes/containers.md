@@ -7,12 +7,6 @@ Objectives of this module:
 - build container images from a `Dockerfile`
 - use a container image repository for your images
 
-You are going to see two container managers focused on in this document: Docker and Podman.  My feeling is Podman is gaining traction (for good reasons), so I want to create a document that covers both and does a bit of compare and contrast.  
-
-You may have heard of Singularity - Singularity is another container manager that works well for High Performance Computing.  You'll hear more about it in our HPC focused courses.  The good news is a lot of the core overlaps - the differences between Singularity, Docker, and Podman lie at a lower level.
-
-You will see a lot of references to [Ivan Velichko's blog](https://iximiuz.com/) because it is great - he makes solid tutorials, dives into the inner workings, and his diagrams and something I aspire to create.
-
 ## What is a Container?
 
 The [Open Container Initiative - OCI](https://opencontainers.org/) defines a standard container as having these features:
@@ -48,7 +42,7 @@ Now you can have a bit more respect for what a container manager handles.
 
 ### History of Containers
 
-Containers aren't new, but they have exploded in popularity.  Kubernetes was a bit of a game changer.  While being aware of the history of containers isn't required, it is a good conversation in the evolution of features and usability.
+Containers aren't new, but they have exploded in popularity.  Docker and, later, Kubernetes were game changers in their times.  While being aware of the history of containers isn't required, it is a good conversation in the evolution of features and usability.
 
 - [Aqua - Brief History of Containers](https://blog.aquasec.com/a-brief-history-of-containers-from-1970s-chroot-to-docker-2016)
 - [RedHat - History of Containers](https://www.redhat.com/en/blog/history-containers)
@@ -68,6 +62,9 @@ Some container managers:
 - [LXD + LXC](https://linuxcontainers.org/)
 
 If you really want to get elbow deep in how the managers manage, you can [follow this blog series](https://iximiuz.com/en/series/implementing-container-manager/) to implement your own.
+
+You are going to see two container managers focused on in this document: Docker and Podman.  My feeling is Podman is gaining traction (for good reasons), so I want to create a document that covers both and does a bit of compare and contrast.  
+
 
 ### Docker
 
