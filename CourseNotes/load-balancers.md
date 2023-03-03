@@ -195,3 +195,8 @@ How about remembering you logged on?
 
 - https://netflixtechblog.com/netflix-edge-load-balancing-695308b5548c
 - https://netflixtechblog.com/netflix-shares-cloud-load-balancing-and-failover-tool-eureka-c10647ef95e5
+
+### Vulnerabilities
+
+- [HTTP Request Smuggling in HAProxy](https://portswigger.net/daily-swig/amp/http-request-smuggling-bug-patched-in-haproxy)
+    - [CVE Notice](https://www.mail-archive.com/haproxy@formilux.org/msg43229.html)

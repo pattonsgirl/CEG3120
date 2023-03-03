@@ -122,3 +122,9 @@ AWS [Elastic Cloud Compute (EC2)](https://docs.aws.amazon.com/AWSEC2/latest/User
 
 - [Visually Create a VPC](https://aws.amazon.com/blogs/aws/new-visualize-your-vpc-resources-from-amazon-vpc-creation-experience/)
 
+## Security Best Practices
+
+Security Groups & Network ACLs manage network firewalls within a VPC, but there is more to secure than firewalls for users, tools, etc. managed within an AWS account.
+
+- [AWS Startup Security Baseline](https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-startup-security-baseline/welcome.html)
+
