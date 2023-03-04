@@ -116,6 +116,8 @@ Download an image from a remote repository.  If no `tag` is given, `latest` is a
 - `docker pull registry/username/image:tag`
 - `podman pull registry/username/image:tag`
 
+- [iximiuz - Run a container without an image](https://iximiuz.com/en/posts/you-dont-need-an-image-to-run-a-container/)
+
 ### images
 List all local images
 - `docker images`
