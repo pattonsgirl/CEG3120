@@ -37,8 +37,17 @@ Resources:
 - network namespaces / `nsenter`
     - logically another copy of the network stack, with its own routes, firewall rules, and network devices
     - [create a network namespace](https://iximiuz.com/en/posts/container-networking-is-simple/)
+- user namespaces
+    - separate the user IDs and group IDs between the host and containers
+        - the idea here is if you spin up a process, you own it, and the process has the rights you have
+        - if a container is started by `root`, and `root` is the user in the container, if an exploit is found and "they" escape the container, "they" have `root` on the host system
+        - instead, you want rights in the container to have no mapping outside the container
+    - [podman and user namespaces](https://medium.com/techbull/what-is-user-namespace-and-podmans-rootless-containers-fc4c292c6bad)
 
 Now you can have a bit more respect for what a container manager handles.
+
+More great articles:
+- [nginx - What are namespaces & cgroups](https://www.nginx.com/blog/what-are-namespaces-cgroups-how-do-they-work)
 
 ### History of Containers
 
@@ -90,48 +99,136 @@ You are going to see two container managers focused on in this document: Docker 
 - Linux
     - (assuming Ubuntu) `apt install podman`
 
+### Docker vs Podman
+
+You are about to find out that Docker tries to be an all in one ecosystem.  Podman only manages containers.  There are separate tools that do other tasks, such as `buildah` for building images, and `skopeo` to inspect images.  [This article from RedHat](http://redhatgov.io/workshops/rhel_8/exercise1.8/) looks at putting those different tools to use.
+
+The core differences between Docker and Podman lie in how they manage the containers as processes (and is beyond the scope of this class).  The resources below do great deep dives:
+
+- [lambdatest - Podman vs Docker](https://www.lambdatest.com/blog/podman-vs-docker/)
+- [Smart Home Beginner - Podman vs Docker](https://www.smarthomebeginner.com/podman-vs-docker/)
+
 ## Running Containers 101
 
 ### pull
+Download an image from a remote repository.  If no `tag` is given, `latest` is assumed
+- `docker pull image:tag` (assumes DockerHub as registry) 
+- `docker pull registry/username/image:tag`
+- `podman pull registry/username/image:tag`
 
 ### images
+List all local images
+- `docker images`
+- `podman images`
 
 ### run
+Create and run a container based on the given image
+- `docker run [OPTIONS] IMAGE [COMMAND] [ARG...]`
+    - [more on docker run](https://docs.docker.com/engine/reference/commandline/run/)
+- `podman run --rm -it [--name name] image:tag command`
+    - [more on podman run](https://docs.podman.io/en/latest/markdown/podman-run.1.html)
 
 - `-it`
+    - `-t` allocates a pseudo-tty and attach to the standard input of the container
+    - `-i` (interactive) keep stdin open even if not attached
 - `-d`
-- `-p`
-    - `HOST_PORT:CONTAINER_PORT`
-- `-name`
+    - run the container in the background (detached)
+- `-p HOST_PORT:CONTAINER_PORT`
+    - expose container port to host port
+    - if a container (even stopped) has a port bound on the host, it cannot be rebound until the container is removed
+    - If host IP is set to `0.0.0.0` or not set at all, the port will be bound on all IPs on the host.
+- `--name container_name`
+    - assign a name (alias to container ID)
 - `--rm`
-- `-v`
-    - mount `host_folder:container_folder`
-
-### stop
-
-### kill
+    - remove container after it exits (main process completes)
+- `-v host_folder:container_folder`
+    - creates bind mount host and container.  This is also referred to as a map
 
 ### ps
+List the running containers on the system (use `--all` or `-a` to include non-running containers)
+- `docker ps`
+- `podman ps`
+
+### stop
+Stop a running container gracefully.  Sends `SIGTERM` to main process within container, sends `SIGKILL` after 10 seconds.
+- `docker stop container_id`
+- `podman stop container_id`
+
+### start
+Start a container
+- `docker start container_id`
+- `podman start container_id`
+
+### kill
+Send a kill signal to running container
+- `docker kill container_id`
+- `podman kill container_id`
 
 ### rm
+Remove a container.  Use `-f` to force (`stop`/`kill` + `rm`)
+- `docker rm container_id`
+- `podman rm container_id`
 
-### image rm
+### rmi
+Remove a local image from local cache.  Use `-f` to force
+- `docker rmi image:tag` 
+- `podman rmi image:tag`
 
 ### exec
+Run a command in an existing container
+- `docker exec container_id command`
+- `podman exec container_id command`
 
 ### attach
+Attach `stdin`,`stdout`, `stderr` to a running container. Helpful if container is detached and you have a need to see live logs.
+- `docker attach container_id`
+- `podman attach container_id`
 
 - [iximiuz - attach vs exec](https://iximiuz.com/en/posts/containers-101-attach-vs-exec/)
 
 ## Building Container Images
 
+Container images are build using containers - a container is spun up, built to spec, then saved to an image.
+
 ### `Dockerfile`
+Container manager can build images automatically by reading the instructions from a `Dockerfile`. A `Dockerfile` is a text document that contains all the commands a user could call on the command line to assemble an image
+
+- [btholt - Intro to Dockerfiles](https://btholt.github.io/complete-intro-to-containers/dockerfile)
+- [Docker Curriculum - Dockerfile](https://docker-curriculum.com/#dockerfile)
+- [Docker - Dockerfile Reference](https://docs.docker.com/engine/reference/builder/)
+
+```
+# Specify base image
+FROM python:3.8
+
+# set a directory for the app within container
+WORKDIR /usr/src/app
+
+# copy all the files to the container
+# this states copy all files in host current working directory
+#    to container working directory (recall WORKDIR)
+COPY . .
+
+# install dependencies
+# RUN instructions are executed at image build, not container start
+RUN pip install --no-cache-dir -r requirements.txt
+
+# define the port number the container should expose
+EXPOSE 5000
+
+# run the command
+# What program should run in the foreground when container is started from image
+CMD ["python", "./app.py"]
+```
 
 ### `.dockerignore`
+File in which you can specify ignore rules and exceptions from these rules for files and folder, that won’t be included in the build context and thus won’t be packed into an archive and uploaded to the Docker server.
+- [codefresh.io - Do not ignore `.dockerignore`](https://codefresh.io/blog/not-ignore-dockerignore-2/)
 
 ### build
-
-- `-t`
+Build and `tag` an image from a `Dockerfile` in the current working directory
+- `docker build -t <image_name>`
+- `podman build -t image:tag .`
 
 ## Sharing Container Images
 
@@ -150,8 +247,14 @@ How do you pick?  This [article from RedHat](https://www.redhat.com/en/topics/cl
 - [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
 
 ### login
+Log in to the remote repository (to push / pull to protected registries).  In class we will discuss password authentication versus token based authentication.
+- `docker login -u <username>` (assumes login to DockerHub)
+- `podman login registryURL -u username [-p password]`
 
 ### push
+Push a local image to a remote repository
+- `docker push <username>/<image_name>` (assumes DockerHub)
+- `podman push registry/username/image:tag`
 
 ## Things to Think On
 
@@ -163,6 +266,8 @@ How do you pick?  This [article from RedHat](https://www.redhat.com/en/topics/cl
 
 ## Other Articles
 
+- [DockerLabs - Docker Cheat Sheet](https://dockerlabs.collabnix.com/docker/cheatsheet/)
+- [Mike Polinowski - Podman Cheat Sheet](https://mpolinowski.github.io/docs/DevOps/Linux/2019-09-25--podman-cheat-sheet/2019-09-25)
 - [RedHat - podman + systemd & starting on boot](https://www.redhat.com/sysadmin/container-systemd-persist-reboot)
 
 ## Blogs to Follow
