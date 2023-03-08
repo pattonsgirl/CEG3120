@@ -18,6 +18,7 @@ Useful commands:
 ```bash
 systemctl status/restart/start/stop servicename
 nmap -A -Pn hostname/ip
+curl hostname/ip
 ```
 
 Web Server Error Codes:

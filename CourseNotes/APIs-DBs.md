@@ -1,1 +1,3 @@
 - [HURL](https://github.com/Orange-OpenSource/hurl)
+- [insomnia](https://docs.insomnia.rest/insomnia/send-your-first-request)
+- [postman](https://www.postman.com/)
