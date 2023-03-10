@@ -5,10 +5,12 @@
     - issues:
         - `chroot` just means separate starting point
         - still has access to process control
-        - is `root`!
+        - is `root`!  Can kill processes on system, and cause mayhem
 
 There must be something better... could we start with a base?
 1. `debootstrap` https://wiki.debian.org/Debootstrap
+    - we are bootstrapping Debian in order to get that base set of binaries and libraries
+2. Now we can `unshare` - this will lock it to its own process space
 
 # Run a container image
 
