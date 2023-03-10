@@ -1,0 +1,57 @@
+####
+# Created from:
+# https://github.com/docker/build-push-action
+# https://docs.docker.com/ci-cd/github-actions/
+####
+
+# GitHub Actions workflow name
+name: Docker-Login-Build-Push
+# event trigger(s)
+on:
+  # triggers on push to master branch
+  push:
+    branches: [master]
+# variables used in this workflow
+env:
+  # variable holding my repo folder name (using DockerHub is assumed)
+  DOCKER_HUB_REPO: mysite
+# jobs - each jobs runs on a runner - parralel by deafult, can be dependent based on id
+#     https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#jobs
+jobs:
+  build_and_push:
+    name: Build docker image and push to Docker Hub
+    # OS of runner
+    runs-on: ubuntu-latest
+    steps:
+      # checkout repo contents to runner
+      - 
+        name: Checkout repo to runner
+        uses: actions/checkout@v2
+      # buildx is docker build with extra features (that we don't care about, but it is best 
+      # 	documented practice to use it over plain docker build in a workflow)
+      # 	BuildKit is designed to work well for building for multiple platforms and not 
+      #		only for the architecture and operating system that the user invoking the build happens to run.
+      #	Docs on docker build vs buildx: https://docs.docker.com/buildx/working-with-buildx/
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      # Login in to DockerHub, credentials stored as GitHub repository secrets
+      #    Usage documentation: https://github.com/marketplace/actions/docker-login
+      - 
+        name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+      # v2 allows use of buildx, requires separate use of docker-login action
+      #    total list of updates between v1 & v2: https://github.com/docker/build-push-action/blob/master/UPGRADE.md
+      - 
+        name: Build and push
+        # ID is used as a reference, from other jobs or steps
+        #    using step ids: https://docs.github.com/en/actions/learn-github-actions/contexts#steps-context
+        id: docker_build 
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_HUB_REPO }}:latest
+          # Example getting fancy with tags: 
+          #   https://github.com/docker/build-push-action/blob/master/docs/advanced/tags-labels.md
