@@ -237,7 +237,7 @@ Build and `tag` an image from a `Dockerfile` in the current working directory
 There are instances where you may not have a `Dockerfile` to work with, but the filesystem within the container needs content updated.  An option is to go through the following steps:
 
 - `start` container from base image
-- `cp` (copy) content into container or `attach` and modify content
+- [`cp` (copy)](https://adamtheautomator.com/docker-cp/) content into container or `attach` and modify content
 - `detach` and create a `commit` (snapshot) of the container
 - the `commit` created an `image`
 - `tag` the image by ID or `tag` during the `commit`
