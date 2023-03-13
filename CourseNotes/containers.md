@@ -232,6 +232,26 @@ Build and `tag` an image from a `Dockerfile` in the current working directory
 - `docker build -t <image_name>`
 - `podman build -t image:tag .`
 
+### `commit` and `tag` `image`
+
+There are instances where you may not have a `Dockerfile` to work with, but the filesystem within the container needs content updated.  An option is to go through the following steps:
+
+- `start` container from base image
+- `cp` (copy) content into container or `attach` and modify content
+- `detach` and create a `commit` (snapshot) of the container
+- the `commit` created an `image`
+- `tag` the image by ID or `tag` during the `commit`
+
+[Steps based on DataSet blog - create docker image](https://www.dataset.com/blog/create-docker-image/)
+
+### `export` and `import`
+
+`commit` and `tag` an image from a running container is one strategy - another is to export the filesystem from the container.
+
+[`docker export`](https://docs.docker.com/engine/reference/commandline/export/) exports a container’s filesystem as a tar archive
+
+[docker import`](https://docs.docker.com/engine/reference/commandline/import/) imports the contents from a tarball to create a filesystem image
+
 ## Sharing Container Images
 
 ### Container Image Registry
