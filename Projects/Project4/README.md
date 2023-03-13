@@ -51,7 +51,8 @@ All parts for the project are due 3/29
 
 ### Documentation
 
-- Create `README-CI.md` in main folder of your repo that details the following:
+Create `README-CI.md` in main folder of your repo that details the following:
+
 - CI Project Overview
   - (what are you doing, why, what tools)
 - Run Project Locally

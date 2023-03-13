@@ -14,7 +14,6 @@ There must be something better... could we start with a base?
 
 # Run a container image
 
-## Hello World!
 `docker run hello-world`  
 - What is this command?
     - The `docker run` command first creates a writeable container layer over the specified `image`, and then `start`s it using the specified command.

@@ -73,6 +73,7 @@ Other notes:
   - [Textographo](https://textografo.com/)
   - [Mermaid - new markdown feature](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
   - [Eraser - Cloud Diagrams](https://docs.tryeraser.com/docs/cloud-diagrams)
+  - [mhlabs - CFN Diagram Generator](https://github.com/mhlabs/cfn-diagram)
   - PowerPoint and OneNote are still good choices
 
 ## Identifying Success

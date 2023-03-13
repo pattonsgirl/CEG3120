@@ -1,3 +1,13 @@
+## Extra Credit - By Proxy
+
+Worth 10%
+
+Create a file, `ExtraCredit.md` in your project repository.
+
+You now have a whole workflow, assuming an instance with a public IP (and Elastic IP). Revisit your load balancing project (project 3) and create a continuous deployment workflow for your backend hosts.
+
+Document your continuous deployment solution for your load balancer in `ExtraCredit.md`.
+
 ## PROJECT 6 - Placeholder
 
 ## Automate Deployment

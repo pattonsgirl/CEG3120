@@ -11,28 +11,44 @@
 
 ## Objectives
 
-- Containerize an application with Docker
-- Use webhooks to keep production up to date - continuous deployment
+- Track versions using `git tag` in Actions
+- Use webhooks to keep production up to date
 
 ## Project Overview
 
-For this project you will be continuing to use your CICD repo made in project 4.
+For this project you will be continuing to use your `cicd` repo made in project 4.
 
-You will notice that each part has "Milestone" labels and dates. This project is not due until
-12/2. Completion of each milestone **by the date specified for the milestone** will get you 10%
-of extra credit per milestone date met. To qualify, you must submit your project on the milestone data to the Dropbox for Project 5 in Pilot.
+The documentation bullet points are written linearly.  As long as the information can be found, I am okay with you organizing it nicely.
 
 ## Parts & Milestones
 
-- Tagging images?
-  - Milestone due 3/31
+Completion of each milestone **by the date specified for the milestone** will get you 5%
+of extra credit per milestone date met. To qualify, you must submit your project on the milestone date to the Dropbox for Project 4 in Pilot.
+
+All parts for the project are due 4/12
+
+- [Part 1 - Versions](#Part-1---Versions)
+  - Milestone due 4/3
 - [Part 2 - Deployment](#Part-2---Deployment)
-  - Milestone due 4/7
+  - Milestone due 4/10
 - [Part 3 - Diagramming](#Part-3---Diagramming)
-  - All parts are due 4/10
+  - All parts are due 4/12
   - No EC
 
-## Part 1 - Tagging
+## Part 1 - Versions
+
+### Tasks
+
+- git tag
+- adjust action to use tag
+
+### Documentation
+
+Create `README-CD.md` in main folder of your repo that details the following:
+
+- CD Project Overview
+  - (what are you doing, why, what tools)
+
 
 ## Part 2 - Deployment
 
@@ -44,7 +60,7 @@ of extra credit per milestone date met. To qualify, you must submit your project
 
 ### Documentation
 
-- Update `README.md` in main folder of your repo to include:
+- Update `README-CD.md` in main folder of your repo to include:
 
 - Description of container restart script
 - Setting up a webhook on the server
@@ -64,7 +80,7 @@ Note: the challenging part here is getting the webhook receiver running and happ
 
 ## Part 3 - Diagramming
 
-Include a diagram (or diagrams) of your entire workflow. Meaning it should start with a project change / update, the steps that happen in between, and end with the updated version when the server is queried (web page is accessed)
+Include a diagram (or diagrams) of the continuous deployment process.  A good diagram will label tools used and how things connect.  This diagram would probably look best near your project description.
 
 ### Resources
 
@@ -82,22 +98,14 @@ You can use whatever tools you would like, here are some recommended tools that 
    repository.
 
    - Your repo should contain:
-   - `README.md`
+   - `README-CD.md` (and `README-CI.md` from P4)
    - `website` folder with website pages
    - `Dockerfile`
-   - GitHub action yml file
+   - GitHub action `yml` file in `.github/workflows`
    - webhook related config files
      - container restart script
      - webhook definition file
 
 2. In Pilot, paste the link to your project folder.
 
-## Extra Credit - By Proxy
 
-Worth 10%
-
-Create a file, `ExtraCredit.md` in your project repository.
-
-You now have a whole workflow, assuming an instance with a public IP (and Elastic IP). Revisit your load balancing project (project 3) and create a continuous deployment workflow for your backend hosts.
-
-Document your continuous deployment solution for your load balancer in `ExtraCredit.md`.
