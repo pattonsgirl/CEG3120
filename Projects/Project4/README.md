@@ -15,20 +15,23 @@
 
 ## Project Overview
 
-For this project you will be creating a fresh repository - the link is in Pilot under Content - Projects - Project 4. This is the repo you will be using for this project.
+For this project you will be creating a fresh repository. The link is in Pilot under Content - Projects - CI -> CD. This is the repo you will be using for Projects 4 & 5.
 
-You will notice that each part has "Milestone" labels and dates. This project is not due until
-12/2. Completion of each milestone **by the date specified for the milestone** will get you 10%
-of extra credit per milestone date met. To qualify, you must submit your project on the milestone date to the Dropbox for Project 4 in Pilot.
+The documentation bullet points are written linearly.  As long as the information can be found, I am okay with you organizing it nicely.
 
 ## Parts & Milestones
 
+Completion of each milestone **by the date specified for the milestone** will get you 5%
+of extra credit per milestone date met. To qualify, you must submit your project on the milestone date to the Dropbox for Project 4 in Pilot.
+
+All parts for the project are due 3/29
+
 - [Part 1 - Dockerize it](#Part-1---Dockerize-it)
-  - Milestone due 3/17
+  - Milestone due 3/20
 - [Part 2 - GitHub Actions and DockerHub](#Part-2---GitHub-Actions-and-DockerHub)
-  - Milestone due 3/24
+  - Milestone due 3/27
 - [Part 3 - Diagramming](#Part-3---Diagramming)
-  - All parts are due 3/27
+  - All parts are due 3/29
   - No EC
 
 ## Part 1 - Dockerize it
@@ -36,21 +39,23 @@ of extra credit per milestone date met. To qualify, you must submit your project
 ### Tasks
 
 - Create new GitHub repo (link to create located in Pilot in Content -> CI/CD Projects)
-- In a folder named `website`, add the contents of your website
+- To your repo in a folder named `website`, add the contents of your website
   - this can be a site you created in another class, pet project of yours, or the site in `site.tar.gz`
+  - if using `site.tar.gz` put your own flair / text in `index.html` (#makegradingfunagain)
 - Install Docker
   - You can install Docker in WSL2 or in an EC2 instance.
-- Create a container image that will run a webserver and contains your "website"
+- Create a container image that will run a webserver and contains your website
   - you can use `apache2` or `nginx` as the webserver
 - Create a `Dockerfile` with instructions on how to build the image
-- Add site content & `Dockerfile` to repo
+- Add site content & `Dockerfile` to your repo
 
 ### Documentation
 
-- Create `README.md` in main folder of your repo that details the following:
-- Project Overview
+- Create `README-CI.md` in main folder of your repo that details the following:
+- CI Project Overview
+  - (what are you doing, why, what tools)
 - Run Project Locally
-  - how you installed docker + dependencies (WSL2, for example)
+  - how to install docker + dependencies (WSL2, for example)
   - how to build the container from the `Dockerfile`
   - how to run the container
   - how to view the project running in the container (open a browser...go to IP and port...)
@@ -68,14 +73,16 @@ of extra credit per milestone date met. To qualify, you must submit your project
 
 ### Documentation
 
-- Update `README.md` in main folder of your repo to include:
+- Add to `README-CI.md` to include:
 
 - Process to create public repo in DockerHub
 - How to authenticate with DockerHub via CLI using Dockerhub credentials
   - what credentials would you recommend providing?
-- How to push container to Dockerhub
+- How to push container image to Dockerhub (without GitHub Actions)
 - Configuring GitHub Secrets
-  - What secrets were set based on what info
+  - How to set a secret
+  - What secret(s) are set for this project
+    - Note: do not copy paste your secrets into your documentation
 - Behavior of GitHub workflow
   - what does it do and when
   - what variables in workflow are custom to your project
@@ -87,7 +94,7 @@ of extra credit per milestone date met. To qualify, you must submit your project
 
 ## Part 3 - Diagramming
 
-Include a diagram (or diagrams) of the continuous integration process.
+Include a diagram (or diagrams) of the continuous integration process.  A good diagram will label tools used and how things connect.  This diagram would probably look best near your project description.
 
 ### Resources
 
@@ -104,9 +111,10 @@ You can use whatever tools you would like, here are some recommended tools that 
 1. Commit and push your changes to your repository. Verify that these changes show in your course repository.
 
    - Your repo should contain:
-   - `README.md`
+   - `README-CI.md`
    - `website` folder with website pages
    - `Dockerfile`
-   - GitHub action `yml` file
+   - GitHub action `yml` file in `.github/workflows`
+   - diagram image(s)
 
 2. In Pilot, paste the link to your project folder.
