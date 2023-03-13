@@ -11,7 +11,7 @@
 
 ## docker basics + Dockerfile ( / 5)
 
-- Project Overview
+- CI Project Overview
 - Run project locally
   - how you installed docker + dependencies (WSL2, for example)
   - how to build the container from `Dockerfile`
