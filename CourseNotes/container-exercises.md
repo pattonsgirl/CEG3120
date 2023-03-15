@@ -123,6 +123,20 @@ Downsides:
     - create a bind mount to share a file / folder between host and container
 4. `exec` to execute code using `python` interpreter
 
+```
+# Copy - copy host folder / file to container filesytem
+docker run -d --name pyproj python:3
+docker cp /home/kduncan/pyproj pyproj:/
+```
+
+```
+# Bind mount - share host folder with container filesystem / folder
+docker run -it -v /home/kduncan/pyproj:/code python:3 python /code/code.py
+# OR
+docker run -d -v /home/kduncan/pyproj:/code --name pyproj python:3
+docker exec pyproj python /code/code.py
+```
+
 Downsides:
 - Python libraries still need updating within container
 - Still need to remember how to execute code
