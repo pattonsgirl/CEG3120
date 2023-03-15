@@ -81,13 +81,47 @@ https://iximiuz.com/en/posts/not-every-container-has-an-operating-system-inside/
 
 # Play with containers
 
+The general rules of thumb:
+1. Pick an `image` from an image repository that aligns with your project / application needs
+    - when considering, pick the software that is most intensive to install
+2. `run` container from image - choose if you want to start attached (`-it`) or detached (`-d`)
+3. Determine what else you need
+    - Project files (share or copy?)
+    - Additional dependencies / package installs
+4. Create an `image` once the dust has settled
+    - `Dockerfile`s give you a way to "code" this up
+5. Run containers using your `image` & share your `image` with systems that have container engines
+
+## Make a `python` environment
+
+### Option 1: Full DIY
+1. Pick a base image, like `ubuntu`, because it's an environment you are used to with `apt` and `vim`, etc.
+2. `run` container from image with `-it`
+    - update package repo
+    - install python version
+    - insert python code (create file, add code)
+    - exit running container - OR - try Ctrl + P, Q to detach?
+3. `exec` to execute code using `python` interpreter
+
+Downsides: 
+- What if a package needs updating?
+- What if code needs updating?  
+    - is git a reasonable thing within a container?
+- How do others know how to execute code?
+    - training people in many tools is a headache, and leads to errors, and errors lead to the ~~dark side~~ downtime 
+
+### Option 2: Pick a good base
+1. 
+
 ## Make your own hello-world
+
 1. Compile a c / c++ program
-2. Copy into container (scratch?)
+2. Copy into container (`scratch`?)
     - run container as detached
-    - cp file into container
+    - `cp` file into container
+    - `exec` `ls` to see files in container
 3. Run program
-    - exec code
+    - `exec` code
 
 Wouldn't it be great if the container could have an image where this was already copied?  `Dockerfile` to the rescue!
 
@@ -99,7 +133,7 @@ https://www.baeldung.com/ops/docker-attach-detach-container
 
 # Mount from host to container
 
-# Use port forwarding
+# Use port binding
 
 - cat site
 - https://docker-curriculum.com/#our-first-image
