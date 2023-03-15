@@ -115,6 +115,7 @@ Downsides:
 ### Option 2: Pick a good base
 1. What options does DockerHub have for `python`?
     - Now updates to `python` can be handled by pulling new base
+    - [DockerHub python image](https://hub.docker.com/_/python)
 2. `run` container from image - what are you in?
     - by default, you are in a python interpreter
     - you could specify `bash` at end of run command to enter bash shell
