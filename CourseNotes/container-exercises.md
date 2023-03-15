@@ -100,7 +100,9 @@ The general rules of thumb:
     - update package repo
     - install python version
     - insert python code (create file, add code)
-    - exit running container - OR - try Ctrl + P, Q to detach?
+    - exit running container - OR - try Ctrl + Q to detach?
+        - `ctrl + shift + q` worked for me to detach but leave running
+        - Can set using `--detach-keys="ctrl-x"`
 3. `exec` to execute code using `python` interpreter
 
 Downsides: 
@@ -111,9 +113,29 @@ Downsides:
     - training people in many tools is a headache, and leads to errors, and errors lead to the ~~dark side~~ downtime 
 
 ### Option 2: Pick a good base
-1. 
+1. What options does DockerHub have for `python`?
+    - Now updates to `python` can be handled by pulling new base
+2. `run` container from image - what are you in?
+    - by default, you are in a python interpreter
+    - you could specify `bash` at end of run command to enter bash shell
+3. Copy code into container either by
+    - detach and use `docker cp`
+    - create a bind mount to share a file / folder between host and container
+4. `exec` to execute code using `python` interpreter
 
-## Make your own hello-world
+Downsides:
+- Python libraries still need updating within container
+- Still need to remember how to execute code
+- What if you "overshare"?
+
+### Option 3: Build an image with `Dockerfile`
+A `Dockerfile` will allow us to create a "recipe" for how an image should be built for and to run our project / app
+- `FROM` will specify an image from an image repository
+- `COPY` will allow us to copy in folder from host to container
+- `RUN` will run prep commands for our environment
+- `CMD` will specify the command to kick off our application
+
+## Make a hello-world container
 
 1. Compile a c / c++ program
 2. Copy into container (`scratch`?)
@@ -125,22 +147,48 @@ Downsides:
 
 Wouldn't it be great if the container could have an image where this was already copied?  `Dockerfile` to the rescue!
 
-Play with detaching from container  
-`$ docker attach --sig-proxy=false test_redis`  
-`$ docker attach --detach-keys="ctrl-x" test_redis`
+## Use port binding
 
-https://www.baeldung.com/ops/docker-attach-detach-container
+Containers can be used to run web applications and other applications that bind (listen) to ports.  Since containers are isolated, networking is part of that isolation.
 
-# Mount from host to container
+If a container has an application listening on a port, in `docker` you can bind that port to a host port.  The host will then forward requests to it's port to the container's port, and the application in the container will respond.
 
-# Use port binding
+### `getting-started`
 
-- cat site
-- https://docker-curriculum.com/#our-first-image
+`docker run -d -p 80:80 docker/getting-started`  
+
+- Starts container from image `docker/getting-started`
+- `image` is set to start default task of application that serves web content over port 80 (internal to container network)
+- `-p 80:80` binds internal port to host port 80
+- Content requests to any valid IP that refers to host on port 80 are forwarded to container port 80
+    - `localhost:80` OR `127.0.0.1:80`
+    - `private_ip:80` if on private subnet (like WSU-Secure or home network)
+    - `public_ip:80` if system is associated with a public IP (like EIP attached to instance)
+
+### Docker Curriculum - flask app
+
+[Docker Curriculum](https://docker-curriculum.com/) has great tutorials overall, but one I like to play with is their flask application.
+
 ```
+# clone the repo
 $ git clone https://github.com/prakhar1989/docker-curriculum.git
+# go into the folder
 $ cd docker-curriculum/flask-app
 ```
+The application folder contains things:
+- `Dockerfile` - instructions to build an image from contents of this folder
+- `app.py` - the python application set to run flask and do things (the code)
+- `requirements.txt` file with a list of python libraries and specific versions for this project
+- `templates` folder with default `index.html` page
+
+Build an image for this project using: `docker build -t demo .`
+
+Run a container using: `docker run -d -p 8080:5000 demo`
+
+How can you see it?
+- attach to container?
+- host IP?
+
 # Build container image with Dockerfile
 
 Look at Dockerfiles that build images we have used

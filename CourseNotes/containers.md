@@ -294,6 +294,7 @@ Push a local image to a remote repository
 ## Curiosity Articles
 
 - [RedHat - podman + systemd & starting on boot](https://www.redhat.com/sysadmin/container-systemd-persist-reboot)
+- [Bauldung - docker attach and detach container](https://www.baeldung.com/ops/docker-attach-detach-container)
 
 ## Blogs to Follow
 
