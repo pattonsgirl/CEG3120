@@ -144,10 +144,10 @@ Downsides:
 
 ### Option 3: Build an image with `Dockerfile`
 A `Dockerfile` will allow us to create a "recipe" for how an image should be built for and to run our project / app
-- `FROM` will specify an image from an image repository
-- `COPY` will allow us to copy in folder from host to container
-- `RUN` will run prep commands for our environment
-- `CMD` will specify the command to kick off our application
+- `FROM` will specify an image from an image repository (`python:3`)
+- `COPY` will allow us to copy in folder from host to container (`pyproj` to `/code`)
+- `RUN` will run prep commands for our environment (`pip install requirements.txt`)
+- `CMD` will specify the command to kick off our application (`python /code/code.py`)
 
 ## Make a hello-world container
 
