@@ -5,6 +5,12 @@
 - [Wikipedia - Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration)
 - [AWS - Continuous Integration + Recommended Tools](https://aws.amazon.com/devops/continuous-integration/)
 
+### What we need to combine
+
+- `git` - project tracking via versioning
+- git server / GitHub - central place to keep projects up to date across multiple developers
+- Docker - `Dockerfile` allows building of new images, copying project contents & updating packages for application environment
+
 ## Testing
 
 To test something, you need to know the testing parameter based on your application
