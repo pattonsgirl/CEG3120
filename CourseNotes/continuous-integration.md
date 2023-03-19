@@ -8,7 +8,13 @@
 ## Testing
 
 To test something, you need to know the testing parameter based on your application
+
+This starts to get into Software Engineering quick, so I'll leave some pointers about what to think about when it comes to testing and creating tests:
+- [Real Python - Getting Started with Testing in Python](https://realpython.com/python-testing/)
+- [Python Docs - Testing Your Code](https://docs.python-guide.org/writing/tests/)
+- [Java Programming MOOC - Intro to Testing](https://java-programming.mooc.fi/part-6/3-introduction-to-testing)
 - [Software Testing Help - Web Application Testing](https://www.softwaretestinghelp.com/web-application-testing/)
+- [Snyk - code security checker](https://snyk.io/lp/static-analysis-snyk-code-checker)
 
 ## Linting
 
@@ -25,7 +31,21 @@ Among the not listed is `ruff` a newer python linter that is storming through th
 
 Have your developers test and lint regularly is great, but if it's going to be standard practice, there should be no escaping the rules.
 
+Situation:  
+"I told Bob to not leave unused variables in his code!  I'm denying this Pull Request"
+
+Instead of project managers shooting down code reviews, have a check in place that prevents going forward with a `push` or moving to a `Pull Request` by bringing it to the developer's attention.
+
 `git` offers `hooks` - these are scripts set into the local repository that trigger when `git` commands are run.  It is most common to find `pre-commit` hooks.  This is a hook that would trigger when a `commit` is made, which could be used to test or lint code.  If the changes made in the `commit` pass some condition, then the `commit` can proceed.  Else the `commit` can be ignored until improvements are made.
+
+`hooks` are a very basic way to implement `CI` (check code before a review) and `CD` (after `push`, `scp` code to a server)
+
+Resources:
+- [githooks.com](https://githooks.com/)
+- [Awesome Git Hooks](https://github.com/aitemr/awesome-git-hooks)
+    - [favorite for fun](https://github.com/lolcommits/lolcommits)
+- [RedHat - git hooks examples](https://www.redhat.com/sysadmin/git-hooks)
+- [pre-commit.com - framework for managing `pre-commit` hooks](https://pre-commit.com/)
 
 ## CI / CD Tools
 
