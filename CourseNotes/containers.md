@@ -286,7 +286,7 @@ Push a local image to a remote repository
 - Where does this need to build?
 - How do you update the systems the container is running on?
 
-## Cheatsheets
+## Cheat sheets
 
 - [DockerLabs - Docker Cheat Sheet](https://dockerlabs.collabnix.com/docker/cheatsheet/)
 - [Mike Polinowski - Podman Cheat Sheet](https://mpolinowski.github.io/docs/DevOps/Linux/2019-09-25--podman-cheat-sheet/2019-09-25)

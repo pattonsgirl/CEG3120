@@ -153,10 +153,13 @@ A `Dockerfile` will allow us to create a "recipe" for how an image should be bui
 ## Make a hello-world container
 
 1. Compile a c / c++ program
+    - Statically link libraries: `gcc -o program main.c --static`
+        - [more on static linking](https://dev.to/iamkhalil42/all-you-need-to-know-about-c-static-libraries-1o0b)
 2. Copy into container (`scratch`?)
     - run container as detached
     - `cp` file into container
-    - `exec` `ls` to see files in container
+    - `exec` to see files in container
+        - no `ls` if using `scratch`
 3. Run program
     - `exec` code
 
@@ -204,10 +207,23 @@ How can you see it?
 - attach to container?
 - host IP?
 
-# Build container image with Dockerfile
+# Build container image with `Dockerfile`
 
-Look at Dockerfiles that build images we have used
+Look at `Dockerfile`s that build images we have used
+- [`Dockerfile`](https://github.com/docker-library/hello-world/blob/master/Dockerfile.build) for [`hello-world`](https://hub.docker.com/_/hello-world/)
 
 # Use a container image repository
 
-# Discuss limitations
+1. Create an account on [hub.docker.com](https://hub.docker.com/)
+2. Create a repository (one per project)
+    - Discuss pros / cons of free accounts on DockerHub
+3. Discuss types of account credentials
+    - username + password
+    - username + token
+4. Use `docker login` on command line to provide credentials to access repositories
+5. Tag `image`s with `dockerhub_username`/`image`:`version`
+6. `push` images to `dockerhub`
+7. Discuss: 
+    - What does this mean for sharing images?
+    - What does this mean for running containers from images?
+    - What steps remain complex?
