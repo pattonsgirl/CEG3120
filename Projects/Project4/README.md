@@ -46,7 +46,7 @@ All parts for the project are due 3/29
   - You can install Docker in WSL2 or in an EC2 instance.
 - Create a container image that will run a webserver and contains your website
   - you can use `apache2` or `nginx` as the webserver
-- Create a `Dockerfile` with instructions on how to build the image
+- Create a `Dockerfile` and use it to build an image with your website files and dependencies
 - Add site content & `Dockerfile` to your repo
 
 ### Documentation
@@ -57,7 +57,7 @@ Create `README-CI.md` in main folder of your repo that details the following:
   - (what are you doing, why, what tools)
 - Run Project Locally
   - how to install docker + dependencies (WSL2, for example)
-  - how to build the container from the `Dockerfile`
+  - how to build an image from the `Dockerfile`
   - how to run the container
   - how to view the project running in the container (open a browser...go to IP and port...)
 
