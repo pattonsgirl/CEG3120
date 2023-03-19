@@ -7,9 +7,12 @@
 
 ### What we need to combine
 
-- `git` - project tracking via versioning
-- git server / GitHub - central place to keep projects up to date across multiple developers
-- Docker - `Dockerfile` allows building of new images, copying project contents & updating packages for application environment
+1. Developer changes
+    - `git` - project tracking via versioning
+2. Approved changes to the repo (for example, changes pushed to `main`)
+    - git server / GitHub - central place to keep projects up to date across multiple developers
+3. When a new image should be built
+    - Docker - `Dockerfile` allows building of new images, copying project contents & updating packages for application environment
 
 ## Testing
 
