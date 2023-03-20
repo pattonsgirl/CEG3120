@@ -132,7 +132,21 @@ To view your workflows, go to GitHub repo -> Actions
 
 ## git tags & releases
 
-https://git-scm.com/book/en/v2/Git-Basics-Tagging
+Branches allow you to code features or fix bugs without impacting the main code branch
+
+Tags are essential for marking a point in time in your code, such as a new release of your application.
+
+A Release is a GitHub concept - it is created from an existing tag and exposes release notes and links to download the software or source code from GitHub.
+
+- [Circle CI - tags vs branches](https://circleci.com/blog/git-tags-vs-branches/)
+- [CodeBerg - tags and releases](https://docs.codeberg.org/git/using-tags/)
+  - Note: this doc uses a GitHub clone named CodeBerg, but covers the essence really well.
+
+
+### tags
+
+[git-scm - tagging basics](https://git-scm.com/book/en/v2/Git-Basics-Tagging)
+
 ```
 $ git commit -am “changes”
 $ git tag -a v1.6.1
@@ -141,4 +155,14 @@ $ git tag -a v1.6.1
 $ git push 
 origin tag number
 ```
+
+### Releases
+
+Creates a `.tar.gz` of repo at given point
+
+Why is this useful?
+- Could use `ADD` in `Dockerfile` and provide release URL
+  - [Docker - ADD vs COPY](https://docs.docker.com/develop/develop-images/dockerfile_best-practices)
+- Could trigger a workflow if a release occurs (great for software packages)
+
 ## Secrets

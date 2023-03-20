@@ -4,7 +4,8 @@
 
 ## Output a message from runner
 
-[Victoria Lo - Create your first workflow](https://lo-victoria.com/github-actions-101-creating-your-first-workflow)
+[Victoria Lo - Create your first workflow](https://lo-victoria.com/github-actions-101-creating-your-first-workflow)  
+[GitHub Actions - Quickstart](https://docs.github.com/en/actions/quickstart)
 
 ## List repository contents
 
