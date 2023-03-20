@@ -130,7 +130,7 @@ To view your workflows, go to GitHub repo -> Actions
 - Click the job you want to see 
 - View the results of each step
 
-## git tags & releases
+## git tags & GitHub Releases
 
 Branches allow you to code features or fix bugs without impacting the main code branch
 
@@ -141,7 +141,6 @@ A Release is a GitHub concept - it is created from an existing tag and exposes r
 - [Circle CI - tags vs branches](https://circleci.com/blog/git-tags-vs-branches/)
 - [CodeBerg - tags and releases](https://docs.codeberg.org/git/using-tags/)
   - Note: this doc uses a GitHub clone named CodeBerg, but covers the essence really well.
-
 
 ### tags
 
@@ -166,3 +165,12 @@ Why is this useful?
 - Could trigger a workflow if a release occurs (great for software packages)
 
 ## Secrets
+
+## Semantic Versioning
+
+[The full rule set of semantic versioning](https://semver.org/)
+
+Given a version number MAJOR.MINOR.PATCH, increment the:
+1. MAJOR version when you make incompatible API changes
+2. MINOR version when you add functionality in a backwards compatible manner
+3. PATCH version when you make backwards compatible bug fixes
