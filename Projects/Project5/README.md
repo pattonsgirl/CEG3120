@@ -22,7 +22,7 @@ The documentation bullet points are written linearly.  As long as the informatio
 ## Parts & Milestones
 
 Completion of each milestone **by the date specified for the milestone** will get you 5%
-of extra credit per milestone date met. To qualify, you must submit your project on the milestone date to the Dropbox for Project 4 in Pilot.
+of extra credit per milestone date met. To qualify, you must submit your project on the milestone date to the Dropbox for Project 5 in Pilot.
 
 All parts for the project are due 4/12
 
