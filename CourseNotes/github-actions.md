@@ -166,6 +166,14 @@ Why is this useful?
 
 ## Secrets
 
+[GitHub Docs - Encrypted Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+
+- Environment Secrets
+  - Secrets for your environments? Environment secrets help secure automation related to specific deployment environments. Example: secrets specific to development versus production and systems you may have unique accounts for.
+  - [Adam the Automater - Environment Secrets](https://adamtheautomator.com/github-actions-secrets/#Creating_Secrets_For_an_Environment)
+
+- [Forcing the viewing of secrets... even though you shouldn't](https://stackoverflow.com/questions/63003669/how-can-i-see-my-git-secrets-unencrypted)
+
 ## Semantic Versioning
 
 [The full rule set of semantic versioning](https://semver.org/)
