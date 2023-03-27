@@ -1,6 +1,6 @@
 # Project 5 Rubric
 
-/ XX
+/ 18
 
 ## Repo contents ( / 6)
 
