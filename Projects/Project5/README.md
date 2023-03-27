@@ -2,7 +2,7 @@
 
 - [Objectives](#Objectives)
 - [Project Overview](#Project-Overview)
-- Require git tagging?
+- [Part 1 - Semantic Versioning](#part-1---semantic-versioning)
 - [Part 2 - Deployment](#Part-3---Deployment)
 - [Part 3 - Diagramming](#Part-4---Diagramming)
 - [Submission](#Submission)
@@ -11,8 +11,8 @@
 
 ## Objectives
 
-- Track versions using `git tag` in Actions
-- Use webhooks to keep production up to date
+- Implement semantic versioning for images using `git tag` metadata in Actions
+- Use `webhook`s to keep production up to date
 
 ## Project Overview
 
@@ -27,7 +27,7 @@ of extra credit per milestone date met. To qualify, you must submit your project
 
 All parts for the project are due 4/12
 
-- [Part 1 - Versions](#Part-1---Versions)
+- [Part 1 - Semantic Versioning](#Part-1---Semantic-Versioning)
   - Milestone due 4/3
 - [Part 2 - Deployment](#Part-2---Deployment)
   - Milestone due 4/10
@@ -35,12 +35,17 @@ All parts for the project are due 4/12
   - All parts are due 4/12
   - No EC
 
-## Part 1 - Versions
+## Part 1 - Semantic Versioning
+
+Right now, you likely `tag` the image with `latest`.  This means versions are never kept.  The solution we will use is to use `git` `tagging`.  A GitHub Action can use the metadata to generate a set of tags for an image.
 
 ### Tasks
 
-- git tag
-- adjust action to use tag
+- Practice creating `tag` for your `commit` using [semantic versioning](https://semver.org/)
+- Amend your GitHub Action workflow to:
+  - run when a `tag` is `push`ed
+  - use the `docker/metadata-action` to generate a set of tags from your repository
+  - push images to DockerHub with an image tags based on your `git` `tag` version AND `latest`
 
 ### Documentation
 
@@ -48,34 +53,52 @@ Create `README-CD.md` in main folder of your repo that details the following:
 
 - CD Project Overview
   - (what are you doing, why, what tools)
+- How to generate a `tag` in `git` / GitHub
+- Behavior of GitHub workflow
+  - what does it do and when
 
+### Resources
+
+- [GitHub - docker/metadata-action](https://github.com/docker/metadata-action)
+- [Docker - Manage Tag Labels](https://docs.docker.com/build/ci/github-actions/manage-tags-labels/)
 
 ## Part 2 - Deployment
 
 ### Tasks
 
-- For this piece, use an EC2 instance.
+For this piece, use an EC2 instance.
+
 - Install docker on the instance
-- Create a webhook set up to automatically deploy updates to the container image - see Resources for this part
+- `pull` and `run` a container from your DockerHub image
+  - confirm you can access your service running in the container from a browser
+- Create a script to pull a new image from DockerHub and restart the container
+  - put a copy of the script in a folder named `deployment` in your repo
+- Set a listener / hook to receive messages using [adnanh's `webhook`](https://github.com/adnanh/webhook)
+- Create a hook - when a message is received run the container restart script
+  - put a copy of the hook configuration in a folder named `deployment` in your repo
+- Configure either GitHub or DockerHub to send a message to the listener / hook
 
 ### Documentation
 
-- Update `README-CD.md` in main folder of your repo to include:
+Update `README-CD.md` in main folder of your repo to include:
 
-- Description of container restart script
-- Setting up a webhook on the server
-  - How you created you own listener
-  - How you installed the [webhook on GitHub](https://github.com/adnanh/webhook)
-  - How to keep the webhook running if the instance is on
-- Description of Webhook task definition file
-- Steps to set up a notifier in GitHub or DockerHub
+- How to install Docker to your instance
+- Container restart script
+  - Justification & description of what it does
+  - Where it should be on server (if someone were to use your setup)
+- Setting up a `webhook` on the server
+  - How to install [adnanh's `webhook`](https://github.com/adnanh/webhook) to server
+  - How to start the `webhook`
+    - since our instance's reboot, we need to handle this
+- `webhook` task definition file
+  - Description of what it does
+  - Where it should be on server (if someone were to use your setup)
+- How to configure GitHub OR DockerHub to message the listener 
 
 ### Resources
 
-Note: the challenging part here is getting the webhook receiver running and happy on the server. You can lean on lectures and notes left in the PowerPoint slides, but make sure you add your own notes to your documentation
-
-- [Using GitHub actions and webhooks](https://levelup.gitconnected.com/automated-deployment-using-docker-github-actions-and-webhooks-54018fc12e32)
-- [Using DockerHub and webhooks](https://blog.devgenius.io/build-your-first-ci-cd-pipeline-using-docker-github-actions-and-webhooks-while-creating-your-own-da783110e151)
+- [Using GitHub actions and `webhook`s](https://levelup.gitconnected.com/automated-deployment-using-docker-github-actions-and-webhooks-54018fc12e32)
+- [Using DockerHub and `webhook`s](https://blog.devgenius.io/build-your-first-ci-cd-pipeline-using-docker-github-actions-and-webhooks-while-creating-your-own-da783110e151)
   - Note: this has been the method focused on in lecture
 
 ## Part 3 - Diagramming
@@ -97,14 +120,14 @@ You can use whatever tools you would like, here are some recommended tools that 
 1. Commit and push your changes to your repository. Verify that these changes show in your course  
    repository.
 
-   - Your repo should contain:
+Your repo should contain:
    - `README-CD.md` (and `README-CI.md` from P4)
    - `website` folder with website pages
    - `Dockerfile`
    - GitHub action `yml` file in `.github/workflows`
-   - webhook related config files
+   - `deployment` folder with:
      - container restart script
-     - webhook definition file
+     - `hook` definition file
 
 2. In Pilot, paste the link to your project folder.
 

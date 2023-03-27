@@ -8,24 +8,32 @@
 - `website` folder with website pages
 - `Dockerfile`
 - GitHub action `yml` file in `.github/workflows`
-- webhook related config files
+- `deployment` folder with:
   - container restart script
-  - webhook definition file
+  - `hook` definition file
 
-## Version ( / 5)
+## Semantic Versioning ( / 3)
 
-- Project Overview
+- CD Project Overview
+  - (what are you doing, why, what tools)
+- How to generate a `tag` in `git` / GitHub
+- Behavior of GitHub workflow
+  - what does it do and when
 
-## Deployment ( / 4)
+## Deployment ( / 8)
 
+- How to install Docker to your instance
 - Container restart script
-  - what it does
-- Webhook task definition file
-  - what it does
-- Setting up a webhook on the server
-  - How you created you own listener
-  - How you installed and are running the [webhook on GitHub](https://github.com/adnanh/webhook)
-- Setting up a notifier in GitHub or DockerHub
+  - Justification & description of what it does
+  - Where it should be on server
+- Setting up a `webhook` on the server
+  - How to install adnanh's `webhook` to server
+  - How to start the `webhook`
+    - since our instance's reboot, we need to handle this
+- `webhook` task definition file
+  - Description of what it does
+  - Where it should be on server
+- How to configure GitHub OR DockerHub to message the listener 
 
 ## Diagramming ( / 1)
 
