@@ -19,5 +19,27 @@ Both Continuous Deployment & Continuous Delivery use the acronym CD
 
 [See CI/CD Tools in continuous integration](continuous-integration.md#ci--cd-tools)
 
+## Getting Notified
+
+How can we decide when to update our container?
+
+Option 1:
+- Keep DockerHub open - hit refresh now and then, go `pull` new image and `run` fresh container
+- Repeat for all systems that need updated
+
+Option 2:
+- **poll** DockerHub for new image versions
+    - servers view this like kids asking, "Are we there yet?"
+- run script to `run` fresh container if new image is pulled
+
+Option 3: :white_check_mark:
+- if a new image is delivered to DockerHub, have DockerHub send message to system
+- system receives message, uses it to trigger `pull` and `run` fresh container 
+
 ## Exploring WebHooks
 
+## API Analysis Tools
+
+- [Postman](https://www.postman.com/)
+- [RequestBin](https://requestbin.com/)
+- [Insomnia](https://insomnia.rest/) ~~not cookies~~
