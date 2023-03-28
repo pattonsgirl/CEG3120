@@ -23,20 +23,36 @@ Both Continuous Deployment & Continuous Delivery use the acronym CD
 
 How can we decide when to update our container?
 
-Option 1:
+Option 1: :x:
 - Keep DockerHub open - hit refresh now and then, go `pull` new image and `run` fresh container
 - Repeat for all systems that need updated
 
-Option 2:
+Option 2: :x:
 - **poll** DockerHub for new image versions
     - servers view this like kids asking, "Are we there yet?"
 - run script to `run` fresh container if new image is pulled
 
 Option 3: :white_check_mark:
-- if a new image is delivered to DockerHub, have DockerHub send message to system
+- if a new image is delivered to DockerHub, have DockerHub send a **payload** to system
 - system receives message, uses it to trigger `pull` and `run` fresh container 
 
 ## Exploring WebHooks
+
+A `webhook` (also called a web callback or HTTP push API) is a way for an app to provide other applications with real-time information. A `webhook` delivers data to other applications as it happens, meaning you get data immediately. - SendGrid
+
+The name `webhook` is a simple combination of **web**, referring to its HTTP-based communication, and the **hook**ing programming function that allows apps to intercept calls or other events that might be of interest. - [RedHat](https://www.redhat.com/en/topics/automation/what-is-a-webhook)
+
+### Setting a webhook URL - server side
+
+
+
+### Receiving a webhook payload - client side
+
+### Resources
+
+- [SendGrid - What's a webhook?](https://sendgrid.com/blog/whats-webhook/)
+- [Zapier - What are webhooks with invoice example](https://zapier.com/blog/what-are-webhooks/)
+- [mParticle - APIs vs webhooks](https://www.mparticle.com/blog/apis-vs-webhooks/)
 
 ## API Analysis Tools
 
