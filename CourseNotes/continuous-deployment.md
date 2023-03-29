@@ -93,6 +93,7 @@ Notes:
 - [SendGrid - What's a webhook?](https://sendgrid.com/blog/whats-webhook/)
 - [Zapier - What are webhooks with invoice system example](https://zapier.com/blog/what-are-webhooks/)
 - [mParticle - APIs vs webhooks](https://www.mparticle.com/blog/apis-vs-webhooks/)
+- [VIDEO - Ambient Coder - Webhooks vs Websockets vs HTTP Streaming - Which Event-Driven API to use? - start to 5:14](https://www.youtube.com/watch?v=6RvlKYgRFYQ&ab_channel=AmbientCoder)
 
 ## API Analysis Tools
 
