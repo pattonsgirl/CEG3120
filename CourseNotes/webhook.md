@@ -10,6 +10,11 @@ Using [adnanh's webhook](https://github.com/adnanh/webhook)
 - protecting the hook
 - consider: messages to the either (what happens once this EIP is released?)
 
+## DockerHub or GitHub as server (messenger)?
+
+- [About GitHub WebHooks](https://docs.github.com/en/webhooks-and-events/webhooks/about-webhooks)
+- [Docker Docs - WebHooks](https://docs.docker.com/docker-hub/webhooks/)
+
 ## testing webhook
 - [hookdeck](https://hookdeck.com/)
 
