@@ -42,16 +42,56 @@ A `webhook` (also called a web callback or HTTP push API) is a way for an app to
 
 The name `webhook` is a simple combination of **web**, referring to its HTTP-based communication, and the **hook**ing programming function that allows apps to intercept calls or other events that might be of interest. - [RedHat](https://www.redhat.com/en/topics/automation/what-is-a-webhook)
 
-### Setting a webhook URL - server side
+### Detour - REST APIs vs WebHooks
 
+In a REST API (Application Programming Interface), you'll commonly see HTTP requests sent by the client **to** servers to perform a service:
+- GET - request info
+- POST - send info (new record)
+- PUT - update info (existing record)
+- DELETE - remove entry
 
+In a RESTful API, the client sends these requests to the server, and the server interprets them and performs the request.
 
-### Receiving a webhook payload - client side
+If we used a RESTful API model for this project, every x hours / minutes / seconds, we (the client who needs info) would send a GET request to DockerHub for info about our repo, check metadata for a "last update" timeframe, then act on that info to update our running container.
+
+**What if...**
+
+What if we defined when we (the client) wanted to be notified?  In this way, WebHooks are also referred to as reverse-APIs, and the focus is on a POST request **from** the server.
+
+The client defines where requests will be sent.  The server is provided with where to send requests, and after what event.  The client then parses the POST message from the server and acts on the information.
+
+[This video compares APIs to WebHooks](https://www.youtube.com/watch?v=Zle9oe5xxZg&ab_channel=DemoHub%7CDemosForModernDataTools) by comparing getting updates for stock values.
+
+### Server side
+
+In this model, the server holder information about the object we want updates on.
+
+From the focus on our project, the server is DockerHub, which hosts our images.
+
+The server needs to know:
+- trigger for when to send a POST message
+- where to send POST request
+    - this gets defined by client
+
+### Client side
+
+The client is not going to bother the server, just set a destination for where to send info when an event it cares about occurs.
+
+Client needs:
+- a service listening for POST requests
+- to parse the POST request 
+    - check that valid server sent it (you expected a message)
+    - check metadata for actionable information
+- a definition of what to do from info in POST request
+
+Notes: 
+- this service will need to be running on a port
+- there should be some "secret" set to validate the message is authentic
 
 ### Resources
 
 - [SendGrid - What's a webhook?](https://sendgrid.com/blog/whats-webhook/)
-- [Zapier - What are webhooks with invoice example](https://zapier.com/blog/what-are-webhooks/)
+- [Zapier - What are webhooks with invoice system example](https://zapier.com/blog/what-are-webhooks/)
 - [mParticle - APIs vs webhooks](https://www.mparticle.com/blog/apis-vs-webhooks/)
 
 ## API Analysis Tools
