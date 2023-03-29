@@ -56,7 +56,7 @@ If we used a RESTful API model for this project, every x hours / minutes / secon
 
 **What if...**
 
-What if we defined when we (the client) wanted to be notified?  In this way, WebHooks are also referred to as reverse-APIs, and the focus is on a POST request **from** the server.
+What if we defined when we (the client) wanted to be notified?  In this way, WebHooks are also referred to as **reverse-APIs** or **event-driven APIs**, and the focus is on a POST request **from** the server.
 
 The client defines where requests will be sent.  The server is provided with where to send requests, and after what event.  The client then parses the POST message from the server and acts on the information.
 
