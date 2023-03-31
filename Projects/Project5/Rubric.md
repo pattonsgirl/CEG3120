@@ -19,6 +19,7 @@
 - How to generate a `tag` in `git` / GitHub
 - Behavior of GitHub workflow
   - what does it do and when
+- Link to Docker Hub repository (as additional proof)
 
 ## Deployment ( / 8)
 
@@ -33,7 +34,8 @@
 - `webhook` task definition file
   - Description of what it does
   - Where it should be on server
-- How to configure GitHub OR DockerHub to message the listener 
+- How to configure GitHub OR DockerHub to message the listener
+- RECORD your whole workflow process - from `commit` and `push` to your server getting a fresh image 
 
 ## Diagramming ( / 1)
 

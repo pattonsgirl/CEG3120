@@ -55,6 +55,7 @@ Create `README-CD.md` in main folder of your repo that details the following:
 - How to generate a `tag` in `git` / GitHub
 - Behavior of GitHub workflow
   - what does it do and when
+- Link to Docker Hub repository (as additional proof)
 
 ### Resources
 
@@ -93,6 +94,7 @@ Update `README-CD.md` in main folder of your repo to include:
   - Description of what it does
   - Where it should be on server (if someone were to use your setup)
 - How to configure GitHub OR DockerHub to message the listener 
+- RECORD your whole workflow process - from `commit` and `push` to your server getting a fresh image
 
 ### Resources
 
