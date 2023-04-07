@@ -85,16 +85,16 @@ Update `README-CD.md` in main folder of your repo to include:
 - How to install Docker to your instance
 - Container restart script
   - Justification & description of what it does
-  - Where it should be on server (if someone were to use your setup)
-- Setting up a `webhook` on the server
-  - How to install [adnanh's `webhook`](https://github.com/adnanh/webhook) to server
+  - Where it should be on the instance (if someone were to use your setup)
+- Setting up a `webhook` on the instance
+  - How to install [adnanh's `webhook`](https://github.com/adnanh/webhook) to the instance
   - How to start the `webhook`
     - since our instance's reboot, we need to handle this
 - `webhook` task definition file
   - Description of what it does
-  - Where it should be on server (if someone were to use your setup)
+  - Where it should be on the instance (if someone were to use your setup)
 - How to configure GitHub OR DockerHub to message the listener 
-- RECORD your whole workflow process - from `commit` and `push` to your server getting a fresh image
+- RECORD your whole workflow process - from `commit` and `push` to your instance getting a fresh image
 
 ### Resources
 
