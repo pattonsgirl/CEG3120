@@ -75,6 +75,21 @@ jobs:
     # steps:
 ```
 
+Multiple jobs & jobs with dependencies:
+
+```
+# job1 must complete successfully before job2 begins
+# job3 waits for both job1 and job2 to complete
+jobs:
+  job1:
+  job2:
+    needs: job1
+  job3:
+    needs: [job1, job2]
+```
+
+[Using `jobs` in a workflow](https://docs.github.com/en/actions/using-jobs/using-jobs-in-a-workflow)
+
 ### runners
 
 The jobs defined in the workflow require an environment where they can be executed. Runners are servers that allows these steps to be executed in a virtual environment. It can be GitHub-hosted or self-hosted.

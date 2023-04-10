@@ -145,6 +145,8 @@ Create and run a container based on the given image
     - remove container after it exits (main process completes)
 - `-v host_folder:container_folder`
     - creates bind mount host and container.  This is also referred to as a map
+- `--restart unless-stopped`
+    - [restarts the container if stopped because docker was stopped (such as after reboot)](https://docs.docker.com/config/containers/start-containers-automatically/)
 
 ### ps
 List the running containers on the system (use `--all` or `-a` to include non-running containers)
