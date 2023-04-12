@@ -16,6 +16,10 @@ CRUD APIs are another common term:
 
 This [guide by programming historian](https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask) has a great APIs 101 overview.
 
+Are there other types of APIs?  You bet!
+
+[This video has an overview of the most common APIs](https://www.youtube.com/watch?v=hkXzsB8D_mo&ab_channel=AmbientCoder).  This article also does a good dive into [understanding RPC, REST, and GraphQL APIs](https://apisyouwonthate.com/blog/understanding-rpc-rest-and-graphql/)
+
 ### GET / Read
 
 - [Python + Flask - GET / Read](https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask)
@@ -23,6 +27,11 @@ This [guide by programming historian](https://programminghistorian.org/en/lesson
 ### POST
 
 - [Python + Flask - POST with a webform (login)](https://pythonbasics.org/flask-http-methods/)
+
+## Security
+
+- [Web API Security | Basic Auth, OAuth, OpenID Connect, Scopes & Refresh Tokens](https://www.youtube.com/watch?v=x6jUDfpESmA&ab_channel=AmbientCoder)
+- [Modern Guide to OAuth](https://fusionauth.io/learn/expert-advice/oauth/modern-guide-to-oauth)
 
 ## Databases
 

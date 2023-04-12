@@ -40,3 +40,9 @@
 ## Diagramming ( / 1)
 
 - Logically diagrammed steps for continuous deployment workflow
+
+## Point Deductions: (- / 3)
+
+- Action does not push image(s) to DockerHub
+- Action does not tag versions
+- Web hook does not trigger with payload from DockerHub or GitHub
