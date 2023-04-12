@@ -70,7 +70,6 @@ Create `README-CI.md` in main folder of your repo that details the following:
 - Create Public Repository in DockerHub
 - Set GitHub Secrets named DOCKER_USERNAME and DOCKER_PASSWORD with your respective information filled out.
 - Set up GitHub Actions workflow to build and push docker image to DockerHub
-  - Use workflow templated here: https://docs.github.com/en/actions/guides/publishing-docker-images#publishing-images-to-docker-hub
 
 ### Documentation
 
@@ -91,7 +90,9 @@ Create `README-CI.md` in main folder of your repo that details the following:
 
 ### Resources
 
-- [GitHub Actions - Docker Docs](https://docs.docker.com/ci-cd/github-actions/)
+- [Docker Docs - CICD with GitHub Actions](https://docs.docker.com/ci-cd/github-actions/)
+- [GitHub Actions - build-push-action documentation](https://github.com/marketplace/actions/build-and-push-docker-images)
+- [GitHub - publishing images to DockerHub](https://docs.github.com/en/actions/guides/publishing-docker-images#publishing-images-to-docker-hub)
 
 ## Part 3 - Diagramming
 

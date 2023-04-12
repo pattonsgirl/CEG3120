@@ -75,6 +75,21 @@ jobs:
     # steps:
 ```
 
+Multiple jobs & jobs with dependencies:
+
+```
+# job1 must complete successfully before job2 begins
+# job3 waits for both job1 and job2 to complete
+jobs:
+  job1:
+  job2:
+    needs: job1
+  job3:
+    needs: [job1, job2]
+```
+
+[Using `jobs` in a workflow](https://docs.github.com/en/actions/using-jobs/using-jobs-in-a-workflow)
+
 ### runners
 
 The jobs defined in the workflow require an environment where they can be executed. Runners are servers that allows these steps to be executed in a virtual environment. It can be GitHub-hosted or self-hosted.
@@ -149,11 +164,21 @@ A Release is a GitHub concept - it is created from an existing tag and exposes r
 ```
 $ git commit -am “changes”
 $ git tag -a v1.6.1
+# optional -m "tag info"
+$ git show v1.6.1
 # Docker requires semantic versioning
 # [Major version].[minor version].[patch]
-$ git push 
-origin tag number
+$ git push origin v1.6.1
 ```
+
+> A lightweight tag (no `-a`) is very much like a branch that doesn’t change — it’s just a pointer to a specific commit. - [Git SCM](https://git-scm.com/book/en/v2/Git-Basics-Tagging)
+
+> Annotated tags (with `-a`) are stored as full objects in the Git database. They’re checksummed; contain the tagger name, email, and date; have a tagging message; and can be signed and verified with GNU Privacy Guard (GPG). It’s generally recommended that you create annotated tags so you can have all this information; but if you want a temporary tag or for some reason don’t want to keep the other information, lightweight tags are available too. - [Git SCM](https://git-scm.com/book/en/v2/Git-Basics-Tagging)
+
+### tags + Actions
+
+- [GitHub - docker/metadata-action](https://github.com/docker/metadata-action)
+- [Docker - Manage Tag Labels](https://docs.docker.com/build/ci/github-actions/manage-tags-labels/)
 
 ### Releases
 
@@ -166,6 +191,14 @@ Why is this useful?
 
 ## Secrets
 
+[GitHub Docs - Encrypted Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+
+Environment Secrets
+- Secrets for your environments? Environment secrets help secure automation related to specific deployment environments. Example: secrets specific to development versus production and systems you may have unique accounts for.
+- [Adam the Automater - Environment Secrets](https://adamtheautomator.com/github-actions-secrets/#Creating_Secrets_For_an_Environment)
+
+- [Forcing the viewing of secrets... even though you shouldn't](https://stackoverflow.com/questions/63003669/how-can-i-see-my-git-secrets-unencrypted)
+
 ## Semantic Versioning
 
 [The full rule set of semantic versioning](https://semver.org/)
@@ -174,3 +207,12 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
 1. MAJOR version when you make incompatible API changes
 2. MINOR version when you add functionality in a backwards compatible manner
 3. PATCH version when you make backwards compatible bug fixes
+
+## `latest` tag
+
+- [Generating `latest` from `metadata-actions`](https://github.com/docker/metadata-action#latest-tag)
+- [Syntax to specify multiple tags](https://stackoverflow.com/questions/70868900/github-actions-specify-multiple-tags-with-docker-build-push-actionv2)
+
+## Workflow Status Badge
+
+[Get your own status badge](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge) on how your workflows are going
