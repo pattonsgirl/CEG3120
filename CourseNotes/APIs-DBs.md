@@ -28,13 +28,39 @@ Are there other types of APIs?  You bet!
 
 - [Python + Flask - POST with a webform (login)](https://pythonbasics.org/flask-http-methods/)
 
-## Security
+### DELETE
+
+## Databases
+
+
+## Deploying a Flask App
+
+- [Flask - Deploying to Production](https://flask.palletsprojects.com/en/2.2.x/deploying/)
+
+## Securing APIs
 
 - [Web API Security | Basic Auth, OAuth, OpenID Connect, Scopes & Refresh Tokens](https://www.youtube.com/watch?v=x6jUDfpESmA&ab_channel=AmbientCoder)
 - [Modern Guide to OAuth](https://fusionauth.io/learn/expert-advice/oauth/modern-guide-to-oauth)
 
-## Databases
+## Tools for testing APIs
 
 - [HURL](https://github.com/Orange-OpenSource/hurl)
 - [insomnia](https://docs.insomnia.rest/insomnia/send-your-first-request)
 - [postman](https://www.postman.com/)
+    - [link to download Postman](https://www.postman.com/downloads/)
+
+## Work Along Objectives
+
+1. Setup a read-only flask app (GET)
+    - use a Python list
+    - use a database
+2. Enable record writing (POST)
+3. Enable record deletion (DELETE)
+4. Containerize that app
+5. Play with load balancers
+    - host site
+    - host API
+6. Secure API?
+7. Break out database?
+8. API documentation with Doxygen? https://www.doxygen.nl/
+9. API testing?
