@@ -1,6 +1,9 @@
 import flask
-from flask import request, jsonify
+from flask import request, jsonify, render_template, flash
 import sqlite3
+
+# Column names:
+# id | published | author | title | first_sentence
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
@@ -66,6 +69,39 @@ def api_filter():
     results = cur.execute(query, to_filter).fetchall()
 
     return jsonify(results)
+
+@app.route('/addbook')
+def new_book():
+   return render_template('newbook.html')
+
+@app.route('/api/v1/resources/books/addbook',methods = ['POST', 'GET'])
+def addbook():
+    if request.method == 'POST':
+        msg = "This is the default message"
+        try:
+            # id | published | author | title | first_sentence
+            id = request.form['id']
+            published = request.form['published']
+            author = request.form['author']
+            title = request.form['title']
+            first_sentence = request.form['first_sentence']
+
+            conn = sqlite3.connect('books.db')
+            cur = conn.cursor()            
+
+            cur.execute("INSERT INTO books (id,published,author,title,first_sentence) VALUES (?,?,?,?)",(id,published,author,title,first_sentence) )
+
+            conn.commit()
+            msg = "Record successfully added"
+        except:
+            con.rollback()
+            msg = "error in insert operation"
+
+        finally:
+            #return render_template("results.html",msg = msg)
+            return jsonify(msg)
+            con.close()
+
 
 #def run_app():
 #    return app

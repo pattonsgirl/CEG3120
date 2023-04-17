@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Add a New Post {% endblock %}</h1>
+    <form method="post">
+        <label for="title">Title</label>
+        <br>
+        <input type="text" name="title"
+               placeholder="Post title"
+               value="{{ request.form['title'] }}"></input>
+        <br>
+
+	<label for="author">Author</label>
+        <br>
+        <input type="text" name="author"
+               placeholder="Author"
+               value="{{ request.form['author'] }}"></input>
+        <br>
+
+	<label for="published">Published</label>
+        <br>
+        <input type="text" name="published"
+               placeholder="Year Published"
+               value="{{ request.form['published'] }}"></input>
+        <br>
+
+        <label for="first_sentence">First sentence</label>
+        <br>
+        <textarea name="content"
+                  placeholder="Write first sentence"
+                  rows="15"
+                  cols="60"
+                  >{{ request.form['first_sentence'] }}</textarea>
+        <br>
+	<label for="id">ID</label>
+        <br>
+        <input type="text" name="id"
+               placeholder="write id"
+               value="{{ request.form['id'] }}"></input>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}
