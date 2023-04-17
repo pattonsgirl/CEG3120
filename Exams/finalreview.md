@@ -1,20 +1,20 @@
 # Final Review for CEG 3120
 
-## Fall 2022
+## Spring 2023
 
 ## Da Rules
 
-Final: Friday 12/9
+Final: Monday, 4/24
 
-- Available 8:00 AM to 10:00 AM
+- Available 12:30 PM to 2:30 PM
 - 1 attempt, 2 hours once started
 - Open note, open terminal
 
-## Week 1 & 2
+## Week 1 / 2
 
 - create aws stack
 - terminal command reminder
-- users
+- users & groups
 - permissions
 - ssh keys
   - private vs public
@@ -32,131 +32,91 @@ Final: Friday 12/9
   - branch
   - fetch / merge
   - checkout
-  - merge conficts
+  - merge conflicts
   - Pull Requests
   - .gitignore
   - markdown essentials
 
-### Project
+### Project 0
 
 - git guide
 
-## Week 3
+## Week 2 / 3
 
-- crash course python notes
-- package version dependencies and usage
-- APIs
-  - REST APIs
-    - querying
-    - version dependent (how queries are requested can change)
-  - syncronous vs asyncronous APIs
-  - Requesting and using OAuth keys
-- authentication vs authorization
-  - OAuth - allow third party to do x y z
-  - JSON Web Tokens & session cookies
-    - keeping you logged in and maintaining session details
-- process exploration
-  - bot runs as long as starting terminal is open
-  - screen / background jobs (2350) - detaching processes
-  - cloud solutions?
-  - containers?
-
-### Project
-
-- Discord Bot using Discord API w/ discord.py
-- managing secrets for a project
-- using branches for changes
-
-## Week 4
-
-- linters and unit tests
-  - using hooks to trigger
 - networking review
   - IPv4 addresses
-  - Subnets & CIDR notation
+  - Subnets & CIDR blocks
   - routes
   - gateways
   - NAT
   - Firewalls
-    - network wide (AWS Security Groups)
+    - network wide
     - per machine (iptables)
 
-## Week 5
+## Week 3 / 4
 
 - the cloud
   - types of cloud services
   - regions
   - access management of cloud resources
-    - token based can create(?) access(?) delete(?) view billing(?)
-- intro to navigating AWS
-  - EC2 instance types
-  - images / AMI
-  - networking (VPC, subnet, gateways, routes, security group)
+    - IAM tokens for **authorization** 
+      - can create(?) access(?) delete(?) view billing(?)
+- AWS
+  - VPC
+  - Subnets (private vs public)
+  - Routes & route tables
+  - Internet Gateway
+  - Security Group vs Network ACLs
+  - Elastic IPs vs public IP
+  - NAT Gateway (focus on public)
+  - Instance types
+  - AMIs
+  - Volumes
 
-### Project
+### Project 1
 
 - Manually creating the resources
   - VPC
   - instance type & AMI
   - EIP to instance
 
-## Week 6
+## Week 5 / 6
 
-- intro to contents of CloudFormation Template
+- Using CloudFormation Templates
   - using YAML/JSON formatted files
+- Debugging CF Templates
+
+### Project 2
+
+- Create CloudFormation template
+  - should mimic what was manually created
+
+## Week 6 / 7
+
 - system logs & service control
 - installing and configuring a webserver
   - apache vs nginx
   - status / control of services (systemctl)
   - service logs (apache & ssh)
-  - security groups
-  - iptables? system level firewalls
-  - nmap -p 1-5000 server
-
-### Project
-
-- Create CloudFormation template
-  - should mimic what was manually created
-
-## Week 7
-
-- proxies (forward & reverse)
-- load balancing terminology
-  - hosts
-  - pools
-  - config file settings
-    - global / defaults/ frontend / backend
-  - layer 4 (tcp) load balancing
-  - layer 7 (http) load balancing
-  - Allocation strategies
-    - Round robin
-    - Weight round robin
-    - Least connections
-    - Least response time
-
-## Week 8
-
-- NAT Gateways
-  - one EIP, external communication allowed
-- messing with a webserver
-  - HTTPS vs HTTP and notes on certificates
-- load balancing and fault tolerance
-  - HAproxy configurations
-  - keeping backend servers private - when are public IPs needed?
-  - fault tolerance of non-responsive backends
+- proxies
+  - forward vs reverse
+- load balancers  
+  - terminology
+  - function
+  - Layer 4 vs Layer 7
+- fault tolerance
 - monitoring
-  - Networked systems (Grafana?)
-  - cloud costs and usage
 
-### Project
+### Project 3
 
 - CF Template
   - create one instance with public IP
-  - create one NAT gateway Connect two instances to that?
+  - create one NAT gateway
+  - connect host instances to private subnet
 - Configure load balancer
-- Configure hosts in backend pool to hold unique content
+- Configure hosts in backend pool to serve content
 
-## Week 9 & 10
+## Week 8 / 9 / 10
 
 - containers using Docker
   - purpose & constraints
@@ -175,9 +135,6 @@ Final: Friday 12/9
   - using container registry (DockerHub)
     - `docker push ___`
     - tagging considerations
-
-## Week 11
-
 - Continuous integration using GitHub Actions
 - Terminology in GitHub Actions:
   - workflow (and where it goes)
@@ -187,33 +144,36 @@ Final: Friday 12/9
     - steps
   - actions
     - `uses`, `with`
-- Semantic versioning
-  - git tags
-  - rules of tagging
 
-## Week 12 & 13
+### Project 4
 
-- Continuous deployment
-- scripting container stop, pull, and run new
-- setting up a listener on server (GitHub adnanh/webhook)
-  - content of a hook configuration file
-  - URL for payload delivery
-- events that should trigger a container refresh
-  - DockerHub webhook
-  - ~~GitHub webhook + using a secret~~
-  - ~~GitHub Action job to run webhook~~
+- containerize a website
+- use GitHub action to build image on push and push image to DockerHub
 
-## Week 14
+## Week 11 / 12
 
-- ~~secret sharing and containers~~
-  - Have secret on individual host, share with container on run using a bind mount (-v HOST:CONTAINER)
+- semantic versioning
+- `git` tags
+- versioning DockerHub images with GitHub Actions
+- Continuous Deployment
+- WebHooks / reverse APIs
+  - what does client need for configuration
+  - what does server need for configuration
+  - considerations:
+    - validating hook delivery
+    - creating a service
+    - viewing logs
 
-### Project
+### Project 5
 
-- create container
-  - debate base images, run project as active container process
-- set up DockerHub repo for push and pull of images
-- create GitHub action and define events to trigger workflow
-  - use workflow to create new container if changes are made (based on event definition) to repository
-  - use workflow to push updated container images to DockerHub
-- utilize webhooks to refresh running container based on event
+- versioning DockerHub images with GitHub Actions
+- use DockerHub or GitHub to send payload with WebHooks
+
+## Week 13 / 14
+
+- API (focus of RESTful APIs)
+  - request types
+  - security
+  - documentation
+  - testing tools
+  - managing services (listener vs database)
