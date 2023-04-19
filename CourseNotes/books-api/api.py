@@ -118,7 +118,7 @@ def delete(id):
     flash('"{}" was successfully deleted!'.format(book['title']))
     return redirect(url_for('all_books'))
 
-app.run()
-#if __name__ == "__main__":
-#    from waitress import serve
-#    serve(app, host="0.0.0.0", port=5000)
+#app.run()
+if __name__ == "__main__":
+    from waitress import serve
+    serve(app, host="0.0.0.0", port=5000)
