@@ -1,14 +1,11 @@
-{% extends 'base.html' %}
-
-{% block content %}
-    <h1>{% block title %} Books {% endblock %}</h1>
-    {% for book in books %}
-        <div class='post'>
-            <p>{{ book['author'] }}</p>
-            <h2>{{ book['id'] }}</h2>
-            <p>{{ book['title'] }}</p>
-	    <p>{{ book['published'] }}</p>
-	    <p>{{ book['first_sentence'] }}</p>
-        </div>
-    {% endfor %}
-{% endblock %}
+{% extends 'base.html' %} {% block content %}
+<h1>{% block title %} Books {% endblock %}</h1>
+{% for book in books %}
+<div class="post">
+  <h2>{{ book['title'] }}</h2>
+  <p>{{ book['author'] }}</p>
+  <p>{{ book['id'] }}</p>
+  <p>{{ book['published'] }}</p>
+  <p>{{ book['first_sentence'] }}</p>
+</div>
+{% endfor %} {% endblock %}

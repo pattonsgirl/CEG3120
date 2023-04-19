@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} {% endblock %}- FlaskApp</title>
+    <title>{% block title %} {% endblock %}- Library</title>
     <style>
         .post {
             padding: 10px;
@@ -16,15 +16,28 @@
             margin-left: 50px;
             text-decoration: none;
         }
+        .alert {
+            padding: 20px;
+            margin: 5px;
+            color: #970020;
+            background-color: #ffd5de;
+        }
     </style>
 </head>
 <body>
     <nav>
-        <a href="{{ url_for('index') }}">FlaskApp</a>
-        <a href="#">About</a>
+        <a href="{{ url_for('index') }}">Library API</a>
+        <a href="{{ url_for('all_books') }}">All Books</a>
+        <a href="{{ url_for('new_book') }}">New Book</a>
+        <!-- <a href="{{ url_for('edit_book') }}">Edit / Delete Book</a> -->
+        <a href="{{ url_for('index') }}">About</a>
     </nav>
     <hr>
     <div class="content">
+        <!-- assuming flash secret has been set -->
+        {% for message in get_flashed_messages() %}
+            <div class="alert">{{ message }}</div>
+        {% endfor %}
         {% block content %} {% endblock %}
     </div>
 </body>

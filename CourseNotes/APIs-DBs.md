@@ -26,16 +26,46 @@ Are there other types of APIs?  You bet!
 
 ### POST
 
-- [Python + Flask - POST with a webform (login)](https://pythonbasics.org/flask-http-methods/)
+- USES PYTHON2 - [Key differences](https://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html)
+    - [Python + Flask - POST with a webform (login)](https://pythonbasics.org/flask-http-methods/)
+    - [Flask + SQLite](https://pythonbasics.org/flask-sqlite/)
 
 ### DELETE
 
 ## Databases
 
+## Bonus: Python tricks
+
+### Tools to make `requirements.txt`
+
+```
+# install
+pip3 install pipreqs
+
+# Run in current directory
+python3 -m  pipreqs.pipreqs .
+# OR (--force overwrites old file)
+pipreqs --force .
+```
 
 ## Deploying a Flask App
 
 - [Flask - Deploying to Production](https://flask.palletsprojects.com/en/2.2.x/deploying/)
+
+Sample using `waitress`
+```py
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    return "<h1>Hello!</h1>"
+
+if __name__ == "__main__":
+    from waitress import serve
+    serve(app, host="0.0.0.0", port=8080)
+```
 
 ## Securing APIs
 

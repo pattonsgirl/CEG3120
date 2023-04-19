@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+<h1>{% block title %} Edit "{{ book['title'] }}" {% endblock %}</h1>
+<form method="post">
+  <label for="title">Title</label>
+  <br />
+  <input
+    type="text"
+    name="title"
+    placeholder="{{ book['title'] }}"
+    value="{{ request.form['title'] or post['title'] }}"
+  />
+  <br />
+
+  <label for="content">Post Content</label>
+  <br />
+  <textarea
+    name="content"
+    placeholder="{{ book['first_sentence'] }}"
+    rows="15"
+    cols="60"
+  >
+{{ request.form['first_sentence'] or post['first_sentence'] }}</textarea
+  >
+  <br />
+  <button type="submit">Submit</button>
+</form>
+{% endblock %}
