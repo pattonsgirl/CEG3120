@@ -75,8 +75,10 @@ def api_filter():
     book = get_book(id)
     return jsonify(book)
 
-@app.route('/api/v1/resources/books/<int:id>/edit/', methods=['GET', 'POST'])
+@app.route('/api/v1/resources/books/<id>/edit/', methods=['GET', 'POST'])
 def edit_book(id):
+    return 'Post %s' % id
+    # TODO: use id to do things
     book = get_book(id)
     # TODO - fill form with book info?
 
