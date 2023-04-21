@@ -172,8 +172,13 @@ Final: Monday, 4/24
 ## Week 13 / 14
 
 - API (focus of RESTful APIs)
-  - request types
-  - security
-  - documentation
-  - testing tools
-  - managing services (listener vs database)
+  - What we implemented in class:
+    1. Setup a read-only flask app (GET)
+        - use a Python list
+        - use a database
+    2. Enable record writing (POST)
+    3. Enable record deletion (DELETE)
+    4. Containerize that app
+    5. Play with load balancers
+        - host site
+        - host API
