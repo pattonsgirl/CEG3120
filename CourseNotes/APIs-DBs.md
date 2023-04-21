@@ -94,3 +94,12 @@ if __name__ == "__main__":
 7. Break out database?
 8. API documentation with Doxygen? https://www.doxygen.nl/
 9. API testing?
+
+### Offline Docker & Containers
+
+- https://docs.docker.com/engine/install/binaries/
+    - https://download.docker.com/linux/static/stable/x86_64/
+- https://github.com/Shopify/docker/blob/master/docs/installation/binaries.md
+    - Recommended systemd files: https://github.com/moby/moby/tree/master/contrib/init/systemd
+    - Remembering how to enable systemd files: https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units
+- docker copy / save: https://stackoverflow.com/questions/23935141/how-to-copy-docker-images-from-one-host-to-another-without-using-a-repository
