@@ -83,3 +83,7 @@ See resources in P4 for some really useful samples
 - [Docker - Manage Tag Labels](https://docs.docker.com/build/ci/github-actions/manage-tags-labels/)
 - [Generating `latest` from `metadata-actions`](https://github.com/docker/metadata-action#latest-tag)
 - [Syntax to specify multiple tags](https://stackoverflow.com/questions/70868900/github-actions-specify-multiple-tags-with-docker-build-push-actionv2)
+
+## Test links on site 
+
+- [Sample from GitHub](https://docs.github.com/en/actions/examples/using-scripts-to-test-your-code-on-a-runner)
