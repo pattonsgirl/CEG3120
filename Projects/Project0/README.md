@@ -6,6 +6,8 @@ You may use markdown to format this in a way that is clean for you.  If you woul
 
 Entries that are currently crossed out we will get to later in the course.  You are welcome to revisit this guide and add details to it.
 
+Your repository must demonstrate usage of each of the below.  For example, I can go to your repository and see an additional branch besides "main"
+
 ## Command line git
 
 - status
