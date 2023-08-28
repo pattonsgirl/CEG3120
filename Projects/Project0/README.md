@@ -6,7 +6,7 @@ You may use markdown to format this in a way that is clean for you.  If you woul
 
 Entries that are currently crossed out we will get to later in the course.  You are welcome to revisit this guide and add details to it.
 
-Your repository must demonstrate usage of each of the below.  For example, I can go to your repository and see an additional branch besides "main"
+Project update: you need to demonstrate elements of the below in your repo.  This is to force you to experiment.  Items that need to be demonstrated in your repo will be denoted with "D" for demo required.
 
 ## Command line git
 
