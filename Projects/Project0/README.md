@@ -59,3 +59,7 @@ Other resources are welcome, just cite them (you can do lazy citations here, or 
 1. Commit and push your changes to your repository. Verify that these changes show in your course repository, https://github.com/WSU-kduncan/ceg3120f23-YOURGITHUBNAME
 
 2. In Pilot, paste the link to your project folder. Sample link: https://github.com/WSU-kduncan/ceg3120f23-YOURGITHUBUSERNAME/tree/main/git-guide
+
+## Rubric
+
+[Link to Rubric](Rubric.md)
