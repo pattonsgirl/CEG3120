@@ -105,6 +105,7 @@ AWS [Elastic Cloud Compute (EC2)](https://docs.aws.amazon.com/AWSEC2/latest/User
 - [**instance types**](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) - Various configurations of CPU, memory, storage, and networking capacity for your instances
     - Available instance types will vary by region
     - Fun note, [Mac is now an option](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-mac-instances.html) but not available to Education accounts
+    - Instance types [naming conventions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#instance-type-names)
 - [**key pairs**](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) - Secure login information for instances. AWS stores the public key, and you store the private key in a secure place
 - [**Elastic Block Store (EBS) volumes**](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html) - persistent data storage
 - [**Regions & Availability Zones**](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/) - multiple physical locations for instances & EBS volumes
