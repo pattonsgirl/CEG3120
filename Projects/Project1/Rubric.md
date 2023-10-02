@@ -1,17 +1,23 @@
 # Project 1 Rubric
 
-/ 16
+/ 23
 
-## Part 1 - VPC ( / 6)
+## Part 1 - VPC ( / 13)
 
-"Create & configure" should be visually verifiable via your screenshot - each screenshot is worth 0.5 pt
-
-1. VPC created & configured & role described
-2. Subnet created & configured, remaining block identified & role described
-3. Internet gateway created & configured & role described
-4. Route table created and configured & role described
-5. Security group created and configured & role described
-6. Key Pair identified / created & how stored described
+1. VPC role
+2. VPC screenshot w/ proof of configuration per project requirements
+3. Subnet role 
+4. Subnet screenshot w/ proof of configuration per project requirements
+5. Remaining subnet block identified
+6. Internet gateway role
+7. Internet Gateway screenshot w/ proof of configuration per project requirements
+8. Route table role
+9. Route table screenshot w/ proof of configuration per project requirements
+10. Security group role
+11. Security Group screenshot w/ proof of configuration per project requirements
+   - image should capture 3 rules - (-1) point per rule not included
+12. Key Pair - role and what is stored where
+13. Key Pair used for project screenshot
 
 ## Part 2 - EC2 ( / 10)
 
