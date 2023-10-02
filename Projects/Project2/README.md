@@ -1,4 +1,4 @@
-# Project 2 - NOT FINALIZED
+# Project 2
 
 ## Objectives:
 
@@ -23,7 +23,8 @@ The "cloud" agrees, and therefore cloud services created templates. In AWS, thes
 
 Your deliverables are:
 - a **CloudFormation template named `YOURNAME-CF.yml`**. A [base YAML template - `cf-template.yml`](cf-template.yml) has been provided for you. Due to how many things are in these templates, I would use this base and make the modifications requested. You can Google how these are defined the way they are, additional parameters, etc.
-- a **diagram** of the resources how they connect (and any companion explanation to your visualization)
+- a visual **diagram** of the resources how they connect (and any companion explanation to your visualization)
+  - creating your diagram with the CloudFormation template Designer **will not** count for credit
 
 Other notes: 
 - If you prefer JSON, you may convert the provided template to JSON. Your deliverable would be the `json` file. Have fun ;)
@@ -32,27 +33,28 @@ Other notes:
 
 1. Description:
 
-- Modify Description string to state that this is your template and creates the following
+- Modify `Description`` string to describe your template and what it creates
   - Example description:
   - `Duncan CF Template to create a VPC, allow SSH access from trusted networks, and create a single instance with an Elastic IP address`
 
 2. Mappings:
 
-- Adjust AMI to be the AMI of your choice (yes, it must be changed)
+- Adjust AMI to be the AMI of your choice (yes, it must be changed).
+  - You can use the AMi from Project 1
 
 3. Resources:
 
 - Make the following modification for `Resources`
-  - VPC range to be `192.168.0.0/23`
-  - Subnet range to be `192.168.0.0 - 192.168.0.255`
-  - "Tag" each resource with a "Name": `YOURNAME-CF-VPC`
-    - Resources include the VPC, subnet, route table, etc.
+  - VPC range to be `172.18.0.0/23`
+  - Subnet range to be `172.18.0.0 - 172.18.0.255`
+  - "Tag" each resource with a "Name" - ex. `YOURNAME-CF-VPC`
+    - Resources include the VPC, subnet, route table, internet gateway, elastic IP, security group, instance, etc..
 
 4. Security Group Settings:
 
    - Allow SSH for a set of trusted networks including:
      - Your home / where you usually connect to your instances from
-     - Wright State (addresses starting with 130.108)
+     - Wright State (CIDR block 130.108.0.0/16)
      - Instances within the VPC or subnet
 
 5. Instance settings:
@@ -61,7 +63,8 @@ Other notes:
    - Set a private IP in your subnet range
    - Using the configuration script in the `cf-template` to also:
      - Change `hostname`
-     - Install `git`, `python3`, `pip3`
+     - Install `git`, `python3`, `pip3`, and `apache2`
+       - Note these package names need to be correct per your AMI / Linux distribution
 
 - Use the "CloudFormation" in the AWS console to test your CloudFormation template.
   - If a stack fails during creation, associated resources (even if create was a success) will also be deleted (it is an all or nothing creation process)
@@ -85,12 +88,12 @@ A successful stack will (once created) have an instance you can `ssh` into. Your
 
 ## Submission
 
-1. Commit and push your changes to your repository. Verify that these changes show in your course repository, https://github.com/WSU-kduncan/ceg3120-YOURGITHUBNAME
+1. Commit and push your changes to your repository. Verify that these changes show in your course repository, https://github.com/WSU-kduncan/ceg3120f23-YOURGITHUBNAME
 
    - Your repo should contain:
    - `YOURLASTNAME-cf.yml`
    - `README.md` with your diagram & companion notes
 
-2. In Pilot, paste the link to your project folder. Sample link: https://github.com/WSU-kduncan/ceg3120-YOURGITHUBUSERNAME/blob/main/Projects/Project2
+2. In Pilot, paste the link to your project folder. Sample link: https://github.com/WSU-kduncan/ceg3120f23-YOURGITHUBUSERNAME/blob/main/Projects/Project2
 
 3. Do not leave stacks running. Once your template creates a stack successfully, you may delete the stack
