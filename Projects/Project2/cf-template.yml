@@ -15,14 +15,10 @@ Parameters:
     AllowedPattern: '(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})/(\d{1,2})'
     ConstraintDescription: must be a valid IP CIDR range of the form x.x.x.x/x.
 Mappings:
-  AWSInstanceType2Arch:  # Supported architectures (x64bit only)
-    t2.micro:
-      Arch: HVM64
-  AWSRegionUbuntu: # AMI for Ubuntu server in each supported region 
+  AWSRegionAMI: # AMI for Ubuntu server in each supported region 
     us-east-1:   # N. Virginia
-      PV64: NOT_SUPPORTED
-      HVM64: ami-07d0cf3af28718ef8
-      HVMG2: NOT_SUPPORTED
+    # AMI ID for Ubuntu 20 (ubuntu + apt) - Amazon Linux 2 AMI ami-02e136e904f3da870 (ec2-user + yum)
+      HVM64: ami-09e67e426f25ce0d7 # TODO use AMI ID of choice
 Resources:
   VPC:
     Type: 'AWS::EC2::VPC'
@@ -103,13 +99,7 @@ Resources:
     Type: 'AWS::EC2::Instance'
     DependsOn: AttachGateway
     Properties:
-      ImageId: !FindInMap 
-        - AWSRegionUbuntu
-        - !Ref 'AWS::Region'
-        - !FindInMap 
-          - AWSInstanceType2Arch
-          - t2.micro
-          - Arch
+      ImageId: !FindInMap [AWSRegionAMI, !Ref "AWS::Region", HVM64]
       InstanceType: t2.micro
       KeyName: !Ref KeyName
       Tags:
