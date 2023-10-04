@@ -228,7 +228,8 @@ Define an instance, use the `Mappings` settings where instance type and AMI ID w
 ```
 
 For the instance, define a private IP within subnet, associate Security Group.  
-Public IP was already defined to associate with instance
+Recall we are associating an EIP with the instance.  `AssociatePublicIpAddress` gets a public IP regardless of being an EIP  
+[Details on each field can be found in AWS Docs](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-network-iface-embedded.html)  
 
 ```
       NetworkInterfaces:
