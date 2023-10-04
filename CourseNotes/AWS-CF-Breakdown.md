@@ -198,6 +198,10 @@ Define a Security Group, attach it to VPC
           CidrIp: 0.0.0.0/0
 ```
 
+Side note:  What about Network ACLs?
+  - Define a [Network ACL](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-network-acl-entry.html)
+  - Define [Network ACL Entry](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-network-acl-entry.html#aws-resource-ec2-network-acl-entry--examples) Rules
+
 Define an instance, use the `Mappings` settings where instance type and AMI ID were defined
 
 - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance.html
