@@ -241,6 +241,13 @@ Public IP was already defined to associate with instance
           PrivateIpAddress: 10.0.0.25
 ```
 
+The [`UserData` section](https://saturncloud.io/blog/how-to-pass-user-data-in-aws-cloudformation/) is information that you can pass to an instance when it is launched. This information can be used:
+- to configure the instance
+- install software
+- run scripts
+- [grab secrets provided in Parameters on stack creation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-general.html)
+- perform any other tasks that you need to do when the instance is launched
+
 Can create a do-on-boot script. `root` will be the user while this runs
 
 - symbols in the script:
