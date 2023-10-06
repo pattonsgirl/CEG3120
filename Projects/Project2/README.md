@@ -21,9 +21,9 @@ I think we can agree that manually creating a VPC network to host an instance an
 
 The "cloud" agrees, and therefore cloud services created templates. In AWS, these are called CloudFormation templates. In these files, you layout every detail of how you want your EC2 setup to be, from VPC to instance(s). AWS CloudFormation can take these files as input, and feed the values into API calls that create and configure the resources.
 
-Your deliverables are:
+Create a folder in your repo named `Project2` that contains your deliverables:
 - a **CloudFormation template named `YOURNAME-CF.yml`**. A [base YAML template - `cf-template.yml`](cf-template.yml) has been provided for you. Due to how many things are in these templates, I would use this base and make the modifications requested. You can Google how these are defined the way they are, additional parameters, etc.
-- a visual **diagram** of the resources how they connect (and any companion explanation to your visualization)
+- a `README.md` file that includes a visual **diagram** of the resources how they connect (and any companion explanation to your visualization)
   - creating your diagram with the CloudFormation template Designer **will not** count for credit
 
 Other notes: 
