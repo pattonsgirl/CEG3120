@@ -285,3 +285,8 @@ reboot
             echo "This is from the CF template" > /home/ubuntu/hello.txt && \
             reboot
 ```
+
+Strategies for debugging the script in `UserData`:
+- `ssh` to instance using the same `AMI`, run commands in script
+- After `ssh`ing in to instance created by template, verify package installation / configuration commands worked as expected
+    - if something **didn't work**, play with [`systemctl`](https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units) to check service status and [`journalctl`](https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs) to check service and installation logs.
