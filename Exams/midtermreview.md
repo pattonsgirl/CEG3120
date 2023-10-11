@@ -99,9 +99,9 @@ Midterm: Friday, 2/24
   - apache vs nginx
   - status / control of services (systemctl)
   - service logs (apache & ssh)
-- proxies
+- ~~proxies~~
   - forward vs reverse
-- load balancers  
+- ~~load balancers~~  
   - terminology
   - function
   - Layer 4 vs Layer 7
