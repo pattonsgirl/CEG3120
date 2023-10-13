@@ -1,16 +1,5 @@
 # Midterm Review for CEG 3120
 
-## Spring 2023
-
-## Da Rules
-
-Midterm: Friday, 2/24
-
-- Available 1:25 PM to 2:20 PM
-- 1 attempt, 55 minutes once started
-- Open note, open terminal
-- No class - only exam.
-
 ## Week 1 / 2
 
 - create aws stack
