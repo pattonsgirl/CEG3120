@@ -1,18 +1,19 @@
-# Project 3 - NOT FINALIZED
+# Project 3
 
 - [Objectives](#Objectives)
 - [Project Description](#Project-Description)
   - [Provided Resources](#Provided-Resources)
-- [Part 1 - Cloud Formation Template TODOs](#Part-1---Cloud-Formation-Template-TODOs)
-- [Part 2 - Setup Load Balancing TODOs](#Part-2---Setup-Load-Balancing-TODOs)
-- [Resources and Warnings](#Resources-and-Warnings)
+- [Part 1 - Cloud Formation Template TODOs](#part-1---cloudformation-template-todos)
+- [Part 2 - Setup Load Balancing TODOs](#part-2---setup-load-balancing-todos)
+- [Resources and Warnings](#resources-and-warnings)
+- [Extra Credit - HTTPS](#extra-credit---https)
 - [Submission](#Submission)
 - [Rubric](Rubric.md)
 
 ## Objectives:
 
 - Modify the CF template to meet updated requirements
-- Run a website of choice using `nginx` or `apache2` on hosts in the pool
+- Run a website using `nginx` or `apache2` on hosts in the pool
 - Configure `haproxy` as a load balancer to direct traffic to the pool
 
 ## Project Description
@@ -31,7 +32,9 @@ The following is provided in this project folder:
 - [`lb-cf-template.yml`](lb-cf-template.yml)
   - Note: this templated is updated from previous versions to get you started on this project
 - [`site.tar.gz`](site.tar.gz)
-  - Note: you can use your own site content, but for this project you'll need the site content on each host to be "different" so that you can tell the content is coming from a different server.
+  - A base that includes `css` in order to make something look nice quickly.  `index.html`, at minimum, should be something you spice up to make unique.
+      - you may use your own site (perhaps from previous courses)
+      - grading the content of the site is not a part of the rubric.
 
 ## Part 1 - CloudFormation Template TODOs
 
@@ -42,9 +45,9 @@ Your deliverable for this portion is only **your CloudFormation template**.
 Modify the template in the following ways:
 
 1. Use AMI of your choice (from P1/P2 for example)
-2. VPC CIDR block: `192.168.0.0/23`
-3. Public subnet range: `192.168.0.0 - 192.168.0.255`
-4. Private subnet range: `192.168.1.0 - 192.168.1.255`
+2. VPC CIDR block: `172.18.0.0/23`
+3. Public subnet range: `172.18.0.0 - 172.18.0.255`
+4. Private subnet range: `172.18.1.0 - 172.18.1.255`
 5. Modifications for Security Group:
    - Allow `ssh` requests within VPC CIDR block
    - Allow `ssh` requests from your home IP
@@ -54,11 +57,11 @@ Modify the template in the following ways:
    - assign private IP on public subnet
    - install `haproxy`
 7. For host instances:
-   - create three total instances
-   - tag with a unique name
-   - assign private IP on private subnet
-   - install `apache2` or `nginx`
-   - configure a unique `hostname` on the instance
+   - create three total host instances (one is templated, two more need to be added)
+   - tag each with a unique name
+   - assign each private IP on private subnet
+   - install `apache2` or `nginx` on each
+   - configure a unique `hostname` on each instance
 
 **The deliverable for this part is the CloudFormation template in your Project 3 folder.**
 
@@ -80,13 +83,15 @@ In your `Project3` folder, create a `README.md` file.  This document will focus 
    - How to restart the service after a configuration change
    - Resources used (websites)
 4. How to set up Hosts 1, 2, & 3 to serve web content
-   - What file(s) were modified & their location
-   - What configuration(s) were set (if any)
-   - Where site content files were located (and why)
-   - How to restart the service after a configuration change
+   - **NOTE** web content should be uniquely yours, but as stated you may use `site.tar.gz` as a base
+   - Document any changed configurations (if any)
+   - Document where site content files are located (and why)
+   - How to restart the service in case of a configuration change
    - Resources used (websites)
-5. From the browser, when connecting to the proxy server, take screenshots that prove the load balancer is configured and uses the allocation strategy set.
-   - image must include proxy IP (i.e. URL bar)
+5. Prove in two ways that your load balancer is working:
+   - Have your backend hosts serve web content, but with a small but noticeable variation.  Take a set of screenshots that show the URL bar and varying content from different hosts.
+   - Take a screenshot of your `haproxy` logs that prove your requests are being distributed to different backend hosts.
+      - Include in your documentation the command you used to view the correct logs
 
 ## Resources and Warnings
 
@@ -96,10 +101,18 @@ In your `Project3` folder, create a `README.md` file.  This document will focus 
 - [The Four Essential Sections of an HAProxy Configuration](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration/)
 - [How to Install the Apache Web Server on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-20-04)
 - [How to Install Nginx on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04)
-- [How to edit /etc/hosts](https://linuxize.com/post/how-to-edit-your-hosts-file/)
+- [Introduction to HAProxy logging & parsing logs](https://www.haproxy.com/blog/introduction-to-haproxy-logging)
+   - [Article from Sematext that covers similar things](https://sematext.com/blog/haproxy-logs/)
+- [How to edit `/etc/hosts`](https://linuxize.com/post/how-to-edit-your-hosts-file/)
 - [The SSH config file](https://linuxize.com/post/using-the-ssh-config-file/)
 - [How to SFTP](https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server)
 - [Create & Extract with `tar`](https://linuxize.com/post/how-to-create-and-extract-archives-using-the-tar-command-in-linux)
+
+## Extra Credit - HTTPS
+
+Enable HTTPS (SSL encryption) for your load balancer.  I am going to leave some choice here of whether you have only your load balancer decrypt / encrypt packets for the hosts or have the hosts handle the decryption / encryption.
+
+You will owe a very good write up on all elements involved to set up HTTPS.  A start, which mentions some additional things you'll need, is [HAProxy SSL Termination](https://www.haproxy.com/blog/haproxy-ssl-termination)
 
 ## Submission
 

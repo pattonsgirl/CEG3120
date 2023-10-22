@@ -128,7 +128,7 @@ Resources:
         - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
-          CidrIp: 10.0.0.0/16 # VPC as a whole.
+          CidrIp: 10.0.0.0/16 # VPC as a whole. #TODO: update to refer to correct VPC block
         - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
