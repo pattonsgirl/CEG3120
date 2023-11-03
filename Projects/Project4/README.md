@@ -1,4 +1,4 @@
-# Project 4 - NOT FINALIZED
+# Project 4
 
 - [Objectives](#Objectives)
 - [Project Overview](#Project-Overview)
@@ -27,11 +27,11 @@ of extra credit per milestone date met. To qualify, you must submit your project
 All parts for the project are due 3/29
 
 - [Part 1 - Dockerize it](#Part-1---Dockerize-it)
-  - Milestone due 3/20
+  - Milestone due 11/13
 - [Part 2 - GitHub Actions and DockerHub](#Part-2---GitHub-Actions-and-DockerHub)
-  - Milestone due 3/27
+  - Milestone due 11/20
 - [Part 3 - Diagramming](#Part-3---Diagramming)
-  - All parts are due 3/29
+  - All parts are due 11/22
   - No EC
 
 ## Part 1 - Dockerize it
