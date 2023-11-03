@@ -120,7 +120,7 @@ These are a collection of sites I used to set up HTTPS and get the correct SSL c
 - [Tecmint - How to Configure a CA SSL Certificate in HAProxy](https://www.tecmint.com/configure-ssl-certificate-haproxy/)
 - [Linuxize - Creating an SSL certificate](https://linuxize.com/post/creating-a-self-signed-ssl-certificate/)
 - [StackOverflow - haproxy - unable to load SSL private key from PEM file](https://stackoverflow.com/questions/27947982/haproxy-unable-to-load-ssl-private-key-from-pem-file)
-- [Cloud 66 - Help - Remove passphrase from certificate key](Remove passphrase from certificate key)
+- [Cloud 66 - Help - Remove passphrase from certificate key](https://help.cloud66.com/docs/security/remove-passphrase)
 
 ## Submission
 
