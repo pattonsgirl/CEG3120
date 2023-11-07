@@ -5,7 +5,24 @@
     - issues:
         - `chroot` just means separate starting point
         - still has access to process control
-        - is `root`!  Can kill processes on system, and cause mayhem
+        - is `root`!  Can kill processes on system, and cause 
+        
+<details>
+<summary>See set of commands</summary>
+
+### Setting up a jail
+
+```bash
+mkdir /my-new-root/bin
+cp /bin/bash /bin/ls /my-new-root/bin/
+mkdir /my-new-root/lib /my-new-root/lib{,64}
+cp /lib/x86_64-linux-gnu/libtinfo.so.5 /lib/x86_64-linux-gnu/libdl.so.2 /lib/x86_64-linux-gnu/libc.so.6 /my-new-root/lib
+cp /lib64/ld-linux-x86-64.so.2 /my-new-root/lib64
+cp /lib/x86_64-linux-gnu/libselinux.so.1 /lib/x86_64-linux-gnu/libpcre.so.3 /lib/x86_64-linux-gnu/libpthread.so.0 /my-new-root/lib
+chroot /my-new-root bash
+# try bash & ls
+```
+</details>
 
 There must be something better... could we start with a base?
 1. `debootstrap` https://wiki.debian.org/Debootstrap
