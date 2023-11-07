@@ -156,8 +156,27 @@ VPN connections encrypt and secure all of your network traffic, not just the HTT
 Useful commands:
 - `ping hostname`
 - `nmap -A -Pn hostname`
+- `netstat -tulpn | grep :443`
 - [`hey`](https://github.com/rakyll/hey)
 - [`hurl`](https://github.com/Orange-OpenSource/hurl)
+
+### Logging
+
+- [Introduction to HAProxy Logging](https://www.haproxy.com/blog/introduction-to-haproxy-logging)
+- [Haproxy - the docs on logging & log formatting](https://www.haproxy.com/documentation/haproxy-configuration-manual/1-8r1/#8)
+- [sematext - HAProxy Logging Configuration Explained: How to Enable and View Log Files](https://sematext.com/blog/haproxy-logs/) - Potentially useful
+- [How to Set Up HAProxy Logging on Linux Systems](https://webhostinggeeks.com/howto/how-to-set-up-haproxy-logging-on-linux-systems/) - Actually used this one
+
+Useful Commands:
+- [Digital Ocean - View & Manipulate `jounrnalctl` logs](https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs)
+    - `journalctl -u ssh --since yesterday`
+    - `journalctl -u ssh --since -3d --until -2d # logs from three days ago`
+    - `journalctl -u ssh --since -1h # logs from the last hour`
+    - `journalctl -u ssh --until "2022-03-12 07:00:00"`
+    - `journalctl -fu ssh` - watch logs in real time
+- [Linode - How to Use `tail`](https://www.linode.com/docs/guides/how-to-use-tail/)
+    - `tail -n 50 /var/log/auth.log`
+    - `tail -f /var/log/auth.log` - watch logs in real time
 
 ### Persistence
 

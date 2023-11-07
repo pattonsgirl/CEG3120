@@ -10,11 +10,13 @@
 <details>
 <summary>See set of commands</summary>
 
-### Setting up a jail
+### [Setting up a jail](https://btholt.github.io/complete-intro-to-containers/chroot)
 
 ```bash
 mkdir /my-new-root/bin
 cp /bin/bash /bin/ls /my-new-root/bin/
+ldd bash # find bash libraries
+ldd ls # find ls libraries
 mkdir /my-new-root/lib /my-new-root/lib{,64}
 cp /lib/x86_64-linux-gnu/libtinfo.so.5 /lib/x86_64-linux-gnu/libdl.so.2 /lib/x86_64-linux-gnu/libc.so.6 /my-new-root/lib
 cp /lib64/ld-linux-x86-64.so.2 /my-new-root/lib64
@@ -27,7 +29,29 @@ chroot /my-new-root bash
 There must be something better... could we start with a base?
 1. `debootstrap` https://wiki.debian.org/Debootstrap
     - we are bootstrapping Debian in order to get that base set of binaries and libraries
-2. Now we can `unshare` - this will lock it to its own process space
+2. Now we can `unshare` - this will lock it to its own process space.  [Demystifying `unshare`](https://gabrielsantos.org/2020/05/17/77/)
+
+<details>
+<summary>See set of commands</summary>
+
+### [Setting up Debian bootstrap + process namespace](https://btholt.github.io/complete-intro-to-containers/namespaces)
+
+```bash
+# install debootstrap
+apt-get update -y
+apt-get install debootstrap -y
+debootstrap --variant=minbase bionic /better-root
+
+# head into the new namespace'd, chroot'd environment
+unshare --mount --uts --ipc --net --pid --fork --user --map-root-user 
+chroot /better-root bash # this also chroot's for us
+mount -t proc none /proc # process namespace
+mount -t sysfs none /sys # filesystem
+mount -t tmpfs none /tmp # filesystem
+# try bash & ls
+```
+</details>
+
 
 # Run a container image
 
