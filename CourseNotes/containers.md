@@ -299,6 +299,10 @@ Push a local image to a remote repository
 - [RedHat - podman + systemd & starting on boot](https://www.redhat.com/sysadmin/container-systemd-persist-reboot)
 - [Bauldung - docker attach and detach container](https://www.baeldung.com/ops/docker-attach-detach-container)
 
+## Container Exploits
+
+- [hacktricks - Docker breakout w/ privilege escalation](https://github.com/carlospolop/hacktricks/blob/master/linux-unix/privilege-escalation/docker-breakout.md)
+
 ## Blogs to Follow
 
 If you, like me, think containers are the bees knees, here is a list of who I follow:
