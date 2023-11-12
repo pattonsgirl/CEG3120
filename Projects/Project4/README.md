@@ -24,14 +24,14 @@ The documentation bullet points are written linearly.  As long as the informatio
 Completion of each milestone **by the date specified for the milestone** will get you 5%
 of extra credit per milestone date met. To qualify, you must submit your project on the milestone date to the Dropbox for Project 4 in Pilot.
 
-All parts for the project are due 11/22
+All parts for the project are due 12/1
 
 - [Part 1 - Dockerize it](#Part-1---Dockerize-it)
-  - Milestone due 11/13
+  - Milestone due 11/17
 - [Part 2 - GitHub Actions and DockerHub](#Part-2---GitHub-Actions-and-DockerHub)
-  - Milestone due 11/20
+  - Milestone due 11/27
 - [Part 3 - Diagramming](#Part-3---Diagramming)
-  - All parts are due 11/22
+  - All parts are due 12/1
   - No EC
 
 ## Part 1 - Dockerize it
