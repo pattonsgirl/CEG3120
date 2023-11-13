@@ -172,6 +172,8 @@ Send a kill signal to running container
 Remove a container.  Use `-f` to force (`stop`/`kill` + `rm`)
 - `docker rm container_id`
 - `podman rm container_id`
+Remove all exited containers
+- `docker rm $(docker ps --filter status=exited -q)`
 
 ### rmi
 Remove a local image from local cache.  Use `-f` to force
