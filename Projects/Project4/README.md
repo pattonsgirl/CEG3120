@@ -79,6 +79,7 @@ Create `README-CI.md` in main folder of your repo that details the following:
 - How to authenticate with DockerHub via CLI using Dockerhub credentials
   - what credentials would you recommend providing?
 - How to push container image to Dockerhub (without GitHub Actions)
+- **Link** to your DockerHub repository
 - Configuring GitHub Secrets
   - How to set a secret
   - What secret(s) are set for this project
