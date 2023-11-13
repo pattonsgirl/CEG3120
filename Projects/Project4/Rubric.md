@@ -1,6 +1,6 @@
 # Project 4 Rubric
 
-/ 15
+/ 16
 
 ## Repo contents ( / 4)
 
@@ -18,13 +18,14 @@
   - how to run the container
   - how to view the project (open a browser...go to ip and port...)
 
-## GitHub Actions and DockerHub ( / 5)
+## GitHub Actions and DockerHub ( / 6)
 
 - Create DockerHub public repo
   - process to create
 - How to authenticate with DockerHub via CLI using Dockerhub credentials
   - what credentials would you recommend providing?
 - How to push container image to Dockerhub (without GitHub Actions)
+- **Link** to your DockerHub repository
 - Configuring GitHub Secrets
   - How to set a secret
   - What secret(s) are set for this project
