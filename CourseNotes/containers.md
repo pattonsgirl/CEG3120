@@ -293,7 +293,7 @@ There are tools that can scan your software and container and check for vulnerab
 
 Checkout [documentation for how to use trivvy to scan a container image](https://github.com/aquasecurity/trivy)
 
-Once you learn about [GitHub Actions](github-actions.md), you should note that there does exist a [Trivvy action - `aquasecurity/trivvy-action`](https://github.com/aquasecurity/trivy-action) where you can view the runner's logs to see the scan results.  Viewing the runner's logs is not a terribly convenient way of getting notified when software does have a vulnerability issue, so you should also note that Trivvy's parent comany, Aqua, has an [action - `aquasecurity/build-security-action`](https://github.com/aquasecurity/build-security-action) that will take the results of the Trivvy scan and upload them to a web portal, where you can also trigger notification events.
+Once you learn about [GitHub Actions](github-actions.md), you should note that there does exist a [Trivvy action - `aquasecurity/trivvy-action`](https://github.com/aquasecurity/trivy-action) where you can view the runner's logs to see the scan results.  This article form Aquasec [is a guide to using the Trivvy action](https://blog.aquasec.com/devsecops-with-trivy-github-actions). Viewing the runner's logs is not a terribly convenient way of getting notified when software does have a vulnerability issue, so you should also note that Trivvy's parent comany, Aqua, has an [action - `aquasecurity/build-security-action`](https://github.com/aquasecurity/build-security-action) that will take the results of the Trivvy scan and upload them to a web portal, where you can also trigger notification events.
 
 ## Things to Think On
 
