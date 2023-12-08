@@ -37,7 +37,7 @@
 
 - Logically diagrammed steps for continuous integration workflow
 
-## Point Deductions (- / 3)
+## Point Deductions (- / 6)
 
 - Dockerfile does not build an image per specification
 - Secrets not defined

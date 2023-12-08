@@ -41,7 +41,7 @@
 
 - Logically diagrammed steps for continuous deployment workflow
 
-## Point Deductions: (- / 3)
+## Point Deductions: (- / 6)
 
 - Action does not push image(s) to DockerHub
 - Action does not tag versions

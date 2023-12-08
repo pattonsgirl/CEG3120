@@ -94,7 +94,13 @@ Update `README-CD.md` in main folder of your repo to include:
   - Description of what it does
   - Where it should be on the instance (if someone were to use your setup)
 - How to configure GitHub OR DockerHub to message the listener 
-- RECORD your whole workflow process - from `commit` and `push` to your instance getting a fresh image
+- Provide proof that the CI & CD workflow work.  This means:
+  1. starting with a `commit` that is a change, `tag`ing the `commit`, `push`ing the `tag`
+  2. Showing your GitHub workflow returning a message of success.
+  3. Showing DockerHub has freshly pushed images.
+  4. Showing the instance that you are deploying to has the container updated.  
+  
+  Proof can be provided by **either** demonstrating to me in person OR by creating a *video* of the process.  If you go the video route and your file is too large for GitHub, submit it to the "Project 5 - Proof of Flow" Dropbox on Pilot
 
 ### Resources
 
