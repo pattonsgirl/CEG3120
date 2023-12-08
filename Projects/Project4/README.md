@@ -27,7 +27,7 @@ of extra credit per milestone date met. To qualify, you must submit your project
 All parts for the project are due 12/1
 
 - [Part 1 - Dockerize it](#Part-1---Dockerize-it)
-  - Milestone due 11/17
+  - Milestone due 11/18
 - [Part 2 - GitHub Actions and DockerHub](#Part-2---GitHub-Actions-and-DockerHub)
   - Milestone due 11/27
 - [Part 3 - Diagramming](#Part-3---Diagramming)

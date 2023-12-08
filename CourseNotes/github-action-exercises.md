@@ -67,9 +67,12 @@ GitHub will not "show" values that are encrypted secrets - you will always see t
 See resources in P4 for some really useful samples
 
 1. checkout repo contents to runner (needs to access site content to copy in to image & Dockerfile of instructions)
+    - [actions/checkout action](https://github.com/actions/checkout)
 2. use an action to login to DockerHub - put credentials (or at least pat) in Action Secrets for repository
+    - [docker/login action](https://github.com/docker/login-action)
 3. use actions to set up runner to use docker
 4. use action to build image and push image to DockerHub
+    - [docker/build-push-action action](https://github.com/docker/build-push-action)
 
 ## Use Semantic Versioning w/ `tags`
 

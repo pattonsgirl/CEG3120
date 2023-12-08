@@ -4,6 +4,8 @@
 GitHub Actions goes beyond just DevOps and lets you run workflows when other events happen in your repository. For example, you can run a workflow to automatically add the appropriate labels whenever someone creates a new issue in your repository.  
 GitHub provides Linux, Windows, and macOS virtual machines to run your workflows, or you can host your own self-hosted runners in your own data center or cloud infrastructure. - [GitHub Docs](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions)
 
+You can also checkout [Docker's guide to Getting Started with GitHub Actions](https://docs.docker.com/build/ci/github-actions/) for another viewpoint.
+
 ## Workflows
 
 A workflow is a configurable automated process that will run one or more jobs
@@ -150,6 +152,9 @@ To view your workflows, go to GitHub repo -> Actions
 Branches allow you to code features or fix bugs without impacting the main code branch
 
 Tags are essential for marking a point in time in your code, such as a new release of your application.
+
+![commits vs branches vs tags](https://docs.docker.com/build/ci/github-actions/manage-tags-labels/)
+[Useful diagram comparing commits, branches, and tags](https://blog.git-init.com/how-commits-branches-and-tags-interplay/)
 
 A Release is a GitHub concept - it is created from an existing tag and exposes release notes and links to download the software or source code from GitHub.
 
