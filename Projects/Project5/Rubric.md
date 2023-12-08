@@ -35,7 +35,7 @@
   - Description of what it does
   - Where it should be on server
 - How to configure GitHub OR DockerHub to message the listener
-- RECORD your whole workflow process - from `commit` and `push` to your server getting a fresh image 
+- Either in-person demonstration OR video file showing full CI / CD workflow in action 
 
 ## Diagramming ( / 1)
 
