@@ -1,12 +1,7 @@
 # Final Review for CEG 3120
 
-## Spring 2023
-
 ## Da Rules
 
-Final: Monday, 4/24
-
-- Available 12:30 PM to 2:30 PM
 - 1 attempt, 2 hours once started
 - Open note, open terminal
 
