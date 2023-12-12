@@ -51,7 +51,8 @@
 ## Week 3 / 4
 
 - the cloud
-  - types of cloud services
+  - ~~types of cloud services~~
+    - we are using IAAS (Infrastrcuture as a Service).  Others exist
   - regions
   - access management of cloud resources
     - IAM tokens for **authorization** 
@@ -163,17 +164,3 @@
 
 - versioning DockerHub images with GitHub Actions
 - use DockerHub or GitHub to send payload with WebHooks
-
-## Week 13 / 14
-
-- API (focus of RESTful APIs)
-  - What we implemented in class:
-    1. Setup a read-only flask app (GET)
-        - use a Python list
-        - use a database
-    2. Enable record writing (POST)
-    3. Enable record deletion (DELETE)
-    4. Containerize that app
-    5. Play with load balancers
-        - host site
-        - host API
