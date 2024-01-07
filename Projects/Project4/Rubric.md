@@ -37,8 +37,9 @@
 
 - Logically diagrammed steps for continuous integration workflow
 
-## Point Deductions (- / 6)
+## Point Deductions (- / 8)
 
 - Dockerfile does not build an image per specification
+- Image never pushed to DockerHub repository
 - Secrets not defined
 - Workflow does not build and push image to DockerHub

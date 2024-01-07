@@ -1,21 +1,23 @@
 # Project 0 Rubric
 
-## Total Score: / 22
+## Total Score: / 26
 
-## Command line git ( / 13)
+## Command line git ( / 15)
 
 Command definition & example use for each:
 
 - status
+- log
 - clone
 - add
-- rm
+- rm (with untrack vs untrack & remove from workspace examples)
 - commit
 - push
 - fetch
 - merge
 - pull
 - branch
+- tag
 - checkout
 - init
 - remote
@@ -29,10 +31,17 @@ Provide descriptions of expected contents and what these are used for
 
 ## GitHub ( / 2)
 
-Provide basic how-to-use guides for both.  This should be short and sweet so that you can refer to it as a quick guide.
+Provide basic how-to-use guides. For credit this should be enough to info to understand what a Pull Request is (1 pt) and how to perform one (1 pt).
 
-- Pull requests
+- Pull Requests
+
+## SSH ( / 2)
+
+Provide basic how-to-use guides. For credit this should be enough to info to understand what a Pull Request is and how to perform one.
+
 - SSH authentication to repositories
+- SSH authentication to an AWS instance
+- Using the `config` file in the `.ssh` folder
 
 ## Demonstrations ( / 5)
 
@@ -41,3 +50,7 @@ Provide basic how-to-use guides for both.  This should be short and sweet so tha
 - More than the `main` branch is selectable in GitHub.  We can switch to the other branch and see content that may not be synced to `main`
 - GitHub repo should contain a `.gitignore` file that shows you are ignoring a set of files (or a folder) to prevent accidentally tracking them
 - Generate and complete a Pull Request in your repository in GitHub.  Pretend you are two people.
+
+## Point Deductions
+
+- (-20% / 5.2 pts) Document does not use markdown to provide a clean visual of information

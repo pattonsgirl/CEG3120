@@ -21,7 +21,7 @@
   - what does it do and when
 - Link to Docker Hub repository (as additional proof)
 
-## Deployment ( / 8)
+## Deployment ( / 7)
 
 - How to install Docker to your instance
 - Container restart script
@@ -35,6 +35,9 @@
   - Description of what it does
   - Where it should be on server
 - How to configure GitHub OR DockerHub to message the listener
+
+## Demonstration ( / 1)
+
 - Either in-person demonstration OR video file showing full CI / CD workflow in action 
 
 ## Diagramming ( / 1)
@@ -43,6 +46,6 @@
 
 ## Point Deductions: (- / 6)
 
-- Action does not push image(s) to DockerHub
-- Action does not tag versions
+- Action does not push image(s) to DockerHub or images are do not use semantic versions in tagging
 - Web hook does not trigger with payload from DockerHub or GitHub
+- Markdown (README) does not use good formatting practice
