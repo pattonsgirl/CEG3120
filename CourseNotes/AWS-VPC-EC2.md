@@ -9,6 +9,11 @@ Need to remember networking 101?  Check out [some other course notes](https://gi
 
 This is a fairly dry, info only page.  Companion drawings are in the OneNote Notebook linked on Pilot.
 
+## Types of Cloud Computing
+
+- [RedHat - Types of cloud computing](https://www.redhat.com/en/topics/cloud-computing/public-cloud-vs-private-cloud-and-hybrid-cloud)
+- [Google Cloud - What are the different types of cloud computing?](https://cloud.google.com/discover/types-of-cloud-computing)
+
 ## AWS VPC
 
 AWS [Virtual Private Cloud (VPC)](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html) allows you to launch resources to a network you define.  The VPC menu in AWS focuses on the network resources in the VPC, while the EC2 menu (discussed later) focuses on instances.
