@@ -40,6 +40,10 @@ An [internet gateway](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Inter
 
 AWS has made a happy [chart of comparison between Security Groups & Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Security.html#VPC_Security_Comparison)
 
+[Sysdig has an excellent article](https://sysdig.com/blog/aws-security-groups-guide/) detailing differences between the two and highlighting the stateful nature of Security Groups vs the stateless nature of Network ACLs.
+
+As far as the chicken and the egg question, the two work together.  There were eggs near the chicken when it was found.
+
 ### Public vs Private Subnets
 
 | Public subnet | Private subnet |
