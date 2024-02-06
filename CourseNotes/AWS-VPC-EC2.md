@@ -128,6 +128,22 @@ AWS [Elastic Cloud Compute (EC2)](https://docs.aws.amazon.com/AWSEC2/latest/User
 
 - [Visually Create a VPC](https://aws.amazon.com/blogs/aws/new-visualize-your-vpc-resources-from-amazon-vpc-creation-experience/)
 
+### EBS Snapshot
+> You can back up the data on your Amazon EBS volumes by making point-in-time copies, known as Amazon EBS snapshots. A snapshot is an incremental backup, which means that we save only the blocks on the device that have changed since your most recent snapshot. This minimizes the time required to create the snapshot and saves on storage costs by not duplicating data. - [Amazon EBS Snapshots](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html)
+
+[Create a snapshot](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-snapshot.html)
+
+### Create an AMI from an Amazon EC2 Instance
+From the Amazon EC2 Instances view, you can create Amazon Machine Images (AMIs) from either running or stopped instances.
+
+- [Create an AMI from an EC2 Instance](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/tkv-create-ami-from-instance.html)
+
+### Launch an instance from a launch template
+> You can create a launch template that contains the configuration information to launch an instance. You can use launch templates to store launch parameters so that you do not have to specify them every time you launch an instance. For example, a launch template can contain the AMI ID, instance type, and network settings that you typically use to launch instances. When you launch an instance using the Amazon EC2 console, an AWS SDK, or a command line tool, you can specify the launch template to use. - [Amazon EC2 Launch Templates](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html)
+
+- [Create a Launch Template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-launch-template.html)
+- [Launch instances from a Launch Template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launch-instances-from-launch-template.html)
+
 ## Security Best Practices
 
 Security Groups & Network ACLs manage network firewalls within a VPC, but there is more to secure than firewalls for users, tools, etc. managed within an AWS account.
