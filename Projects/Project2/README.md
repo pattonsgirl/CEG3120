@@ -56,6 +56,7 @@ Other notes:
      - Your home / where you usually connect to your instances from
      - Wright State (CIDR block 130.108.0.0/16)
      - Instances within the VPC or subnet
+   - Allow HTTP access from any IP source
 
 5. Instance settings:
 
