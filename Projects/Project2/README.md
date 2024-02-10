@@ -22,8 +22,10 @@ The "cloud" agrees, and therefore cloud services created templates. In AWS, thes
 Create a folder in your repo named `Project2` that contains your deliverables:
 - a **CloudFormation template named `YOURNAME-CF.yml`**.
   - A [base YAML template - `cf-template.yml`](cf-template.yml) has been provided for you. Due to how many things are in these templates, I would use this base and make the modifications requested. You can Google how these are defined the way they are, additional parameters, etc.
-- a `README.md` file that includes a visual **diagram** of the resources how they connect (and any companion explanation to your visualization)
-  - creating your diagram with the CloudFormation template Designer **will not** count for credit
+- a `README.md` file that includes:
+  - a project description & any additional how-to notes you'd like to leave for future you
+  - a visual **diagram** of the resources how they connect and a companion explanation to your visualization
+    - creating your diagram with the CloudFormation template Designer **will not** count for credit
   - you are welcome to include notes in the `README.md` file if you need to write notes about your template for partial credit.
 
 Other notes: 
