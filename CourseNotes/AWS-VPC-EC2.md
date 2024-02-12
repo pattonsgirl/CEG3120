@@ -1,7 +1,5 @@
 # AWS - VPC & EC2
 
-![crappy demo](../Images/demo.JPG)
-
 The purpose of this chunk is to:
 - Play around in areas of AWS (specifically the VPC & EC2 resource menus)
 - Understand resources / configurations needed to build a cloud network
@@ -43,6 +41,8 @@ An [internet gateway](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Inter
 AWS has made a happy [chart of comparison between Security Groups & Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Security.html#VPC_Security_Comparison)
 
 [Sysdig has an excellent article](https://sysdig.com/blog/aws-security-groups-guide/) detailing differences between the two and highlighting the stateful nature of Security Groups vs the stateless nature of Network ACLs.
+
+[AWS VPC Security – Security Group vs NACLs](https://jayendrapatil.com/aws-vpc-security-group-vs-nacls/) is a second great article.
 
 As far as the chicken and the egg question, the two work together.  There were eggs near the chicken when it was found.
 
