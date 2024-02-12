@@ -227,7 +227,7 @@ Reserve an Elastic IP address, associate with instance
 ```
 
 Define a Security Group, attach it to VPC
-- [EC2 SecurityGroup](- https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html)
+- [EC2 SecurityGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html)
 - Ingress = Inbound rules
 - Egress = Outbound rules
   - by default, outbound traffic is not restricted.
