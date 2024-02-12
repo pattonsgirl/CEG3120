@@ -1,7 +1,5 @@
 # AWS - VPC & EC2
 
-![crappy demo](../Images/demo.JPG)
-
 The purpose of this chunk is to:
 - Play around in areas of AWS (specifically the VPC & EC2 resource menus)
 - Understand resources / configurations needed to build a cloud network
