@@ -42,6 +42,8 @@ AWS has made a happy [chart of comparison between Security Groups & Network ACLs
 
 [Sysdig has an excellent article](https://sysdig.com/blog/aws-security-groups-guide/) detailing differences between the two and highlighting the stateful nature of Security Groups vs the stateless nature of Network ACLs.
 
+[AWS VPC Security – Security Group vs NACLs](https://jayendrapatil.com/aws-vpc-security-group-vs-nacls/) is a second great article.
+
 As far as the chicken and the egg question, the two work together.  There were eggs near the chicken when it was found.
 
 ### Public vs Private Subnets
