@@ -9,6 +9,8 @@ Need to remember networking 101?  Check out [some other course notes](https://gi
 
 This is a fairly dry, info only page.  Companion drawings are in the OneNote Notebook linked on Pilot.
 
+There are [limits to number of resources you can have, typically per Region](https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html).  If you cannot create a resource, you should see if it is because you have reserved the maximum number.
+
 ## Types of Cloud Computing
 
 - [RedHat - Types of cloud computing](https://www.redhat.com/en/topics/cloud-computing/public-cloud-vs-private-cloud-and-hybrid-cloud)
