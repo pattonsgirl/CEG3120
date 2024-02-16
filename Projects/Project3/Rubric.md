@@ -1,6 +1,6 @@
 # Project 3 Rubric
 
-/ 31
+## Project Score: / 31
 
 ## CloudFormation template ( / 15)
 
