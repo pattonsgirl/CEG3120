@@ -36,6 +36,7 @@ If document includes all project instruction text (my assignment words) it will 
 1. Project description
    - Provide an overview of the project goal
    - Provide a description of how to use the CF template to create a stack and what resources are created.
+   - **Diagram** of how the load balancer works in context of your resources
 2. `ssh` within VPC:
    - Describe how the file is configured on each instance and what the benefit is
    - Document how to `ssh` among the instances
@@ -45,7 +46,7 @@ If document includes all project instruction text (my assignment words) it will 
    - How to restart the service after a configuration change
    - Resources used (websites)
 4. How to set up Hosts 1, 2, & 3 to serve web content
-   - Document any changed configurations (if any)
+   - Document any changed configuration files (if any)
    - Document where site content files are located (and why)
    - Web content has been modified from base files given (validated in proof screenshot)
    - How to restart the service in case of a configuration change

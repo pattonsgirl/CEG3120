@@ -53,9 +53,11 @@ Modify the template in the following ways:
    - Allow `ssh` requests from your home IP
    - Allow `http` requests from within VPC CIDR block
    - Allow `http` requests from any IP
+   - *If doing Extra Credit* Add `https` rules in addition to `http` rules
 6. For the load balancer (proxy) instance:
    - assign private IP on public subnet
    - install `haproxy`
+   - configure a unique `hostname` on the instance
 7. For host instances:
    - create three total host instances (one is templated, two more need to be added)
    - tag each with a unique name
@@ -72,6 +74,8 @@ In your `Project3` folder, create a `README.md` file.  This document will focus 
 1. Project description
    - Provide an overview of the project goal
    - Provide a description of how to use the CF template to create a stack and what resources are created.
+   - Create a **diagram** of how the load balancer works in context of your resources
+      - See [Project 2 for diagram resources](../Project2/README.md)
 2. `ssh` within VPC:
    - Configure `/etc/hosts` OR `.ssh/config` on each instance
       - I like to do both, but that's me
@@ -83,8 +87,8 @@ In your `Project3` folder, create a `README.md` file.  This document will focus 
    - How to restart the service after a configuration change
    - Resources used (websites)
 4. How to set up Hosts 1, 2, & 3 to serve web content
-   - **NOTE** web content should be uniquely yours, but as stated you may use `site.tar.gz` as a base
-   - Document any changed configurations (if any)
+   - **NOTE** web content should be uniquely yours, but as stated you may use `site.tar.gz` as a base and make modifications to the text
+   - Document any changed configuration files (if any)
    - Document where site content files are located (and why)
    - How to restart the service in case of a configuration change
    - Resources used (websites)
