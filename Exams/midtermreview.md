@@ -49,7 +49,7 @@
   - types of cloud services
   - regions
   - access management of cloud resources
-    - IAM tokens for **authorization** 
+    - ~~IAM tokens for **authorization**~~
       - can create(?) access(?) delete(?) view billing(?)
 - AWS
   - VPC
@@ -76,7 +76,7 @@
   - using YAML/JSON formatted files
 - Debugging CF Templates
 
-### Project
+### Project 2
 
 - Create CloudFormation template
   - should mimic what was manually created
@@ -88,14 +88,14 @@
   - apache vs nginx
   - status / control of services (systemctl)
   - service logs (apache & ssh)
-- ~~proxies~~
+- proxies
   - forward vs reverse
-- ~~load balancers~~  
+- load balancers
   - terminology
   - function
   - Layer 4 vs Layer 7
 
-### Project 2
+### Project 3
 
 - CF Template
   - create one instance with public IP
