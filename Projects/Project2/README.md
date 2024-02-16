@@ -67,13 +67,14 @@ Other notes:
    - Using the configuration script in the `cf-template` to also:
      - Change `hostname`
      - Install `git`, `python3`, `pip3`, and `apache2`
-       - Note these are the names of the exectuable once installed - you'll need to find the correct package name & package repository manager per your AMI / Linux distribution
+       - Note these are the names of the executable once installed - you'll need to find the correct package name & package repository manager per your AMI / Linux distribution
 
 6. Use the "CloudFormation" in the AWS console to test your CloudFormation template and make sure it builds an image per specification.  See [Identifying Success](#identifying-success)
   - If a stack fails during creation, associated resources (even if create was a success) will also be deleted (it is an all or nothing creation process)
 
 7. Diagram:
 - how resources are connected.  I'm leaving some creative openness here.  You can combine an explanation to go with your visualization.
+    - creating your diagram with the CloudFormation template Designer **will not** count for credit
 - Recommended diagramming resources: 
   - [Lucid Charts](https://www.lucidchart.com/pages/)
   - [Textographo](https://textografo.com/)
@@ -100,3 +101,7 @@ A successful stack will (once created) have an instance you can `ssh` into. Your
 2. In Pilot, paste the link to your project folder. Sample link: https://github.com/WSU-kduncan/ceg3120f23-YOURGITHUBUSERNAME/blob/main/Projects/Project2
 
 3. Do not leave stacks running. Once your template creates a stack successfully, you may delete the stack
+
+## Rubric
+
+[Rubric](Rubric.md)
