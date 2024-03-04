@@ -158,6 +158,10 @@ Useful commands:
 - `nmap -A -Pn hostname`
 - `netstat -tulpn | grep :443`
 - [`hey`](https://github.com/rakyll/hey)
+    - `wget` package URL
+    - make executable
+    - add to PATH
+    - `hey -n 5000 http://EIP_or_hostname`
 - [`hurl`](https://github.com/Orange-OpenSource/hurl)
 
 ### Logging
