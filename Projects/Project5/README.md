@@ -24,14 +24,14 @@ The documentation bullet points are written linearly.  As long as the informatio
 Completion of each milestone **by the date specified for the milestone** will get you 5%
 of extra credit per milestone date met. To qualify, you must submit your project on the milestone date to the Dropbox for Project 5 in Pilot.
 
-All parts for the project are due 12/15
+All parts for the project are due 4/19
 
 - [Part 1 - Semantic Versioning](#Part-1---Semantic-Versioning)
-  - Milestone due 12/4
+  - Milestone due 4/5
 - [Part 2 - Deployment](#Part-2---Deployment)
-  - Milestone due 12/11
+  - Milestone due 4/15
 - [Part 3 - Diagramming](#Part-3---Diagramming)
-  - All parts are due 12/15
+  - All parts are due 4/19
   - No EC
 
 ## Part 1 - Semantic Versioning
