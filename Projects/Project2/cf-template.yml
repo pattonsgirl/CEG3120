@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: >-
+Description: >- AWS 
   Testing area for AWS: This CloudFormation template builds a linux VM for CEG 2350 @ WSU.
 Parameters:
   KeyName:
