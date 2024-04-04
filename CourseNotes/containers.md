@@ -77,15 +77,21 @@ You are going to see two container managers focused on in this document: Docker 
 
 ### Docker
 
-- Windows
+- Windows 10/11:
     - have WSL2 (Hyper-V may be enough)
     - [install Docker Desktop](https://docs.docker.com/desktop/windows/wsl/)
-- Linux
-    - [install docker or Docker Desktop](https://docs.docker.com/desktop/install/linux-install/)
+- Linux:
+    - [install Docker Desktop](https://docs.docker.com/desktop/install/linux-install/)
+- Ubuntu (via `apt`):
+    - [install Docker on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+- Amazon Linux 2 (via `yum`):
+    - [install Docker on Amazon Linux 2 AMI](https://www.cyberciti.biz/faq/how-to-install-docker-on-amazon-linux-2/)    
 - Mac w/ Intel Chip: 
     - [install Docker Desktop](https://docs.docker.com/desktop/install/mac-install/)
 - Mac w/ Silicon Chip (M1 & M2): 
     - [install Rosetta 2, then install Docker Desktop](https://docs.docker.com/desktop/install/mac-install/)
+ 
+[Recommended Post-Installation actions](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user)
 
 ### Podman
 
