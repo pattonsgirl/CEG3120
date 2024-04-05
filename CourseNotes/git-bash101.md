@@ -80,6 +80,7 @@ Know how to:
 Resources:
 - [git official docs](https://git-scm.com/docs/gittutorial)
 - [git - the simple guide](https://rogerdudler.github.io/git-guide/)
+- [Git How-To](https://githowto.com/) & it's companion, [Git Immersion - Ruby focused](https://gitimmersion.com/lab_01.html)
 - [Git Essentials - Sankalp Swami](https://dev.to/sankalpswami1122/git-essentials-4kff)
 - [DZone - Top 20 git commands with examples](https://dzone.com/articles/top-20-git-commands-with-examples)
 - [learn git branching - interactive tutorial](https://learngitbranching.js.org/?locale=en_US)
@@ -88,7 +89,8 @@ Resources:
 - git-sim - neat tool to visualize your own commits
   - [dependencies](https://docs.manim.community/en/stable/installation/linux.html)
   - [git-sim github repo](https://github.com/initialcommit-com/git-sim)
-  - [blog on git-sim](https://initialcommit.com/blog/git-sim) 
+  - [blog on git-sim](https://initialcommit.com/blog/git-sim)
+- [Git Murder Mystery](https://github.com/nivbend/gitstery)
 
 ## GitHub Essentials
 
