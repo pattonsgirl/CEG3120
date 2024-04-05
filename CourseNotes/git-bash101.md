@@ -91,6 +91,10 @@ Resources:
   - [git-sim github repo](https://github.com/initialcommit-com/git-sim)
   - [blog on git-sim](https://initialcommit.com/blog/git-sim)
 - [Git Murder Mystery](https://github.com/nivbend/gitstery)
+- Understanding git in the weeds:
+  - [The Pragmatic Git - How Does Git Store Files?](https://blog.git-init.com/how-does-git-store-files/)
+  - [How to Dev - How git Stores Data](https://how-to.dev/how-git-stores-data)
+  - [Thought RAM - The anatomy of a Git commit](https://blog.thoughtram.io/git/2014/11/18/the-anatomy-of-a-git-commit.html)
 
 ## GitHub Essentials
 
