@@ -1,6 +1,4 @@
-## restarting a container
-
-## webhook 
+## webhook as a listening service
 
 Using [adnanh's webhook](https://github.com/adnanh/webhook)
 
