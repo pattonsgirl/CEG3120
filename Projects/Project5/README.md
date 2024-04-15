@@ -45,6 +45,10 @@ Right now, you likely `tag` the image with `latest`.  This means versions are ne
   - run when a `tag` is `push`ed
   - use the `docker/metadata-action` to generate a set of tags from your repository
   - push images to DockerHub with an image tags based on your `git` `tag` version AND `latest`
+  - DockerHub should recieve a tag set of:
+      - latest
+      - major
+      - major.minor
 
 ### Documentation
 
@@ -86,19 +90,23 @@ Update `README-CD.md` in main folder of your repo to include:
 - Container restart script
   - Justification & description of what it does
   - Where it should be on the instance (if someone were to use your setup)
-- Setting up a `webhook` on the instance
+  - ADD your script to your repository
+- Setting up a `webhook` listener on the instance
   - How to install [adnanh's `webhook`](https://github.com/adnanh/webhook) to the instance
-  - How to start the `webhook`
-    - since our instance's reboot, we need to handle this
 - `webhook` task definition file
   - Description of what it does
   - Where it should be on the instance (if someone were to use your setup)
+  - ADD your webhook definition file to your repository
+- How to start the `webhook`
+- How to modify/ create a webhook service file such that your webhook listener is listening as soon as the system is booted
+    - include commands to reload the service respective to files changed (webhook service file versus hook definition file)
+    - ADD your webhook service file to your repository
 - How to configure GitHub OR DockerHub to message the listener 
 - Provide proof that the CI & CD workflow work.  This means:
   1. starting with a `commit` that is a change, `tag`ing the `commit`, `push`ing the `tag`
   2. Showing your GitHub workflow returning a message of success.
   3. Showing DockerHub has freshly pushed images.
-  4. Showing the instance that you are deploying to has the container updated.  
+  4. Showing the instance that you are deploying to has webhook logs indicating the payload was recieved and the container has updated.  
   
   Proof can be provided by **either** demonstrating to me in person OR by creating a *video* of the process.  If you go the video route and your file is too large for GitHub, submit it to the "Project 5 - Proof of Flow" Dropbox on Pilot
 
@@ -106,7 +114,6 @@ Update `README-CD.md` in main folder of your repo to include:
 
 - [Using GitHub actions and `webhook`s](https://levelup.gitconnected.com/automated-deployment-using-docker-github-actions-and-webhooks-54018fc12e32)
 - [Using DockerHub and `webhook`s](https://blog.devgenius.io/build-your-first-ci-cd-pipeline-using-docker-github-actions-and-webhooks-while-creating-your-own-da783110e151)
-  - Note: this has been the method focused on in lecture
 
 ## Part 3 - Diagramming
 
@@ -135,6 +142,7 @@ Your repo should contain:
    - `deployment` folder with:
      - container restart script
      - `hook` definition file
+     - webhook service file
 
 2. In Pilot, paste the link to your project folder.
 
