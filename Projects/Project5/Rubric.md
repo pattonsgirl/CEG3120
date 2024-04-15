@@ -11,6 +11,7 @@
 - `deployment` folder with:
   - container restart script
   - `hook` definition file
+  - webhook service file
 
 ## Semantic Versioning ( / 3)
 
@@ -27,13 +28,14 @@
 - Container restart script
   - Justification & description of what it does
   - Where it should be on server
-- Setting up a `webhook` on the server
-  - How to install adnanh's `webhook` to server
-  - How to start the `webhook`
-    - since our instance's reboot, we need to handle this
+- Setting up a `webhook` listener on the instance
+  - How to install [adnanh's `webhook`](https://github.com/adnanh/webhook) to the instance
 - `webhook` task definition file
   - Description of what it does
-  - Where it should be on server
+  - Where it should be on the instance (if someone were to use your setup)
+- How to start the `webhook`
+- How to modify/ create a webhook service file such that your webhook listener is listening as soon as the system is booted
+    - include commands to reload the service respective to files changed (webhook service file versus hook definition file)
 - How to configure GitHub OR DockerHub to message the listener
 
 ## Demonstration ( / 1)
