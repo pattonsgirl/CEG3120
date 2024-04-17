@@ -1,10 +1,5 @@
 # Final Review for CEG 3120
 
-## Da Rules
-
-- 1 attempt, 2 hours once started
-- Open note, open terminal
-
 ## Week 1 / 2
 
 - create aws stack
@@ -51,11 +46,10 @@
 ## Week 3 / 4
 
 - the cloud
-  - ~~types of cloud services~~
-    - we are using IAAS (Infrastrcuture as a Service).  Others exist
+  - types of cloud services
   - regions
   - access management of cloud resources
-    - IAM tokens for **authorization** 
+    - ~~IAM tokens for **authorization**~~
       - can create(?) access(?) delete(?) view billing(?)
 - AWS
   - VPC
