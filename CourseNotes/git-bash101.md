@@ -63,6 +63,7 @@ Resources:
 - [Linux Journey - interactive practice](https://notes.siira.io/)
 - [Mozilla - Command Line crash course](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Command_line)
 - [The Odin Project - Foundations of Command Line Basics](https://www.theodinproject.com/lessons/foundations-command-line-basics)
+- [Oh My Bash!](https://github.com/ohmybash/oh-my-bash/tree/master)
 
 ## git Essentials
 
@@ -90,6 +91,7 @@ Resources:
   - [dependencies](https://docs.manim.community/en/stable/installation/linux.html)
   - [git-sim github repo](https://github.com/initialcommit-com/git-sim)
   - [blog on git-sim](https://initialcommit.com/blog/git-sim)
+- [Oh My Git!](https://ohmygit.org/)
 - [Git Murder Mystery](https://github.com/nivbend/gitstery)
 - Understanding git in the weeds:
   - [The Pragmatic Git - How Does Git Store Files?](https://blog.git-init.com/how-does-git-store-files/)
