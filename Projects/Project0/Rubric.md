@@ -37,7 +37,7 @@ Provide basic how-to-use guides. For credit this should be enough to info to und
 
 ## SSH ( / 2)
 
-Provide basic how-to-use guides. For credit this should be enough to info to understand what a Pull Request is and how to perform one.
+Provide basic how-to-use guides.
 
 - SSH authentication to repositories
 - SSH authentication to an AWS instance
