@@ -35,7 +35,7 @@ Provide basic how-to-use guides. For credit this should be enough to info to und
 
 - Pull Requests
 
-## SSH ( / 2)
+## SSH ( / 3)
 
 Provide basic how-to-use guides.
 
