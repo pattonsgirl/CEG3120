@@ -1,6 +1,6 @@
 # Project 0 Rubric
 
-## Total Score: / 26
+## Total Score: / 27
 
 ## Command line git ( / 15)
 
