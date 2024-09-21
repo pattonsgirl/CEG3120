@@ -1,6 +1,6 @@
 # Project 0 Rubric
 
-## Total Score: / 26
+## Total Score: / 27
 
 ## Command line git ( / 15)
 
@@ -35,9 +35,9 @@ Provide basic how-to-use guides. For credit this should be enough to info to und
 
 - Pull Requests
 
-## SSH ( / 2)
+## SSH ( / 3)
 
-Provide basic how-to-use guides. For credit this should be enough to info to understand what a Pull Request is and how to perform one.
+Provide basic how-to-use guides.
 
 - SSH authentication to repositories
 - SSH authentication to an AWS instance
