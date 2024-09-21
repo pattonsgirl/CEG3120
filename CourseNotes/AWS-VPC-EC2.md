@@ -40,7 +40,9 @@ An [internet gateway](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Inter
 
 [Security groups](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html) control the traffic that is allowed to reach and leave the resources that it is associated with.  When you first **create** a security group, it has **no inbound rules**. Therefore, no inbound traffic is allowed until you add inbound rules to the security group.
 
-AWS has made a happy [chart of comparison between Security Groups & Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Security.html#VPC_Security_Comparison)
+AWS has made a happy [chart of comparison between Security Groups & Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html#VPC_Security_Comparison)
+
+![AWS's Security Group vs Network ACL Comparison Chart](images/AWS-SGvsNACL.jpg)
 
 [Sysdig has an excellent article](https://sysdig.com/blog/aws-security-groups-guide/) detailing differences between the two and highlighting the stateful nature of Security Groups vs the stateless nature of Network ACLs.
 
