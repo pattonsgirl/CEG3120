@@ -23,6 +23,7 @@ In your `Project1` folder, create a file named `README.md` Do you work for Parts
 
 For each step below, provide 
    - a description of what the resource does (what is its role).
+   - responses to additional requests for information in any step.
    - a screenshot that shows the network resource has been created according to specification  
    
 You may add whatever additional notes you would like. Getting a good screenshot can be done by clicking on the resource and showing configurations in the details menu.
@@ -34,7 +35,7 @@ You may add whatever additional notes you would like. Getting a good screenshot 
    - Tag the "Name" with "YOURLASTNAME-Subnet"
    - Reserve 172.18.0.0 - 172.18.0.255 for use on this subnet
    - Attach it to your VPC
-   - What block of IPs is still available in your VPC?
+   - Document the reserved block for the subnet **and** the remaining block(s) available in VPC
 3. Create an **Internet Gateway**
    - Tag the "Name" with "YOURLASTNAME-gw"
    - Attach it to your VPC
@@ -45,23 +46,23 @@ You may add whatever additional notes you would like. Getting a good screenshot 
    - Add a routing table rule that sends traffic to destinations external to your subnet CIDR block to your internet gateway
 5. Create a **Security Group**
    - Tag the "Name" with "YOURLASTNAME-sg"
-   - Allow SSH for a set of trusted networks including:
+   - Allow SSH for a set of trusted source networks including:
      - Your home / where you usually connect to your instances from
      - Wright State (addresses in CIDR block 130.108.0.0/16)
      - Instances within the VPC
    - Attach it to your VPC
-   - Image should include your Inbound rules
+   - Make sure screenshot includes content of the Inbound rules
 6. Modify or create a **Network ACL**
    - Tag the "Name" with "YOURLASTNAME-ncal"
    - Affirm association or associate resource with the subnet
    - Deny outbound connections to any port on [wttr.in](https://wttr.in/)
 7. Identify OR create a **Key Pair**
    - Document how the public and private keys of a key pair are stored.
-   - Image should be which Key Pair you are using.
 8. Reserve an **Elastic IP address**. 
    - Tag the "Name" with "YOURLASTNAME-EIP". 
+   - Document the difference between an Elastic IP and a Public IP.
 
-## Part 2 - EC2 instances
+## Part 2 - EC2 Instance Creation
 
 This part will focus on configuring an instance in your VPC.
 
@@ -76,12 +77,11 @@ Note: these steps are ordered based on the "Launch Instances" wizard.
    - keypair selected
    - describe why you need to select a keypair
 2. Attach the instance to your subnet within your VPC. 
-3. Determine and write justification on whether you chose to have a Public IPv4 address will be auto-assigned to the instance. 
-4. Attach a volume to your instance. 
-5. Tag your instance with a "Name" of "YOURLASTNAME-instance". 
-6. Associate your security group, "YOURLASTNAME-sg" to your instance.
-7. Associate the Elastic IP with your instance.
-8. Create a **screenshot of your instance details** and add it to your project write up. 
+3. Attach a volume to your instance. 
+4. Tag your instance with a "Name" of "YOURLASTNAME-instance". 
+5. Associate your security group, "YOURLASTNAME-sg" to your instance.
+6. Associate the Elastic IP with your instance.
+7. Create a **screenshot of your instance details** and add it to your project write up. 
    - Markdown to refer to an image: ![sample instance details](sample.png)
 
 ## Part 3 - Instance Configuration

@@ -19,7 +19,7 @@
 12. Key Pair - role and what is stored where
 13. Key Pair used for project screenshot
 
-## Part 2 - EC2 ( / 10)
+## Part 2 - EC2 Instance Creation ( / 10)
 
 1. Instance details
    - AMI selected - AMI ID & OS w/ version
@@ -36,6 +36,8 @@
 8. Screenshot with instance details
 9. How to change hostname via commands on instance
 10. Screenshot of successful SSH connection to instance (with your new hostname instead of `ip-##-##-##-##`)
+
+## Part 3 - Instance Configuration
 
 ## Point Deductions ( / -4)
 
