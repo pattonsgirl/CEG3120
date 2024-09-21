@@ -28,70 +28,76 @@ For each step below, provide
 You may add whatever additional notes you would like. Getting a good screenshot can be done by clicking on the resource and showing configurations in the details menu.
 
 1. Create a **VPC**
-   - Tag it with "YOURLASTNAME-VPC"
+   - Tag the "Name" with "YOURLASTNAME-VPC"
    - Specify a CIDR block of 172.18.0.0/23
 2. Create a **Subnet**
-   - Tag it with "YOURLASTNAME-Subnet"
+   - Tag the "Name" with "YOURLASTNAME-Subnet"
    - Reserve 172.18.0.0 - 172.18.0.255 for use on this subnet
    - Attach it to your VPC
    - What block of IPs is still available in your VPC?
 3. Create an **Internet Gateway**
-   - Tag it with "YOURLASTNAME-gw"
+   - Tag the "Name" with "YOURLASTNAME-gw"
    - Attach it to your VPC
 4. Create a **Route Table**
-   - Tag it with "YOURLASTNAME-rt"
+   - Tag the "Name" with "YOURLASTNAME-rt"
    - Attach it to your VPC
    - Associate it with your subnet
    - Add a routing table rule that sends traffic to destinations external to your subnet CIDR block to your internet gateway
 5. Create a **Security Group**
-   - Tag it with "YOURLASTNAME-sg"
+   - Tag the "Name" with "YOURLASTNAME-sg"
    - Allow SSH for a set of trusted networks including:
      - Your home / where you usually connect to your instances from
      - Wright State (addresses in CIDR block 130.108.0.0/16)
      - Instances within the VPC
    - Attach it to your VPC
    - Image should include your Inbound rules
-6. Identify OR create a **Key Pair**
+6. Modify or create a **Network ACL**
+   - Tag the "Name" with "YOURLASTNAME-ncal"
+   - Affirm association or associate resource with the subnet
+   - Deny outbound connections to any port on [wttr.in](https://wttr.in/)
+7. Identify OR create a **Key Pair**
    - Document how the public and private keys of a key pair are stored.
    - Image should be which Key Pair you are using.
+8. Reserve an **Elastic IP address**. 
+   - Tag the "Name" with "YOURLASTNAME-EIP". 
 
 ## Part 2 - EC2 instances
 
-This part will focus on running an instance in your VPC.  You will provide specific documentation at each step and **two** screenshots - one proving that your instance is configured in AWS and another proving that your instance is configured.
+This part will focus on configuring an instance in your VPC.
 
-1. Create a new **Instance**. 
-   - Note: these steps are ordered based on the "Launch Instances" wizard.
-2. Fill in the following information about your instance:
+For each step below, provide a description of steps to complete the tasks (screenshots not required) and any additional documentation required by the step.
+
+Note: these steps are ordered based on the "Launch Instances" wizard.
+
+1. Create a new **Instance**. Find and document the following information about your instance:
    - AMI selected - AMI id & OS with version
    - default username of the instance type selected
    - instance type selected 
    - keypair selected
    - describe why you need to select a keypair
 2. Attach the instance to your subnet within your VPC. 
-   - Document how you did it and what this does.
-3. Determine whether a Public IPv4 address will be auto-assigned to the instance. 
-   - Justify your choice to do so (or not do so).  Your answer should include the difference between Public IPv4 addresses and Elastic IP addresses.
-   - **NOTE** - in the next few steps, you will be required to request an Elastic IP address and associate it to the instance. Factor that in to your discussion here.
+3. Determine and write justification on whether you chose to have a Public IPv4 address will be auto-assigned to the instance. 
 4. Attach a volume to your instance. 
-   - Document how you did it and what this does.
 5. Tag your instance with a "Name" of "YOURLASTNAME-instance". 
-   - Document how you did it.
 6. Associate your security group, "YOURLASTNAME-sg" to your instance.
-   - Document how you did it and what this does.
-7. Reserve an Elastic IP address. 
-   - Tag it with "YOURLASTNAME-EIP". 
-   - Associate the Elastic IP with your instance.
-   - Document how you did it and what this does.
-8. Create a **screenshot your instance details** and add it to your project write up. Example below:
-   ![sample instance details](sample.png)
-9. `ssh` in to your instance. 
-   - Change the hostname to "YOURLASTNAME-AMI" where AMI is some identifier of the AMI you chose. 
-   - Document how you did it.
+7. Associate the Elastic IP with your instance.
+8. Create a **screenshot of your instance details** and add it to your project write up. 
+   - Markdown to refer to an image: ![sample instance details](sample.png)
+
+## Part 3 - Instance Configuration
+
+This part will focus on configurations and tests once you `ssh` in to your instance.
+
+For each step below, provide a description of steps to complete the tasks and any additional documentation required by the step.
+
+1. `ssh` in to your instance. 
+2. Change the hostname to "YOURLASTNAME-AMI" where AMI is some identifier of the AMI you chose. 
    - Notes on changing a system hostname: 
       1. It is wise to copy config files you are about to change to filename.old For `/etc/hostname`, for example, I would first copy the current `hostname` file to `/etc/hostname.old`
       2. You should not change permissions on any files you are modifying. They are system config files. You may need to access them with administrative privileges.
       3. Here is a helpful resource: https://www.tecmint.com/set-hostname-permanently-in-linux/ I did not modify `/etc/hosts` on mine - do so or not as you wish.
-10. Create a **screenshot your `ssh` connection to your instance** and add it to your project write up - make sure it shows your new hostname.
+3. Create a **screenshot of your `ssh` connection to your instance** and add it to your project write up - make sure it shows your new hostname in the CLI prompt.
+4. Prove with trial descriptions & screenshots that your Network ACL and Security Group are allowing or blocking traffic per your configurations.
 
 ## Submission
 
