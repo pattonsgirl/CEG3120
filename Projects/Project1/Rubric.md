@@ -1,43 +1,59 @@
 # Project 1 Rubric
 
-/ 23
+/ 33
 
-## Part 1 - VPC ( / 13)
+## Part 1 - Build a VPC ( / 16)
 
-1. VPC role
-2. VPC screenshot w/ proof of configuration per project requirements
-3. Subnet role 
-4. Subnet screenshot w/ proof of configuration per project requirements
-5. Remaining subnet block identified
-6. Internet gateway role
-7. Internet Gateway screenshot w/ proof of configuration per project requirements
-8. Route table role
-9. Route table screenshot w/ proof of configuration per project requirements
-10. Security group role
-11. Security Group screenshot w/ proof of configuration per project requirements
-   - image should capture 3 rules - (-1) point per rule not included
-12. Key Pair - role and what is stored where
-13. Key Pair used for project screenshot
+1. VPC
+   - description + prompt responses
+   - screenshot w/ proof of configuration per project requirements
+2. Subnet 
+   - description + prompt responses
+   - screenshot w/ proof of configuration per project requirements
+3. Internet Gateway 
+   - description + prompt responses
+   - screenshot w/ proof of configuration per project requirements
+4. Route Table 
+   - description + prompt responses
+   - screenshot w/ proof of configuration per project requirements
+5. Security Group 
+   - description + prompt responses
+   - screenshot w/ proof of configuration per project requirements
+      - image should capture capture details for all 3 rules - (-1) point per rule not included
+6. Network ACL 
+   - description + prompt responses
+   - screenshot w/ proof of configuration per project requirements
+7. Key Pair 
+   - description + prompt responses
+   - screenshot w/ proof of configuration per project requirements
+8. Elastic IP 
+   - description + prompt responses
+   - screenshot w/ proof of configuration per project requirements
 
-## Part 2 - EC2 Instance Creation ( / 10)
+## Part 2 - EC2 Instance Creation ( / 12)
 
-1. Instance details
+1. Instance details documents
+   - description of an instance
+   - how-to instance launch process guide includes:
+      - Attach the instance to desired subnet
+      - Using the security group designed for the instance
+      - Attach volume to the instance
+      - Tagging the instance with a Name value
    - AMI selected - AMI ID & OS w/ version
    - default username of the instance type selected
    - instance type selected 
    - keypair selected
-   - describe why select a keypair
-2. How to attach instance to subnet within VPC & why
-3. Public IP address auto-assign - choice justification & Public IP vs Elastic IP
-4. How to create and attach storage volume to instance & why
-5. How to tag instance with "Name" of "YOURLASTNAME-instance"
-6. How to associate VPC security group with your instance & why
-7. How to create / reserve and associate and Elastic IP address with your instance
-8. Screenshot with instance details
-9. How to change hostname via commands on instance
-10. Screenshot of successful SSH connection to instance (with your new hostname instead of `ip-##-##-##-##`)
+   - justification of why or why not a keypair must be selected
+2. How to associate the EIP with the instance
+3. Screenshot with instance details that validates configuration per project requirements
 
-## Part 3 - Instance Configuration
+## Part 3 - Instance Configuration ( / 5)
+
+1. Steps performed to `ssh` to instance
+2. Steps performed to change hostname of instance
+3. Screenshot of `ssh` connection with hostname changed in CLI prompt
+4. Proof that Security Group is applying to instance per project requirements
+5. Proof that Network ACL is applying to instance subnet per project requirements
 
 ## Point Deductions ( / -4)
 

@@ -5,19 +5,23 @@
 - Understand and build a private cloud network
 - Understand and build an EC2 instance
 
-## Assignment Notes / Hints
+## Assignment Notes
 
 For this project you need access to your AWS "console". Return to the AWS Learner Lab page and click "Start Lab".  **Once the icon next to "AWS" is green (or timer countdown begins), click "AWS" to open the console.**
 
-Create a `Project1` folder in your GitHub Classrooms repo. This project is mostly documentation of work, so you are welcome to work on your documentation and in your repo wherever you are comfortable. I would float towards VSCode myself.
+Create a `Project1` folder in your GitHub Classrooms repo.  Create a file named `README.md` Do your documentation work here. You are welcome to work on your documentation and in your repo wherever you are comfortable. I would float towards VSCode myself.
 
-In your `Project1` folder, create a file named `README.md` Do you work for Parts 1 & 2 here.
-
+Some hints / useful notes:
 - It will be handy, but not necessary, to compare / contrast the resources you are making with the working "stack" you have. That stack is based on a template, and that template defined all of these resources - and worked.
 - When asked to create "tags", you want to make a "Name" tag and then write the name in the value field. Sometimes the "Name" tag will be auto-filled for you. Sometimes not.
 - If you get to a point where you need to start over, carefully go through and delete the resources you have already created.
   1. This is good maintenance. Leaving behind junk is frowned upon in any industry
   2. This will keep you from running resources you can be charged for (like unused instances and elastic IPs)
+- in markdown, you can reference an image and include it in the md file using this syntax:
+```
+![image description](path/to/img/file.jpg)
+```
+![sample image](sample.png)
 
 ## Part 1 - Build a VPC
 
@@ -70,19 +74,19 @@ For each step below, provide a description of steps to complete the tasks (scree
 
 Note: these steps are ordered based on the "Launch Instances" wizard.
 
-1. Create a new **Instance**. Find and document the following information about your instance:
+1. Create a new **Instance**. In addition to describing what an instance is and how-to launch a new one, find and document the following information about the instance you have built:
    - AMI selected - AMI id & OS with version
    - default username of the instance type selected
    - instance type selected 
    - keypair selected
    - describe why you need to select a keypair
-2. Attach the instance to your subnet within your VPC. 
-3. Attach a volume to your instance. 
-4. Tag your instance with a "Name" of "YOURLASTNAME-instance". 
-5. Associate your security group, "YOURLASTNAME-sg" to your instance.
-6. Associate the Elastic IP with your instance.
-7. Create a **screenshot of your instance details** and add it to your project write up. 
-   - Markdown to refer to an image: ![sample instance details](sample.png)
+   - the how-to launch an instance instructions should include coverage on how-to:
+      - Attach the instance to your subnet within your VPC
+      - Associate your security group, "YOURLASTNAME-sg" to your instance.
+      - Attach a volume to your instance. 
+      - Tag your instance with a "Name" of "YOURLASTNAME-instance". 
+2. Associate the Elastic IP with your instance.
+3. Create a **screenshot of your instance details** after instance has been launched and add it to your project write up. 
 
 ## Part 3 - Instance Configuration
 
