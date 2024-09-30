@@ -18,7 +18,8 @@
 10. Network ACL denies traffic to `wttr.in`
 11. Instance set a private IP in subnet range
 
-Instance's `UserData` script:
+Instance's `UserData` script:  
+
 12. Changes hostname
 13. Installs `git`, `python3`, `pip3`, `apache2`, and `wamerican` (.2 pts / each)
 14. Copies wordle.sh to default user's home directory
@@ -32,6 +33,7 @@ Instance's `UserData` script:
 - diagram logically illustrates how resources are connected
 
 ## Point Deductions
+
 - Not all resources tagged with Name and Value (-0.5 / untagged resource)
 - Security Group has additional rules that make it too open (-1 / rule)
-- Bad NACL rule order
+- Bad NACL rule order (-1)
