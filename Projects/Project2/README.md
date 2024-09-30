@@ -35,23 +35,23 @@ Other notes:
 
 1. Description Settings:
 
- - Modify `Description` string to describe your template and what it creates
-   - Example description:
-   - `Duncan CF Template to create a VPC, allow SSH access from trusted networks, and create a single instance with an Elastic IP address`
- - Choose: leave or remove `SSH Location`
+   - Modify `Description` string to describe your template and what it creates
+     - Example description:
+     - `Duncan CF Template to create a VPC, allow SSH access from trusted networks, and create a single instance with an Elastic IP address`
+   - Choose: leave or remove `SSH Location`
 
 2. Mappings Settings:
 
- - Adjust AMI to be the AMI of your choice (yes, it must be changed).
-   - You can use the AMI from Project 1
+   - Adjust AMI to be the AMI of your choice (yes, it must be changed).
+     - You can use the AMI from Project 1
 
 3. Resources Settings:
 
- - Make the following modification for `Resources`
-   - VPC range to be `172.18.0.0/23`
-   - Subnet range to be `172.18.0.0 - 172.18.0.255`
-   - "Tag" each resource with a "Name" - ex. `YOURNAME-CF-VPC`
-     - Resources include the VPC, subnet, route table, internet gateway, elastic IP, security group, etc..
+   - Make the following modification for `Resources`
+     - VPC range to be `172.18.0.0/23`
+     - Subnet range to be `172.18.0.0 - 172.18.0.255`
+     - "Tag" each resource with a "Name" - ex. `YOURNAME-CF-VPC`
+       - Resources include the VPC, subnet, route table, internet gateway, elastic IP, security group, etc..
 
 4. Security Group Settings:
 
