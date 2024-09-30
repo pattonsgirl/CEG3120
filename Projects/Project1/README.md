@@ -57,8 +57,10 @@ You may add whatever additional notes you would like. Getting a good screenshot 
    - Attach it to your VPC
    - Make sure screenshot includes content of the Inbound rules
 6. Modify or create a **Network ACL**
-   - Tag the "Name" with "YOURLASTNAME-ncal"
+   - Tag the "Name" with "YOURLASTNAME-nacl"
    - Affirm association or associate resource with the subnet
+   - Verify that for Inbound & Outbound there is a rule that `Allow`s any IP (v4 only is sufficient) on all ports
+     - If this rule does not exist, you'll need to create it.  Created Network ACL's are `Deny` all traffic on all ports, Inbound and Outbound, by default.
    - Deny outbound connections to any port on [wttr.in](https://wttr.in/)
 7. Identify OR create a **Key Pair**
    - Document how the public and private keys of a key pair are stored.
