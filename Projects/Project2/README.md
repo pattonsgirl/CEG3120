@@ -66,15 +66,18 @@ Other notes:
    - Set a private IP in your subnet range
    - Using the configuration script in the `cf-template` to also:
      - Change `hostname`
-     - Install `git`, `python3`, `pip3`, and `apache2`
+     - Install `git`, `python3`, `pip3`, `apache2`, and `wamerican`
        - Note these are the names of the executable once installed - you'll need to find the correct package name & package repository manager per your AMI / Linux distribution
+     - Copy the raw contents of the following files to specific directories on the instance:
+       - [wordle.sh](https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project2/wordle.sh) to the default user's home directory
+       - [index.html](https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project2/index.html) to the default apache2 web content directory
 
 6. Use the "CloudFormation" in the AWS console to test your CloudFormation template and make sure it builds an image per specification.  See [Identifying Success](#identifying-success)
   - If a stack fails during creation, associated resources (even if create was a success) will also be deleted (it is an all or nothing creation process)
 
 7. Diagram:
 - how resources are connected.  I'm leaving some creative openness here.  You can combine an explanation to go with your visualization.
-    - creating your diagram with the CloudFormation template Designer **will not** count for credit
+    - creating your diagram with the CloudFormation template Designer **will not** count for credit.  
 - Recommended diagramming resources: 
   - [Lucid Charts](https://www.lucidchart.com/pages/)
   - [Textographo](https://textografo.com/)
