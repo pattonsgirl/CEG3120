@@ -257,8 +257,9 @@ Define a Security Group, attach it to VPC
 ```
 
 What about Network ACLs?
-  - Define a [Network ACL](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-network-acl-entry.html)
-  - Define [Network ACL Entry](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-network-acl-entry.html#aws-resource-ec2-network-acl-entry--examples) Rules
+  1. Create a [Network ACL](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkacl.html)
+  2. Define [Network ACL Entry](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkaclentry.html) Rules
+  3. Associate the [Network ACL with the Subnet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnetnetworkaclassociation.html)
 
 Define an instance, use the `Mappings` settings where instance type and AMI ID were defined
 - [EC2 Instance](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance.html)
