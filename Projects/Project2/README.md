@@ -78,37 +78,38 @@ Other notes:
        - [index.html](https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project2/index.html) to the default apache2 web content directory
 
 8. Use the "CloudFormation" in the AWS console to test your CloudFormation template and make sure it builds an image per specification.  See [Identifying Success](#identifying-success)
-  - If a stack fails during creation, associated resources (even if create was a success) will also be deleted (it is an all or nothing creation process)
+   - If a stack fails during creation, associated resources (even if create was a success) will also be deleted (it is an all or nothing creation process)
 
 8. Diagram:
- - how resources are connected.  I'm leaving some creative openness here.  You can combine an explanation to go with your visualization.
-     - creating your diagram with the CloudFormation template Designer **will not** count for credit.  
- - Recommended diagramming resources: 
-   - [Lucid Charts](https://www.lucidchart.com/pages/)
-   - [Textographo](https://textografo.com/)
-   - [Mermaid - new markdown feature](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
-   - [Eraser - Cloud Diagrams](https://docs.tryeraser.com/docs/cloud-diagrams)
-   - [mhlabs - CFN Diagram Generator](https://github.com/mhlabs/cfn-diagram)
-   - PowerPoint and OneNote are still good choices
+   - how resources are connected.  I'm leaving some creative openness here.  You can combine an explanation to go with your visualization.
+       - creating your diagram with the CloudFormation template Designer **will not** count for credit.  
+   - Recommended diagramming resources: 
+     - [Lucid Charts](https://www.lucidchart.com/pages/)
+     - [Textographo](https://textografo.com/)
+     - [Mermaid - new markdown feature](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
+     - [Eraser - Cloud Diagrams](https://docs.tryeraser.com/docs/cloud-diagrams)
+     - [mhlabs - CFN Diagram Generator](https://github.com/mhlabs/cfn-diagram)
+     - PowerPoint and OneNote are still good choices
 
 ## Identifying Success
 
 A successful stack will (once created) have an instance you can `ssh` into. Your instance created by the stack should have the specified software installed & the hostname changed via the configuration script.
 
 - You can check for installed software by querying its version once you `ssh` in
-  You can check that hostname was changed by looking at the command prompt once you `ssh` in
+- You can check that hostname was changed by looking at the command prompt once you `ssh` in
+- If something did not work, [try browsing the boot logs](https://www.cyberciti.biz/faq/ubuntu-view-boot-log/)
 
 ## Submission
 
-1. Commit and push your changes to your repository. Verify that these changes show in your course repository, https://github.com/WSU-kduncan/ceg3120f23-YOURGITHUBNAME
+1. Commit and push your changes to your repository. Verify that these changes show in your course repository, https://github.com/WSU-kduncan/ceg3120f24-YOURGITHUBNAME
 
    - Your repo should contain:
    - `YOURLASTNAME-cf.yml`
    - `README.md` with your diagram & companion notes
 
-2. In Pilot, paste the link to your project folder. Sample link: https://github.com/WSU-kduncan/ceg3120f23-YOURGITHUBUSERNAME/blob/main/Projects/Project2
+2. In Pilot, paste the link to your project folder. Sample link: https://github.com/WSU-kduncan/ceg3120f24-YOURGITHUBUSERNAME/blob/main/Projects/Project2
 
-3. Do not leave stacks running. Once your template creates a stack successfully, you may delete the stack
+3. Do not leave stacks running. Once your template creates a stack and instance to specification successfully, you may delete the stack
 
 ## Rubric
 
