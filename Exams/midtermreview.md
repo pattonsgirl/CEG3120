@@ -88,18 +88,9 @@
   - apache vs nginx
   - status / control of services (systemctl)
   - service logs (apache & ssh)
-- proxies
+- ~~proxies~~
   - forward vs reverse
-- load balancers
+- ~~load balancers~~
   - terminology
   - function
   - Layer 4 vs Layer 7
-
-### Project 3
-
-- CF Template
-  - create one instance with public IP
-  - create one NAT gateway
-  - connect host instances to private subnet
-- Configure load balancer
-- Configure hosts in backend pool to serve content
