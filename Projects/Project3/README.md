@@ -6,7 +6,7 @@
 - [Part 1 - Cloud Formation Template TODOs](#part-1---cloudformation-template-todos)
 - [Part 2 - Setup Load Balancing TODOs](#part-2---setup-load-balancing-todos)
 - [Resources and Warnings](#resources-and-warnings)
-- [Extra Credit - HTTPS](#extra-credit---https)
+- [Extra Credit - HTTPS](#extra-credit---https---20)
 - [Submission](#Submission)
 - [Rubric](Rubric.md)
 
@@ -131,7 +131,7 @@ You will not receive credit if your documentation copies all of my bullets and p
 - [How to SFTP](https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server)
 - [Create & Extract with `tar`](https://linuxize.com/post/how-to-create-and-extract-archives-using-the-tar-command-in-linux)
 
-## Extra Credit - HTTPS
+## Extra Credit - HTTPS - +20%
 
 Enable HTTPS (SSL encryption) for your load balancer.  I am going to leave some choice here of whether you have only your load balancer decrypt / encrypt packets for the hosts or have the hosts handle the decryption / encryption.
 
