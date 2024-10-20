@@ -14,7 +14,7 @@
 
 - Modify the CF template to meet updated requirements
 - Run a website using `nginx` or `apache2` on hosts in the pool
-- Configure `haproxy` as a load balancer / application delevery controller to direct traffic to the pool
+- Configure `haproxy` as a load balancer / application delivery controller to direct traffic to the pool
 
 ## Project Description
 
@@ -49,13 +49,15 @@ Modify the template in the following ways:
 5. Modifications for Security Group:
    - Allow `ssh` requests within VPC CIDR block
    - Allow `ssh` requests from your home IP
+   - Allow `ssh` requests from Wright State IP block (`130.108.0.0/16`)
    - Allow `http` requests from within VPC CIDR block
    - Allow `http` requests from any IP
    - *If doing Extra Credit* Add `https` rules in addition to `http` rules
 6. For the load balancer (proxy) instance:
    - assign private IP on public subnet
-   - install `haproxy`
    - configure a unique `hostname` on the instance
+   - install `haproxy`
+      - depending on AMI, also perform steps to start & enable service
 7. Create three total host instances (one is templated, two more need to be added)
    - tag each with a unique name
    - assign each a private IP on private subnet
@@ -67,17 +69,23 @@ Modify the template in the following ways:
 
 **The deliverable for this part is the CloudFormation template in your Project 3 folder.**
 
+If you **could not perform** a task via the Cloud Formation template, you'll need to document how you manually performed the task during Part 2 for a partial credit opportunity.
+
 ## Part 2 - Setup Load Balancing TODOs
 
 In your `Project3` folder, create a `README.md` file.  This document will focus on finishing configuration after your stack builds.
 
+Your documentation should be written with thought to another user picking it up to recreate your project (like a blog post would do).
+
+You will not receive credit if your documentation copies all of my bullets and plugs answers in after them.
+
 1. Project description
    - Provide an overview of the project goal
-   - Provide a description of how to use the CF template to create a stack and what resources are created.
+   - Provide a description of how to use the CF template to create a stack and what resources are built.
    - Create a **diagram** of how the load balancer works in context of the resources your CF template builds
       - See [Project 2 for diagram resources](../Project2/README.md)
 2. `ssh` to instances with the VPC:
-   - On each instance, configure `/etc/hosts` OR `.ssh/config`
+   - On each instance, configure `/etc/hosts` OR `.ssh/config`.  Explain your entries in either or both files.
    - Document how to `ssh` among the instances utilizing one (or both) files for ease of access
        - Your documentation should be sufficient that a reader understands how to set it up similarly for themselves
 3. Setting up the HAProxy load balancing instance:
@@ -90,20 +98,20 @@ In your `Project3` folder, create a `README.md` file.  This document will focus 
      - Document how to place your site content in the default content directory
    - If using `simple-site`'s content:
      - Document where changes need to be made to insert your last name where YOURLASTNAMEHERE text is
-   - If changes were made:
+   - If service configuration changes were made:
        - Explain files that will need modified and general purpose of each file
        - Explain the configuration blocks within each changed file
-   - Explain how to reload the browser after web content changes
+   - Explain how to reload after web content changes
    - Explain how to restart the service after a service configuration change
    - Resources used (websites)
 6. Prove in two ways that your load balancer is working:
    - Use the browser to show that the hosts in the pool are taking turns serving content.  Options include:
       - Hosts have a unique word / phrase on the index.html page
       - Inspection of the cookie payload (if enabled) to show which host the content came from
-      - **Delvierables**
+      - **Deliverables**
         - Explain how the user can visually test that their load balancer is working based on your method choice and supporting documentation
         - Take a set of screenshots that show hosts rotating content serving.
-   - View `haproxy` logs to show requests being dstirbuted and responses from different hosts in the pool.
+   - View `haproxy` logs to show requests being distributed and responses from different hosts in the pool.
       - **Deliverables**
         - Record and explain the command(s) to view the logs.
         - Take a screenshot of your logs proving load balancing among hosts in the pool is working
@@ -145,6 +153,9 @@ These are a collection of sites I used to set up HTTPS and get the correct SSL c
 
 2. In Pilot, paste the link to your project folder.  
    - Sample link: https://github.com/WSU-kduncan/ceg3120-YOURGITHUBUSERNAME/blob/main/Project3
+
+3. **Only delete** the NAT Gateway once your project is complete.  I will turn on your AWS environments for grading to check the load balancer is operational.
+   - Once project grades are posted you may return and delete the stack
 
 ## Rubric
 
