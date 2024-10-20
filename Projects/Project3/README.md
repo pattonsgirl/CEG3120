@@ -14,7 +14,7 @@
 
 - Modify the CF template to meet updated requirements
 - Run a website using `nginx` or `apache2` on hosts in the pool
-- Configure `haproxy` as a load balancer to direct traffic to the pool
+- Configure `haproxy` as a load balancer / application delevery controller to direct traffic to the pool
 
 ## Project Description
 
@@ -22,8 +22,8 @@ In your repository, create a `Project3` folder.
 
 For this project, you will have two deliverables:
 
-1. CloudFormation template with modifications for project
-2. Documentation (and specified screenshots) for configuring the ADC and hosts post stack creation. 
+1. CloudFormation template with modifications per project requirements
+2. Documentation (and specified screenshots) for configuring the load balancer and hosts in the pool after stack creation. 
 
 ### Provided Resources
 
@@ -31,10 +31,8 @@ The following is provided in this project folder:
 
 - [`lb-cf-template.yml`](lb-cf-template.yml)
   - Note: this templated is updated from previous versions to get you started on this project
-- [`site.tar.gz`](site.tar.gz)
-  - A base that includes `css` in order to make something look nice quickly.  `index.html`, at minimum, should be something you spice up to make unique.
-      - you may use your own site (perhaps from previous courses)
-      - grading the content of the site is not a part of the rubric.
+- [`simple-site.tar.gz`](site.tar.gz)
+  - A multi-file static site in a compressed tar archive
 
 ## Part 1 - CloudFormation Template TODOs
 
@@ -58,12 +56,14 @@ Modify the template in the following ways:
    - assign private IP on public subnet
    - install `haproxy`
    - configure a unique `hostname` on the instance
-7. For host instances:
-   - create three total host instances (one is templated, two more need to be added)
+7. Create three total host instances (one is templated, two more need to be added)
    - tag each with a unique name
-   - assign each private IP on private subnet
-   - install `apache2` or `nginx` on each
+   - assign each a private IP on private subnet
    - configure a unique `hostname` on each instance
+   - install `apache2` or `nginx` on each instance
+       - depending on AMI, also perform steps to start & enable service 
+   - download and extract to default site content directory [simple-site.tar.gz](https://github.com/pattonsgirl/CEG3120/raw/refs/heads/main/Projects/Project3/simple-site.tar.gz) on each instance
+       - This tasking is **required** even if you plan to replace this content with your own site content in Part 2
 
 **The deliverable for this part is the CloudFormation template in your Project 3 folder.**
 
@@ -74,28 +74,39 @@ In your `Project3` folder, create a `README.md` file.  This document will focus 
 1. Project description
    - Provide an overview of the project goal
    - Provide a description of how to use the CF template to create a stack and what resources are created.
-   - Create a **diagram** of how the load balancer works in context of your resources
+   - Create a **diagram** of how the load balancer works in context of the resources your CF template builds
       - See [Project 2 for diagram resources](../Project2/README.md)
-2. `ssh` within VPC:
-   - Configure `/etc/hosts` OR `.ssh/config` on each instance
-      - I like to do both, but that's me
-   - Describe how the file is configured on each instance and what the benefit is
-   - Document how to `ssh` among the instances
-3. How to set up a HAProxy load balancer:
-   - What file(s) where modified & their location
-   - What configuration(s) were set (if any)
-   - How to restart the service after a configuration change
+2. `ssh` to instances with the VPC:
+   - On each instance, configure `/etc/hosts` OR `.ssh/config`
+   - Document how to `ssh` among the instances utilizing one (or both) files for ease of access
+       - Your documentation should be sufficient that a reader understands how to set it up similarly for themselves
+3. Setting up the HAProxy load balancing instance:
+   - Explain files that will need modified and general purpose of each file
+   - Explain the configuration blocks within each changed file
+   - Explain how to restart the service after a configuration change
    - Resources used (websites)
-4. How to set up Hosts 1, 2, & 3 to serve web content
-   - **NOTE** web content should be uniquely yours, but as stated you may use `site.tar.gz` as a base and make modifications to the text
-   - Document any changed configuration files (if any)
-   - Document where site content files are located (and why)
-   - How to restart the service in case of a configuration change
+4. Setting up Host instances 1, 2, & 3
+   - If using your own site:
+     - Document how to place your site content in the default content directory
+   - If using `simple-site`'s content:
+     - Document where changes need to be made to insert your last name where YOURLASTNAMEHERE text is
+   - If changes were made:
+       - Explain files that will need modified and general purpose of each file
+       - Explain the configuration blocks within each changed file
+   - Explain how to reload the browser after web content changes
+   - Explain how to restart the service after a service configuration change
    - Resources used (websites)
-5. Prove in two ways that your load balancer is working:
-   - Have your backend hosts serve web content, but with a small but noticeable variation.  Take a set of screenshots that show the URL bar and varying content from different hosts.
-   - Take a screenshot of your `haproxy` logs that prove your requests are being distributed to different backend hosts.
-      - Include in your documentation the command you used to view the correct logs
+6. Prove in two ways that your load balancer is working:
+   - Use the browser to show that the hosts in the pool are taking turns serving content.  Options include:
+      - Hosts have a unique word / phrase on the index.html page
+      - Inspection of the cookie payload (if enabled) to show which host the content came from
+      - **Delvierables**
+        - Explain how the user can visually test that their load balancer is working based on your method choice and supporting documentation
+        - Take a set of screenshots that show hosts rotating content serving.
+   - View `haproxy` logs to show requests being dstirbuted and responses from different hosts in the pool.
+      - **Deliverables**
+        - Record and explain the command(s) to view the logs.
+        - Take a screenshot of your logs proving load balancing among hosts in the pool is working
 
 ## Resources and Warnings
 
@@ -118,7 +129,7 @@ Enable HTTPS (SSL encryption) for your load balancer.  I am going to leave some 
 
 You will owe a very good write up on all elements involved to set up HTTPS.  A start, which mentions some additional things you'll need, is [HAProxy SSL Termination](https://www.haproxy.com/blog/haproxy-ssl-termination)
 
-### Resources
+### Useful HTTPS Resources
 These are a collection of sites I used to set up HTTPS and get the correct SSL certificate (remember haproxy wants a "combo" file of the private and public cert)
 - [Haproxy - HAProxy SSL Termination (Offloading) Everything You Need to Know](https://www.haproxy.com/blog/haproxy-ssl-termination)
 - [Tecmint - How to Configure a CA SSL Certificate in HAProxy](https://www.tecmint.com/configure-ssl-certificate-haproxy/)
@@ -133,7 +144,7 @@ These are a collection of sites I used to set up HTTPS and get the correct SSL c
    - `README.md`
 
 2. In Pilot, paste the link to your project folder.  
-   - Sample link: https://github.com/WSU-kduncan/ceg3120-YOURGITHUBUSERNAME/blob/main/Projects/Project3
+   - Sample link: https://github.com/WSU-kduncan/ceg3120-YOURGITHUBUSERNAME/blob/main/Project3
 
 ## Rubric
 
