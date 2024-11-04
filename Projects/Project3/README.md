@@ -112,6 +112,7 @@ You will not receive credit if your documentation copies all of my bullets and p
         - Explain how the user can visually test that their load balancer is working based on your method choice and supporting documentation
         - Take a set of screenshots that show hosts rotating content serving.
    - View `haproxy` logs to show requests being distributed and responses from different hosts in the pool.
+      - **Valid logs viewers include**: following the `haproxy` log file with `tail`, enabling and viewing the `stats` page, and `halog` on the `haproxy` log file.   
       - **Deliverables**
         - Record and explain the command(s) to view the logs.
         - Take a screenshot of your logs proving load balancing among hosts in the pool is working
