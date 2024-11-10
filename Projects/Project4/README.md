@@ -2,7 +2,7 @@
 
 - [Objectives](#Objectives)
 - [Project Overview](#Project-Overview)
-- [Part 1 - Dockerize it](#Part-1---Dockerize-it)
+- [Part 1 - Docker-ize it](#Part-1---Docker-ize-it)
 - [Part 2 - GitHub Actions and DockerHub](#Part-2---GitHub-Actions-and-DockerHub)
 - [Part 3 - Diagramming](#Part-3---Diagramming)
 - [Submission](#Submission)
@@ -20,8 +20,15 @@ For this project you will be creating a fresh repository. The link is in Pilot u
 The documentation bullet points are written linearly.  As long as the information can be found, I am okay with you organizing it to your logical preferences.
 
 [angular-bird.zip](angular-bird.zip) is a *simple* Angular application.  It requires the following software stack to run:
-- Node.js
-- Angular (installed with `npm`, the node package manager)
+- Node.js version 18
+  - I used `node:18-bullseye`
+- Angular version 15.0.3 (installed with `npm`, the node package manager)
+
+Useful commands in relation to the application:
+- `npm install -g @angular/cli` - Install angular with `npm`, the Node.js package manager
+- *when run from the project folder* `ng serve --host 0.0.0.0` - "compiles" and starts the Angular app, binds to any IP (`0.0.0.0`)
+  - By default, `ng serve` binds to `localhost` - which is only accessible inside the container
+  - [Stack Overflow - How to allow access outside localhost](https://stackoverflow.com/questions/43492354/how-to-allow-access-outside-localhost)
 
 Credit for the Angular application goes to Erik Jenkins	& Ryan Nicolai.
 
@@ -32,34 +39,36 @@ of extra credit per milestone date met. To qualify, you must submit your project
 
 All parts for the project are due 11/25
 
-- [Part 1 - Dockerize it](#Part-1---Dockerize-it)
-  - Milestone due 11/15
+- [Part 1 - Docker-ize it](#Part-1---Docker-ize-it)
+  - Milestone due 11/18
 - [Part 2 - GitHub Actions and DockerHub](#Part-2---GitHub-Actions-and-DockerHub)
   - Milestone due 11/22
 - [Part 3 - Diagramming](#Part-3---Diagramming)
   - Due with all parts 11/25
 
-## Part 1 - Dockerize it
+## Part 1 - Docker-ize it
 
 ### Tasks
 
-- Install Docker to your system.
-- Create DockerHub account: https://hub.docker.com/
-  - select Free tier if prompted
-- Create Public Repository in DockerHub named YOURLASTNAME-CEG3120
-- Create new GitHub repo (link to create located in Pilot in Content -> CI/CD Projects)
-  - This repository will be Public (your previous repo was Private) and you will have privileges to manipulate the repository settings
-- To your repo in a folder named `angular-site`, extract the contents of [angular-bird.zip](angular-bird.zip)
-  - You may use an EC2 instance if your system is not Docker compatible.
-- Build and configure a container that will run the `angular-site` application
-- Create a `Dockerfile` in your repository that builds a container image with the following requirements:
-  - utilizes an appropriate base image with the `FROM` command
-  - completes installation of the application software stack with `RUN` command(s)
-  - copies in the `angular-site` application with the `COPY` command
-  - starts the application when a container is run from the image built with the `Dockerfile` with the `CMD` command 
-    - Note: as needed according to your base  selection
-  - use of the `EXPOSE` command is optional
-- Push container image built by your `Dockerfile` to your DockerHub repository for container images for this project 
+1. Install Docker to your system.
+2. Create DockerHub account: https://hub.docker.com/
+    - select Free tier if prompted
+3.  Create Public Repository in DockerHub named YOURLASTNAME-CEG3120
+4. Create new GitHub repo (link to create located in Pilot in Content -> CI/CD Projects)
+    - This repository will be Public (your previous repo was Private) and you will have privileges to manipulate the repository settings
+5. To your repo in a folder named `angular-site`, extract the contents of [angular-bird.zip](angular-bird.zip)
+    - You may use an EC2 instance if your system is not Docker compatible.
+6. Build and configure a container that will run the `angular-site` application
+    - See [Project Overview](#project-overview) for very useful hints
+7. Create a `Dockerfile` in your repository that builds a container image with the following requirements:
+    - utilizes an appropriate base image with the `FROM` command
+    - completes installation of the application software stack with `RUN` command(s)
+    - copies in the `angular-site` application with the `COPY` command
+    - starts the application when a container is run from the image built with the `Dockerfile` with the `CMD` command 
+      - Note: as needed according to your base  selection
+    - use of the `EXPOSE` command is optional
+    - [Relevant article from dev.to](https://dev.to/rodrigokamada/creating-and-running-an-angular-application-in-a-docker-container-40mk)
+8. Push container image built by your `Dockerfile` to your DockerHub repository for container images for this project 
 
 ### Documentation
 
@@ -78,7 +87,6 @@ Create `README-CI.md` in main folder of your repo that details the following:
 - Working with DockerHub:
   - how to create public repo in DockerHub
   - how to authenticate with DockerHub via CLI using DockerHub credentials
-    - what credentials would you recommend providing?
   - how to push container image to DockerHub
   - **Link** to your DockerHub repository for this project
 
@@ -86,9 +94,9 @@ Create `README-CI.md` in main folder of your repo that details the following:
 
 ### Tasks
 
-- Create an Access Token with Read / Write access to your DockerHub account's repositories.
-- Set GitHub Secrets named DOCKER_USERNAME and DOCKER_TOKEN containing your DockerHub username & DockerHub access token, respectively.
-- Set up GitHub Actions workflow to build and push docker image to DockerHub
+1. Create an Access Token with Read / Write access to your DockerHub account's repositories.
+2. Set GitHub Secrets named DOCKER_USERNAME and DOCKER_TOKEN containing your DockerHub username & DockerHub access token, respectively.
+3. Set up GitHub Actions workflow to build and push docker image using your `Dockerfile` to DockerHub
 
 ### Documentation
 
@@ -136,3 +144,7 @@ You can use whatever tools you would like, here are some recommended tools that 
    - diagram image(s)
 
 2. In Pilot, paste the link to your project folder.
+
+## Rubric
+
+[View Project Rubric](Rubric.md)
