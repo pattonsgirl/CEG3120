@@ -37,14 +37,14 @@ Credit for the Angular application goes to Erik Jenkins	& Ryan Nicolai.
 Completion of each milestone **by the date specified for the milestone** will get you 5%
 of extra credit per milestone date met. To qualify, you must submit your project on the milestone date to the Dropbox for Project 4 in Pilot.
 
-All parts for the project are due 11/25
+All parts for the project are due 12/2
 
 - [Part 1 - Docker-ize it](#Part-1---Docker-ize-it)
   - Milestone due 11/18
 - [Part 2 - GitHub Actions and DockerHub](#Part-2---GitHub-Actions-and-DockerHub)
-  - Milestone due 11/22
+  - Milestone due 11/25
 - [Part 3 - Diagramming](#Part-3---Diagramming)
-  - Due with all parts 11/25
+  - Due with all parts 12/2
 
 ## Part 1 - Docker-ize it
 
