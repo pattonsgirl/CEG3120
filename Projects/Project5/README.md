@@ -19,19 +19,21 @@ For this project you will be continuing to use your `cicd` repo made in project 
 
 The documentation bullet points are written linearly.  As long as the information can be found, I am okay with you organizing it nicely.
 
+This project is reliant on the completion of Project 4.  If you did not perform all taskings in Project 4, you should meet with the instructor asap.
+
 ## Parts & Milestones
 
-Completion of each milestone **by the date specified for the milestone** will get you 5%
-of extra credit per milestone date met. To qualify, you must submit your project on the milestone date to the Dropbox for Project 5 in Pilot.
+Completion of each milestone **by the date specified for the milestone** will get you 5% of extra credit per milestone date met.  
+To qualify, you must submit your project on the milestone date to the Dropbox for Project 5 in Pilot.
 
-All parts for the project are due 4/19
+All parts for the project are due 12/13
 
 - [Part 1 - Semantic Versioning](#Part-1---Semantic-Versioning)
-  - Milestone due 4/5
+  - Milestone due 12/2
 - [Part 2 - Deployment](#Part-2---Deployment)
-  - Milestone due 4/15
+  - Milestone due 12/6
 - [Part 3 - Diagramming](#Part-3---Diagramming)
-  - All parts are due 4/19
+  - All parts are due 12/13
   - No EC
 
 ## Part 1 - Semantic Versioning
@@ -45,7 +47,7 @@ Right now, you likely `tag` the image with `latest`.  This means versions are ne
   - run when a `tag` is `push`ed
   - use the `docker/metadata-action` to generate a set of tags from your repository
   - push images to DockerHub with an image tags based on your `git` `tag` version AND `latest`
-  - DockerHub should recieve a tag set of:
+  - DockerHub should receive a tag set of:
       - latest
       - major
       - major.minor
@@ -106,9 +108,22 @@ Update `README-CD.md` in main folder of your repo to include:
   1. starting with a `commit` that is a change, `tag`ing the `commit`, `push`ing the `tag`
   2. Showing your GitHub workflow returning a message of success.
   3. Showing DockerHub has freshly pushed images.
-  4. Showing the instance that you are deploying to has webhook logs indicating the payload was recieved and the container has updated.  
+  4. Showing the instance that you are deploying to has webhook logs indicating the payload was received and the container has updated.  
   
   Proof can be provided by **either** demonstrating to me in person OR by creating a *video* of the process.  If you go the video route and your file is too large for GitHub, submit it to the "Project 5 - Proof of Flow" Dropbox on Pilot
+  
+  For credit, you must demonstrate the following:
+  - current state of site running on server, before making a change
+    - show the page in the browser
+    - show the docker status
+  - making a change to the project file (from your local system)
+  - `commit` and `push` of the change (from your local system)
+  - the GitHub Action triggering, relevant logs that it worked
+  - DockerHub receiving a new image (modified time should be visible)
+  - server-side logs via webhook logs that validate container refresh has been triggered
+  - post-change state of site running on server
+    - show the page in the browser
+    - show the docker status
 
 ### Resources
 

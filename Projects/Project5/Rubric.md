@@ -1,6 +1,6 @@
 # Project 5 Rubric
 
-/ 18
+/ 20
 
 ## Repo contents ( / 6)
 
@@ -38,7 +38,7 @@
     - include commands to reload the service respective to files changed (webhook service file versus hook definition file)
 - How to configure GitHub OR DockerHub to message the listener
 
-## Demonstration ( / 1)
+## Demonstration ( / 3)
 
 - Either in-person demonstration OR video file showing full CI / CD workflow in action 
 
