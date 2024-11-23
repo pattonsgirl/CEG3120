@@ -112,7 +112,9 @@ Update `README-CD.md` in main folder of your repo to include:
   - LINK to your hook definition file in a folder named `deployment`
 - How to start the `webhook` listening (without using service)
 - How to test that the listener successfully listens & triggers the script
-  - include how to monitor logs from the `webhook` program & what to look for in `docker` process views
+  - include:
+    - how to monitor logs from the `webhook` program
+    - what to look for in `docker` process views
 - How to configure GitHub OR DockerHub to message the listener 
 - How to modify or create a `webhook` service file such that your `webhook` listener is listening as soon as the system is booted
   - include commands to reload the service respective to files changed (`webhook` service file versus hook definition file)
