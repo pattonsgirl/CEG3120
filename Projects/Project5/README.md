@@ -124,6 +124,7 @@ Update `README-CD.md` in main folder of your repo to include:
 
 - [Using GitHub actions and `webhook`s](https://levelup.gitconnected.com/automated-deployment-using-docker-github-actions-and-webhooks-54018fc12e32)
 - [Using DockerHub and `webhook`s](https://blog.devgenius.io/build-your-first-ci-cd-pipeline-using-docker-github-actions-and-webhooks-while-creating-your-own-da783110e151)
+- [Linux Handbook - How to Create a `systemd` Service](https://linuxhandbook.com/create-systemd-services/)
 
 ## Part 3 - Diagramming
 
