@@ -125,7 +125,7 @@ Update `README-CD.md` in main folder of your repo to include:
 
 ## Part 3 - Diagramming
 
-Include a diagram (or diagrams) of the continuous deployment process.  A good diagram will label tools used and how things connect.  This diagram would probably look best near your project description.
+Include a diagram (or diagrams) of the continuous deployment process in the context of tools used for this project. This diagram would probably look best near your project description.
 
 ### Resources
 
@@ -143,8 +143,8 @@ Demonstration can be completed by **either** demonstrating to me in person OR by
   
 For full credit, all of the following must be demonstrated.  Partial credit will be awarded for partial implementations if and only if your documentation states what doesn't work, and what your troubleshooting steps were.
 1. current state of site running on server, before making a change
-  - show the page in the browser
-  - show the docker status
+    - show the page in the browser
+    - show the docker status
 2. making a change to the project file (from your local system)
 3. `commit` and `push` of the change (from your local system)
 4. `tag` the `commit` and `push` the `tag` (from your local system)
@@ -153,23 +153,23 @@ For full credit, all of the following must be demonstrated.  Partial credit will
 7. status of `webhook` running as a service on the server
 8. `webhook` logs that validate container refresh has been triggered
 9. post-change state of site running on server
-  - show the page in the browser
-  - show the docker status
+    - show the page in the browser
+    - show the docker status
 
 ## Submission
 
 1. Commit and push your changes to your repository. Verify that these changes show in your course  
    repository.
 
-  Your repo should contain:
-   - `README-CD.md` (and `README-CI.md` from P4)
-   - `angular-site` folder with application
-   - `Dockerfile`
-   - GitHub action `yml` file in `.github/workflows`
-   - `deployment` folder with:
-     - `bash` script
-     - `webhook` / `hook` definition file
-     - `webhook` service file
+    Your repo should contain:
+    - `README-CD.md` (and `README-CI.md` from P4)
+    - `angular-site` folder with application
+    - `Dockerfile`
+    - GitHub action `yml` file in `.github/workflows`
+    - `deployment` folder with:
+      - `bash` script
+      - `webhook` / `hook` definition file
+      - `webhook` service file
 
 2. In Pilot, paste the link to your project folder.
 
