@@ -35,6 +35,9 @@ All parts for the project are due 12/13
 - [Part 3 - Diagramming](#Part-3---Diagramming)
   - All parts are due 12/13
   - No EC
+- [Part 4 - Demonstration](#Part-4---Demonstration)
+  - All parts are due 12/13
+  - No EC
 
 ## Part 1 - Semantic Versioning
 
@@ -42,12 +45,12 @@ Right now, you likely `tag` the image with `latest`.  This means versions are ne
 
 ### Tasks
 
-- Practice creating `tag` for your `commit` using [semantic versioning](https://semver.org/)
+- Create `tag`s for your `commit`s using [semantic versioning best practices](https://semver.org/)
 - Amend your GitHub Action workflow to:
   - run when a `tag` is `push`ed
   - use the `docker/metadata-action` to generate a set of tags from your repository
   - push images to DockerHub with an image tags based on your `git` `tag` version AND `latest`
-  - DockerHub should receive a tag set of:
+  - DockerHub should receive a minimum tag set as follows, where major and minor are based on the `tag` metadata:
       - latest
       - major
       - major.minor
@@ -58,10 +61,11 @@ Create `README-CD.md` in main folder of your repo that details the following:
 
 - CD Project Overview
   - (what are you doing, why, what tools)
-- How to generate a `tag` in `git` / GitHub
+- How to generate and push a `tag` in `git`
 - Behavior of GitHub workflow
-  - what does it do and when
-- Link to Docker Hub repository (as additional proof)
+  - when does it do things
+  - what does it do
+- Link to Docker Hub repository
 
 ### Resources
 
@@ -75,55 +79,44 @@ Create `README-CD.md` in main folder of your repo that details the following:
 For this piece, use an EC2 instance.
 
 - Install docker on the instance
-- `pull` and `run` a container from your DockerHub image
-  - confirm you can access your service running in the container from a browser
-- Create a script to pull a new image from DockerHub and restart the container
-  - put a copy of the script in a folder named `deployment` in your repo
-- Set a listener / hook to receive messages using [adnanh's `webhook`](https://github.com/adnanh/webhook)
-- Create a hook - when a message is received run the container restart script
-  - put a copy of the hook configuration in a folder named `deployment` in your repo
+- `pull` the container image from your DockerHub repository containing your application & dependencies from P4
+- `run` a container using the image
+  - Confirm it responds to requests to the bound port using localhost, its private IP, and its public IP in a browser
+- Create a `bash` script on your instance that will:
+  - pull the image from your DockerHub repository
+  - kill and remove the previously running container
+  - start a new container with the freshly pulled image
+  - test that the script successfully performs its taskings
+- Install [adnanh's `webhook`](https://github.com/adnanh/webhook)
+- Configure and enable a hook to run the `bash` script
+  - test that when a message is received, the hook runs the `bash` script
 - Configure either GitHub or DockerHub to send a message to the listener / hook
+- Configure a service file to start the `webhook` listener automatically when the instance starts.
 
 ### Documentation
 
 Update `README-CD.md` in main folder of your repo to include:
 
-- How to install Docker to your instance
-- Container restart script
-  - Justification & description of what it does
-  - Where it should be on the instance (if someone were to use your setup)
-  - ADD your script to your repository
-- Setting up a `webhook` listener on the instance
-  - How to install [adnanh's `webhook`](https://github.com/adnanh/webhook) to the instance
-- `webhook` task definition file
+- Instance information - at minimum public IP and OS
+- How to install Docker to the instance given it's OS
+- `bash` script
+  - Purpose
+  - Description of script taskings
+  - Location on instance filesystem
+  - LINK to your script in a folder named `deployment`
+- Purpose of installing & steps to install / setup adnanh's `webhook` to the instance
+  - Don't forget ports
+- `webhook` / hook task definition file
   - Description of what it does
-  - Where it should be on the instance (if someone were to use your setup)
-  - ADD your webhook definition file to your repository
-- How to start the `webhook`
-- How to modify/ create a webhook service file such that your webhook listener is listening as soon as the system is booted
-    - include commands to reload the service respective to files changed (webhook service file versus hook definition file)
-    - ADD your webhook service file to your repository
+  - Location on instance filesystem
+  - LINK to your hook definition file in a folder named `deployment`
+- How to start the `webhook` listening (without using service)
+- How to test that the listener successfully listens & triggers the script
+  - include how to monitor logs from the `webhook` program & what to look for in `docker` process views
 - How to configure GitHub OR DockerHub to message the listener 
-- Provide proof that the CI & CD workflow work.  This means:
-  1. starting with a `commit` that is a change, `tag`ing the `commit`, `push`ing the `tag`
-  2. Showing your GitHub workflow returning a message of success.
-  3. Showing DockerHub has freshly pushed images.
-  4. Showing the instance that you are deploying to has webhook logs indicating the payload was received and the container has updated.  
-  
-  Proof can be provided by **either** demonstrating to me in person OR by creating a *video* of the process.  If you go the video route and your file is too large for GitHub, submit it to the "Project 5 - Proof of Flow" Dropbox on Pilot
-  
-  For credit, you must demonstrate the following:
-  - current state of site running on server, before making a change
-    - show the page in the browser
-    - show the docker status
-  - making a change to the project file (from your local system)
-  - `commit` and `push` of the change (from your local system)
-  - the GitHub Action triggering, relevant logs that it worked
-  - DockerHub receiving a new image (modified time should be visible)
-  - server-side logs via webhook logs that validate container refresh has been triggered
-  - post-change state of site running on server
-    - show the page in the browser
-    - show the docker status
+- How to modify or create a `webhook` service file such that your `webhook` listener is listening as soon as the system is booted
+  - include commands to reload the service respective to files changed (`webhook` service file versus hook definition file)
+  - LINK to your `webhook` service file in a folder named `deployment`
 
 ### Resources
 
@@ -144,20 +137,39 @@ You can use whatever tools you would like, here are some recommended tools that 
 - [Eraser - Cloud Diagrams](https://docs.tryeraser.com/docs/cloud-diagrams)
 - PowerPoint and OneNote are still good choices
 
+## Part 4 - Demonstration
+
+Demonstration can be completed by **either** demonstrating to me in person OR by creating a *video* of the process.  If you go the video route and your file is too large for GitHub, submit it to the "Project 5 - Video of Operation" Dropbox on Pilot
+  
+For full credit, all of the following must be demonstrated.  Partial credit will be awarded for partial implementations if and only if your documentation states what doesn't work, and what your troubleshooting steps were.
+1. current state of site running on server, before making a change
+  - show the page in the browser
+  - show the docker status
+2. making a change to the project file (from your local system)
+3. `commit` and `push` of the change (from your local system)
+4. `tag` the `commit` and `push` the `tag` (from your local system)
+5. the GitHub Action triggering, relevant logs that it worked
+6. DockerHub receiving a new set of tagged images (modified time should be visible)
+7. status of `webhook` running as a service on the server
+8. `webhook` logs that validate container refresh has been triggered
+9. post-change state of site running on server
+  - show the page in the browser
+  - show the docker status
+
 ## Submission
 
 1. Commit and push your changes to your repository. Verify that these changes show in your course  
    repository.
 
-Your repo should contain:
+  Your repo should contain:
    - `README-CD.md` (and `README-CI.md` from P4)
-   - `website` folder with website pages
+   - `angular-site` folder with application
    - `Dockerfile`
    - GitHub action `yml` file in `.github/workflows`
    - `deployment` folder with:
-     - container restart script
-     - `hook` definition file
-     - webhook service file
+     - `bash` script
+     - `webhook` / `hook` definition file
+     - `webhook` service file
 
 2. In Pilot, paste the link to your project folder.
 
