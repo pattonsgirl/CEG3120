@@ -240,7 +240,7 @@ File in which you can specify ignore rules and exceptions from these rules for f
 
 ### build
 Build and `tag` an image from a `Dockerfile` in the current working directory
-- `docker build -t <image_name>`
+- `docker build -t <image_name> .`
 - `podman build -t image:tag .`
 
 ### `commit` and `tag` `image`
