@@ -76,7 +76,7 @@ Create `README-CD.md` in main folder of your repo that details the following:
 
 ### Tasks
 
-For this piece, use an EC2 instance.
+For this piece, use an EC2 instance.  **I strongly recommend a T2.small (1 CPU, 2 GB RAM)**
 
 - Install docker on the instance
 - `pull` the container image from your DockerHub repository containing your application & dependencies from P4
