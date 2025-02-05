@@ -11,13 +11,17 @@ For this project you need access to your AWS "console". Return to the AWS Learne
 
 Create a `Project1` folder in your GitHub Classrooms repo.  Create a file named `README.md` Do your documentation work here. You are welcome to work on your documentation and in your repo wherever you are comfortable. I would float towards VSCode myself.
 
+Mark & document points when you are stuck, or have not solved or implemented a piece of the project and differentiate your attempts and progress versus your research in how parts would come together if they did work.
+
+Do not leave project task text in your documentation.  It muddles what your work was versus what the assignment taskings were, and may result in a poor grade due to lack of good documentation forms.
+
 Some hints / useful notes:
 - It will be handy, but not necessary, to compare / contrast the resources you are making with the working "stack" you have. That stack is based on a template, and that template defined all of these resources - and worked.
 - When asked to create "tags", you want to make a "Name" tag and then write the name in the value field. Sometimes the "Name" tag will be auto-filled for you. Sometimes not.
 - If you get to a point where you need to start over, carefully go through and delete the resources you have already created.
   1. This is good maintenance. Leaving behind junk is frowned upon in any industry
   2. This will keep you from running resources you can be charged for (like unused instances and elastic IPs)
-- in markdown, you can reference an image and include it in the md file using this syntax:
+- In markdown, you can reference an image and include it in the md file using this syntax:
 ```
 ![image description](path/to/img/file.jpg)
 ```
