@@ -5,23 +5,23 @@
 ## Part 1 - Build a VPC ( / 16)
 
 1. VPC
-   - description + prompt responses
+   - description
    - screenshot w/ proof of configuration per project requirements
 2. Subnet 
    - description + prompt responses
    - screenshot w/ proof of configuration per project requirements
 3. Internet Gateway 
-   - description + prompt responses
+   - description
    - screenshot w/ proof of configuration per project requirements
 4. Route Table 
-   - description + prompt responses
+   - description
    - screenshot w/ proof of configuration per project requirements
 5. Security Group 
-   - description + prompt responses
+   - description
    - screenshot w/ proof of configuration per project requirements
       - image should capture capture details for all 3 rules - (-1) point per rule not included
 6. Network ACL 
-   - description + prompt responses
+   - description
    - screenshot w/ proof of configuration per project requirements
 7. Key Pair 
    - description + prompt responses
