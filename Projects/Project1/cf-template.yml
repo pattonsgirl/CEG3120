@@ -134,4 +134,5 @@ Resources:
               build-essential \
               python-dev \
               python3-dev && \
+            echo "Hello World" > /home/ubuntu/hello.txt && \
             reboot
