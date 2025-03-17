@@ -3,6 +3,7 @@
 - [Objectives](#Objectives)
 - [Project Description](#Project-Description)
   - [Provided Resources](#Provided-Resources)
+  - [Web Site - Scope and Implementation](#web-site---scope-and-implementation)
 - [Part 1 - Cloud Formation Template TODOs](#part-1---cloudformation-template-todos)
 - [Part 2 - Setup Load Balancing TODOs](#part-2---setup-load-balancing-todos)
 - [Resources and Warnings](#resources-and-warnings)
@@ -88,47 +89,52 @@ Modify the template in the following ways:
 
 In your `Project3` folder, create a `README.md` file.  This document will focus on finishing configuration after your stack builds.
 
-Your documentation should be written with thought to another user picking it up to recreate your project (like a blog post would do).
+Your documentation should be written with as though someone is using it as a guide to recreate your project (like a blog post would do).
 
-You will not receive credit if your documentation copies all of my bullets and plugs answers in after them.
+**You will not receive credit if your documentation copies all of my bullets and plugs answers in after them.**
 
 1. Project description
    - Provide an overview of the project goal
    - Provide a description of how to use the CF template to create a stack and what resources are built.
    - Create a **diagram** of how the load balancer works in context of the resources your CF template builds
       - See [Project 2 for diagram resources](../Project2/README.md)
+
 2. `ssh` to instances with the VPC:
-   - On each instance, configure `/etc/hosts` OR `.ssh/config`.  Explain your entries in either or both files.
+   - On each instance, configure `/etc/hosts` AND / OR `.ssh/config`.  Explain your entries in either or both files.
    - Document how to `ssh` among the instances utilizing one (or both) files for ease of access
        - Your documentation should be sufficient that a reader understands how to set it up similarly for themselves
+
 3. Setting up the HAProxy load balancing instance:
    - Explain files that will need modified and general purpose of each file
    - Explain the configuration blocks within each changed file
    - Explain how to restart the service after a configuration change
-   - Resources used (websites)
+
 4. Setting up Host instances 1, 2, & 3
-   - If using your own site:
-     - Document how to place your site content in the default content directory
-   - If using `simple-site`'s content:
-     - Document where changes need to be made to insert your last name where YOURLASTNAMEHERE text is
-   - If service configuration changes were made:
-       - Explain files that will need modified and general purpose of each file
-       - Explain the configuration blocks within each changed file
-   - Explain how to reload after web content changes
+   - **see notes in [Web Site - Scope and Implementation](#web-site---scope-and-implementation)**
+   - Document how to set the host to utilize your website (or where to make changes so that the user of you documentation can customize your setup with their own)
    - Explain how to restart the service after a service configuration change
-   - Resources used (websites)
-6. Prove in two ways that your load balancer is working:
-   - Use the browser to show that the hosts in the pool are taking turns serving content.  Options include:
-      - Hosts have a unique word / phrase on the index.html page
-      - Inspection of the cookie payload (if enabled) to show which host the content came from
-      - **Deliverables**
-        - Explain how the user can visually test that their load balancer is working based on your method choice and supporting documentation
-        - Take a set of screenshots that show hosts rotating content serving.
+
+6. Prove in **two ways** that your load balancer is working:
+   - Use the browser to show that the hosts in the pool are serving content.
+        - Explain how the user can visually test that their load balancer is working and how to troubleshoot if it is not
+        - Provide screenshot(s) of the project working in your browser
+        - Link to the Load Balancer Public IP
    - View `haproxy` logs to show requests being distributed and responses from different hosts in the pool.
-      - **Valid logs viewers include**: following the `haproxy` log file with `tail`, enabling and viewing the `stats` page, and `halog` on the `haproxy` log file.   
+      - **Valid logs viewers include**: 
+         - following the `haproxy` log file with `tail`
+         - enabling and viewing the `stats` page
+         - `halog` on the `haproxy` log file   
       - **Deliverables**
         - Record and explain the command(s) to view the logs.
         - Take a screenshot of your logs proving load balancing among hosts in the pool is working
+
+7. Troubleshooting and warnings
+   - What are some troubleshooting guidelines the user should look for if something "isn't working"
+   - Does your template create anything the user should change or be warned about?
+
+8. Citations / resources used
+   - if using generative AI, provide the tool name and the prompt(s) used
+   - if using websites, provide the link and a short description of what you used on the page
 
 ## Resources and Warnings
 
@@ -163,6 +169,7 @@ These are a collection of sites I used to set up HTTPS and get the correct SSL c
 
 1. Your repo should contain:
    - `YOURLASTNAME-cf.yml` (your modified CloudFormation template)
+   - a folder with your website content
    - `README.md`
 
 2. In Pilot, paste the link to your project folder.  
