@@ -20,10 +20,12 @@
 
 In your repository, create a `Project3` folder.
 
-For this project, you will have two deliverables:
+For this project, you will have three required deliverables:
 
 1. CloudFormation template with modifications per project requirements
-2. Documentation (and specified screenshots) for configuring the load balancer and hosts in the pool after stack creation. 
+2. Folder with your website files
+3. Documentation (and specified screenshots) for configuring the load balancer and hosts in the pool after stack creation. 
+4. Optional - compressed folder with your site files (`.tar.gz`) 
 
 ### Provided Resources
 
@@ -31,14 +33,28 @@ The following is provided in this project folder:
 
 - [`lb-cf-template.yml`](lb-cf-template.yml)
   - Note: this templated is updated from previous versions to get you started on this project
-- [`simple-site.tar.gz`](site.tar.gz)
-  - A multi-file static site in a compressed tar archive
+
+### Web Site - Scope and Implementation
+
+You may - and are encouraged to - bring your own site just to make grading more fun.
+
+Your site must contain a minimum of:
+
+- an index.html file
+- .css file(s) and / or image file(s) referred to by your .html file(s)
+
+You may use generative AI to create these, but you must cite the generative AI used and the prompt fed to it.
+
+There are three choices of setting up your site on your host.  I am ordering these from best choice to "completed the task" choice.
+1. Create a compressed version of your site files (usually a `.tar.gz`).  Download it via your CF template to the hosts, then extract it to the default content directory for `apache`
+2. Download your site files from your GitHub repo to your host to the default content directory for `apache`
+3. Sign in to each host after the CF template builds you stack and download your site content to the default content directory for `apache`
 
 ## Part 1 - CloudFormation Template TODOs
 
-The CloudFormation template provided in this project folder is **updated from Project 2** to get you started on this project.
-
 Your deliverable for this portion is only **your CloudFormation template**.
+
+If you **could not perform** a task via the Cloud Formation template, you'll need to document how you manually performed the task during Part 2 for a partial credit opportunity.
 
 Modify the template in the following ways:
 
@@ -54,22 +70,19 @@ Modify the template in the following ways:
    - Allow `http` requests from any IP
    - *If doing Extra Credit* Add `https` rules in addition to `http` rules
 6. For the load balancer (proxy) instance:
-   - assign private IP on public subnet
+   - assign private IP on the public subnet
    - configure a unique `hostname` on the instance
    - install `haproxy`
       - depending on AMI, also perform steps to start & enable service
 7. Create three total host instances (one is templated, two more need to be added)
    - tag each with a unique name
-   - assign each a private IP on private subnet
+   - assign each a private IP on the private subnet
    - configure a unique `hostname` on each instance
    - install `apache2` or `nginx` on each instance
        - depending on AMI, also perform steps to start & enable service 
-   - download and extract to default site content directory [simple-site.tar.gz](https://github.com/pattonsgirl/CEG3120/raw/refs/heads/main/Projects/Project3/simple-site.tar.gz) on each instance
-       - This tasking is **required** even if you plan to replace this content with your own site content in Part 2
+   - **see notes in [Web Site - Scope and Implementation](#web-site---scope-and-implementation)**
 
-**The deliverable for this part is the CloudFormation template in your Project 3 folder.**
-
-If you **could not perform** a task via the Cloud Formation template, you'll need to document how you manually performed the task during Part 2 for a partial credit opportunity.
+**The deliverable for this part is the CloudFormation template in your Project 3 folder. Do not forget to add citations to this portion if additional resources were used.**
 
 ## Part 2 - Setup Load Balancing TODOs
 

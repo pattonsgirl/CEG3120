@@ -197,6 +197,6 @@ Resources:
             # TODO need to install apache or nginx
             apt-get install -y git && \
             # TODO give it a hostname - hostnamectl  && \
-            # TODO download & extract (likely two commands) simle-site.tar.gz
+            # TODO download & extract (likely two commands) simple-site.tar.gz
             reboot
 # TODO: create 2 more instances attached to the private subnet
