@@ -48,8 +48,8 @@
 - the cloud
   - types of cloud services
   - regions
-  - access management of cloud resources
-    - ~~IAM tokens for **authorization**~~
+  - ~~access management of cloud resources~~
+    - IAM tokens for **authorization**
       - can create(?) access(?) delete(?) view billing(?)
 - AWS
   - VPC
@@ -58,7 +58,7 @@
   - Internet Gateway
   - Security Group vs Network ACLs
   - Elastic IPs vs public IP
-  - NAT Gateway (focus on public)
+  - ~~NAT Gateway (focus on public)~~
   - Instance types
   - AMIs
   - Volumes
