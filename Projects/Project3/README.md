@@ -7,6 +7,7 @@
 - [Part 1 - Cloud Formation Template TODOs](#part-1---cloudformation-template-todos)
 - [Part 2 - Setup Load Balancing TODOs](#part-2---setup-load-balancing-todos)
 - [Resources and Warnings](#resources-and-warnings)
+- [Extra Credit - Hands Free](#extra-credit---hands-free---10) 
 - [Extra Credit - HTTPS](#extra-credit---https---20)
 - [Submission](#Submission)
 - [Rubric](Rubric.md)
@@ -106,7 +107,7 @@ Your documentation should be written with as though someone is using it as a gui
 
 3. Setting up the HAProxy load balancing instance:
    - Explain files that will need modified and general purpose of each file
-   - Explain the configuration blocks within each changed file
+   - Include, either by link in your repository or by putting a snippet in your documentation using Markdown code blocks (`````) your configuration file or snippets of & highlight the purpose behind the changes
    - Explain how to restart the service after a configuration change
 
 4. Setting up Host instances 1, 2, & 3
@@ -151,6 +152,14 @@ Your documentation should be written with as though someone is using it as a gui
 - [How to SFTP](https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server)
 - [Create & Extract with `tar`](https://linuxize.com/post/how-to-create-and-extract-archives-using-the-tar-command-in-linux)
 
+## Extra Credit - Hands Free - +10%
+
+Have your CloudFormation template build everything out - configure haproxy to use the hosts & the hosts are configured with your site content, copy in `hosts` and / or `config files, etc.
+
+Things your template should not do:
+- copy a private key for ssh access among instances (this implies you would somehow expose your private key on GitHub)
+- delete the NAT Gateway resource & associated EIP
+
 ## Extra Credit - HTTPS - +20%
 
 Enable HTTPS (SSL encryption) for your load balancer.  I am going to leave some choice here of whether you have only your load balancer decrypt / encrypt packets for the hosts or have the hosts handle the decryption / encryption.
@@ -175,7 +184,7 @@ These are a collection of sites I used to set up HTTPS and get the correct SSL c
 2. In Pilot, paste the link to your project folder.  
    - Sample link: https://github.com/WSU-kduncan/ceg3120-YOURGITHUBUSERNAME/blob/main/Project3
 
-3. **Only delete** the NAT Gateway once your project is complete.  I will turn on your AWS environments for grading to check the load balancer is operational.
+3. **Only delete the NAT Gateway** once your project is complete.  I will turn on your AWS environments for grading to check the load balancer is operational.
    - Once project grades are posted you may return and delete the stack
 
 ## Rubric
