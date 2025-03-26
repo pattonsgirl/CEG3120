@@ -2,12 +2,12 @@
 
 ## Project Score: / 42
 
-## Required Documents ( / 3)
+## Required Documents: / 3
 - [ ] `README.md` file
 - [ ] CloudFormation template
 - [ ] folder with site content
 
-## CloudFormation template ( / 25)
+## CloudFormation template: / 25
 
 - [ ] AMI adjusted to Ubuntu 18+ or Amazon Linux 2
 - [ ] VPC CIDR block: `172.18.0.0/23`
@@ -57,28 +57,50 @@
       - [ ] downloads site contents (method reflected in documentation)
       - [ ] extracts site contents (method reflected in documentation)
 
-## README.md documentation for configuration ( / 15)
+## README.md documentation for configuration: / 15
 
-1. Project description (3 points)
-   - Provide an overview of the project goal
-   - Provide a description of how to use the CF template to create a stack and what resources are built.
-   - **Diagram** of how the load balancer works in context of resources created in CF template
-2. `ssh` to instances with the VPC: (2 points)
-   - Explain your entries in either or both `/etc/hosts` OR `.ssh/config` files.
-   - How to `ssh` among the instances utilizing one (or both) files for ease of access
-3. Setting up the HAProxy load balancing instance: (3 points)
-   - Explain files that will need modified and general purpose of each file
-   - Explain the configuration blocks within each changed file
-   - Explain how to restart the service after a configuration change
-4. How to set up Hosts 1, 2, & 3 to serve web content (3 points)
-   - Document site content set up
-   - Explain how to reload after web content changes
-   - Explain how to restart the service after a service configuration change
-5. Load balancing proof: (4 points)
-   - Explain how the user can visually test that their load balancer is working based on your method choice and supporting documentation
-   - screenshot of alternate hosts' content displaying to browser
-   - Explanation & command to view `haproxy` logs to show traffic is being distributed among hosts
-   - screenshot of `haproxy` logs 
+1. Project description:
+   - [ ] Provides an overview of the project goal
+   - [ ] Provide a description of how to use the CF template to create a stack
+   - [ ] Provide a description of what resources are built.
+   - [ ] **Diagram** is visible in description section
+2. Diagram:
+   - [ ] cleanly presented
+   - Explains the CF template for the project in terms of:
+      - [ ] networking & routes
+      - [ ] firewalls
+      - [ ] instances
+3. Connections to instances within the VPC:
+   - [ ] Description of purpose for configuring in `/etc/hosts` AND / OR `.ssh/config` files.
+   - [ ] Explanation of entries in `/etc/hosts` AND / OR `.ssh/config` files.
+   - [ ] Required setup to `ssh` among the instances 
+   - [ ] How to `ssh` among the instances using one or both of the above files for ease of use.
+4. Setting up the HAProxy load balancing instance:
+   - [ ] Explanation of file(s) that will need modified and general purpose of the file(s)
+   - [ ] Snippets of haproxy configuration file or link to file in repo
+   - [ ] Explanation of configuration file modifications
+   - [ ] How to test the haproxy configuration file after revisions
+   - [ ] Explanation and commands to manage the service (and when to run them)
+5. Setting up Hosts 1, 2, & 3 to serve web content:
+   - [ ] Document how to set the hosts to utilize your website 
+      - [ ] method used to get site content to host instance
+      - [ ] location of site content
+6. Load balancing proof:
+   - Proof via the browser:
+      - [ ] Explain how the user can visually test that their load balancer is working 
+      - [ ] Screenshot(s) of the project working in your browser
+      - [ ] Link to the Load Balancer Public IP
+   - Proof via logs:
+      - [ ] Explanation of set up chosen log method
+      - [ ] Explanation of how to view logs via chosen method (and what user should be attentive to)
+      - [ ] Screenshot(s) of log method showing distribution of client connections among hosts
+7. Troubleshooting:
+   - Provide recommendations on what to troubleshoot if the load balancer is **not** working
+      - [ ] Scenario 1
+      - [ ] Scenario 2
+      - [ ] Scenario 3 
+8. Citations / Resources:
+   - [ ] Provided
 
 ## Extra Credit - Setup HTTPS - +20% EC (( / 5) * 8.4) 
 
