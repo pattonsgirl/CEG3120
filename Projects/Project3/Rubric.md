@@ -1,6 +1,6 @@
 # Project 3 Rubric
 
-## Project Score: / 42
+## Project Score: / 58
 
 ## Required Documents: / 3
 - [ ] `README.md` file
@@ -57,7 +57,7 @@
       - [ ] downloads site contents (method reflected in documentation)
       - [ ] extracts site contents (method reflected in documentation)
 
-## README.md documentation for configuration: / 15
+## README.md documentation for configuration: / 30
 
 1. Project description:
    - [ ] Provides an overview of the project goal
@@ -102,16 +102,28 @@
 8. Citations / Resources:
    - [ ] Provided
 
-## Extra Credit - Setup HTTPS - +20% EC (( / 5) * 8.4) 
+## Extra Credit - Hands Free
+Worth +10% = 5.8 pts
 
-1. Documents general requirements to set up HTTPS
-2. Documents `haproxy` requirements to handle HTTPS
-3. Documents `apache2` OR `nginx` requirements to handle HTTPS
-4. Documents changes in VPC resources to handle HTTPS
-5. Proves that configuration worked
+If documentation requirements are not complete, the extra credit for the CF template will not be awarded.
 
-## Point Deductions:
+- [ ] On building from template, load balancers and hosts are fully configured without additional configuration.
 
-- (-100%) Documentation not well organized with markdown OR includes project descriptive text
-- (-10%) CF Template does not build
-- (-1 point / rule) Bad Security Group rules 
+## Extra Credit - Setup HTTPS 
+Worth +20% = 11.6 pts
+
+If documentation requirements are not complete, the extra credit for setting up HTTPS will not be awarded.
+
+Documentation scope: 
+1. [ ] Creating a self-signed certificate
+2. [ ] AWS requirements to set up HTTPS
+3. [ ] Documents `haproxy` requirements to handle HTTPS
+4. [ ] (if needed) `apache2` OR `nginx` requirements to handle HTTPS
+5. [ ] Screenshot(s) to prove that configuration worked
+
+## Common Point Deductions:
+
+- [ ] (-100%) Documentation not well organized with markdown OR includes project descriptive text
+- [ ] (-10% = 5.8 pts) CF Template does not build
+- [ ] (-10% = 5.8 pts) Documentation fails to address what was not implemented and implies the project is fully functional.  Always document shortcomings and note what is "research" on how the rest should be done
+- [ ] (-5% = 2.9 pts) Security Group rules allow access beyond project bounds
