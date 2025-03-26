@@ -2,30 +2,60 @@
 
 ## Project Score: / 42
 
-## CloudFormation template ( / 27)
+## Required Documents ( / 3)
+- [ ] `README.md` file
+- [ ] CloudFormation template
+- [ ] folder with site content
 
-1. AMI adjusted to Ubuntu 18+ or Amazon Linux 2
-2. VPC CIDR block: `172.18.0.0/23`
-3. Public subnet range: `172.18.0.0 - 172.18.0.255`
-4. Private subnet range: `172.18.1.0 - 172.18.1.255`
-5. Modifications for Security Group: (5 points)
-   - Allow `ssh` requests within VPC CIDR block
-   - Allow `ssh` requests from your home IP
-   - Allow `ssh` requests from Wright State IP block
-   - Allow `http` requests from within VPC CIDR block
-   - Allow `http` requests from any IP
-6. For the load balancer (proxy) instance: (3 points)
-   - assign private IP on public subnet
-   - configure a unique `hostname` on the instance
-   - install `haproxy`
-      - service start & enable steps, if applicable
-7. Create three total host instances: (5 points / host instance)
-   - tag each with a unique name
-   - assign each a private IP on private subnet
-   - configure a unique `hostname` on each instance
-   - install `apache2` or `nginx` on each instance
-       - depending on AMI, also perform steps to start & enable service 
-   - download and extract to default site content directory `simple-site.tar.gz`
+## CloudFormation template ( / 25)
+
+- [ ] AMI adjusted to Ubuntu 18+ or Amazon Linux 2
+- [ ] VPC CIDR block: `172.18.0.0/23`
+- [ ] Public subnet range: `172.18.0.0 - 172.18.0.255`
+- [ ] Private subnet range: `172.18.1.0 - 172.18.1.255`
+- Security Group:
+   - [ ] rule to allow `ssh` requests within VPC CIDR block
+   - [ ] rule to allow `ssh` requests from your home IP
+   - [ ] rule to allow `ssh` requests from Wright State IP block
+   - [ ] rule to allow `http` requests from within VPC CIDR block
+   - [ ] rule to allow `http` requests from any IP
+   - Possible additions if HTTPS documentation for Extra Credit is complete:
+      - [ ] rule to allow `https` requests from within VPC CIDR block
+      - [ ] rule to allow `https` requests from any IP
+- Load balancer (proxy) instance:
+   - [ ] assigned private IP on public subnet
+   - [ ] uses command in `UserData` to configure a unique `hostname` on the instance
+   - [ ] uses command in `UserData` to install `haproxy`
+   - Possible additions:
+      - [ ] (if Amazon Linux 2) service start & enable steps
+- [ ] Creates three instances to use as hosts in the HAProxy pool
+- Host instance 1:
+   - [ ] tagged with a unique Name Value
+   - [ ] assigned private IP on private subnet
+   - [ ] uses command in `UserData` to configure a unique `hostname` on the instance
+   - [ ] uses command in `UserData` to install `haproxy`
+   - Possible additions:
+      - [ ] (if Amazon Linux 2) service start & enable steps
+      - [ ] downloads site contents (method reflected in documentation)
+      - [ ] extracts site contents (method reflected in documentation)
+- Host instance 2:
+   - [ ] tagged with a unique Name Value
+   - [ ] assigned private IP on private subnet
+   - [ ] uses command in `UserData` to configure a unique `hostname` on the instance
+   - [ ] uses command in `UserData` to install `haproxy`
+   - Possible additions:
+      - [ ] (if Amazon Linux 2) service start & enable steps
+      - [ ] downloads site contents (method reflected in documentation)
+      - [ ] extracts site contents (method reflected in documentation)
+- Host instance 3:
+   - [ ] tagged with a unique Name Value
+   - [ ] assigned private IP on private subnet
+   - [ ] uses command in `UserData` to configure a unique `hostname` on the instance
+   - [ ] uses command in `UserData` to install `haproxy`
+   - Possible additions:
+      - [ ] (if Amazon Linux 2) service start & enable steps
+      - [ ] downloads site contents (method reflected in documentation)
+      - [ ] extracts site contents (method reflected in documentation)
 
 ## README.md documentation for configuration ( / 15)
 
