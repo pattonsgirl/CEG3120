@@ -56,11 +56,11 @@ There are three choices of setting up your site on your host.  I am ordering the
 
 Your deliverable for this portion is only **your CloudFormation template**.
 
-If you **could not perform** a task via the Cloud Formation template, you'll need to document how you manually performed the task during Part 2 for a partial credit opportunity.
+If you **could not perform** a task via the Cloud Formation template, you'll need to document how you manually performed the task during Part 2 for a partial credit opportunity.  You may specify your research into completing taskings as long as you highlight that it is research based - not something your project implemented.
 
 Modify the template in the following ways:
 
-1. Use AMI of your choice (from P1/P2 for example)
+1. Use AMI of your choice that is Ubuntu 18+ or Amazon Linux 2
 2. VPC CIDR block: `172.18.0.0/23`
 3. Public subnet range: `172.18.0.0 - 172.18.0.255`
 4. Private subnet range: `172.18.1.0 - 172.18.1.255`
@@ -70,17 +70,17 @@ Modify the template in the following ways:
    - Allow `ssh` requests from Wright State IP block (`130.108.0.0/16`)
    - Allow `http` requests from within VPC CIDR block
    - Allow `http` requests from any IP
-   - *If doing Extra Credit* Add `https` rules in addition to `http` rules
+   - *If doing Extra Credit* add `https` rules in addition to `http` rules
 6. For the load balancer (proxy) instance:
    - assign private IP on the public subnet
-   - configure a unique `hostname` on the instance
-   - install `haproxy`
+   - use instance `UserData` to configure a unique `hostname` on the instance
+   - use instance `UserData` to install `haproxy`
       - depending on AMI, also perform steps to start & enable service
-7. Create three total host instances (one is templated, two more need to be added)
-   - tag each with a unique name
+7. Create three host instances (one is templated, two more need to be added)
+   - tag each with a unique Name Value
    - assign each a private IP on the private subnet
-   - configure a unique `hostname` on each instance
-   - install `apache2` or `nginx` on each instance
+   - use instance `UserData` to configure a unique `hostname` on the instance
+   - use instance `UserData` to install `apache2` or `nginx` on each instance
        - depending on AMI, also perform steps to start & enable service 
    - **see notes in [Web Site - Scope and Implementation](#web-site---scope-and-implementation)**
 
@@ -92,32 +92,38 @@ In your `Project3` folder, create a `README.md` file.  This document will focus 
 
 Your documentation should be written with as though someone is using it as a guide to recreate your project (like a blog post would do).
 
-**You will not receive credit if your documentation copies all of my bullets and plugs answers in after them.**
+If you cannot complete all tasks, make sure to document shortcomings / stuck points and note what is "research" on how the rest should be done for partial credit.
 
 1. Project description
    - Provide an overview of the project goal
-   - Provide a description of how to use the CF template to create a stack and what resources are built.
-   - Create a **diagram** of how the load balancer works in context of the resources your CF template builds
+   - Provide a description of how to use the CF template to create a stack
+   - Provide a description of what resources are built.
+   - Diagram that assists with describing the CF template stack
       - See [Project 2 for diagram resources](../Project2/README.md)
 
-2. `ssh` to instances with the VPC:
-   - On each instance, configure `/etc/hosts` AND / OR `.ssh/config`.  Explain your entries in either or both files.
-   - Document how to `ssh` among the instances utilizing one (or both) files for ease of access
-       - Your documentation should be sufficient that a reader understands how to set it up similarly for themselves
+2. Connections to instances within the VPC:
+   - Description of purpose for configuring in `/etc/hosts` AND / OR `.ssh/config` files.
+   - Explanation of entries in `/etc/hosts` AND / OR `.ssh/config` files.
+   - Required setup to `ssh` among the instances
+   - How to `ssh` among the instances using one or both of the above files for ease of use.
 
 3. Setting up the HAProxy load balancing instance:
-   - Explain files that will need modified and general purpose of each file
-   - Include, either by link in your repository or by putting a snippet in your documentation using Markdown code blocks (`````) your configuration file or snippets of & highlight the purpose behind the changes
-   - Explain how to restart the service after a configuration change
+   - Explanation of file(s) that will need modified and general purpose of the file(s)
+   - Snippets of haproxy configuration file or link to file in repo
+   - Explanation of configuration file modifications
+   - How to test the haproxy configuration file after revisions
+   - Explanation and commands to manage the service (and when to run them)
+```
+Make sure to use markdown code blocks to properly format snippets
+```
 
 4. Setting up Host instances 1, 2, & 3
    - **see notes in [Web Site - Scope and Implementation](#web-site---scope-and-implementation)**
-   - Document how to set the host to utilize your website (or where to make changes so that the user of you documentation can customize your setup with their own)
-   - Explain how to restart the service after a service configuration change
+   - Document how to set the hosts to utilize your website, including method used to get site content to host instance and required location of site content
 
 6. Prove in **two ways** that your load balancer is working:
    - Use the browser to show that the hosts in the pool are serving content.
-        - Explain how the user can visually test that their load balancer is working and how to troubleshoot if it is not
+        - Explain how the user can visually test that their load balancer is working
         - Provide screenshot(s) of the project working in your browser
         - Link to the Load Balancer Public IP
    - View `haproxy` logs to show requests being distributed and responses from different hosts in the pool.
@@ -129,9 +135,9 @@ Your documentation should be written with as though someone is using it as a gui
         - Record and explain the command(s) to view the logs.
         - Take a screenshot of your logs proving load balancing among hosts in the pool is working
 
-7. Troubleshooting and warnings
-   - What are some troubleshooting guidelines the user should look for if something "isn't working"
-   - Does your template create anything the user should change or be warned about?
+7. Troubleshooting
+   - **Provide at least three recommendations** on what to troubleshoot if the load balancer is not working.  This can be at any point of the setup process.
+   - Check that you have selected "Start Lab" is not sufficient to count as one ;)
 
 8. Citations / resources used
    - if using generative AI, provide the tool name and the prompt(s) used
