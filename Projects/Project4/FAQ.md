@@ -1,4 +1,4 @@
-# FAQ Guide for Project 5
+# FAQ Guide for Projects 4 & 5
 
 Goal of this guide is to track errors as they crop up and recommended solutions.
 
@@ -29,6 +29,7 @@ unexpected error (Failure EADDRINUSE).
 ### Reason
 Multiple containers cannot bind to the same host port.  In this case, the user ran another container that bound to host 
 port 80, and running this container also with host port 80 causes the error.  An exited container will still have the host port reserved
+
 ### Solution
 - View all containers, even exited containers:
   - `docker ps -a`
