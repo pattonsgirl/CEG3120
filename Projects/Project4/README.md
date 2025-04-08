@@ -111,23 +111,32 @@ Create `README-CI.md` in root folder of your GitHub repository that details the 
 
 ### Tasks
 
-1. Create an Access Token with Read / Write access to your DockerHub account's repositories.
-2. Set GitHub Secrets named DOCKER_USERNAME and DOCKER_TOKEN containing your DockerHub username & DockerHub access token, respectively.
-3. Set up GitHub Actions workflow to build and push docker image using your `Dockerfile` to DockerHub
+1. Create an appropriately scoped Personal Access Token for GitHub Actions to use to access your DockerHub repository
+2. In your GitHub repository, configure GitHub Action Secrets named `DOCKER_USERNAME` and `DOCKER_TOKEN` containing your DockerHub username & DockerHub access token, respectively.
+3. Set up a GitHub Actions workflow to build and push container images to your DockerHub repository
+    - workflow should trigger when a commit is pushed to the main branch
+    - workflow should utilize repository secrets for authentication
+    - workflow should utilize actions as opposed to run commands
 
 ### Documentation
 
 In `README-CI.md`, include the following details:
 
-- Configuring GitHub Secrets:
-  - How to set a secret for use by GitHub Actions
-  - What secret(s) are set for this project
-    - Note: do not copy paste your secrets into your documentation
-- Behavior of GitHub workflow
-  - summary of what your workflow does
-  - **Link** to workflow file in your GitHub repository
-  - summary of what a user would need to change or configure if using your workflow to duplicate your project
-    - include workflow changes & repository changes
+1. Configuring GitHub Repository Secrets:
+    - How to create a PAT for authentication (note recommended scope for this task)
+    - How to set repository Secrets for use by GitHub Actions
+    - Describe the Secrets set for this project
+2. CI with GitHub Actions
+    - Summary of what your workflow does and when it does it
+    - Explanation of workflow steps
+    - Explanation / highlight of values that need updated if used in a different repository
+      - changes in workflow
+      - changes in repository
+    - **Link** to workflow file in your GitHub repository
+3. Testing & Validating
+    - How to test that your workflow did its tasking
+    - How to verify that the image in DockerHub works when a container is run using the image
+
 
 ### Resources
 
@@ -137,17 +146,20 @@ In `README-CI.md`, include the following details:
 
 ## Part 3 - Diagramming
 
-Include a diagram (or diagrams) of the continuous integration process as used in this project.  A good diagram will label tools used and how things connect.
+Include a diagram (or diagrams) of the continuous integration process configured in this project.  It should (at minimum) address how the developer changing code results in a new image available in a DockerHub repository.
 
 ### Documentation
 
 In `README-CI.md`, add to the top of the document the following details:
 
-- Continuous Integration Project Overview
-  - what are you doing
-  - why are you doing it
-  - what tools are used in this project
-  - diagram of project workflow
+1. Continuous Integration Project Overview
+    - What is the goal of this project
+    - What tools are used in this project and what are their roles
+    - Diagram of project
+    - [If applicable] What is **not working** in this project
+2. Resources Section
+    - Note: this can be at document top, scattered within document as resources were used, or placed at bottom
+    - Add resources used in the project by link.  If generative AI was used, state which platform and what prompts were given.
 
 ### Resources
 
