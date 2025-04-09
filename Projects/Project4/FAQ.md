@@ -3,6 +3,26 @@
 Goal of this guide is to track errors as they crop up and recommended solutions.
 
 # Docker
+
+## Permission denied while trying to connect to the Docker daemon socket
+```
+bob@Duncan-Dell:~$ docker run -it ubuntu bash
+docker: permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/create": dial unix /var/run/docker.sock: connect: permission denied.
+```
+
+### Reason
+
+> The Docker daemon binds to a Unix socket, not a TCP port. By default it's the root user that owns the Unix socket, and other users can only access it using sudo. The Docker daemon always runs as the root user.
+
+> If you don't want to preface the docker command with sudo, create a Unix group called docker and add users to it. When the Docker daemon starts, it creates a Unix socket accessible by members of the docker group. On some Linux distributions, the system automatically creates this group when installing Docker Engine using a package manager. In that case, there is no need for you to manually create the group.
+
+[See all notes, including security concerns, here](https://docs.docker.com/engine/install/linux-postinstall/)
+
+### Solution
+```
+ sudo usermod -aG docker $USER
+```
+
 ## Cannot connect to docker daemon
 ```
 # Error:
