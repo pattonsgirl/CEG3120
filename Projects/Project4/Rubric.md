@@ -1,8 +1,13 @@
 # Project 4 Rubric
 
-/ 30
+## Project Score: / 60
 
-## Repo contents ( / 4)
+## Milestone Extra Credits
+
+- [ ] Milestone 1 = Part 1 - +5% = 3 pts
+- [ ] Milestone 2 = Part 1 + 2 - +5% = 3 pts
+
+## GitHub Repository Contents ( / 4)
 
 - `README-CI.md`
     - if your documentation does not use good organization with markdown, it may receive 0 credit.
@@ -10,46 +15,84 @@
 - `Dockerfile`
 - GitHub action `yml` file in `.github/workflows`
 
-## Part 1 - Docker-ize it ( / 11)
+## Part 1 - Docker-ize it ( / 21)
 
-- CI Project Overview
-  - (what are you doing, why, what tools)
-- Containerizing your Application:
-  - how to install docker + dependencies on your system's OS (or an EC2 instance)
-  - how to build & configure a container (without building an image) that runs the `angular-site` application
-  - summary of instructions stated in the repository `Dockerfile`
-  - how to build an image from the repository `Dockerfile`
-  - how to run a container from the image built by the repository `Dockerfile`
-  - how to view the application running in the container 
-    - (open a browser...go to IP and port...)
-- Working with DockerHub:
-  - how to create public repo in DockerHub
-  - how to authenticate with DockerHub via CLI using DockerHub credentials
-  - how to push container image to DockerHub
-  - **Link** to your DockerHub repository for this project
+1. Docker Setup
+    - [ ] How to install Docker for your OS
+    - [ ] Additional dependencies based on your OS
+    - [ ] How to confirm Docker is installed and your system can successfully run containers
+2. Manually Setting up a Container
+    - [ ] How to run a container to test the Angular application
+      - [ ] Include explanation of flags / arguments used
+    - [ ] Commands needed internal to the container to get additional dependencies
+    - [ ] Commands needed internal to the container to run the application
+    - [ ] How to verify that the container is successfully serving the Angular application
+      - [ ] validate from container side
+      - [ ] validate from host side
+3. `Dockerfile` & Building Images
+    - [ ] Summary / explanation of instructions written in the `Dockerfile`
+    - [ ] How to build an image from the repository `Dockerfile`
+    - [ ] How to run a container that will serve the Angular application from the image built by the `Dockerfile`
+    - [ ] How to verify that the container is successfully serving the Angular application
+      - [ ] validate from container side
+      - [ ] validate from host side
+5. Working with your DockerHub Repository
+    - [ ] How to create a public repo in DockerHub
+    - [ ] How to create a PAT for authentication (note recommended scope for this task)
+    - [ ] How to authenticate with DockerHub via CLI using DockerHub credentials
+    - [ ] How to push container image to your DockerHub repository
+    - [ ] **Link** to your DockerHub repository for this project
 
-## Part 2 - GitHub Actions and DockerHub ( / 5)
+## Part 2 - GitHub Actions and DockerHub ( / 11)
 
-- Configuring GitHub Secrets:
-  - How to set a secret for use by GitHub Actions
-  - What secret(s) are set for this project
-- Behavior of GitHub workflow
-  - summary of what your workflow does
-  - **Link** to workflow file in your GitHub repository
-  - summary of what a user would need to change or configure if using your workflow to duplicate your project
+1. Configuring GitHub Repository Secrets:
+    - [ ] How to create a PAT for authentication (note recommended scope for this task)
+    - [ ] How to set repository Secrets for use by GitHub Actions
+    - [ ] Describe the Secrets set for this project
+2. CI with GitHub Actions
+    - [ ] Summary of what your workflow does and when it does it
+    - [ ] Explanation of workflow steps
+    - [ ] Explanation / highlight of values that need updated if used in a different repository
+      - [ ] changes in workflow
+      - [ ] changes in repository
+    - [ ] **Link** to workflow file in your GitHub repository
+3. Testing & Validating
+    - [ ] How to test that your workflow did its tasking
+    - [ ] How to verify that the image in DockerHub works when a container is run using the image
 
-## Part 3 - Diagram ( / 2)
+## Part 3 - Project Description & Diagram ( / 8)
 
-- Logically diagrammed steps for this project's continuous integration workflow
+1. Continuous Integration Project Overview
+    - [ ] What is the goal of this project
+    - [ ] What tools are used in this project and what are their roles
+    - Diagram
+      - [ ] cleanly presented
+      - Explains the project workflow in terms of:
+        - [ ] developer role
+        - [ ] GitHub role
+        - [ ] Docker Hub role
+    - [ ] [If applicable] What is **not working** in this project
+2. Resources Section
+    - [ ] included (embedded at relevant points or in stand alone section)
+    - [ ] well formatted
 
-## `Dockerfile` ( / 4)
-- builds from logical container image on DockerHub
-- installs required dependencies
-- copies application into container
-- starts application when container is run using built image
+## `Dockerfile` ( / 8)
+2 pts / task
 
-## GitHub Action Workflow ( / 4)
-- Secrets defined in repository settings
-- triggers on logical action in repository
-- build an image based on your `Dockerfile`
-- pushes image to your DockerHub repository
+- [ ] builds from logical container image on DockerHub
+- [ ] installs required dependencies
+- [ ] copies application into container
+- [ ] starts application when container is run using built image
+
+## GitHub Action Workflow ( / 8)
+2 pts / task
+
+- [ ] Secrets defined in repository settings
+- [ ] triggers on push to main
+- [ ] builds an image based on your `Dockerfile`
+- [ ] pushes image to your DockerHub repository
+
+## Common Point Deductions:
+
+- [ ] (-30% = 18 pts) Documentation not well organized with markdown OR includes project descriptive text
+- [ ] (-10% = 6 pts) Documentation fails to address what was not implemented / implies the project is fully functional.  Always document shortcomings and note what is "research" on how the rest should be done
