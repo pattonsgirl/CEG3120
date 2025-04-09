@@ -9,11 +9,10 @@
 
 ## GitHub Repository Contents ( / 4)
 
-- `README-CI.md`
-    - if your documentation does not use good organization with markdown, it may receive 0 credit.
-- `angular-site` folder with Angular application
-- `Dockerfile`
-- GitHub action `yml` file in `.github/workflows`
+- [ ] `README-CI.md`
+- [ ] `angular-site` folder with Angular application
+- [ ] `Dockerfile`
+- [ ] GitHub action `yml` file in `.github/workflows`
 
 ## Part 1 - Docker-ize it ( / 21)
 
