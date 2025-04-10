@@ -36,6 +36,18 @@ port 80, and running this container also with host port 80 causes the error.  An
 - Remove containers that bind to the host port you are attempting to bind to
   - `docker rm container_id_or_name`
 
+## Angular application hangs during build
+
+![Angular freeze on build](AWS-EC2-Resource-Freeze.png)
+
+### Reason
+
+A 1 CPU core and 1 GB RAM system is insufficient to run the processes required by the application in the container
+
+### Solution
+
+Build an EC2 instance with 2+ CPU cores and 2+ GB RAM.  Keep an eye on cost estimates to pick a reasonable solution.  Would also recommend 30+ GB of storage.
+
 # GitHub Actions
 
 # Webhooks
