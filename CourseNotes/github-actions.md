@@ -153,7 +153,7 @@ Branches allow you to code features or fix bugs without impacting the main code 
 
 Tags are essential for marking a point in time in your code, such as a new release of your application.
 
-![commits vs branches vs tags](https://docs.docker.com/build/ci/github-actions/manage-tags-labels/)
+![commits vs branches vs tags](https://blog.git-init.com/content/images/size/w1600/2023/03/overview-1.jpeg)
 [Useful diagram comparing commits, branches, and tags](https://blog.git-init.com/how-commits-branches-and-tags-interplay/)
 
 A Release is a GitHub concept - it is created from an existing tag and exposes release notes and links to download the software or source code from GitHub.
