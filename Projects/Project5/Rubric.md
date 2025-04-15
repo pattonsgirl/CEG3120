@@ -1,12 +1,12 @@
 # Project 5 Rubric
 
-## Project Score: / 92
+## Project Score: / 102
 
 ## Milestone Extra Credits
 
-- [ ] Milestone 1 = Part 1 - +5% = 4.6 pts
+- [ ] Milestone 1 = Part 1 - +5% = 5.1 pts
   - [ ] Partial Credit for M1
-- [ ] Milestone 2 = Part 1 + 2 - +5% = 4.6 pts
+- [ ] Milestone 2 = Part 1 + 2 - +5% = 5.1 pts
   - [ ] Partial Credit for M2
 
 ## GitHub Repository Contents ( / 7)
@@ -106,6 +106,15 @@
     - [ ] Summarizes the project contents in the repository
     - [ ] Links to `README-CI.md` and `README-CD.md` with a brief summary about what users will find in each document
 
+## GitHub Action Workflow ( / 10)
+2 pts / task
+
+- [ ] Secrets defined in repository settings
+- [ ] triggers on push of tag
+- [ ] collects metadata using action to generate container image tags
+- [ ] builds an image using your `Dockerfile`
+- [ ] pushes images to your DockerHub repository
+
 ## bash script ( / 6)
 2 pts / task
 
@@ -145,12 +154,13 @@
 
 ## Common Point Deductions:
 
-- `Dockerfile` does not build viable container image to run application (-5%)
-- Action does not push image(s) to DockerHub  (-5%)
-- Images in DockerHub do not use semantic versions in tagging (-5%)
-- Web hook does not trigger with payload from DockerHub or GitHub (-5%)
-- [ ] (-30% = 27.6 pts) Documentation not well organized with markdown OR includes project descriptive text
-- [ ] (-10% = 9.2 pts) Documentation fails to address what was not implemented / implies the project is fully functional.  Always document shortcomings and note what is "research" on how the rest should be done
+- [ ] (-5% = 5.1 pts) `Dockerfile` does not build viable container image to run application
+- [ ] (-5% = 5.1 pts) GitHub Action does not push image(s) to DockerHub
+- [ ] (-5% = 5.1 pts) Images in DockerHub do not use semantic versions in tagging
+- [ ] (-5% = 5.1 pts) DockerHub / GitHub does not have a configured Webhook
+- [ ] (-5% = 5.1 pts) webhook on instance does not trigger with payload from DockerHub or GitHub
+- [ ] (-10% = 10.2 pts) Documentation fails to address what was not implemented / implies the project is fully functional.  Always document shortcomings and note what is "research" on how the rest should be done
+- [ ] (-30% = 30.6 pts) Documentation not well organized with markdown OR includes project descriptive text
 - [ ] No citations of referenced material
 > [!WARNING]
 > May result in Academic Integrity Violation with a penalty of a 0 on the project
