@@ -30,10 +30,9 @@ The documentation bullet points are written linearly.  As long as the informatio
 
 ## Parts & Milestones
 
-Completion of each milestone **by the date specified for the milestone** will get you 5% of extra credit per milestone date met.  
-To qualify, you must submit your project on the milestone date to the Dropbox for Project 5 in Pilot.
+Completion of each milestone **by the date specified for the milestone** will get you 5% of extra credit per milestone date met.  To qualify, you must submit your project on the milestone date to the Dropbox for Project 5 in Pilot.
 
-All parts for the project are due 12/13
+See Pilot for Milestone dates & project due date.
 
 - [Part 1 - Semantic Versioning](#Part-1---Semantic-Versioning)
   - Milestone EC available
@@ -225,7 +224,9 @@ You can use whatever tools you would like, here are some recommended tools that 
 
 ## Part 4 - Demonstration
 
-Demonstration can be completed by **either** demonstrating to me in person OR by creating a *video* of the process.  If you go the video route and your file is too large for GitHub, submit it to the "Project 5 - Video of Operation" Dropbox on Pilot
+You must demonstration your project implementation **in person**.  If you cannot make the instructor office hours you may schedule an appointment - send an email with your blocks of availability.  
+
+If the live demonstration displays needed debugging / fixes, you may submit a video that proves successful updates and additional progress to the "Project 5 - Video of Operation" Dropbox on Pilot.
   
 For full credit, all of the following must be demonstrated.  Partial credit will be awarded for partial implementations if and only if your documentation states what doesn't work, and what your troubleshooting steps were.
 
