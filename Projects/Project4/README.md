@@ -4,7 +4,7 @@
 - [Project Overview](#Project-Overview)
 - [Part 1 - Docker-ize it](#Part-1---Docker-ize-it)
 - [Part 2 - GitHub Actions and DockerHub](#Part-2---GitHub-Actions-and-DockerHub)
-- [Part 3 - Diagramming](#Part-3---Diagramming)
+- [Part 3 - Project Description & Diagram](#part-3---project-description--diagram)
 - [Submission](#Submission)
 - [Rubric](Rubric.md)
 
@@ -144,7 +144,7 @@ In `README-CI.md`, include the following details:
 - [GitHub Actions - build-push-action documentation](https://github.com/marketplace/actions/build-and-push-docker-images)
 - [GitHub - publishing images to DockerHub](https://docs.github.com/en/actions/guides/publishing-docker-images#publishing-images-to-docker-hub)
 
-## Part 3 - Polish & Diagrams
+## Part 3 - Project Description & Diagram
 
 Include a diagram (or diagrams) of the continuous integration process configured in this project.  It should (at minimum) address how the developer changing code results in a new image available in a DockerHub repository.
 

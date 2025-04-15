@@ -3,8 +3,9 @@
 - [Objectives](#Objectives)
 - [Project Overview](#Project-Overview)
 - [Part 1 - Semantic Versioning](#part-1---semantic-versioning)
-- [Part 2 - Deployment](#Part-3---Deployment)
-- [Part 3 - Diagramming](#Part-4---Diagramming)
+- [Part 2 - Continuous Deployment](#part-2---continuous-deployment)
+- [Part 3 - Project Description & Diagram](#part-3---project-description--diagram)
+- [Part 4 - Demonstration](#part-4---demonstration)
 - [Submission](#Submission)
 - [Rubric](Rubric.md)
 
@@ -38,7 +39,7 @@ All parts for the project are due 12/13
   - Milestone EC available
 - [Part 2 - Continuous Deployment](#part-2---continuous-deployment)
   - Milestone EC available
-- [Part 3 - Polish & Diagrams](#part-3---polish--diagrams)
+- [Part 3 - Project Description & Diagram](#part-3---project-description--diagram)
   - Due at project due date - no milestone EC available
 - [Part 4 - Demonstration](#Part-4---Demonstration)
   - Due at project due date - no milestone EC available
@@ -190,7 +191,7 @@ In `README-CD.md`, include the following details:
 - [Using DockerHub and `webhook`s](https://blog.devgenius.io/build-your-first-ci-cd-pipeline-using-docker-github-actions-and-webhooks-while-creating-your-own-da783110e151)
 - [Linux Handbook - How to Create a `systemd` Service](https://linuxhandbook.com/create-systemd-services/)
 
-## Part 3 - Polish & Diagrams
+## Part 3 - Project Description & Diagram
 
 Include a diagram (or diagrams) of the continuous deployment process configured in this project.  It should (at minimum) address how the developer changing code results in a new container process running on the server running the container application.
 
