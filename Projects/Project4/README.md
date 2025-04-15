@@ -45,7 +45,7 @@ See Pilot for Milestone dates & project due date.
   - Milestone EC available
 - [Part 2 - GitHub Actions and DockerHub](#Part-2---GitHub-Actions-and-DockerHub)
   - Milestone EC available
-- [Part 3 - Polish & Diagrams](#part-3---polish--diagrams)
+- [Part 3 - Project Description & Diagram](#part-3---project-description--diagram)
   - Due at project due date - no milestone EC available
 
 ## Part 1 - Docker-ize it
