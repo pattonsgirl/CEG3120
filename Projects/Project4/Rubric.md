@@ -95,3 +95,6 @@
 
 - [ ] (-30% = 18 pts) Documentation not well organized with markdown OR includes project descriptive text
 - [ ] (-10% = 6 pts) Documentation fails to address what was not implemented / implies the project is fully functional.  Always document shortcomings and note what is "research" on how the rest should be done
+- [ ] No citations of referenced material
+> [!WARNING]
+> May result in Academic Integrity Violation with a penalty of a 0 on the project

@@ -1,6 +1,6 @@
 # Project 5 Rubric
 
-## Project Score: / XX
+## Project Score: / 92
 
 ## Milestone Extra Credits
 
@@ -85,7 +85,7 @@
     - [ ] How to verify `webhook` service is capturing payloads and triggering bash script
     - [ ] **LINK to service file** in repository
 
-## Part 3 - Project Description & Diagram ( / 8)
+## Part 3 - Project Description & Diagram ( / 12)
 
 1. Continuous Deployment Project Overview
     - [ ] What is the goal of this project
@@ -106,7 +106,27 @@
     - [ ] Summarizes the project contents in the repository
     - [ ] Links to `README-CI.md` and `README-CD.md` with a brief summary about what users will find in each document
 
-## Demonstration ( / 10)
+## bash script ( / 6)
+2 pts / task
+
+- [ ] stops / kills and removes container process running application
+- [ ] pulls `latest` image from DockerHub repository
+- [ ] runs container from pulled image
+
+## webhook hook definition file ( / 6)
+2 pts / task
+
+- [ ] successfully defines a hook
+- [ ] runs bash script when triggered
+- [ ] only triggers from validated sources (secret or verification of sender)
+
+## webhook service file ( / 4)
+2 pts / task
+
+- [ ] correctly formatted
+- [ ] starts webhook and loads hook definition file 
+
+## Part 4 - Demonstration ( / 10)
 
 1. [ ] current state of site running on server, before making a change
     - show the page in the browser
@@ -123,7 +143,7 @@
     - show the page in the browser
     - show the docker status
 
-## Point Deductions:
+## Common Point Deductions:
 
 - `Dockerfile` does not build viable container image to run application (-5%)
 - Action does not push image(s) to DockerHub  (-5%)
@@ -133,5 +153,6 @@
 - Documentation misleads completion of work (-10%)
   - You may document what should be done / happen, but you must also document what is not working  
   and your troubleshooting so far
-- No citations of referenced material (-10%)
-  - May result in Academic Integrity Violation with a penalty of a 0 on the project
+- [ ] No citations of referenced material
+> [!WARNING]
+> May result in Academic Integrity Violation with a penalty of a 0 on the project
