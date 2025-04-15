@@ -15,11 +15,9 @@
 
 ## Project Overview
 
-For this project you will be continuing to use your `cicd` repo made in project 4.
+This project requires completion of [Project 4](../Project4/) in order to have a DockerHub repository with an image for an Angular application, establish GitHub Action workflows and be familiar with basic `docker` commands.  If you did not accomplish Project 4 you should meet with the instructor at your earliest availability.
 
-The documentation bullet points are written linearly.  As long as the information can be found, I am okay with you organizing it nicely.
-
-This project is reliant on the completion of Project 4.  If you did not perform all taskings in Project 4, you should meet with the instructor asap.
+The documentation bullet points are written linearly.  As long as the information can be found, I am okay with you organizing it to your logical preferences.
 
 ## Parts & Milestones
 
@@ -29,47 +27,60 @@ To qualify, you must submit your project on the milestone date to the Dropbox fo
 All parts for the project are due 12/13
 
 - [Part 1 - Semantic Versioning](#Part-1---Semantic-Versioning)
-  - Milestone due 12/2
+  - Milestone EC available
 - [Part 2 - Deployment](#Part-2---Deployment)
-  - Milestone due 12/6
-- [Part 3 - Diagramming](#Part-3---Diagramming)
-  - All parts are due 12/13
-  - No EC
+  - Milestone EC available
+- [Part 3 - Polish & Diagrams](#part-3---polish--diagrams)
+  - Due at project due date - no milestone EC available
 - [Part 4 - Demonstration](#Part-4---Demonstration)
-  - All parts are due 12/13
-  - No EC
+  - Due at project due date - no milestone EC available
+
 
 ## Part 1 - Semantic Versioning
 
-Right now, you likely `tag` the image with `latest`.  This means versions are never kept.  The solution we will use is to use `git` `tagging`.  A GitHub Action can use the metadata to generate a set of tags for an image.
+Up to this point, when you build a new container image, the image is tagged with `latest` - this is a default if no other tag is specified.  This means prior builds are not kept - latest is continuously overwritten and you cannot roll back to an older build.  
+
+To this end, you will start generating `tag`s with `git` based on a `commit`.  To generate a tag for the most recent commit, you can run:
+- `git tag -a v*.*.*` (ex. `git tag -a v3.8.1`)
+
+When a new tag is pushed to GitHub, it will trigger your GitHub Action Workflow to collect metadata about the tag version, build the container image, then push the image to DockerHub with 3 tags:
+- `latest` (ex. `wsukduncan/s25cats:latest`)
+- `major` (ex. `wsukduncan/s25cats:3`)
+- `major`.`minor` (ex. `wsukduncan/s25cats:3.8`)
+
 
 ### Tasks
 
-- Create `tag`s for your `commit`s using [semantic versioning best practices](https://semver.org/)
-- Amend your GitHub Action workflow to:
-  - run when a `tag` is `push`ed
-  - use the `docker/metadata-action` to generate a set of tags from your repository
-  - push images to DockerHub with an image tags based on your `git` `tag` version AND `latest`
-  - DockerHub should receive a minimum tag set as follows, where major and minor are based on the `tag` metadata:
-      - latest
-      - major
-      - major.minor
+1. Create `git` `tag`s for your `commit`s using [semantic versioning best practices](https://semver.org/)
+2. Create or modify the GitHub Action workflow in your GitHub repository to:
+    - trigger when a `tag` is `push` to the repository - no other triggers should be in your final version
+    - use the `docker/metadata-action` to generate a set of tags from your repository
+    - utilize repository secrets for login authentication to DockerHub
+    - build and push container images to DockerHub with image tags based on your `tag` version AND `latest`
+      - DockerHub should receive the following tags to the container image repository:
+        - `latest` (ex. `wsukduncan/s25cats:latest`)
+        - `major` (ex. `wsukduncan/s25cats:3`)
+        - `major`.`minor` (ex. `wsukduncan/s25cats:3.8`)
 
 ### Documentation
 
-Create `README-CD.md` in main folder of your repo that details the following:
+Create `README-CD.md` in root folder of your GitHub repository that details the following:
 
-- CD Project Overview
-  - (what are you doing, why, what tools)
-- How to generate and push a `tag` in `git`
-- Behavior of GitHub workflow
-  - when does it do things
-  - what does it do
-- Link to Docker Hub repository
+1. Generating `tag`s 
+  - How to see tags in a `git` repository
+  - How to generate a `tag` in a `git` repository
+  - How to push a tag in a `git` repository to GitHub
+2. Semantic Versioning Container Images with GitHub Actions
+    - Summary of what your workflow does and when it does it
+    - Explanation of workflow steps
+    - Explanation / highlight of values that need updated if used in a different repository
+      - changes in workflow
+      - changes in repository
+    - **Link** to workflow file in your GitHub repository
 
 ### Resources
 
-- [GitHub - docker/metadata-action](https://github.com/docker/metadata-action)
+- [GitHub - docker/metadata-action](https://github.com/docker/metadata-action?tab=readme-ov-file#semver)
 - [Docker - Manage Tag Labels](https://docs.docker.com/build/ci/github-actions/manage-tags-labels/)
 
 ## Part 2 - Deployment
@@ -127,9 +138,14 @@ Update `README-CD.md` in main folder of your repo to include:
 - [Using DockerHub and `webhook`s](https://blog.devgenius.io/build-your-first-ci-cd-pipeline-using-docker-github-actions-and-webhooks-while-creating-your-own-da783110e151)
 - [Linux Handbook - How to Create a `systemd` Service](https://linuxhandbook.com/create-systemd-services/)
 
-## Part 3 - Diagramming
+## Part 3 - Polish & Diagrams
 
 Include a diagram (or diagrams) of the continuous deployment process in the context of tools used for this project. This diagram would probably look best near your project description.
+
+### Documentation
+
+- CD Project Overview
+  - (what are you doing, why, what tools)
 
 ### Resources
 

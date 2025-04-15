@@ -1,8 +1,13 @@
 # Project 5 Rubric
 
-/ 40
+## Project Score: / XX
 
-## Repo contents ( / 7)
+## Milestone Extra Credits
+
+- [ ] Milestone 1 = Part 1 - +5% = X pts
+- [ ] Milestone 2 = Part 1 + 2 - +5% = X pts
+
+## GitHub Repository Contents ( / 4)
 
 - `README-CD.md` (and `README-CI.md` from P4)
 - `angular-site` folder with application
@@ -13,7 +18,7 @@
   - `webhook` / `hook` definition file
   - `webhook` service file
 
-## Semantic Versioning ( / 5)
+## Part 1 - Semantic Versioning ( / 5)
 
 - CD Project Overview
   - (what are you doing, why, what tools)
@@ -23,7 +28,7 @@
   - what does it do
 - Link to Docker Hub repository
 
-## Deployment ( / 16)
+## Part 2 - Deployment ( / 16)
 
 - Instance information - at minimum public IP and OS
 - How to install Docker to the instance given it's OS
