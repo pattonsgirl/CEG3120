@@ -19,6 +19,14 @@ This project requires completion of [Project 4](../Project4/) in order to have a
 
 The documentation bullet points are written linearly.  As long as the information can be found, I am okay with you organizing it to your logical preferences.
 
+> [!WARNING]
+> This project will require an EC2 instance to deploy to.
+
+**Recommended instance specifications**
+- 2 CPU Core (included in `t2.medium`)
+- 4 GB RAM (included in `t2.medium`)
+- 30 GB volume storage
+
 ## Parts & Milestones
 
 Completion of each milestone **by the date specified for the milestone** will get you 5% of extra credit per milestone date met.  
@@ -28,7 +36,7 @@ All parts for the project are due 12/13
 
 - [Part 1 - Semantic Versioning](#Part-1---Semantic-Versioning)
   - Milestone EC available
-- [Part 2 - Deployment](#Part-2---Deployment)
+- [Part 2 - Continuous Deployment](#part-2---continuous-deployment)
   - Milestone EC available
 - [Part 3 - Polish & Diagrams](#part-3---polish--diagrams)
   - Due at project due date - no milestone EC available
@@ -67,9 +75,9 @@ When a new tag is pushed to GitHub, it will trigger your GitHub Action Workflow 
 Create `README-CD.md` in root folder of your GitHub repository that details the following:
 
 1. Generating `tag`s 
-  - How to see tags in a `git` repository
-  - How to generate a `tag` in a `git` repository
-  - How to push a tag in a `git` repository to GitHub
+    - How to see tags in a `git` repository
+    - How to generate a `tag` in a `git` repository
+    - How to push a tag in a `git` repository to GitHub
 2. Semantic Versioning Container Images with GitHub Actions
     - Summary of what your workflow does and when it does it
     - Explanation of workflow steps
@@ -77,13 +85,34 @@ Create `README-CD.md` in root folder of your GitHub repository that details the 
       - changes in workflow
       - changes in repository
     - **Link** to workflow file in your GitHub repository
+3. Testing & Validating
+    - How to test that your workflow did its tasking
+    - How to verify that the image in DockerHub works when a container is run using the image
 
 ### Resources
 
 - [GitHub - docker/metadata-action](https://github.com/docker/metadata-action?tab=readme-ov-file#semver)
 - [Docker - Manage Tag Labels](https://docs.docker.com/build/ci/github-actions/manage-tags-labels/)
 
-## Part 2 - Deployment
+## Part 2 - Continuous Deployment
+
+Now that we have semantic versioning operational, it's time to work on deploying the image in your DockerHub repository to servers that will run the application in the container.
+
+The server running the application in the container will be an EC2 instance.
+
+**Recommended instance specifications**
+- 2 CPU Core (included in `t2.medium`)
+- 4 GB RAM (included in `t2.medium`)
+- 30 GB volume storage
+
+To this end, you will set up three major components:
+1. A script that stops and removes the formerly running container, pulls the `latest` tagged image from your DockerHub repository, and runs a new container process with the pull'ed image
+2. Utilize either DockerHub or GitHub to send a message to your application server when a change is detected
+    - DockerHub - a newly pushed image
+    - GitHub - the completion of an Action that pushes a new image
+3. On the application server, you will configure a listening service to receive messages from DockerHub or GitHub
+    - this listening serve will run your script if a message is delivered
+    - you will need to enable some protection method to validate requests are coming from appropriate sources (GitHub or DockerHub)
 
 ### Tasks
 

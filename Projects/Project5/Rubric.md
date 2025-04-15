@@ -5,7 +5,9 @@
 ## Milestone Extra Credits
 
 - [ ] Milestone 1 = Part 1 - +5% = X pts
+  - [ ] Partial Credit for M1
 - [ ] Milestone 2 = Part 1 + 2 - +5% = X pts
+  - [ ] Partial Credit for M2
 
 ## GitHub Repository Contents ( / 4)
 
@@ -18,15 +20,22 @@
   - `webhook` / `hook` definition file
   - `webhook` service file
 
-## Part 1 - Semantic Versioning ( / 5)
+## Part 1 - Semantic Versioning ( / 11)
 
-- CD Project Overview
-  - (what are you doing, why, what tools)
-- How to generate and push a `tag` in `git`
-- Behavior of GitHub workflow
-  - when does it do things
-  - what does it do
-- Link to Docker Hub repository
+1. Generating `tag`s 
+    - [ ] How to see tags in a `git` repository
+    - [ ] How to generate a `tag` in a `git` repository
+    - [ ] How to push a tag in a `git` repository to GitHub
+2. CI with GitHub Actions
+    - [ ] Summary of what your workflow does and when it does it
+    - [ ] Explanation of workflow steps
+    - [ ] Explanation / highlight of values that need updated if used in a different repository
+      - [ ] changes in workflow
+      - [ ] changes in repository
+    - [ ] **Link** to workflow file in your GitHub repository
+3. Testing & Validating
+    - [ ] How to test that your workflow did its tasking
+    - [ ] How to verify that the image in DockerHub works when a container is run using the image
 
 ## Part 2 - Deployment ( / 16)
 
