@@ -4,9 +4,9 @@
 
 ## Milestone Extra Credits
 
-- [ ] Milestone 1 = Part 1 - +5% = X pts
+- [ ] Milestone 1 = Part 1 - +5% = 4.6 pts
   - [ ] Partial Credit for M1
-- [ ] Milestone 2 = Part 1 + 2 - +5% = X pts
+- [ ] Milestone 2 = Part 1 + 2 - +5% = 4.6 pts
   - [ ] Partial Credit for M2
 
 ## GitHub Repository Contents ( / 7)
@@ -149,10 +149,8 @@
 - Action does not push image(s) to DockerHub  (-5%)
 - Images in DockerHub do not use semantic versions in tagging (-5%)
 - Web hook does not trigger with payload from DockerHub or GitHub (-5%)
-- Markdown (README) does not use good formatting practice (-10%)
-- Documentation misleads completion of work (-10%)
-  - You may document what should be done / happen, but you must also document what is not working  
-  and your troubleshooting so far
+- [ ] (-30% = 27.6 pts) Documentation not well organized with markdown OR includes project descriptive text
+- [ ] (-10% = 9.2 pts) Documentation fails to address what was not implemented / implies the project is fully functional.  Always document shortcomings and note what is "research" on how the rest should be done
 - [ ] No citations of referenced material
 > [!WARNING]
 > May result in Academic Integrity Violation with a penalty of a 0 on the project
