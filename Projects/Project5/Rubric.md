@@ -8,6 +8,8 @@
   - [ ] Partial Credit for M1
 - [ ] Milestone 2 = Part 1 + 2 - +5% = 5.1 pts
   - [ ] Partial Credit for M2
+- [ ] Milestone 3 = Part 1 + 2 + 3 - +5% = 5.1 pts
+  - [ ] Partial Credit for M3
 
 ## GitHub Repository Contents ( / 7)
 

@@ -39,7 +39,7 @@ See Pilot for Milestone dates & project due date.
 - [Part 2 - Continuous Deployment](#part-2---continuous-deployment)
   - Milestone EC available
 - [Part 3 - Project Description & Diagram](#part-3---project-description--diagram)
-  - Due at project due date - no milestone EC available
+  - Milestone EC available
 - [Part 4 - Demonstration](#Part-4---Demonstration)
   - Due at project due date - no milestone EC available
 
