@@ -90,7 +90,8 @@ jobs:
     needs: [job1, job2]
 ```
 
-[Using `jobs` in a workflow](https://docs.github.com/en/actions/using-jobs/using-jobs-in-a-workflow)
+[Using `jobs` in a workflow](https://docs.github.com/en/actions/using-jobs/using-jobs-in-a-workflow)  
+[About billing for GitHub Actions](https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-actions/about-billing-for-github-actions)
 
 ### runners
 
