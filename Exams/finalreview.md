@@ -48,9 +48,6 @@
 - the cloud
   - types of cloud services
   - regions
-  - access management of cloud resources
-    - ~~IAM tokens for **authorization**~~
-      - can create(?) access(?) delete(?) view billing(?)
 - AWS
   - VPC
   - Subnets (private vs public)
@@ -122,7 +119,7 @@
   - Dockerfiles (recipes)
     - `docker build` + `-t`
     - `FROM`, `WORKDIR`, `RUN`, `COPY`, `CMD`
-  - using container registry (DockerHub)
+  - using a container registry (DockerHub)
     - `docker push ___`
     - tagging considerations
 - Continuous integration using GitHub Actions
@@ -147,12 +144,15 @@
 - versioning DockerHub images with GitHub Actions
 - Continuous Deployment
 - WebHooks / reverse APIs
-  - what does client need for configuration
-  - what does server need for configuration
-  - considerations:
-    - validating hook delivery
-    - creating a service
-    - viewing logs
+  - payload sender
+    - triggering payload sending
+    - configuration thoughts
+  - listener
+    - service configuration
+    - considerations:
+      - validating hook delivery / inspecting payloads
+      - creating a service
+      - viewing logs
 
 ### Project 5
 
