@@ -74,8 +74,8 @@ For each `docker` command, include a brief definition of **what it does AND a sa
 
 Provide basic how-to-use guides.  This should be short and sweet so that you can refer to it as a quick guide.
 
-- SSH authentication to repositories
-- SSH authentication to an AWS instance
+- Setting up SSH authentication to GitHub repositories
+- Setting up SSH authentication and using SSH to connect to an AWS instance
 - Using the `config` file in the `.ssh` folder
 
 ## Submission
