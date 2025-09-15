@@ -86,4 +86,4 @@ Provide basic how-to-use guides.  This should be short and sweet so that you can
 
 ## Rubric
 
-[Link to Rubric - TODO - NEEDS UPDATED FOR P0 FALL 2025](Rubric.md)
+[Link to Rubric](Rubric.md)
