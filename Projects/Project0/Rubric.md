@@ -1,8 +1,10 @@
 # Project 0 Rubric
 
-## Total Score: / 27
+## Total Score: / 48
 
-## Command line git ( / 30)
+## Command line git ( / 15)
+
+0.5 points each
 
 - status
     - [ ] command example
@@ -49,14 +51,20 @@
     - [ ] explanation
     - [ ] initialize folder vs bare repository
 
-## git files & folders ( / 2)
+## git files & folders ( / 4)
 
 Provide descriptions of expected contents and what these are used for
 
 - .git folder
+    - [ ] explain the overall purpose of the folder
+    - [ ] purpose each item in the folder's contents
 - .gitignore file
+    - [ ] in root of repository folder
+    - [ ] is a file, not a folder
 
-## Command line docker ( / 23)
+## Command line docker ( / 11)
+
+0.5 points each
 
 - ps
     - [ ] command example
@@ -92,15 +100,26 @@ Provide descriptions of expected contents and what these are used for
     - [ ] explanation
     - [ ] includes removing a container versus removing an image
 
-## SSH ( / 3)
+## SSH ( / 9)
 
 Provide basic how-to-use guides.
 
-- SSH authentication to repositories
+- SSH authentication to GitHub repositories
+    - [ ] creating key pair
+    - [ ] setting up public key in user settings
+    - [ ] getting the ssh URI for cloning
 - SSH authentication to an AWS instance
+    - [ ] where to retrieve private key
+    - [ ] permissions needed for private key
+    - [ ] where to find public IP
+    - [ ] writing an `ssh` command to establish a connection
 - Using the `config` file in the `.ssh` folder
+    - [ ] example entry
+    - [ ] using entry after block is configured
 
-## Demonstrations ( / 4)
+## Demonstrations ( / 8)
+
+2 pts each
 
 - [ ] A commit history of more than one.  Commit messages should state changes at points in time
 - [ ] A commit in your GitHub history indicating that content was merged from another branch
@@ -109,4 +128,5 @@ Provide basic how-to-use guides.
 
 ## Point Deductions
 
-- (-20% / 5.2 pts) Document does not use markdown to provide a clean visual of information
+- [ ] (-20%) Submission not in course repository
+- [ ] (-20%) Submission does not use markdown to provide a clean visual of information
