@@ -59,8 +59,8 @@ Provide descriptions of expected contents and what these are used for
     - [ ] explain the overall purpose of the folder
     - [ ] purpose each item in the folder's contents
 - .gitignore file
-    - [ ] in root of repository folder
-    - [ ] is a file, not a folder
+    - [ ] specifies location for proper function - in root of repository folder
+    - [ ] explains the purpose
 
 ## Command line docker ( / 11)
 
