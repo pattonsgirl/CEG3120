@@ -1,6 +1,6 @@
 # Project 1 Rubric
 
-## Project Score: / 33
+## Project Score: / 34
 
 ## Part 1 - Build a VPC ( / 16)
 
@@ -21,7 +21,7 @@
    - [ ] description
    - [ ] screenshot w/ proof of configuration per project requirements
       - image should capture capture details for all 3 rules 
-         - (-1) point per rule not included
+         - [ ] (-1) point per rule not included
 6. Network ACL 
    - [ ] description
    - [ ] screenshot w/ proof of configuration per project requirements
@@ -50,13 +50,15 @@
 2. [ ] How to associate the EIP with the instance
 3. [ ] Screenshot with instance details that validates configuration per project requirements
 
-## Part 3 - Instance Configuration ( / 5)
+## Part 3 - Instance Configuration ( / 6)
 
 1. [ ] Steps performed to `ssh` to instance
 2. [ ] Steps performed to change hostname of instance
 3. [ ] Screenshot of `ssh` connection with hostname changed in CLI prompt
-4. [ ] Proof that Security Group is applying to instance per project requirements
-5. [ ] Proof that Network ACL is applying to instance subnet per project requirements
+4. Security settings:
+   - [ ] Proof that Security Group is applying to instance per project requirements
+   - [ ] Proof that Network ACL is applying to instance subnet per project requirements
+5. [ ] Steps to install docker accurate to selected AMI
 
 ## Point Deductions - Penalty total: 
 

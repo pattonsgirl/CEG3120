@@ -4,24 +4,26 @@
 
 - Understand and build a private cloud network
 - Understand and build an EC2 instance
+- Install docker per AMI instructions
 
 ## Assignment Notes
 
 For this project you need access to your AWS "console". Return to the AWS Learner Lab page and click "Start Lab".  **Once the icon next to "AWS" is green (or timer countdown begins), click "AWS" to open the console.**
 
-Create a `Project1` folder in your GitHub Classrooms repo.  Create a file named `README.md` Do your documentation work here. You are welcome to work on your documentation and in your repo wherever you are comfortable. I would float towards VSCode myself.
+Create a `Project1` folder in your GitHub Classrooms repo. Create a file named `README.md` in the folder. Do your documentation work here. I recommend having your repo cloned to a desktop OS where you can access VSCode - markdown preview is super helpful.
 
-Mark & document points when you are stuck, or have not solved or implemented a piece of the project and differentiate your attempts and progress versus your research in how parts would come together if they did work.
+If you fail to complete a portion of the project, note where you got stuck in your implementation - you may leave notes that show research into how next steps should be configured for partial credit as long as your clearly state differences between research and implementation.
 
-Do not leave project task text in your documentation.  It muddles what your work was versus what the assignment taskings were, and may result in a poor grade due to lack of good documentation forms.
+Do not leave project task text in your documentation.  It muddles what your work was versus what the assignment taskings were, and will result in a point deducation.
 
 Some hints / useful notes:
 - It will be handy, but not necessary, to compare / contrast the resources you are making with the working "stack" you have. That stack is based on a template, and that template defined all of these resources - and worked.
-- When asked to create "tags", you want to make a "Name" tag and then write the name in the value field. Sometimes the "Name" tag will be auto-filled for you. Sometimes not.
+- When asked to create "tags", you want to make a "Name" Key and then write the name in the value field. Sometimes the "Name" Key will be auto-filled for you. Sometimes not.
 - If you get to a point where you need to start over, carefully go through and delete the resources you have already created.
   1. This is good maintenance. Leaving behind junk is frowned upon in any industry
   2. This will keep you from running resources you can be charged for (like unused instances and elastic IPs)
-- In markdown, you can reference an image and include it in the md file using this syntax:
+  3. Remember there is a cap - usually of 5 - of how many of a resource you can have at once.
+- In markdown, you can reference an image and include it in the `.md` file using this syntax:
 ```
 ![image description](path/to/img/file.jpg)
 ```
@@ -32,16 +34,16 @@ Some hints / useful notes:
 For each step below, provide 
    - a description of what the resource does (what is its role).
    - responses to additional requests for information in any step.
-   - a screenshot that shows the network resource has been created according to specification  
+   - a screenshot that shows the resource has been created according to specification  
    
 You may add whatever additional notes you would like. Getting a good screenshot can be done by clicking on the resource and showing configurations in the details menu.
 
 1. Create a **VPC**
    - Tag the "Name" with "YOURLASTNAME-VPC"
-   - Specify a CIDR block of 172.18.0.0/23
+   - Specify a CIDR block of `192.168.0.0/23`
 2. Create a **Subnet**
    - Tag the "Name" with "YOURLASTNAME-Subnet"
-   - Reserve 172.18.0.0 - 172.18.0.255 for use on this subnet
+   - Reserve `192.168.0.0 - 192.168.0.255` for use on this subnet
    - Attach it to your VPC
    - Document the reserved block for the subnet **and** the remaining block(s) available in VPC
 3. Create an **Internet Gateway**
@@ -101,13 +103,14 @@ This part will focus on configurations and tests once you `ssh` in to your insta
 For each step below, provide a description of steps to complete the tasks and any additional documentation required by the step.
 
 1. `ssh` in to your instance. 
-2. Change the hostname to "YOURLASTNAME-AMI" where AMI is some identifier of the AMI you chose. 
+2. Change the hostname to "YOURLASTNAME-AMI" where YOURLASTNAME is your last name and where AMI is some identifier of the AMI you chose. 
    - Notes on changing a system hostname: 
       1. It is wise to copy config files you are about to change to filename.old For `/etc/hostname`, for example, I would first copy the current `hostname` file to `/etc/hostname.old`
       2. You should not change permissions on any files you are modifying. They are system config files. You may need to access them with administrative privileges.
       3. Here is a helpful resource: https://www.tecmint.com/set-hostname-permanently-in-linux/ I did not modify `/etc/hosts` on mine - do so or not as you wish.
 3. Create a **screenshot of your `ssh` connection to your instance** and add it to your project write up - make sure it shows your new hostname in the CLI prompt.
 4. Prove with trial descriptions & screenshots that your Network ACL and Security Group are allowing or blocking traffic per your configurations.
+5. Install `docker` per instructions for the AMI you chose.
 
 ## Submission
 
