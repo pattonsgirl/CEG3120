@@ -26,10 +26,25 @@
   - Pull Requests
   - .gitignore
   - markdown essentials
+- containers
+  - isolation
+  - docker
+    - pull
+    - ps
+    - images
+    - run (`-it` `-p HOST:CONTAINER`)
+    - exec
+    - start
+    - stop / kill
+    - rm
+    - import
+    - export  
 
 ### Project 0
 
 - git guide
+- docker guide
+- ssh with different tools (GitHub & AWS)
 
 ## Week 2 / 3
 
