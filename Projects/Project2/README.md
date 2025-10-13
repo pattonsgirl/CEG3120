@@ -81,7 +81,7 @@ Create a folder in your repo named `Project2` that contains your deliverables:
      4. Copy the raw contents of the following files to specific directories on the instance:
         - [wordle.sh](https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project2/wordle.sh) to the default user's home directory
         - [index.html](https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project2/index.html) to the default apache2 web content directory. This page will display when you use HTTP to connect to port 80 on your instance.
-     5. Run the [wsukduncan/cheatsheet](https://hub.docker.com/r/wsukduncan/cheatsheet) image in detached mode bound to host port 8080. Use the appropriate flag to have the container restart automatically if the system is rebooted / if the docker service has an outage.
+     5. Run the [wsukduncan/cheatsheet](https://hub.docker.com/r/wsukduncan/cheatsheet) image in detached mode bound to host port 8080 and container port 80. Use the appropriate flag to have the container restart automatically if the system is rebooted / if the docker service has an outage.
         - [Detached mode - Docker Docs](https://docs.docker.com/reference/cli/docker/container/run/#detach)
         - [Start containers automatically - Docker Docs](https://docs.docker.com/engine/containers/start-containers-automatically/)
      6. Reboot as the last instruction
