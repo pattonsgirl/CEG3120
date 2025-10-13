@@ -40,7 +40,7 @@ Create a folder in your repo named `Project2` that contains your deliverables:
    - Modify `Description` string to describe your template and what it creates
      - Example description:
      - `Duncan CF Template to create a VPC, allow SSH access from trusted networks, and create a single instance with an Elastic IP address`
-   - Choose: leave or remove `SSH Location`
+   - Choose: leave or remove `SSH Location`.  If you leave it, it may not leave a default that would be a vulnerability.
 
 2. `Mappings` Settings:
 
@@ -49,8 +49,8 @@ Create a folder in your repo named `Project2` that contains your deliverables:
 
 3. `Resources` Settings:
 
-    - VPC range to be `172.18.0.0/23`
-    - Subnet range to be `172.18.0.0 - 172.18.0.255`
+    - VPC range to be `192.168.0.0/23`
+    - Subnet range to be `192.168.0.0 - 192.168.0.255`
     - **"Tag" every resource with a "Name" - ex. `LASTNAME-CF-RESOURCE`**
       - Resources include the VPC, subnet, route table, internet gateway, elastic IP, security group, network acl, instance, etc..
 
@@ -60,23 +60,32 @@ Create a folder in your repo named `Project2` that contains your deliverables:
      - Your home / where you usually connect to your instances from
      - Wright State (CIDR block 130.108.0.0/16)
      - Instances within the VPC or subnet
-   - Allow HTTP access from any IP source
+   - Allow HTTP over port 80 from any IP source
+   - Allow HTTP over port 8080 from any IP source
+
 
 5. `Network ACL` Settings:
 
     - Add rule to deny outgoing requests to [wttr.in](https://wttr.in/)
-      - For simplicity, you may deny any protocol use and any port attempt to `wttr.in`
+      - For simplicity, you may deny any protocols and any port attempt to `wttr.in`
 
 6. `Instance` settings:
 
    - Set a private IP in your subnet range
-   - Using the configuration script (`UserData`) in the `cf-template` to also:
-     - Change `hostname`
-     - Install `git`, `python3`, `pip3`, `apache2`, and `wamerican`
-       - Note these are the names of the executable once installed - you'll need to find the correct package name & package repository manager per your AMI / Linux distribution
-     - Copy the raw contents of the following files to specific directories on the instance:
-       - [wordle.sh](https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project2/wordle.sh) to the default user's home directory
-       - [index.html](https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project2/index.html) to the default apache2 web content directory
+   - Using the configuration script (`UserData`) in the `cf-template`:
+     1. Start by requesting all updates, and then performing any upgrades to latest versions
+     2. Change `hostname` to "YOURLASTNAME-AMI" where `YOURLASTNAME` is your last name and where `AMI` is some identifier of the AMI you chose
+     3. Install `git`, `python3`, `pip3`, `apache2`, `wamerican` and `docker`
+        - Note these are the names of the executable once installed with the `apt` package manager - you'll need to find the correct package name & package repository manager per your AMI / Linux distribution
+        - If you are using an AMI where the service needs to be **enabled and started**, add commands to so for `apache2` and `docker`
+     4. Copy the raw contents of the following files to specific directories on the instance:
+        - [wordle.sh](https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project2/wordle.sh) to the default user's home directory
+        - [index.html](https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project2/index.html) to the default apache2 web content directory. This page will display when you use HTTP to connect to port 80 on your instance.
+     5. Run the [wsukduncan/cheatsheet](https://hub.docker.com/r/wsukduncan/cheatsheet) image in detached mode bound to host port 8080. Use the appropriate flag to have the container restart automatically if the system is rebooted / if the docker service has an outage.
+        - [Detached mode - Docker Docs](https://docs.docker.com/reference/cli/docker/container/run/#detach)
+        - [Start containers automatically - Docker Docs](https://docs.docker.com/engine/containers/start-containers-automatically/)
+     6. Reboot as the last instruction
+     
 
 7. Use the "CloudFormation" in the AWS console to test your CloudFormation template and make sure it builds an image per specification.  See [Identifying Success](#identifying-success)
    
@@ -96,6 +105,8 @@ Create a folder in your repo named `Project2` that contains your deliverables:
 ## Identifying Success
 
 A successful stack will (once created) have an instance you can `ssh` into. Your instance created by the stack should have the specified software installed & the hostname changed via the configuration script.
+
+Your instance should be hosting two different websites - one on port 80 (via the instance's apache install), one on port 8080 (via the container's apache install)
 
 - You can check for installed software by querying its version once you `ssh` in
 - You can check that hostname was changed by looking at the command prompt once you `ssh` in
