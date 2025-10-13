@@ -1,33 +1,38 @@
 # Project 2 Rubric
 
-## Project Score: / 20
+## Project Score: / 25
 
 ## Required Documents ( / 1)
 - [ ] `README.md` file
 - [ ] CloudFormation template
 
-## Modifications to CF Template ( / 15)
+## Modifications to CF Template ( / 20)
 
 - [ ] Template description revised to describe what template builds
 - [ ] AMI changed to P1 AMI
-- [ ] VPC range to `172.18.0.0/23`
-- [ ] Subnet range to `172.18.0.0 - 172.18.0.255`
+- [ ] VPC range to `192.168.0.0/23`
+- [ ] Subnet range to `192.168.0.0 - 192.168.0.255`
 - [ ] Resources have added tag with Name and Value of `LASTNAME-CF-RESOURCE`
-    - see deduction penalty in bottom section if this box is not selected as complete
 - [ ] Security Group rule for inbound SSH within VPC
 - [ ] Security Group rule for inbound SSH from home / trusted network(s)
 - [ ] Security Group rule for inbound SSH from WSU
-- [ ] Security Group rule for inbound HTTP from any IP
+- [ ] Security Group rule for inbound HTTP to port 80 from any IP
+- [ ] Security Group rule for inbound HTTP to port 8080 from any IP
 - [ ] Network ACL denies outgoing traffic to `wttr.in` but allows all other traffic outbound
-    - see deduction penalty in bottom section if this box is not selected as complete
 - [ ] Instance sets a private IP in subnet range
 
 Instance's `UserData` script:  
 
 - [ ] Changes hostname
-- [ ] Installs `git`, `python3`, `pip3`, `apache2`, and `wamerican` (.2 pts / each)
+- [ ] Installs `wamerican`, `git`, `python3`, `pip3` (0.25 pt / each)
+- [ ] Installs `apache2` and `docker` (0.5 pt / each)
+    - enables and starts the services if needed per AMI 
 - [ ] Copies wordle.sh to default user's home directory
-- [ ] Copies index.html to default apache2 web content directory
+- [ ] Copies index.html to the default web content directory for `apache2`
+- Docker container `wsukduncan/cheatsheet`
+    - [ ] runs as a detached process
+    - [ ] is set to restart if stopped
+    - [ ] is bound to host port 8080 and container port 80
 
 ## README Documentation ( / 4)
 

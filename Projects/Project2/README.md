@@ -91,16 +91,24 @@ Create a folder in your repo named `Project2` that contains your deliverables:
    
    - If a stack fails during creation, associated resources (even if create was a success) will also be deleted (it is an all or nothing creation process)
 
-8. Diagram:
-   - Your diagram should lay out how all the above resources are connected and the settings that your resources are configured for.  You can think of how my in-class diagrams include boxes around difference resources and arrows noting what goes where (although my 9/27 diagram should never see the light of day).  I'm leaving some creative openness here.  I expect companion notes with your visualization to help someone understand what they are seeing.
+8. `README.md` file
+  - Diagram:
+    - Your diagram should lay out how all the above resources are connected and the settings that your resources are configured for.  You can think of how my in-class diagrams include boxes around difference resources and arrows noting what goes where (although my 9/27 diagram should never see the light of day).  I'm leaving some creative openness here.  I expect companion notes with your visualization to help someone understand what they are seeing.
        - creating your diagram with the CloudFormation Template Designer **will not** count for credit.  
-   - Recommended diagramming resources: 
-     - [Lucid Charts](https://www.lucidchart.com/pages/)
-     - [Textographo](https://textografo.com/)
-     - [Mermaid - new markdown feature](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
-     - [Eraser - Cloud Diagrams](https://docs.tryeraser.com/docs/cloud-diagrams)
-     - [mhlabs - CFN Diagram Generator](https://github.com/mhlabs/cfn-diagram)
-     - PowerPoint and OneNote are still good choices
+    - Recommended diagramming resources: 
+      - [Lucid Charts](https://www.lucidchart.com/pages/)
+      - [Textographo](https://textografo.com/)
+      - [Mermaid - new markdown feature](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
+      - [Eraser - Cloud Diagrams](https://docs.tryeraser.com/docs/cloud-diagrams)
+      - [mhlabs - CFN Diagram Generator](https://github.com/mhlabs/cfn-diagram)
+      - PowerPoint and OneNote are still good choices
+  - Describe:
+    - In your `README.md` file, add
+      - Detail what your CF Template does
+        - This should be sufficient so that someone looking at your repo can get a quick summary of what your CF template will get them / what it will be set up to do.
+      - Diagram explaining project CF Template
+      - Companion notes / descriptions for diagram
+
 
 ## Identifying Success
 
