@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Docker & Dockerfiles — Cheat Sheet</title>
+  <meta name="description" content="A friendly single-file guide to Docker and Dockerfiles with ready-made examples and copy/download buttons." />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1724;
+      --muted:#94a3b8;
+      --accent:#07c;
+      --success:#2dd4bf;
+      --glass: rgba(255,255,255,0.03);
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Segoe UI Mono", monospace;
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, #071028 0%, #071a2a 100%);
+      color: #e6eef8;
+      line-height:1.45;
+      -webkit-font-smoothing:antialiased;
+      padding:28px;
+    }
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:20px;
+    }
+    header{
+      grid-column:1/-1;
+      display:flex;
+      gap:16px;
+      align-items:center;
+      margin-bottom:8px;
+    }
+    .logo {
+      width:72px;height:72px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,#083d6b,#0a7fd6);
+      border-radius:14px;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.6), inset 0 -6px 18px rgba(255,255,255,0.03);
+    }
+    .logo svg { width:46px; height:46px; }
+    h1{font-size:1.6rem;margin:0}
+    p.lead{margin:0;color:var(--muted)}
+    main{
+      background:var(--card);
+      padding:18px;
+      border-radius:var(--radius);
+      box-shadow: 0 6px 16px rgba(2,6,23,0.6);
+    }
+    .section{margin-bottom:20px}
+    .section h2{font-size:1.05rem;margin:0 0 8px 0}
+    .card{
+      background:var(--glass);
+      border-radius:10px;
+      padding:12px;
+      margin-top:8px;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    pre.code {
+      font-family: var(--mono);
+      font-size:0.9rem;
+      margin:0;
+      overflow:auto;
+      padding:12px;
+      border-radius:8px;
+      background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.03);
+      white-space:pre;
+    }
+    .code-toolbar{
+      display:flex;
+      gap:8px;
+      justify-content:flex-end;
+      margin-bottom:8px;
+    }
+    button.copy, button.download {
+      background:transparent;
+      color:var(--success);
+      border:1px solid rgba(255,255,255,0.04);
+      padding:6px 8px;
+      border-radius:8px;
+      cursor:pointer;
+      font-family:var(--mono);
+      font-size:0.85rem;
+    }
+    button.copy:active, button.download:active{transform:translateY(1px)}
+    aside {
+      background:linear-gradient(180deg, rgba(12,20,35,0.6), rgba(7,13,24,0.6));
+      padding:16px;
+      border-radius:var(--radius);
+      height:fit-content;
+    }
+    .terminal {
+      background:#020617;
+      border-radius:8px;
+      padding:12px;
+      font-family:var(--mono);
+      font-size:0.9rem;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .terminal .cmd { color: #dbeafe; }
+    .badge { display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);color:var(--muted); font-size:0.8rem}
+    ul.tips{margin:8px 0 0 16px;color:var(--muted)}
+    footer{grid-column:1/-1;margin-top:12px;color:var(--muted);font-size:0.85rem;text-align:center}
+    @media (max-width:980px){
+      .wrap{grid-template-columns:1fr; padding-bottom:40px}
+      aside{order:2}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo" aria-hidden="true">
+        <!-- small container icon (not the Docker trademark) -->
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="container icon">
+          <rect x="6" y="18" width="52" height="30" rx="4" fill="rgba(255,255,255,0.12)"/>
+          <rect x="10" y="22" width="40" height="8" rx="2" fill="rgba(255,255,255,0.06)"/>
+          <rect x="10" y="32" width="40" height="8" rx="2" fill="rgba(255,255,255,0.06)"/>
+          <rect x="10" y="42" width="40" height="4" rx="2" fill="rgba(255,255,255,0.04)"/>
+        </svg>
+      </div>
+      <div>
+        <h1>Docker & Dockerfiles — Quick Reference</h1>
+        <p class="lead">Practical examples, commands, and best practices for building small, secure container images.</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <h2>What is a Dockerfile?</h2>
+        <div class="card">
+          <p style="margin:0;color:var(--muted)">
+            A Dockerfile is a text file that contains instructions for building a Docker image. Each instruction creates a new layer; smaller, focused steps produce smaller, cacheable builds.
+          </p>
+          <p style="margin:8px 0 0 0;"><span class="badge">Key keywords:</span> <strong>FROM</strong>, <strong>RUN</strong>, <strong>COPY</strong>, <strong>ADD</strong>, <strong>WORKDIR</strong>, <strong>CMD</strong>, <strong>ENTRYPOINT</strong>, <strong>EXPOSE</strong>, <strong>ENV</strong>, <strong>USER</strong></p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Example: Simple static site (nginx)</h2>
+        <div class="card" id="example1">
+          <div class="code-toolbar">
+            <button class="copy" data-target="code1">Copy</button>
+            <button class="download" data-target="code1" data-filename="Dockerfile.static">Download</button>
+          </div>
+          <pre id="code1" class="code" tabindex="0">
+# Dockerfile.static
+FROM nginx:stable-alpine
+LABEL maintainer="you@example.com"
+COPY ./public /usr/share/nginx/html:ro
+EXPOSE 80
+CMD ["nginx","-g","daemon off;"]
+          </pre>
+          <p style="margin:8px 0 0 0;color:var(--muted)">Place your site files in a <code>public/</code> folder, then build: <code class="cmd">docker build -t my-static:latest -f Dockerfile.static .</code></p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Example: Multi-stage Node.js build (smaller runtime image)</h2>
+        <div class="card" id="example2">
+          <div class="code-toolbar">
+            <button class="copy" data-target="code2">Copy</button>
+            <button class="download" data-target="code2" data-filename="Dockerfile.node">Download</button>
+          </div>
+          <pre id="code2" class="code" tabindex="0">
+# Dockerfile.node (multi-stage)
+# Stage 1: build
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --silent
+COPY . .
+RUN npm run build
+
+# Stage 2: runtime
+FROM node:20-alpine
+WORKDIR /app
+# Use a non-root user (best practice)
+RUN addgroup -S app && adduser -S app -G app
+COPY --from=builder /app/dist ./dist
+COPY package*.json ./
+RUN npm ci --production --silent
+USER app
+ENV NODE_ENV=production
+EXPOSE 3000
+CMD ["node","dist/server.js"]
+          </pre>
+          <p style="margin:8px 0 0 0;color:var(--muted)">Build: <code class="cmd">docker build -t my-node-app:latest -f Dockerfile.node .</code></p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Example: Minimal Python app (use slim image)</h2>
+        <div class="card" id="example3">
+          <div class="code-toolbar">
+            <button class="copy" data-target="code3">Copy</button>
+            <button class="download" data-target="code3" data-filename="Dockerfile.python">Download</button>
+          </div>
+          <pre id="code3" class="code" tabindex="0">
+# Dockerfile.python
+FROM python:3.11-slim
+WORKDIR /app
+# Install only what we need
+COPY pyproject.toml poetry.lock* /app/
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential \
+ && pip install --upgrade pip setuptools \
+ && pip install poetry \
+ && poetry config virtualenvs.create false \
+ && poetry install --no-dev --no-interaction \
+ && apt-get purge -y build-essential && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
+COPY . /app
+EXPOSE 8000
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:8000"]
+          </pre>
+          <p style="margin:8px 0 0 0;color:var(--muted)">Tip: prefer slim/base images and remove build deps to keep image small.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Quick commands (cheat sheet)</h2>
+        <div class="card terminal" aria-live="polite">
+          <div><span class="cmd">docker build -t &lt;name:tag&gt; .</span> — build image from Dockerfile in CWD</div>
+          <div><span class="cmd">docker build -f Dockerfile.prod -t app:prod .</span> — build with custom filename</div>
+          <div><span class="cmd">docker run --rm -p 8080:80 app:latest</span> — run and map ports</div>
+          <div><span class="cmd">docker ps -a</span> — list containers</div>
+          <div><span class="cmd">docker image ls</span> — list images</div>
+          <div><span class="cmd">docker rm -f &lt;container&gt;</span>, <span class="cmd">docker rmi &lt;image&gt;</span> — remove</div>
+          <div style="margin-top:6px;color:var(--muted)">Pro tip: use <code>--platform=linux/amd64</code> when building on M1/M2 machines if you need that platform.</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Best practices & checklist</h2>
+        <div class="card">
+          <ul class="tips">
+            <li>Use official base images and minimal variants (alpine, slim) when possible.</li>
+            <li>Remove build-time dependencies in multi-stage builds.</li>
+            <li>Pin versions for reproducible builds (e.g., <code>node:20.4.0-alpine</code>).</li>
+            <li>Don't run processes as root — create a user and use <code>USER app</code>.</li>
+            <li>Keep layers small and group related RUN commands to leverage cache.</li>
+            <li>Avoid secrets in Dockerfiles — use build args, environment variables, or secrets managers.</li>
+            <li>Scan your images (e.g., Trivy) before pushing to a registry.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <aside>
+      <h3 style="margin-top:0">Quick Links</h3>
+      <p style="color:var(--muted);margin:6px 0 8px 0">Save the examples, or copy them to your clipboard.</p>
+
+      <div style="margin-bottom:12px">
+        <strong>Run locally</strong>
+        <div class="terminal" style="margin-top:8px">
+          <div><span class="cmd">docker --version</span></div>
+          <div><span class="cmd">docker build -t example:latest .</span></div>
+          <div><span class="cmd">docker run --rm -p 3000:3000 example:latest</span></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:12px">
+        <strong>Security tips</strong>
+        <ul class="tips" style="margin-left:14px">
+          <li>Scan images with <code>trivy image &lt;image&gt;</code>.</li>
+          <li>Minimize number of open ports; only EXPOSE what's required.</li>
+          <li>Use image signing (Notary/cosign) when publishing to registries.</li>
+        </ul>
+      </div>
+
+      <div>
+        <strong>Compose example (snippet)</strong>
+        <pre class="code" style="font-size:0.85rem;margin-top:8px">
+version: "3.8"
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+        </pre>
+      </div>
+    </aside>
+
+    <footer>
+      Built with 💙 for developers — modify the Dockerfiles to fit your app. If you want more examples (Kubernetes manifests, GitHub Actions build & push, or a generator page), tell me which stack and I'll include it.
+    </footer>
+  </div>
+
+  <script>
+    // copy & download handlers
+    function copyText(text, btn) {
+      navigator.clipboard?.writeText(text).then(()=> {
+        const old = btn.textContent;
+        btn.textContent = 'Copied ✓';
+        setTimeout(()=> btn.textContent = old, 1500);
+      }).catch(()=> {
+        alert('Copy failed — select and copy manually.');
+      });
+    }
+    function downloadFile(filename, content) {
+      const blob = new Blob([content], {type:'text/plain;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    document.querySelectorAll('button.copy').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const id = btn.getAttribute('data-target');
+        const pre = document.getElementById(id);
+        if (!pre) return;
+        copyText(pre.textContent.trim(), btn);
+      });
+    });
+
+    document.querySelectorAll('button.download').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const id = btn.getAttribute('data-target');
+        const filename = btn.getAttribute('data-filename') || 'Dockerfile';
+        const pre = document.getElementById(id);
+        if (!pre) return;
+        downloadFile(filename, pre.textContent.trim());
+        btn.textContent = 'Downloaded';
+        setTimeout(()=> btn.textContent = 'Download', 1400);
+      });
+    });
+
+    // make tab focusable and allow selecting with click
+    document.querySelectorAll('pre.code').forEach(p=>{
+      p.addEventListener('click', ()=> {
+        const range = document.createRange();
+        range.selectNodeContents(p);
+        const s = window.getSelection();
+        s.removeAllRanges();
+        s.addRange(range);
+      });
+    });
+  </script>
+</body>
+</html>
+
