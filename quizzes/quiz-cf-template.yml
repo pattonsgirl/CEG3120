@@ -1,0 +1,72 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Simple CFN "quiz" that checks answers about EC2 resources and optionally creates a tiny EC2 instance.
+
+Parameters:
+  CreateInstance:
+    Type: String
+    AllowedValues: ["yes", "no"]
+    Default: "no"
+    Description: "Set to 'yes' to create an EC2 instance as part of this template."
+  InstanceType:
+    Type: String
+    Default: t3.micro
+    Description: "Instance type if instance is created."
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: "SSH keypair name for the instance (required only if CreateInstance = yes)."
+
+  # Quiz parameters (user supplies these as their answers)
+  Q1Answer:
+    Type: String
+    Description: "Q1: What is the type identifier for EC2 instance in a CF Template?"
+  Q2Answer:
+    Type: String
+    Description: "Q2: The Inbound rule definitions of a SecurityGroup are under which attribute - SecurityGroupIngress or SecurityGroupEgress?"
+  Q3Answer:
+    Type: String
+    Description: "Q3: What is the correct (CIDR notation) form to define range 192.168.0.32 - 192.168.0.47?"
+
+Conditions:
+  CreateInstanceCondition: !Equals [ !Ref CreateInstance, "yes" ]
+  Q1Correct: !Equals [ !Ref Q1Answer, "AWS::EC2::Instance" ]
+  Q2Correct: !Equals [ !Ref Q2Answer, "SecurityGroupIngress" ]
+  Q3Correct: !Equals [ !Ref Q3Answer, "192.168.0.32/28" ]
+
+Resources:
+  QuizSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Condition: CreateInstanceCondition
+    Properties:
+      GroupDescription: Allow SSH for quiz instance
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+
+  QuizInstance:
+    Type: AWS::EC2::Instance
+    Condition: CreateInstanceCondition
+    Properties:
+      InstanceType: !Ref InstanceType
+      KeyName: !Ref KeyName
+      SecurityGroupIds:
+        - !Ref QuizSecurityGroup
+      ImageId: !Sub '{{resolve:ssm:/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2}}'
+      Tags:
+        - Key: Name
+          Value: CFN-Quiz-Instance
+
+Outputs:
+  Q1Result:
+    Description: "Result for Q1 (Instance unique id attribute)"
+    Value: !If [ Q1Correct, "Correct", "Incorrect" ]
+  Q2Result:
+    Description: "Result for Q2 (Property for CPU/memory)"
+    Value: !If [ Q2Correct, "Correct", "Incorrect" ]
+  Q3Result:
+    Description: "Result for Q3 (SSH keypair property)"
+    Value: !If [ Q3Correct, "Correct", "Incorrect" ]
+  InstanceId:
+    Description: "EC2 InstanceId (only if created)"
+    Value: !If [ CreateInstanceCondition, !Ref QuizInstance, "No instance created" ]
