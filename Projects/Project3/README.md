@@ -14,8 +14,9 @@
 
 ## Objectives:
 
-- Modify the CF template to meet updated requirements
-- Run a website using `nginx` or `apache2` on hosts in the pool
+- Build a container image from Apache's httpd project with web content - publish it to DockerHub
+- Modify the project CF template to meet requirements for this project
+- Run the website container on hosts in the pool
 - Configure `haproxy` as a load balancer / application delivery controller to direct traffic to the pool
 
 ## Project Description
@@ -25,9 +26,8 @@ In your repository, create a `Project3` folder.
 For this project, you will have three required deliverables:
 
 1. CloudFormation template with modifications per project requirements
-2. Folder with your website files
+2. Folder with your website files and Dockerfile
 3. Documentation (and specified screenshots) for configuring the load balancer and hosts in the pool after stack creation. 
-4. Optional - compressed folder with your site files (`.tar.gz`) 
 
 ### Provided Resources
 
