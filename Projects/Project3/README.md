@@ -155,6 +155,7 @@ If you could not complete a step or steps in any of the tasks above you document
    - Explanation of and link to `Dockerfile`
    - Instructions to build and push container image to your DockerHub repository
       - Add instructions to create PAT && recommended PAT scope
+   - Link to DockerHub repository with your site image
 
 3. Connections to instances within the VPC:
    - Description of purpose for configuring in `/etc/hosts` AND / OR `.ssh/config` files.
