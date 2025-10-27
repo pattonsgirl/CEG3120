@@ -201,6 +201,8 @@ If you could not complete a step or steps in any of the tasks above you document
 
 ## Extra Credit - Haproxy Container Image - +10%
 
+Your project must have commits against the required work *before* doing the extra credit portions.
+
 Create a folder in `Project3` called `haproxy`.
 
 Copy in your `haproxy` configuration file.  Create a `Dockerfile` that will build from the [`haproxy` Official Iamge](https://hub.docker.com/_/haproxy/) and copies your `haproxy` configuration file to the default location for `haproxy` in the container filesystem.
@@ -212,6 +214,8 @@ Modify your CloudFormation template to pull and run your `haproxy` container ima
 Add a section to [Part 4](#part-4---README) explaining your additions.
 
 ## Extra Credit - HTTPS - +10%
+
+Your project must have commits against the required work *before* doing the extra credit portions.
 
 Enable HTTPS (SSL encryption) for your load balancer.  I am going to leave some choice here of whether you have only your load balancer decrypt / encrypt packets for the hosts or have the hosts handle the decryption / encryption.
 
