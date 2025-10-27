@@ -3,10 +3,11 @@
 - [Objectives](#Objectives)
 - [Project Description](#Project-Description)
   - [Provided Resources](#Provided-Resources)
-  - [Web Site - Scope and Implementation](#web-site---scope-and-implementation)
-- [Part 1 - Cloud Formation Template TODOs](#part-1---cloudformation-template-todos)
-- [Part 2 - Setup Load Balancing TODOs](#part-2---setup-load-balancing-todos)
-- [Resources and Warnings](#resources-and-warnings)
+- [Part 1 - Create a Docker Image](#part-1---create-a-docker-image)
+- [Part 2 - CloudFormation Template TODOs](#part-2---cloudformation-template-todos)
+- [Part 3 - Setup Proxy Server](#part-3---setup-proxy-server)
+- [Part 4 - README](#part-4---readme)
+- [Recommended Resources and Warnings](#recommended-resources-and-warnings)
 - [Extra Credit - Hands Free](#extra-credit---hands-free---10) 
 - [Extra Credit - HTTPS](#extra-credit---https---20)
 - [Submission](#Submission)
@@ -54,7 +55,7 @@ You may use generative AI to create you a site per a theme, but you must **cite*
 
 5. Login to DockerHub on the command line.  Use a Personal Access Token (PAT) instead of a password.
 
-6. Push your container image to a **public** DockerHub repository.
+6. Push your container image to a **public** DockerHub repository in your account.
 
 Recommended: pull your container image and run it to test that it serves your web content.
 
@@ -94,13 +95,25 @@ Modify the template in the following ways:
 
 **The deliverable for this part is the CloudFormation template in your Project 3 folder. Do not forget to add citations in [Part 4](#part-4---README) if additional resources were used.**
 
-## Part 2 - Setup Load Balancing TODOs
+## Part 3 - Setup Proxy Server
 
-In your `Project3` folder, create a `README.md` file.  This document will focus on finishing configuration after your stack builds.
+Configure your proxy server per the following requirements.  If you **could not perform** a task or your project is not functional, note what is / is not working and what you've tried for debugging in [Part 4](#part-4---README).  
+
+**Do not forget to add citations in [Part 4](#part-4---README) if additional resources were used.**
+
+
+
+Add your `haproxy` configuration file to your `Project3` folder.
+
+## Part 4 - README
+
+In your `Project3` folder, create a `README.md` file.  This document will be an overall guide to your project.
 
 Your documentation should be written with as though someone is using it as a guide to recreate your project (like a blog post would do).
 
 If you cannot complete all tasks, make sure to document shortcomings / stuck points and note what is "research" on how the rest should be done for partial credit.
+
+**Do not forget to add citations in [Part 4](#part-4---README) if additional resources were used.**
 
 1. Project description
    - Provide an overview of the project goal
@@ -151,9 +164,8 @@ Make sure to use markdown code blocks to properly format snippets
    - if using generative AI, provide the tool name and the prompt(s) used
    - if using websites, provide the link and a short description of what you used on the page
 
-## Resources and Warnings
+## Recommended Resources and Warnings
 
-- You **DO NOT** need to mess with UFW rules. You may lock yourself out of SSH access.
 - You can have a maximum of **FIVE Elastic IP Addresses and FIVE VPCs**
 - [An Introduction to HAProxy and Load Balancing Concepts](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts)
 - [The Four Essential Sections of an HAProxy Configuration](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration/)
@@ -166,19 +178,25 @@ Make sure to use markdown code blocks to properly format snippets
 - [How to SFTP](https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server)
 - [Create & Extract with `tar`](https://linuxize.com/post/how-to-create-and-extract-archives-using-the-tar-command-in-linux)
 
-## Extra Credit - Hands Free - +10%
+## Extra Credit - Haproxy Container Image - +10%
 
-Have your CloudFormation template build everything out - configure haproxy to use the hosts & the hosts are configured with your site content, copy in `hosts` and / or `config files, etc.
+Create a folder in `Project3` called `haproxy`.
 
-Things your template should not do:
-- copy a private key for ssh access among instances (this implies you would somehow expose your private key on GitHub)
-- delete the NAT Gateway resource & associated EIP
+Copy in your `haproxy` configuration file.  Create a `Dockerfile` that will build from the [`haproxy` Official Iamge](https://hub.docker.com/_/haproxy/) and copies your `haproxy` configuration file to the default location for `haproxy` in the container filesystem.
 
-## Extra Credit - HTTPS - +20%
+Build and push a container image to a **public** DockerHub repository in your account (don't overwrite your website repository :wink:)
+
+Modify your CloudFormation template to pull and run your `haproxy` container image - do not install `haproxy` to the instance.
+
+Add a section to [Part 4](#part-4---README) explaining your additions.
+
+## Extra Credit - HTTPS - +10%
 
 Enable HTTPS (SSL encryption) for your load balancer.  I am going to leave some choice here of whether you have only your load balancer decrypt / encrypt packets for the hosts or have the hosts handle the decryption / encryption.
 
-You will owe a very good write up on all elements involved to set up HTTPS.  A start, which mentions some additional things you'll need, is [HAProxy SSL Termination](https://www.haproxy.com/blog/haproxy-ssl-termination)
+A start, which mentions some additional things you'll need, is [HAProxy SSL Termination](https://www.haproxy.com/blog/haproxy-ssl-termination)
+
+Add a section to [Part 4](#part-4---README) explaining your additions.
 
 ### Useful HTTPS Resources
 These are a collection of sites I used to set up HTTPS and get the correct SSL certificate (remember haproxy wants a "combo" file of the private and public cert)
@@ -200,6 +218,8 @@ These are a collection of sites I used to set up HTTPS and get the correct SSL c
 
 3. **Only delete the NAT Gateway** once your project is complete.  I will turn on your AWS environments for grading to check the load balancer is operational.
    - Once project grades are posted you may return and delete the stack
+
+4. You may complete *one or both* of the extra credit offerings.
 
 ## Rubric
 
