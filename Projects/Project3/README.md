@@ -197,6 +197,7 @@ If you could not complete a step or steps in any of the tasks above you document
 - [How to edit `/etc/hosts`](https://linuxize.com/post/how-to-edit-your-hosts-file/)
 - [The SSH config file](https://linuxize.com/post/using-the-ssh-config-file/)
 - [How to SFTP](https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server)
+- [Generate HTTP traffic with `hey`](https://github.com/rakyll/hey)
 
 ## Extra Credit - Haproxy Container Image - +10%
 
