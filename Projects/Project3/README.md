@@ -42,14 +42,14 @@ The following is provided in this project folder:
 1. In your `Project3` folder, create a folder named `web-content`.  The files that follow must exist in this folder.
 
 2. Bring **or** create a website with:
-- a minimum of **two** html files (`index` and one other)
-- a minimum of **one** css file
+   - a minimum of **two** html files (`index` and one other)
+   - a minimum of **one** css file
 
 You may use generative AI to create you a site per a theme, but you must **cite** which generative AI system you used and the prompt you fed to it.
 
 3. Create a `Dockerfile` with the following two instructions:
-- Build from `httpd:2.4`
-- Copy all content in `web-content` into the container filesystem in the default web content directory for `httpd` 
+   - Build from `httpd:2.4`
+   - Copy all content in `web-content` into the container filesystem in the default web content directory for `httpd` 
 
 4. Build and tag a container image using your `Dockerfile` as the build instructions
 
@@ -59,11 +59,15 @@ You may use generative AI to create you a site per a theme, but you must **cite*
 
 Recommended: pull your container image and run it to test that it serves your web content.
 
+**Do not forget to add citations in [Part 4](#part-4---README) of resources used.**
+
 Documentation requirements will be listed in [Part 4](#part-4---README)
 
 ## Part 2 - CloudFormation Template TODOs
 
 Your deliverable for this portion is only **your CloudFormation template**.
+
+Copy [`lb-cf-template.yml`](lb-cf-template.yml) to your `Project3` folder.  Name it `YOURLASTNAME-lb-cf.yml`
 
 If you **could not perform** a task via the Cloud Formation template, you'll need to document how you manually performed the task during [Part 4](#part-4---README) for a partial credit opportunity.  You may specify your research into completing taskings as long as you highlight that it is research based - not something your project implemented.
 
@@ -99,11 +103,31 @@ Modify the template in the following ways:
 
 Configure your proxy server per the following requirements.  If you **could not perform** a task or your project is not functional, note what is / is not working and what you've tried for debugging in [Part 4](#part-4---README).  
 
-**Do not forget to add citations in [Part 4](#part-4---README) if additional resources were used.**
+**Do not forget to add citations in [Part 4](#part-4---README) of resources used.**
 
+Configure the following in your `haproxy` configuration file
 
+1. Create a frontend section named `lastname-frontend`
+   - bind to host port `80`
+   - define the default backend as `lastname-pool`
+
+2. Create a backend section named `lastname-pool`
+   - define a balancing algorithm (round robin is anticipated - others may be chosen)
+      - [Haproxy - supported algorithms](https://www.haproxy.com/documentation/haproxy-configuration-manual/latest/#4.2-balance)
+   - add your three hosts as servers in the pool.  Don't forget to define the port the application is running on the hosts.
+
+3. Enable the `haproxy` statistics page with either a `frontend` section or a `listen` section
+
+4. Reload the `haproxy` service and confirm your load balancer is distributing traffic among the hosts in your pool.
+
+5. View the logs and stats of the `haproxy` server via the following methods - your focus is on finding evidence that the algorithm is distrubuting among your hosts:
+   - following the `haproxy` log file with `tail`
+   - `halog` on the `haproxy` log file 
+   - viewing the `stats` page
 
 Add your `haproxy` configuration file to your `Project3` folder.
+
+Documentation requirements will be listed in [Part 4](#part-4---README)
 
 ## Part 4 - README
 
@@ -111,9 +135,9 @@ In your `Project3` folder, create a `README.md` file.  This document will be an 
 
 Your documentation should be written with as though someone is using it as a guide to recreate your project (like a blog post would do).
 
-If you cannot complete all tasks, make sure to document shortcomings / stuck points and note what is "research" on how the rest should be done for partial credit.
+If you could not complete a step or steps in any of the tasks above you document shortcomings / stuck points and note what is "research" on how the rest should be done for partial credit.
 
-**Do not forget to add citations in [Part 4](#part-4---README) if additional resources were used.**
+**Do not forget to add citations in your `README.md` of resources used.**
 
 1. Project description
    - Provide an overview of the project goal
@@ -121,6 +145,9 @@ If you cannot complete all tasks, make sure to document shortcomings / stuck poi
    - Provide a description of what resources are built.
    - Diagram that assists with describing the CF template stack
       - See [Project 2 for diagram resources](../Project2/README.md)
+
+2. Building a web service container:
+   - 
 
 2. Connections to instances within the VPC:
    - Description of purpose for configuring in `/etc/hosts` AND / OR `.ssh/config` files.
@@ -130,19 +157,12 @@ If you cannot complete all tasks, make sure to document shortcomings / stuck poi
 
 3. Setting up the HAProxy load balancing instance:
    - Explanation of file(s) that will need modified and general purpose of the file(s)
-   - Snippets of haproxy configuration file or link to file in repo
+   - Link to `haproxy` configuration file in repo
    - Explanation of configuration file modifications
    - How to test the haproxy configuration file after revisions
    - Explanation and commands to manage the service (and when to run them)
-```
-Make sure to use markdown code blocks to properly format snippets
-```
 
-4. Setting up Host instances 1, 2, & 3
-   - **see notes in [Web Site - Scope and Implementation](#web-site---scope-and-implementation)**
-   - Document how to set the hosts to utilize your website, including method used to get site content to host instance and required location of site content
-
-6. Prove in **two ways** that your load balancer is working:
+4. Prove in **two ways** that your load balancer is working:
    - Use the browser to show that the hosts in the pool are serving content.
         - Explain how the user can visually test that their load balancer is working
         - Provide screenshot(s) of the project working in your browser
@@ -156,11 +176,7 @@ Make sure to use markdown code blocks to properly format snippets
         - Record and explain the command(s) to view the logs.
         - Take a screenshot of your logs proving load balancing among hosts in the pool is working
 
-7. Troubleshooting
-   - **Provide at least three recommendations** on what to troubleshoot if the load balancer is not working.  This can be at any point of the setup process.
-   - Check that you have selected "Start Lab" is not sufficient to count as one ;)
-
-8. Citations / resources used
+5. Citations / resources used
    - if using generative AI, provide the tool name and the prompt(s) used
    - if using websites, provide the link and a short description of what you used on the page
 
@@ -169,8 +185,8 @@ Make sure to use markdown code blocks to properly format snippets
 - You can have a maximum of **FIVE Elastic IP Addresses and FIVE VPCs**
 - [An Introduction to HAProxy and Load Balancing Concepts](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts)
 - [The Four Essential Sections of an HAProxy Configuration](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration/)
-- [How to Install the Apache Web Server on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-20-04)
-- [How to Install Nginx on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04)
+- [HAProxy Stats Page - Guide to all metrics](https://www.haproxy.com/blog/exploring-the-haproxy-stats-page)
+   - [HAProxy listen section x stats](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration#what-about-listen)
 - [Introduction to HAProxy logging & parsing logs](https://www.haproxy.com/blog/introduction-to-haproxy-logging)
    - [Article from Sematext that covers similar things](https://sematext.com/blog/haproxy-logs/)
 - [How to edit `/etc/hosts`](https://linuxize.com/post/how-to-edit-your-hosts-file/)
@@ -209,8 +225,11 @@ These are a collection of sites I used to set up HTTPS and get the correct SSL c
 ## Submission
 
 1. Your repo should contain:
-   - `YOURLASTNAME-cf.yml` (your modified CloudFormation template)
-   - a folder with your website content
+   - a folder named `web-content` with:
+      - your web site files
+      - your `Dockerfile`
+   - `YOURLASTNAME-lb-cf.yml` (your modified CloudFormation template)
+   - your `haproxy.cfg` file
    - `README.md`
 
 2. In Pilot, paste the link to your project folder.  
