@@ -118,12 +118,16 @@ Configure the following in your `haproxy` configuration file
 
 3. Enable the `haproxy` statistics page with either a `frontend` section or a `listen` section
 
-4. Reload the `haproxy` service and confirm your load balancer is distributing traffic among the hosts in your pool.
+4. Validate your `haproxy` configuration file. Address errors if the message is not `Configuration file is valid`
 
-5. View the logs and stats of the `haproxy` server via the following methods - your focus is on finding evidence that the algorithm is distrubuting among your hosts:
+5. Reload the `haproxy` service and confirm your load balancer is distributing traffic among the hosts in your pool.
+
+6. View the logs and stats of the `haproxy` server via the following methods - your focus is on finding evidence that the algorithm is distrubuting among your hosts:
    - following the `haproxy` log file with `tail`
    - `halog` on the `haproxy` log file 
    - viewing the `stats` page
+
+Recommended: generate traffic that actually puts your `haproxy` server to the test. [`hey` is a tiny program that sends some load to a web application](https://github.com/rakyll/hey). It is available in `apt` - have not looked up package name for other package managers. 
 
 Add your `haproxy` configuration file to your `Project3` folder.
 
@@ -147,52 +151,52 @@ If you could not complete a step or steps in any of the tasks above you document
       - See [Project 2 for diagram resources](../Project2/README.md)
 
 2. Building a web service container:
-   - 
+   - Explanation and links to web site content
+   - Explanation of and link to `Dockerfile`
+   - Instructions to build and push container image to your DockerHub repository
+      - Add instructions to create PAT && recommended PAT scope
 
-2. Connections to instances within the VPC:
+3. Connections to instances within the VPC:
    - Description of purpose for configuring in `/etc/hosts` AND / OR `.ssh/config` files.
    - Explanation of entries in `/etc/hosts` AND / OR `.ssh/config` files.
    - Required setup to `ssh` among the instances
    - How to `ssh` among the instances using one or both of the above files for ease of use.
 
-3. Setting up the HAProxy load balancing instance:
-   - Explanation of file(s) that will need modified and general purpose of the file(s)
+4. Setting up the HAProxy load balancing instance:
+   - General pupose of and required location for the `haproxy` configuration file
    - Link to `haproxy` configuration file in repo
-   - Explanation of configuration file modifications
-   - How to test the haproxy configuration file after revisions
-   - Explanation and commands to manage the service (and when to run them)
+   - Explanation of added sections in configuration file
+   - Explain how to test the haproxy configuration file after revisions but before reloading the service
+   - Explain scenarios when your `haproxy` service needs to be controlled - start, stop, restart / reload.  Provide the command to control the `haproxy` service based on the scenario.
 
-4. Prove in **two ways** that your load balancer is working:
-   - Use the browser to show that the hosts in the pool are serving content.
-        - Explain how the user can visually test that their load balancer is working
-        - Provide screenshot(s) of the project working in your browser
-        - Link to the Load Balancer Public IP
-   - View `haproxy` logs to show requests being distributed and responses from different hosts in the pool.
-      - **Valid logs viewers include**: 
-         - following the `haproxy` log file with `tail`
-         - enabling and viewing the `stats` page
-         - `halog` on the `haproxy` log file   
-      - **Deliverables**
-        - Record and explain the command(s) to view the logs.
-        - Take a screenshot of your logs proving load balancing among hosts in the pool is working
+5. Prove the load balancer is working:
+   - Link to the via Load Balancer Public IP
+   - Use a mix of screenshots and explanitory text to prove that your load balancer is successfully **using your pool of hosts**
+   - Use a mix of screenshots and explanitory text to prove that your load balancer is successfully **using the algorithm selected to distribute traffic**
+   - Hint: remember being asked to look at logs and the statistics page in Part 3 - lean on this to help with "proof"
 
-5. Citations / resources used
+6. Citations / resources used
    - if using generative AI, provide the tool name and the prompt(s) used
    - if using websites, provide the link and a short description of what you used on the page
 
 ## Recommended Resources and Warnings
 
+### AWS Notes
 - You can have a maximum of **FIVE Elastic IP Addresses and FIVE VPCs**
+
+### HAProxy Resources
 - [An Introduction to HAProxy and Load Balancing Concepts](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts)
 - [The Four Essential Sections of an HAProxy Configuration](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration/)
+- [Testing your HAProxy Configuration](https://www.haproxy.com/blog/testing-your-haproxy-configuration)
 - [HAProxy Stats Page - Guide to all metrics](https://www.haproxy.com/blog/exploring-the-haproxy-stats-page)
    - [HAProxy listen section x stats](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration#what-about-listen)
 - [Introduction to HAProxy logging & parsing logs](https://www.haproxy.com/blog/introduction-to-haproxy-logging)
    - [Article from Sematext that covers similar things](https://sematext.com/blog/haproxy-logs/)
+
+### Other Knowledge
 - [How to edit `/etc/hosts`](https://linuxize.com/post/how-to-edit-your-hosts-file/)
 - [The SSH config file](https://linuxize.com/post/using-the-ssh-config-file/)
 - [How to SFTP](https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server)
-- [Create & Extract with `tar`](https://linuxize.com/post/how-to-create-and-extract-archives-using-the-tar-command-in-linux)
 
 ## Extra Credit - Haproxy Container Image - +10%
 
