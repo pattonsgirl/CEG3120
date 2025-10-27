@@ -36,41 +36,49 @@ The following is provided in this project folder:
 - [`lb-cf-template.yml`](lb-cf-template.yml)
   - Note: this templated is updated from previous versions to get you started on this project
 
-### Web Site - Scope and Implementation
+## Part 1 - Create a Docker Image
 
-You may - and are encouraged to - bring your own site just to make grading more fun.
+1. In your `Project3` folder, create a folder named `web-content`.  The files that follow must exist in this folder.
 
-Your site must contain a minimum of:
+2. Bring **or** create a website with:
+- a minimum of **two** html files (`index` and one other)
+- a minimum of **one** css file
 
-- an index.html file
-- .css file(s) and / or image file(s) referred to by your .html file(s)
+You may use generative AI to create you a site per a theme, but you must **cite** which generative AI system you used and the prompt you fed to it.
 
-You may use generative AI to create these, but you must cite the generative AI used and the prompt fed to it.
+3. Create a `Dockerfile` with the following two instructions:
+- Build from `httpd:2.4`
+- Copy all content in `web-content` into the container filesystem in the default web content directory for `httpd` 
 
-There are three choices of setting up your site on your host.  I am ordering these from best choice to "completed the task" choice.
-1. Create a compressed version of your site files (usually a `.tar.gz`).  Download it via your CF template to the hosts, then extract it to the default content directory for `apache`
-2. Download your site files from your GitHub repo to your host to the default content directory for `apache`
-3. Sign in to each host after the CF template builds you stack and download your site content to the default content directory for `apache`
+4. Build and tag a container image using your `Dockerfile` as the build instructions
 
-## Part 1 - CloudFormation Template TODOs
+5. Login to DockerHub on the command line.  Use a Personal Access Token (PAT) instead of a password.
+
+6. Push your container image to a **public** DockerHub repository.
+
+Recommended: pull your container image and run it to test that it serves your web content.
+
+Documentation requirements will be listed in [Part 4](#part-4---README)
+
+## Part 2 - CloudFormation Template TODOs
 
 Your deliverable for this portion is only **your CloudFormation template**.
 
-If you **could not perform** a task via the Cloud Formation template, you'll need to document how you manually performed the task during Part 2 for a partial credit opportunity.  You may specify your research into completing taskings as long as you highlight that it is research based - not something your project implemented.
+If you **could not perform** a task via the Cloud Formation template, you'll need to document how you manually performed the task during [Part 4](#part-4---README) for a partial credit opportunity.  You may specify your research into completing taskings as long as you highlight that it is research based - not something your project implemented.
 
 Modify the template in the following ways:
 
-1. Use AMI of your choice that is Ubuntu 18+ or Amazon Linux 2
-2. VPC CIDR block: `172.18.0.0/23`
-3. Public subnet range: `172.18.0.0 - 172.18.0.255`
-4. Private subnet range: `172.18.1.0 - 172.18.1.255`
+1. Use AMI of your choice that is Ubuntu 18+ or Amazon Linux 2+
+2. VPC CIDR block: `192.168.0.0/23`
+3. Public subnet range: `192.168.0.0 - 192.168.0.255`
+4. Private subnet range: `192.168.1.0 - 192.168.1.255`
 5. Modifications for Security Group:
    - Allow `ssh` requests within VPC CIDR block
    - Allow `ssh` requests from your home IP
    - Allow `ssh` requests from Wright State IP block (`130.108.0.0/16`)
    - Allow `http` requests from within VPC CIDR block
    - Allow `http` requests from any IP
-   - *If doing Extra Credit* add `https` rules in addition to `http` rules
+   - *If doing Extra Credit* add `https` rules **in addition to** `http` rules
 6. For the load balancer (proxy) instance:
    - assign private IP on the public subnet
    - use instance `UserData` to configure a unique `hostname` on the instance
@@ -80,11 +88,11 @@ Modify the template in the following ways:
    - tag each with a unique Name Value
    - assign each a private IP on the private subnet
    - use instance `UserData` to configure a unique `hostname` on the instance
-   - use instance `UserData` to install `apache2` or `nginx` on each instance
-       - depending on AMI, also perform steps to start & enable service 
-   - **see notes in [Web Site - Scope and Implementation](#web-site---scope-and-implementation)**
+   - pull and run your DockerHub image in detached mode bound to host port 80 and container port 80. Use the appropriate flag to have the container restart automatically if the system is rebooted / if the docker service has an outage.
+        - [Detached mode - Docker Docs](https://docs.docker.com/reference/cli/docker/container/run/#detach)
+        - [Start containers automatically - Docker Docs](https://docs.docker.com/engine/containers/start-containers-automatically/)
 
-**The deliverable for this part is the CloudFormation template in your Project 3 folder. Do not forget to add citations to this portion if additional resources were used.**
+**The deliverable for this part is the CloudFormation template in your Project 3 folder. Do not forget to add citations in [Part 4](#part-4---README) if additional resources were used.**
 
 ## Part 2 - Setup Load Balancing TODOs
 
