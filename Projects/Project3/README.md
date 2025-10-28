@@ -93,6 +93,7 @@ Modify the template in the following ways:
    - tag each with a unique Name Value
    - assign each a private IP on the private subnet
    - use instance `UserData` to configure a unique `hostname` on the instance
+   - install docker
    - pull and run your DockerHub image in detached mode bound to host port 80 and container port 80. Use the appropriate flag to have the container restart automatically if the system is rebooted / if the docker service has an outage.
         - [Detached mode - Docker Docs](https://docs.docker.com/reference/cli/docker/container/run/#detach)
         - [Start containers automatically - Docker Docs](https://docs.docker.com/engine/containers/start-containers-automatically/)
@@ -146,8 +147,12 @@ If you could not complete a step or steps in any of the tasks above you document
 1. Project description
    - Provide an overview of the project goal
    - Provide a description of how to use the CF template to create a stack
-   - Provide a description of what resources are built.
+   - Provide a description of what resources are built
    - Diagram that assists with describing the CF template stack
+      - your diagram should at minimum display the resources your CF template creates in terms of:
+         - networking (subnets) & routes (include IGW and NAT GW)
+         - firewalls (Security Groups)
+         - instances (what is on what subnet, including NAT GW)
       - See [Project 2 for diagram resources](../Project2/README.md)
 
 2. Building a web service container:
@@ -158,6 +163,7 @@ If you could not complete a step or steps in any of the tasks above you document
    - Link to DockerHub repository with your site image
 
 3. Connections to instances within the VPC:
+   > While this project is changing to take more advantage of `docker`, you still need to acknowlege how to navigate around your instances. Play with using `/etc/hosts` AND / OR `.ssh/config` to simplify connecting among your systems.
    - Description of purpose for configuring in `/etc/hosts` AND / OR `.ssh/config` files.
    - Explanation of entries in `/etc/hosts` AND / OR `.ssh/config` files.
    - Required setup to `ssh` among the instances
@@ -179,6 +185,8 @@ If you could not complete a step or steps in any of the tasks above you document
 6. Citations / resources used
    - if using generative AI, provide the tool name and the prompt(s) used
    - if using websites, provide the link and a short description of what you used on the page
+   - NO CITATIONS will result in a minimum of a 30% deducation and be considered for reporting as an Academic Integrity Violation.  You may scatted your sources and citations to be relevant to sections or place them all in one section.
+
 
 ## Recommended Resources and Warnings
 
@@ -210,7 +218,7 @@ Copy in your `haproxy` configuration file.  Create a `Dockerfile` that will buil
 
 Build and push a container image to a **public** DockerHub repository in your account (don't overwrite your website repository :wink:)
 
-Modify your CloudFormation template to pull and run your `haproxy` container image - do not install `haproxy` to the instance.
+Create a copy of your Project 3 CloudFormation template (with your modifications per this project's requirements) named `yourlastname-nohands-cf.yml`. Modify your CloudFormation template to pull and run your `haproxy` container image - do not install `haproxy` to the instance.
 
 Add a section to [Part 4](#part-4---README) explaining your additions.
 
