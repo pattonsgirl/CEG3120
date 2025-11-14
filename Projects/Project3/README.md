@@ -8,8 +8,8 @@
 - [Part 3 - Setup Proxy Server](#part-3---setup-proxy-server)
 - [Part 4 - README](#part-4---readme)
 - [Recommended Resources and Warnings](#recommended-resources-and-warnings)
-- [Extra Credit - Hands Free](#extra-credit---hands-free---10) 
-- [Extra Credit - HTTPS](#extra-credit---https---20)
+- [Extra Credit - Haproxy Container Image](#extra-credit---haproxy-container-image---10) 
+- [Extra Credit - HTTPS](#extra-credit---https---10)
 - [Submission](#Submission)
 - [Rubric](Rubric.md)
 
