@@ -2,9 +2,9 @@
 
 - [Objectives](#Objectives)
 - [Project Overview](#Project-Overview)
-- [Part 2 - Continuous Deployment](#part-2---continuous-deployment)
-- [Part 3 - Project Description & Diagram](#part-3---project-description--diagram)
-- [Part 4 - Demonstration](#part-4---demonstration)
+- [Part 1 - Continuous Deployment](#part-1---continuous-deployment)
+- [Part 2 - Project Description & Diagram](#part-2---project-description--diagram)
+- [Part 3 - Demonstration](#part-3---demonstration)
 - [Submission](#Submission)
 - [Rubric](Rubric.md)
 
@@ -17,9 +17,9 @@
 
 This project requires completion of [Project 4](../Project4/). If you did not accomplish Project 4 you should meet with the instructor at your earliest availability.
 
-The documentation requirements are embedded in their respective parts (in order of how I would recommend setting things up). [Part 4 - Project Description & Diagram](#part-4---project-description--diagram) should be at the **top of your README-CI.md** since it is the description and diagramming requirement.
+The documentation requirements are embedded in their respective parts (in order of how I would recommend setting things up). [Part 2 - Project Description & Diagram](#part-2---project-description--diagram) should be at the **top of your README-CD.md** since it is the description and diagramming requirement.
 
-## Part 2 - Continuous Deployment
+## Part 1 - Continuous Deployment
 
 Now that we have semantic versioning operational, it's time to work on deploying the image in your DockerHub repository to servers that will run the application in the container.
 
@@ -117,7 +117,7 @@ In `README-CD.md`, include the following details:
 - [Using DockerHub and `webhook`s](https://blog.devgenius.io/build-your-first-ci-cd-pipeline-using-docker-github-actions-and-webhooks-while-creating-your-own-da783110e151)
 - [Linux Handbook - How to Create a `systemd` Service](https://linuxhandbook.com/create-systemd-services/)
 
-## Part 3 - Project Description & Diagram
+## Part 2 - Project Description & Diagram
 
 Create a diagram (or diagrams) of the continuous deployment process configured in this project.  It should (at minimum) address how the GitHub Action running results the server running a new container process - again, according to the workflow that this project enables.
 
@@ -149,7 +149,7 @@ You can use whatever tools you would like, here are some recommended tools that 
 - [Eraser - Cloud Diagrams](https://docs.tryeraser.com/docs/cloud-diagrams)
 - PowerPoint and OneNote are still good choices
 
-## Part 4 - Demonstration
+## Part 3 - Demonstration
 
 You must demonstration your project implementation **in person**. A booking link will be provided with my available times.
 
