@@ -1,4 +1,14 @@
-# Project 0 - Basics Guide
+# Project 0.1 - Better Basics Guide
+
+## Objectives:
+- revisit the Basics Guide project with improvements!
+- add git concepts touched on over the semester
+- add docker concepts covered over the semester
+
+> [!WARNING]
+> This is intended as extra credit **and** a way to recover points in Project 0.
+> If you are just here for ec because Project 0 was so great, add in the new parts
+> If you are here to improve your Project 0 score & get EC, make sure to read your Project 0 feedback and address deficiencies, then work on the extra credit.
 
 In your repo for this course, create a folder named `basics-guide` with a file named `README.md`. 
 
@@ -49,8 +59,21 @@ Provide descriptions of expected contents and what these are used for
 
 - .git folder
   - explain the overall purpose of the folder and an overview of the purpose each item in the folder's contents
+
 - .gitignore file
   - **DEMONSTRATE** Your GitHub repo should contain a `.gitignore` file that shows you are ignoring a set of files (or a folder) to prevent accidentally tracking them
+
+> [!TIP]
+> new thing!  
+- .github folder
+
+## GitHub Actions
+> [!TIP]
+> New section!
+
+Give a basic guide for forming a GitHub Action workflow.  Cover the following basics:
+
+- Format of a workflow file
 
 ## Command Line Docker
 
@@ -59,8 +82,10 @@ For each `docker` command, include a brief definition of **what it does AND a sa
 - ps
   - include active and ability to view all
 - images
+> [!TIP]
+> New flags added!
 - run
-  - include the following flags: `-it`, `-p`, `--name`
+  - include the following flags: `-it`, `-d`, `--restart`, `-p`, `--name`, `-v`
 - start
 - stop
 - exec
@@ -69,6 +94,27 @@ For each `docker` command, include a brief definition of **what it does AND a sa
 - kill
 - rm
   - include removing a container versus removing an image
+
+> [!TIP]
+> New stuff!
+- login
+  - include PAT notes
+- build
+- pull
+- push
+
+## Dockerfiles
+> [!TIP]
+> New section!
+
+Give a basic guide for forming a `Dockerfile`.  Cover the following commands:
+
+- FROM
+- COPY
+- ADD
+- RUN
+- CMD
+- EXPOSE
 
 ## SSH
 
@@ -86,4 +132,4 @@ Provide basic how-to-use guides.  This should be short and sweet so that you can
 
 ## Rubric
 
-[Link to Rubric](Rubric.md)
+[Link to Rubric - UNDER CONSTRUCTION](Rubric.md)
