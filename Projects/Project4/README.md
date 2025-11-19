@@ -27,7 +27,8 @@ Use of AWS in this project is optional - use of AWS in Project 5 is required.
 
 ## Part 1 - Create a Docker container image
 
-> [!WARNING] If you already did this for project 3, focus on copying your site files and Dockerfile into this new repository and adding the required documentation to your `README-CI.md`.  If you did not complete this part of Project 3, you'll need to complete all the following tasks.
+> [!WARNING] 
+> If you already did this for project 3, focus on copying your site files and Dockerfile into this new repository and adding the required documentation to your `README-CI.md`.  If you did not complete this part of Project 3, you'll need to complete all the following tasks.
 
 ### Tasks
 
