@@ -2,7 +2,6 @@
 
 - [Objectives](#Objectives)
 - [Project Overview](#Project-Overview)
-- [Part 1 - Semantic Versioning](#part-1---semantic-versioning)
 - [Part 2 - Continuous Deployment](#part-2---continuous-deployment)
 - [Part 3 - Project Description & Diagram](#part-3---project-description--diagram)
 - [Part 4 - Demonstration](#part-4---demonstration)
@@ -16,7 +15,7 @@
 
 ## Project Overview
 
-This project requires completion of [Project 4](../Project4/) in order to have a DockerHub repository with an image for an Angular application, establish GitHub Action workflows and be familiar with basic `docker` commands.  If you did not accomplish Project 4 you should meet with the instructor at your earliest availability.
+This project requires completion of [Project 4](../Project4/). If you did not accomplish Project 4 you should meet with the instructor at your earliest availability.
 
 The documentation bullet points are written linearly.  As long as the information can be found, I am okay with you organizing it to your logical preferences.
 
@@ -27,72 +26,6 @@ The documentation bullet points are written linearly.  As long as the informatio
 - 2 CPU Core (included in `t2.medium`)
 - 4 GB RAM (included in `t2.medium`)
 - 30 GB volume storage
-
-## Parts & Milestones
-
-Completion of each milestone **by the date specified for the milestone** will get you 5% of extra credit per milestone date met.  To qualify, you must submit your project on the milestone date to the Dropbox for Project 5 in Pilot.
-
-See Pilot for Milestone dates & project due date.
-
-- [Part 1 - Semantic Versioning](#Part-1---Semantic-Versioning)
-  - Milestone EC available
-- [Part 2 - Continuous Deployment](#part-2---continuous-deployment)
-  - Milestone EC available
-- [Part 3 - Project Description & Diagram](#part-3---project-description--diagram)
-  - Milestone EC available
-- [Part 4 - Demonstration](#Part-4---Demonstration)
-  - Due at project due date - no milestone EC available
-
-
-## Part 1 - Semantic Versioning
-
-Up to this point, when you build a new container image, the image is tagged with `latest` - this is a default if no other tag is specified.  This means prior builds are not kept - latest is continuously overwritten and you cannot roll back to an older build.  
-
-To this end, you will start generating `tag`s with `git` based on a `commit`.  To generate a tag for the most recent commit, you can run:
-- `git tag -a v*.*.*` (ex. `git tag -a v3.8.1`)
-
-When a new tag is pushed to GitHub, it will trigger your GitHub Action Workflow to collect metadata about the tag version, build the container image, then push the image to DockerHub with 3 tags:
-- `latest` (ex. `wsukduncan/s25cats:latest`)
-- `major` (ex. `wsukduncan/s25cats:3`)
-- `major`.`minor` (ex. `wsukduncan/s25cats:3.8`)
-
-
-### Tasks
-
-1. Create `git` `tag`s for your `commit`s using [semantic versioning best practices](https://semver.org/)
-2. Create or modify the GitHub Action workflow in your GitHub repository to:
-    - trigger when a `tag` is `push` to the repository - no other triggers should be in your final version
-    - use the `docker/metadata-action` to generate a set of tags from your repository
-    - utilize repository secrets for login authentication to DockerHub
-    - build and push container images to DockerHub with image tags based on your `tag` version AND `latest`
-      - DockerHub should receive the following tags to the container image repository:
-        - `latest` (ex. `wsukduncan/s25cats:latest`)
-        - `major` (ex. `wsukduncan/s25cats:3`)
-        - `major`.`minor` (ex. `wsukduncan/s25cats:3.8`)
-
-### Documentation
-
-Create `README-CD.md` in root folder of your GitHub repository that details the following:
-
-1. Generating `tag`s 
-    - How to see tags in a `git` repository
-    - How to generate a `tag` in a `git` repository
-    - How to push a tag in a `git` repository to GitHub
-2. Semantic Versioning Container Images with GitHub Actions
-    - Summary of what your workflow does and when it does it
-    - Explanation of workflow steps
-    - Explanation / highlight of values that need updated if used in a different repository
-      - changes in workflow
-      - changes in repository
-    - **Link** to workflow file in your GitHub repository
-3. Testing & Validating
-    - How to test that your workflow did its tasking
-    - How to verify that the image in DockerHub works when a container is run using the image
-
-### Resources
-
-- [GitHub - docker/metadata-action](https://github.com/docker/metadata-action?tab=readme-ov-file#semver)
-- [Docker - Manage Tag Labels](https://docs.docker.com/build/ci/github-actions/manage-tags-labels/)
 
 ## Part 2 - Continuous Deployment
 
@@ -192,11 +125,12 @@ In `README-CD.md`, include the following details:
 
 ## Part 3 - Project Description & Diagram
 
-Include a diagram (or diagrams) of the continuous deployment process configured in this project.  It should (at minimum) address how the developer changing code results in a new container process running on the server running the container application.
+Create a diagram (or diagrams) of the continuous deployment process configured in this project.  It should (at minimum) address how the GitHub Action running results the server running a new container process - again, according to the workflow that this project enables.
+
 
 ### Documentation
 
-In `README-CD.md`, add to the top of the document the following details:
+In `README-CI.md`, **add to the top of the document** the following details:
 
 1. Continuous Deployment Project Overview
     - What is the goal of this project
@@ -205,9 +139,9 @@ In `README-CD.md`, add to the top of the document the following details:
     - [If applicable] What is **not working** in this project
 2. Resources Section
     - Note: this can be at document top, scattered within document as resources were used, or placed at bottom
-    - Add resources used in the project by link.  If generative AI was used, state which platform and what prompts were given.
+    - Add resources used in the project by linking them and making a statement of how it was used.  If generative AI was used, state which platform and what prompts were given and again, a statement of how it was used.
 
-In `README.md` in the root folder of your GitHub repository:
+Create a `README.md` in the root folder of your GitHub repository:
 
 1. Summarize the project contents in the repository
 2. Link to `README-CI.md` and `README-CD.md` with a brief summary about what users will find in each document. 
@@ -224,11 +158,9 @@ You can use whatever tools you would like, here are some recommended tools that 
 
 ## Part 4 - Demonstration
 
-You must demonstration your project implementation **in person**.  If you cannot make the instructor office hours you may schedule an appointment - send an email with your blocks of availability.  
+You must demonstration your project implementation **in person**. A booking link will be provided with my available times.
 
-If the live demonstration displays needed debugging / fixes, you may submit a video that proves successful updates and additional progress to the "Project 5 - Video of Operation" Dropbox on Pilot.
-  
-For full credit, all of the following must be demonstrated.  Partial credit will be awarded for partial implementations if and only if your documentation states what doesn't work, and what your troubleshooting steps were.
+For full credit, all of the following must be demonstrated. Partial credit will be evaluated based on your understanding of the issue and amount of time needed to debug / fix.
 
 1. current state of site running on server, before making a change
     - show the page in the browser
@@ -252,7 +184,7 @@ For full credit, all of the following must be demonstrated.  Partial credit will
 
     Your repo should contain:
     - `README-CD.md` (and `README-CI.md` from P4)
-    - `angular-site` folder with application
+    - `web-content` folder with application
     - `Dockerfile`
     - GitHub action `yml` file in `.github/workflows`
     - `deployment` folder with:
