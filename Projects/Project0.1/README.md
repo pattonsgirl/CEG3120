@@ -73,7 +73,14 @@ Provide descriptions of expected contents and what these are used for
 
 Give a basic guide for forming a GitHub Action workflow.  Cover the following basics:
 
+- Where workflow files need to be set up to be enabled
+- A method for archving workflow files
 - Format of a workflow file
+- A sample default trigger
+- Where to find information on additional triggers
+- A sample job
+- Where to find information about runners
+- Where to peruse the GitHub Action Marketplace
 
 ## Command Line Docker
 
