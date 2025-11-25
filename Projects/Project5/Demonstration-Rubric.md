@@ -1,4 +1,4 @@
-## Part 4 - Demonstration ( / 10)
+## Project 5 Demonstration Rubric ( / 10)
 
 Observe current state of site running on server, before making a change
 - show the page in the browser
