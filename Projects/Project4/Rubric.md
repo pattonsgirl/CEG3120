@@ -1,95 +1,100 @@
 # Project 4 Rubric
 
-## Project Score: / 60
-
-## Milestone Extra Credits
-
-- [ ] Milestone 1 = Part 1 - +5% = 3 pts
-- [ ] Milestone 2 = Part 1 + 2 - +5% = 3 pts
+## Project Score: / 55
 
 ## GitHub Repository Contents ( / 4)
 
 - [ ] `README-CI.md`
-- [ ] `angular-site` folder with Angular application
+- [ ] `web-content` folder with web application
 - [ ] `Dockerfile`
 - [ ] GitHub action `yml` file in `.github/workflows`
 
-## Part 1 - Docker-ize it ( / 21)
+## Part 4- Project Description & Diagram ( / 8)
 
-1. Docker Setup
-    - [ ] How to install Docker for your OS
-    - [ ] Additional dependencies based on your OS
-    - [ ] How to confirm Docker is installed and your system can successfully run containers
-2. Manually Setting up a Container
-    - [ ] How to run a container to test the Angular application
-      - [ ] Include explanation of flags / arguments used
-    - [ ] Commands needed internal to the container to get additional dependencies
-    - [ ] Commands needed internal to the container to run the application
-    - [ ] How to verify that the container is successfully serving the Angular application
-      - [ ] validate from container side
-      - [ ] validate from host side
-3. `Dockerfile` & Building Images
-    - [ ] Summary / explanation of instructions written in the `Dockerfile`
+Documentation Requirements:
+
+1. Continuous Integration Project Overview
+    - [ ] What is the goal of this project
+    - [ ] What tools are used in this project and what are their roles
+    - Diagram of project
+        - [ ] clean layout
+        - [ ] what happens in cloned repo
+        - [ ] what happens in GitHub
+        - [ ] what happens in DockerHub
+    - [ ] [If applicable] What is **not working** in this project
+2. Resources Section
+    - [ ] Uses good formatting
+    - [ ] Citations appropriate to project / include notes on how they were used.
+
+## Part 1 - Create a Docker container image ( / 9)
+
+Documenation Requirements:
+
+1. `Dockerfile` & Building Images
+    - [ ] Explanation and links to web site content
+    - [ ] Explanation of and link to `Dockerfile`
     - [ ] How to build an image from the repository `Dockerfile`
-    - [ ] How to run a container that will serve the Angular application from the image built by the `Dockerfile`
-    - [ ] How to verify that the container is successfully serving the Angular application
-      - [ ] validate from container side
-      - [ ] validate from host side
-5. Working with your DockerHub Repository
-    - [ ] How to create a public repo in DockerHub
-    - [ ] How to create a PAT for authentication (note recommended scope for this task)
-    - [ ] How to authenticate with DockerHub via CLI using DockerHub credentials
-    - [ ] How to push container image to your DockerHub repository
-    - [ ] **Link** to your DockerHub repository for this project
+      - [ ] Include tagging requirements when planning to use DockerHub for a container image repository
+    - [ ] How to run a container that will serve the web application from the image built by the `Dockerfile`
 
-## Part 2 - GitHub Actions and DockerHub ( / 11)
+Task Requirements:
 
+- Dockerfile
+    - [ ] Builds from `httpd:2.4`
+    - [ ] Copies all content in `web-content` into the container filesystem in the default web content directory for `httpd`
+- [ ] provides working application when container is run using built image
+- [ ] DockerHub image repository shows at least one tagged image
+
+## Part 2 - GitHub Actions and DockerHub ( / 17)
+
+Documentation Requirements:
 1. Configuring GitHub Repository Secrets:
-    - [ ] How to create a PAT for authentication (note recommended scope for this task)
+    - [ ] How to create a PAT for authentication (**and** recommended PAT scope for this project)
     - [ ] How to set repository Secrets for use by GitHub Actions
     - [ ] Describe the Secrets set for this project
 2. CI with GitHub Actions
-    - [ ] Summary of what your workflow does and when it does it
+    - [ ] Explanation of workflow trigger
     - [ ] Explanation of workflow steps
-    - [ ] Explanation / highlight of values that need updated if used in a different repository
+    - Explanation / highlight of values that need updated if used in a different repository
       - [ ] changes in workflow
       - [ ] changes in repository
     - [ ] **Link** to workflow file in your GitHub repository
 3. Testing & Validating
     - [ ] How to test that your workflow did its tasking
     - [ ] How to verify that the image in DockerHub works when a container is run using the image
+    - [ ] **Link** to your DockerHub repository 
 
-## Part 3 - Project Description & Diagram ( / 8)
+Task Requirements - 2 pts each:
 
-1. Continuous Integration Project Overview
-    - [ ] What is the goal of this project
-    - [ ] What tools are used in this project and what are their roles
-    - Diagram
-      - [ ] cleanly presented
-      - Explains the project workflow in terms of:
-        - [ ] developer role
-        - [ ] GitHub role
-        - [ ] Docker Hub role
-    - [ ] [If applicable] What is **not working** in this project
-2. Resources Section
-    - [ ] included (embedded at relevant points or in stand alone section)
-    - [ ] well formatted
+- [ ] Secrets set in repository
+- [ ] Workflow defined, triggers on push to main
+- [ ] GitHub Action has run workflow at least once
 
-## `Dockerfile` ( / 8)
-2 pts / task
+## Part 3 - Semantic Versioning ( / 17)
 
-- [ ] builds from logical container image on DockerHub
-- [ ] installs required dependencies
-- [ ] copies application into container
-- [ ] starts application when container is run using built image
+Documentation Requirements:
 
-## GitHub Action Workflow ( / 8)
-2 pts / task
+1. Generating `tag`s 
+    - [ ] How to see tags in a `git` repository
+    - [ ] How to generate a `tag` in a `git` repository
+    - [ ] How to push a tag in a `git` repository to GitHub
+2. Semantic Versioning Container Images with GitHub Actions
+    - [ ] Explanation of workflow trigger
+    - [ ] Explanation of workflow steps
+    - Explanation / highlight of values that need updated if used in a different repository
+      - [ ] changes in workflow
+      - [ ] changes in repository
+    - [ ] **Link** to workflow file in your GitHub repository
+3. Testing & Validating
+    - [ ] How to test that your workflow did its tasking
+    - [ ] How to verify that the image in DockerHub works when a container is run using the image
+    - [ ] **Link** to your DockerHub repository with evidence of the tag set
 
-- [ ] Secrets defined in repository settings
-- [ ] triggers on push to main
-- [ ] builds an image based on your `Dockerfile`
-- [ ] pushes image to your DockerHub repository
+Task Requirements - 2 pts each:
+
+- [ ] Workflow defined, trigger on push of tags
+- [ ] GitHub Action has run workflow at least once with tag being the event
+- [ ] DockerHub shows semantically tagged versions from GH Action
 
 ## Common Point Deductions:
 
