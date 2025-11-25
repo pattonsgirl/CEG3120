@@ -98,8 +98,11 @@ Task Requirements - 2 pts each:
 
 ## Common Point Deductions:
 
-- [ ] (-30% = 18 pts) Documentation not well organized with markdown OR includes project descriptive text
-- [ ] (-10% = 6 pts) Documentation fails to address what was not implemented / implies the project is fully functional.  Always document shortcomings and note what is "research" on how the rest should be done
+- [ ] (-30%) Documentation not well organized with markdown OR includes project descriptive text
+- [ ] (-10%) Documentation fails to address what was not implemented / implies the project is fully functional.  Always document shortcomings and note what is "research" on how the rest should be done
+- [ ] (-5%) `Dockerfile` does not build viable container image to run application
+- [ ] (-5%) GitHub Action does not push image(s) to DockerHub
+- [ ] (-5%) Images in DockerHub do not use semantic versions in tagging
 - [ ] No citations of referenced material
 > [!WARNING]
 > May result in Academic Integrity Violation with a penalty of a 0 on the project

@@ -207,5 +207,5 @@ For full credit, all of the following must be demonstrated. Partial credit will 
 
 ## Rubric
 
-[Project Rubric - UNDER CONSTRUCTION](Rubric.md)
+[Project Rubric](Rubric.md)
 
