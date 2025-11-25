@@ -15,4 +15,4 @@ Observe current state of site running on server, before making a change
 9. [ ] post-change state of site running on server
     - show the page in the browser
     - show the docker status
-10. [ ] prove that hook has some trigger rule / protection in plac1
+10. [ ] prove that hook has some trigger rule / protection in place
