@@ -198,4 +198,4 @@ You can use whatever tools you would like, here are some recommended tools that 
 
 ## Rubric
 
-[Project Rubric - UNDER CONSTRUCTION](Rubric.md)
+[Project Rubric](Rubric.md)
