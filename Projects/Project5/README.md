@@ -43,6 +43,7 @@ On your AWS instance, build a bash script that stops and removes the formerly ru
     - stop and remove the formerly running container
     - pull the `latest` tagged image from your DockerHub repository
     - run a new container process with the pull'ed image
+      - run as a detached process and with flags to resume runing when docker is started (on system start)
     - **copy the bash script** to folder named `deployment` in your GitHub repository
 
 ### Documentation
@@ -63,7 +64,7 @@ Create `README-CD.md` in root folder of your GitHub repository that details the 
     - How to pull container image from DockerHub repository
     - How to run container from image 
       - Note the differences between using the `-it` flag and the `-d` flags and which you would recommend once the testing phase is complete
-    - How to verify that the container is successfully serving the web applicatio
+    - How to verify that the container is successfully serving the web application
 4. Scripting Container Application Refresh
     - Description of the bash script
     - How to test / verify that the script successfully performs its taskings
