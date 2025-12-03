@@ -43,7 +43,7 @@ On your AWS instance, build a bash script that stops and removes the formerly ru
     - stop and remove the formerly running container
     - pull the `latest` tagged image from your DockerHub repository
     - run a new container process with the pull'ed image
-      - run as a detached process and with flags to resume runing when docker is started (on system start)
+      - run as a detached process and with flags to resume running when docker is started (on system start)
     - **copy the bash script** to folder named `deployment` in your GitHub repository
 
 ### Documentation
