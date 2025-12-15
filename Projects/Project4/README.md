@@ -133,7 +133,7 @@ DockerHub shall receive the following tags to the container image repository:
 
 ### Documentation
 
-Create `README-CD.md` in root folder of your GitHub repository that details the following:
+In `README-CI.md` include the following details:
 
 1. Generating `tag`s 
     - How to see tags in a `git` repository
