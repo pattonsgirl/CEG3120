@@ -13,15 +13,23 @@
 ### [Setting up a jail](https://btholt.github.io/complete-intro-to-containers/chroot)
 
 ```bash
-mkdir /my-new-root/bin
-cp /bin/bash /bin/ls /my-new-root/bin/
-ldd bash # find bash libraries
-ldd ls # find ls libraries
-mkdir /my-new-root/lib /my-new-root/lib{,64}
-cp /lib/x86_64-linux-gnu/libtinfo.so.5 /lib/x86_64-linux-gnu/libdl.so.2 /lib/x86_64-linux-gnu/libc.so.6 /my-new-root/lib
-cp /lib64/ld-linux-x86-64.so.2 /my-new-root/lib64
-cp /lib/x86_64-linux-gnu/libselinux.so.1 /lib/x86_64-linux-gnu/libpcre.so.3 /lib/x86_64-linux-gnu/libpthread.so.0 /my-new-root/lib
-chroot /my-new-root bash
+# create directory to chroot in to
+$ mkdir /my-new-root/bin
+# copy in program binaries
+$ cp /bin/bash /bin/ls /my-new-root/bin/
+# find bash libraries
+$ ldd /usr/bin/bash
+# find ls libraries
+$ ldd /usr/bin/ls
+# create folder structure programs will look at - below creates lib and lib64
+$ mkdir /my-new-root/lib{,64}
+# copy bash libraries into lib
+$ cp cp /lib/x86_64-linux-gnu/libtinfo.so.6 /lib/x86_64-linux-gnu/libdl.so.2 /lib/x86_64-linux-gnu/libc.so.6 /my-new-root/lib
+# copy bash libraries into lib64
+$ cp /lib64/ld-linux-x86-64.so.2 /my-new-root/lib64
+# repeat copying in library files for ls and other programs
+$ chroot /my-new-root bash
+bash-5.2#
 # try bash & ls
 ```
 </details>
