@@ -6,9 +6,6 @@
         - `chroot` just means separate starting point
         - still has access to process control
         - is `root`!  Can kill processes on system, and cause 
-        
-<details>
-<summary>See set of commands</summary>
 
 ### [Setting up a jail](https://btholt.github.io/complete-intro-to-containers/chroot)
 
@@ -32,15 +29,11 @@ $ chroot /my-new-root bash
 bash-5.2#
 # try bash & ls
 ```
-</details>
 
 There must be something better... could we start with a base?
 1. `debootstrap` https://wiki.debian.org/Debootstrap
     - we are bootstrapping Debian in order to get that base set of binaries and libraries
 2. Now we can `unshare` - this will lock it to its own process space.  [Demystifying `unshare`](https://gabrielsantos.org/2020/05/17/77/)
-
-<details>
-<summary>See set of commands</summary>
 
 ### [Setting up Debian bootstrap + process namespace](https://btholt.github.io/complete-intro-to-containers/namespaces)
 
@@ -58,8 +51,6 @@ mount -t sysfs none /sys # filesystem
 mount -t tmpfs none /tmp # filesystem
 # try bash & ls
 ```
-</details>
-
 
 # Run a container image
 
