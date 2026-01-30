@@ -64,8 +64,11 @@ For each `docker` command, include a brief definition of **what it does AND a sa
 - start
 - stop
 - exec
+- attach
 - import
 - export
+- inspect
+- logs
 - kill
 - rm
   - include removing a container versus removing an image
