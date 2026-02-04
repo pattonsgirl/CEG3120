@@ -4,13 +4,28 @@ In your `essentials` repository for this course, pick one of the below DIY conta
 
 ## Option 1: DIY git server
 
+In your repository, include:
+1. Create a `README.md` file that defines:
+    - what the application is
+    - what are the software dependencies of this code
+    - which container image you used as a base
+    - how you installed dependencies to the container environment
+    - any changes required to the app or additions needed
+    - instructions on how to use your container to use the DIY git container 
+    - any troubleshooting to be aware of
 
 ## Option 2: App with Dependencies
 
-1. Add code for an application
+In your repository, include:
+1. Code for an application / project that requires additional dependencies / setup besides the core compiler or service
 2. Create a `README.md` file that defines:
     - what the application is
-    - 
+    - what are the software dependencies of this code
+    - which container image you used as a base
+    - how you installed dependencies to the container environment
+    - any changes required to the app or additions needed
+    - instructions on how to use your container to run the code / project
+    - any troubleshooting to be aware of
 
 ## Option 3: Undocumented App
 
