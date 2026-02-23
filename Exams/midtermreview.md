@@ -96,7 +96,7 @@
 - Create CloudFormation template
   - should mimic what was manually created
 
-## Week 6 / 7
+## ~~Week 6 / 7~~
 
 - system logs & service control
 - installing and configuring a webserver
