@@ -32,19 +32,31 @@
     - pull
     - ps
     - images
-    - run (`-it` `-p HOST:CONTAINER`)
+    - run (`-it`, `-d`, `-p HOST:CONTAINER`, bind mount)
+    - attach
     - exec
     - start
     - stop / kill
     - rm
+    - build
     - import
-    - export  
+    - export
+    - inspect
+    - logs
+  - Dockerfile
+    - FROM
+    - COPY
+    - WORKDIR
+    - RUN
+    - CMD 
 
 ### Project 0
 
 - git guide
 - docker guide
 - ssh with different tools (GitHub & AWS)
+
+## Project 
 
 ## Week 2 / 3
 
