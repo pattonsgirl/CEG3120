@@ -1,6 +1,6 @@
 # Midterm Review for CEG 3120
 
-## Week 1 / 2
+## Week 1 / 4
 
 - create aws stack
 - terminal command reminder
@@ -11,6 +11,7 @@
   - .ssh/config
   - .ssh/authorized_keys
   - .ssh/known_hosts
+  - viewing status of / start / stop ssh service
 - git & GitHub
   - clone
   - init
@@ -30,6 +31,7 @@
   - isolation
   - docker
     - pull
+    - push
     - ps
     - images
     - run (`-it`, `-d`, `-p HOST:CONTAINER`, bind mount)
@@ -38,11 +40,12 @@
     - start
     - stop / kill
     - rm
-    - build
+    - build (`-t`)
     - import
     - export
     - inspect
     - logs
+    - login
   - Dockerfile
     - FROM
     - COPY
@@ -56,31 +59,36 @@
 - docker guide
 - ssh with different tools (GitHub & AWS)
 
-## Project 
+### Project 0.5
 
-## Week 2 / 3
+- build instructions for a container
+  - git server built into a container
+  - containerize your own app with dependencies
+  - containerize Duncan's pre-req scraper
 
-- networking review
+## Background Networking Know-How
+
+- networking know how
   - IPv4 addresses
   - Subnets & CIDR blocks
   - routes
   - gateways
   - NAT
   - Firewalls
+    - stateful vs stateless
+    - whitelist vs blacklist
     - network wide
     - per machine (iptables)
 
-## Week 3 / 4
+## Week 5 / 7
 
 - the cloud
-  - types of cloud services
-  - regions
-  - ~~access management of cloud resources~~
-    - IAM tokens for **authorization**
-      - can create(?) access(?) delete(?) view billing(?)
+  - types of cloud services (IaaS, PaaS, SaaS)
+  - regions - in that others exist and define their own AMI IDs, instance types, etc.
+
 - AWS
   - VPC
-  - Subnets (private vs public)
+  - Subnets (~~private~~ vs public)
   - Routes & route tables
   - Internet Gateway
   - Security Group vs Network ACLs
@@ -94,10 +102,13 @@
 
 - Manually creating the resources
   - VPC
+  - NACL & SG configuration
   - instance type & AMI
-  - EIP to instance
+  - SSH to instance with EIP
 
-## Week 5 / 6
+# Midterm will expect introductory understanding here
+
+## Week 7 / 8
 
 - Using CloudFormation Templates
   - using YAML/JSON formatted files
@@ -108,16 +119,3 @@
 - Create CloudFormation template
   - should mimic what was manually created
 
-## ~~Week 6 / 7~~
-
-- system logs & service control
-- installing and configuring a webserver
-  - apache vs nginx
-  - status / control of services (systemctl)
-  - service logs (apache & ssh)
-- ~~proxies~~
-  - forward vs reverse
-- ~~load balancers~~
-  - terminology
-  - function
-  - Layer 4 vs Layer 7
