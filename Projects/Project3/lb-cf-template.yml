@@ -128,7 +128,7 @@ Resources:
         - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
-          CidrIp: 10.0.0.0/16 # VPC as a whole. #TODO: update to refer to correct VPC block
+          CidrIp: 10.0.0.0/16 #TODO: update to refer to correct VPC block
         - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
@@ -137,7 +137,7 @@ Resources:
           FromPort: '22'
           ToPort: '22'
           CidrIp: 0.0.0.0/32  # TODO Replace with home / trusted public IP
-          # TODO Need more rules for port 80 access
+          # TODO add rule(s) for port 80 access
       Tags: 
         - Key: Name
           Value: LB-sg
@@ -159,7 +159,7 @@ Resources:
           DeviceIndex: '0'
           DeleteOnTermination: 'true'
           SubnetId: !Ref PublicSubnet
-          PrivateIpAddress: 10.0.0.10 # TODO
+          PrivateIpAddress: 10.0.0.10 # TODO - must be valid for public subnet
       UserData:
         Fn::Base64:
           !Sub |
@@ -188,15 +188,15 @@ Resources:
           DeviceIndex: '0'
           DeleteOnTermination: 'true'
           SubnetId: !Ref PrivateSubnet
-          PrivateIpAddress: 10.0.1.10 # TODO make sure unique to the instance
+          PrivateIpAddress: 10.0.1.10 # TODO - must be valid for the private subnet
       UserData:
         Fn::Base64:
           !Sub |
             #!/bin/bash -xe
             apt-get update && \
-            # TODO need to install apache or nginx
+            # TODO install docker
             apt-get install -y git && \
             # TODO give it a hostname - hostnamectl  && \
-            # TODO download & extract (likely two commands) simple-site.tar.gz
+            # TODO pull & run your website container
             reboot
 # TODO: create 2 more instances attached to the private subnet

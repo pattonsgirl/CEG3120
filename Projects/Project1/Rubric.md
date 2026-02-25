@@ -1,8 +1,8 @@
 # Project 1 Rubric
 
-## Project Score: / 34
+## Project Score: / 42
 
-## Part 1 - Build a VPC ( / 16)
+## Part 1 - Build a VPC ( / 23)
 
 1. VPC
    - [ ] description
@@ -19,12 +19,16 @@
    - [ ] screenshot w/ proof of configuration per project requirements
 5. Security Group 
    - [ ] description
-   - [ ] screenshot w/ proof of configuration per project requirements
-      - image should capture capture details for all 3 rules 
-         - [ ] (-1) point per rule not included
+   - screenshot w/ proof of configuration:
+      - [ ] SSH and ICMP from:
+         - [ ] WSU block
+         - [ ] VPC block
+         - [ ] Home IP block
+      - [ ] HTTP from anywhere
 6. Network ACL 
    - [ ] description
-   - [ ] screenshot w/ proof of configuration per project requirements
+   - [ ] Screenshot with Inbound Deny SSH from `107.23.4.178` & rest of chain
+   - [ ] Screenshot with Outbound Deny connections on any port to `wttr.in` & rest of chain
 7. Key Pair 
    - [ ] description
    - [ ] prompt responses
@@ -50,7 +54,7 @@
 2. [ ] How to associate the EIP with the instance
 3. [ ] Screenshot with instance details that validates configuration per project requirements
 
-## Part 3 - Instance Configuration ( / 6)
+## Part 3 - Instance Configuration ( / 7)
 
 1. [ ] Steps performed to `ssh` to instance
 2. [ ] Steps performed to change hostname of instance
@@ -58,7 +62,9 @@
 4. Security settings:
    - [ ] Proof that Security Group is applying to instance per project requirements
    - [ ] Proof that Network ACL is applying to instance subnet per project requirements
-5. [ ] Steps to install docker accurate to selected AMI
+5. Docker setup:
+   - [ ] Steps to install docker accurate to selected AMI
+   - [ ] Proof that docker engine is running & that user can run container processes without `sudo`
 
 ## Point Deductions - Penalty total: 
 

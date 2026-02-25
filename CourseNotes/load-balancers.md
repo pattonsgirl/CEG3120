@@ -149,9 +149,15 @@ VPN connections encrypt and secure all of your network traffic, not just the HTT
 - [configure and view `haproxy` logs](https://www.haproxy.com/blog/introduction-to-haproxy-logging/)
 - [`haproxy` `stats` page](https://www.haproxy.com/blog/exploring-the-haproxy-stats-page/)
     - check port bind is open on firewall (Security Groups)
-    - `stats uri ` of `/haproxy?stats` or `/stats` needs to be configured in `frontend`
+    - `stats uri ` of `/haproxy?stats` or `/stats` needs to be configured in `frontend` or `listen` section
+        - [What about `listen](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration#what-about-listen)
+        - [`frontend` stats configuration](https://www.haproxy.com/blog/exploring-the-haproxy-stats-page#exploring-the-haproxy-stats-page) 
     - access with `EIP:port/uri`
+    - [enable health `checks` - TCP vs HTTP](https://www.haproxy.com/documentation/haproxy-configuration-tutorials/reliability/health-checks/)
+        -[a guide to haproxy health checks](https://www.haproxy.com/blog/how-to-enable-health-checks-in-haproxy) 
 - [managing hosts with `haproxy` via command line](https://serverfault.com/questions/249316/how-can-i-remove-balanced-node-from-haproxy-via-command-line)
+- [makring a server as `down` for maintainance](https://www.haproxy.com/documentation/haproxy-runtime-api/reference/disable-server/)
+    - health checks will already do heavy lifting - if app is not responding, haproxy will mark it as down. Telling HAProxy this via the API OR by using the `admin` portal of the `stats` page is more graceful 
 
 Useful commands:
 - `ping hostname`

@@ -6,33 +6,34 @@
         - `chroot` just means separate starting point
         - still has access to process control
         - is `root`!  Can kill processes on system, and cause 
-        
-<details>
-<summary>See set of commands</summary>
 
 ### [Setting up a jail](https://btholt.github.io/complete-intro-to-containers/chroot)
 
 ```bash
-mkdir /my-new-root/bin
-cp /bin/bash /bin/ls /my-new-root/bin/
-ldd bash # find bash libraries
-ldd ls # find ls libraries
-mkdir /my-new-root/lib /my-new-root/lib{,64}
-cp /lib/x86_64-linux-gnu/libtinfo.so.5 /lib/x86_64-linux-gnu/libdl.so.2 /lib/x86_64-linux-gnu/libc.so.6 /my-new-root/lib
-cp /lib64/ld-linux-x86-64.so.2 /my-new-root/lib64
-cp /lib/x86_64-linux-gnu/libselinux.so.1 /lib/x86_64-linux-gnu/libpcre.so.3 /lib/x86_64-linux-gnu/libpthread.so.0 /my-new-root/lib
-chroot /my-new-root bash
+# create directory to chroot in to
+$ mkdir /my-new-root/bin
+# copy in program binaries
+$ cp /bin/bash /bin/ls /my-new-root/bin/
+# find bash libraries
+$ ldd /usr/bin/bash
+# find ls libraries
+$ ldd /usr/bin/ls
+# create folder structure programs will look at - below creates lib and lib64
+$ mkdir /my-new-root/lib{,64}
+# copy bash libraries into lib
+$ cp cp /lib/x86_64-linux-gnu/libtinfo.so.6 /lib/x86_64-linux-gnu/libdl.so.2 /lib/x86_64-linux-gnu/libc.so.6 /my-new-root/lib
+# copy bash libraries into lib64
+$ cp /lib64/ld-linux-x86-64.so.2 /my-new-root/lib64
+# repeat copying in library files for ls and other programs
+$ chroot /my-new-root bash
+bash-5.2#
 # try bash & ls
 ```
-</details>
 
 There must be something better... could we start with a base?
 1. `debootstrap` https://wiki.debian.org/Debootstrap
     - we are bootstrapping Debian in order to get that base set of binaries and libraries
 2. Now we can `unshare` - this will lock it to its own process space.  [Demystifying `unshare`](https://gabrielsantos.org/2020/05/17/77/)
-
-<details>
-<summary>See set of commands</summary>
 
 ### [Setting up Debian bootstrap + process namespace](https://btholt.github.io/complete-intro-to-containers/namespaces)
 
@@ -50,8 +51,6 @@ mount -t sysfs none /sys # filesystem
 mount -t tmpfs none /tmp # filesystem
 # try bash & ls
 ```
-</details>
-
 
 # Run a container image
 

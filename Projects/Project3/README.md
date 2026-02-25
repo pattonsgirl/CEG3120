@@ -3,19 +3,21 @@
 - [Objectives](#Objectives)
 - [Project Description](#Project-Description)
   - [Provided Resources](#Provided-Resources)
-  - [Web Site - Scope and Implementation](#web-site---scope-and-implementation)
-- [Part 1 - Cloud Formation Template TODOs](#part-1---cloudformation-template-todos)
-- [Part 2 - Setup Load Balancing TODOs](#part-2---setup-load-balancing-todos)
-- [Resources and Warnings](#resources-and-warnings)
-- [Extra Credit - Hands Free](#extra-credit---hands-free---10) 
-- [Extra Credit - HTTPS](#extra-credit---https---20)
+- [Part 1 - Create a Docker Image](#part-1---create-a-docker-image)
+- [Part 2 - CloudFormation Template TODOs](#part-2---cloudformation-template-todos)
+- [Part 3 - Setup Proxy Server](#part-3---setup-proxy-server)
+- [Part 4 - README](#part-4---readme)
+- [Recommended Resources and Warnings](#recommended-resources-and-warnings)
+- [Extra Credit - Haproxy Container Image](#extra-credit---haproxy-container-image---10) 
+- [Extra Credit - HTTPS](#extra-credit---https---10)
 - [Submission](#Submission)
 - [Rubric](Rubric.md)
 
 ## Objectives:
 
-- Modify the CF template to meet updated requirements
-- Run a website using `nginx` or `apache2` on hosts in the pool
+- Build a container image from Apache's httpd project with web content - publish it to DockerHub
+- Modify the project CF template to meet requirements for this project
+- Run the website container on hosts in the pool
 - Configure `haproxy` as a load balancer / application delivery controller to direct traffic to the pool
 
 ## Project Description
@@ -25,9 +27,8 @@ In your repository, create a `Project3` folder.
 For this project, you will have three required deliverables:
 
 1. CloudFormation template with modifications per project requirements
-2. Folder with your website files
+2. Folder with your website files and Dockerfile
 3. Documentation (and specified screenshots) for configuring the load balancer and hosts in the pool after stack creation. 
-4. Optional - compressed folder with your site files (`.tar.gz`) 
 
 ### Provided Resources
 
@@ -36,41 +37,53 @@ The following is provided in this project folder:
 - [`lb-cf-template.yml`](lb-cf-template.yml)
   - Note: this templated is updated from previous versions to get you started on this project
 
-### Web Site - Scope and Implementation
+## Part 1 - Create a Docker Image
 
-You may - and are encouraged to - bring your own site just to make grading more fun.
+1. In your `Project3` folder, create a folder named `web-content`.  The files that follow must exist in this folder.
 
-Your site must contain a minimum of:
+2. Bring **or** create a website with:
+   - a minimum of **two** html files (`index` and one other)
+   - a minimum of **one** css file
 
-- an index.html file
-- .css file(s) and / or image file(s) referred to by your .html file(s)
+You may use generative AI to create you a site per a theme, but you must **cite** which generative AI system you used and the prompt you fed to it.
 
-You may use generative AI to create these, but you must cite the generative AI used and the prompt fed to it.
+3. Create a `Dockerfile` with the following two instructions:
+   - Build from `httpd:2.4`
+   - Copy all content in `web-content` into the container filesystem in the default web content directory for `httpd` 
 
-There are three choices of setting up your site on your host.  I am ordering these from best choice to "completed the task" choice.
-1. Create a compressed version of your site files (usually a `.tar.gz`).  Download it via your CF template to the hosts, then extract it to the default content directory for `apache`
-2. Download your site files from your GitHub repo to your host to the default content directory for `apache`
-3. Sign in to each host after the CF template builds you stack and download your site content to the default content directory for `apache`
+4. Build and tag a container image using your `Dockerfile` as the build instructions
 
-## Part 1 - CloudFormation Template TODOs
+5. Login to DockerHub on the command line.  Use a Personal Access Token (PAT) instead of a password.
+
+6. Push your container image to a **public** DockerHub repository in your account.
+
+Recommended: pull your container image and run it to test that it serves your web content.
+
+**Do not forget to add citations in [Part 4](#part-4---README) of resources used.**
+
+Documentation requirements will be listed in [Part 4](#part-4---README)
+
+## Part 2 - CloudFormation Template TODOs
 
 Your deliverable for this portion is only **your CloudFormation template**.
 
-If you **could not perform** a task via the Cloud Formation template, you'll need to document how you manually performed the task during Part 2 for a partial credit opportunity.  You may specify your research into completing taskings as long as you highlight that it is research based - not something your project implemented.
+Copy [`lb-cf-template.yml`](lb-cf-template.yml) to your `Project3` folder.  Name it `YOURLASTNAME-lb-cf.yml`
+
+If you **could not perform** a task via the Cloud Formation template, you'll need to document how you manually performed the task during [Part 4](#part-4---README) for a partial credit opportunity.  You may specify your research into completing taskings as long as you highlight that it is research based - not something your project implemented.
 
 Modify the template in the following ways:
 
-1. Use AMI of your choice that is Ubuntu 18+ or Amazon Linux 2
-2. VPC CIDR block: `172.18.0.0/23`
-3. Public subnet range: `172.18.0.0 - 172.18.0.255`
-4. Private subnet range: `172.18.1.0 - 172.18.1.255`
+1. Use AMI of your choice that is Ubuntu 18+ or Amazon Linux 2+
+2. VPC CIDR block: `192.168.0.0/23`
+3. Public subnet range: `192.168.0.0 - 192.168.0.255`
+4. Private subnet range: `192.168.1.0 - 192.168.1.255`
 5. Modifications for Security Group:
    - Allow `ssh` requests within VPC CIDR block
    - Allow `ssh` requests from your home IP
    - Allow `ssh` requests from Wright State IP block (`130.108.0.0/16`)
    - Allow `http` requests from within VPC CIDR block
    - Allow `http` requests from any IP
-   - *If doing Extra Credit* add `https` rules in addition to `http` rules
+   - *If doing Extra Credit* add `https` rules **in addition to** `http` rules
 6. For the load balancer (proxy) instance:
    - assign private IP on the public subnet
    - use instance `UserData` to configure a unique `hostname` on the instance
@@ -80,97 +93,144 @@ Modify the template in the following ways:
    - tag each with a unique Name Value
    - assign each a private IP on the private subnet
    - use instance `UserData` to configure a unique `hostname` on the instance
-   - use instance `UserData` to install `apache2` or `nginx` on each instance
-       - depending on AMI, also perform steps to start & enable service 
-   - **see notes in [Web Site - Scope and Implementation](#web-site---scope-and-implementation)**
+   - install docker
+   - pull and run your DockerHub image in detached mode bound to host port 80 and container port 80. Use the appropriate flag to have the container restart automatically if the system is rebooted / if the docker service has an outage.
+        - [Detached mode - Docker Docs](https://docs.docker.com/reference/cli/docker/container/run/#detach)
+        - [Start containers automatically - Docker Docs](https://docs.docker.com/engine/containers/start-containers-automatically/)
 
-**The deliverable for this part is the CloudFormation template in your Project 3 folder. Do not forget to add citations to this portion if additional resources were used.**
+**The deliverable for this part is the CloudFormation template in your Project 3 folder. Do not forget to add citations in [Part 4](#part-4---README) if additional resources were used.**
 
-## Part 2 - Setup Load Balancing TODOs
+## Part 3 - Setup Proxy Server
 
-In your `Project3` folder, create a `README.md` file.  This document will focus on finishing configuration after your stack builds.
+Configure your proxy server per the following requirements.  If you **could not perform** a task or your project is not functional, note what is / is not working and what you've tried for debugging in [Part 4](#part-4---README).  
+
+**Do not forget to add citations in [Part 4](#part-4---README) of resources used.**
+
+Configure the following in your `haproxy` configuration file
+
+1. Create a frontend section named `lastname-frontend`
+   - bind to host port `80`
+   - define the default backend as `lastname-pool`
+
+2. Create a backend section named `lastname-pool`
+   - define a balancing algorithm (round robin is anticipated - others may be chosen)
+      - [Haproxy - supported algorithms](https://www.haproxy.com/documentation/haproxy-configuration-manual/latest/#4.2-balance)
+   - add your three hosts as servers in the pool.  Don't forget to define the port the application is running on the hosts.
+
+3. Enable the `haproxy` statistics page with either a `frontend` section or a `listen` section
+
+4. Validate your `haproxy` configuration file. Address errors if the message is not `Configuration file is valid`
+
+5. Reload the `haproxy` service and confirm your load balancer is distributing traffic among the hosts in your pool.
+
+6. View the logs and stats of the `haproxy` server via the following methods - your focus is on finding evidence that the algorithm is distrubuting among your hosts:
+   - following the `haproxy` log file with `tail`
+   - `halog` on the `haproxy` log file 
+   - viewing the `stats` page
+
+Recommended: generate traffic that actually puts your `haproxy` server to the test. [`hey` is a tiny program that sends some load to a web application](https://github.com/rakyll/hey). It is available in `apt` - have not looked up package name for other package managers. 
+
+Add your `haproxy` configuration file to your `Project3` folder.
+
+Documentation requirements will be listed in [Part 4](#part-4---README)
+
+## Part 4 - README
+
+In your `Project3` folder, create a `README.md` file.  This document will be an overall guide to your project.
 
 Your documentation should be written with as though someone is using it as a guide to recreate your project (like a blog post would do).
 
-If you cannot complete all tasks, make sure to document shortcomings / stuck points and note what is "research" on how the rest should be done for partial credit.
+If you could not complete a step or steps in any of the tasks above you document shortcomings / stuck points and note what is "research" on how the rest should be done for partial credit.
+
+**Do not forget to add citations in your `README.md` of resources used.**
 
 1. Project description
    - Provide an overview of the project goal
    - Provide a description of how to use the CF template to create a stack
-   - Provide a description of what resources are built.
+   - Provide a description of what resources are built
    - Diagram that assists with describing the CF template stack
+      - your diagram should at minimum display the resources your CF template creates in terms of:
+         - networking (subnets) & routes (include IGW and NAT GW)
+         - firewalls (Security Groups)
+         - instances (what is on what subnet, including NAT GW)
       - See [Project 2 for diagram resources](../Project2/README.md)
 
-2. Connections to instances within the VPC:
+2. Building a web service container:
+   - Explanation and links to web site content
+   - Explanation of and link to `Dockerfile`
+   - Instructions to build and push container image to your DockerHub repository
+      - Add instructions to create PAT && recommended PAT scope
+   - Link to DockerHub repository with your site image
+
+3. Connections to instances within the VPC:
+   > While this project is changing to take more advantage of `docker`, you still need to acknowlege how to navigate around your instances. Play with using `/etc/hosts` AND / OR `.ssh/config` to simplify connecting among your systems.
    - Description of purpose for configuring in `/etc/hosts` AND / OR `.ssh/config` files.
    - Explanation of entries in `/etc/hosts` AND / OR `.ssh/config` files.
    - Required setup to `ssh` among the instances
    - How to `ssh` among the instances using one or both of the above files for ease of use.
 
-3. Setting up the HAProxy load balancing instance:
-   - Explanation of file(s) that will need modified and general purpose of the file(s)
-   - Snippets of haproxy configuration file or link to file in repo
-   - Explanation of configuration file modifications
-   - How to test the haproxy configuration file after revisions
-   - Explanation and commands to manage the service (and when to run them)
-```
-Make sure to use markdown code blocks to properly format snippets
-```
+4. Setting up the HAProxy load balancing instance:
+   - General pupose of and required location for the `haproxy` configuration file
+   - Link to `haproxy` configuration file in repo
+   - Explanation of added sections in configuration file
+   - Explain how to test the haproxy configuration file after revisions but before reloading the service
+   - Explain scenarios when your `haproxy` service needs to be controlled - start, stop, restart / reload.  Provide the command to control the `haproxy` service based on the scenario.
 
-4. Setting up Host instances 1, 2, & 3
-   - **see notes in [Web Site - Scope and Implementation](#web-site---scope-and-implementation)**
-   - Document how to set the hosts to utilize your website, including method used to get site content to host instance and required location of site content
+5. Prove the load balancer is working:
+   - Link to the via Load Balancer Public IP
+   - Use a mix of screenshots and explanitory text to prove that your load balancer is successfully **using your pool of hosts**
+   - Use a mix of screenshots and explanitory text to prove that your load balancer is successfully **using the algorithm selected to distribute traffic**
+   - Hint: remember being asked to look at logs and the statistics page in Part 3 - lean on this to help with "proof"
 
-6. Prove in **two ways** that your load balancer is working:
-   - Use the browser to show that the hosts in the pool are serving content.
-        - Explain how the user can visually test that their load balancer is working
-        - Provide screenshot(s) of the project working in your browser
-        - Link to the Load Balancer Public IP
-   - View `haproxy` logs to show requests being distributed and responses from different hosts in the pool.
-      - **Valid logs viewers include**: 
-         - following the `haproxy` log file with `tail`
-         - enabling and viewing the `stats` page
-         - `halog` on the `haproxy` log file   
-      - **Deliverables**
-        - Record and explain the command(s) to view the logs.
-        - Take a screenshot of your logs proving load balancing among hosts in the pool is working
-
-7. Troubleshooting
-   - **Provide at least three recommendations** on what to troubleshoot if the load balancer is not working.  This can be at any point of the setup process.
-   - Check that you have selected "Start Lab" is not sufficient to count as one ;)
-
-8. Citations / resources used
+6. Citations / resources used
    - if using generative AI, provide the tool name and the prompt(s) used
    - if using websites, provide the link and a short description of what you used on the page
+   - NO CITATIONS will result in a minimum of a 30% deducation and be considered for reporting as an Academic Integrity Violation.  You may scatted your sources and citations to be relevant to sections or place them all in one section.
 
-## Resources and Warnings
 
-- You **DO NOT** need to mess with UFW rules. You may lock yourself out of SSH access.
+## Recommended Resources and Warnings
+
+### AWS Notes
 - You can have a maximum of **FIVE Elastic IP Addresses and FIVE VPCs**
+
+### HAProxy Resources
 - [An Introduction to HAProxy and Load Balancing Concepts](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts)
 - [The Four Essential Sections of an HAProxy Configuration](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration/)
-- [How to Install the Apache Web Server on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-20-04)
-- [How to Install Nginx on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04)
+- [Testing your HAProxy Configuration](https://www.haproxy.com/blog/testing-your-haproxy-configuration)
+- [HAProxy Stats Page - Guide to all metrics](https://www.haproxy.com/blog/exploring-the-haproxy-stats-page)
+   - [HAProxy listen section x stats](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration#what-about-listen)
 - [Introduction to HAProxy logging & parsing logs](https://www.haproxy.com/blog/introduction-to-haproxy-logging)
    - [Article from Sematext that covers similar things](https://sematext.com/blog/haproxy-logs/)
+
+### Other Knowledge
 - [How to edit `/etc/hosts`](https://linuxize.com/post/how-to-edit-your-hosts-file/)
 - [The SSH config file](https://linuxize.com/post/using-the-ssh-config-file/)
 - [How to SFTP](https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server)
-- [Create & Extract with `tar`](https://linuxize.com/post/how-to-create-and-extract-archives-using-the-tar-command-in-linux)
+- [Generate HTTP traffic with `hey`](https://github.com/rakyll/hey)
 
-## Extra Credit - Hands Free - +10%
+## Extra Credit - Haproxy Container Image - +10%
 
-Have your CloudFormation template build everything out - configure haproxy to use the hosts & the hosts are configured with your site content, copy in `hosts` and / or `config files, etc.
+Your project must have commits against the required work *before* doing the extra credit portions.
 
-Things your template should not do:
-- copy a private key for ssh access among instances (this implies you would somehow expose your private key on GitHub)
-- delete the NAT Gateway resource & associated EIP
+Create a folder in `Project3` called `haproxy`.
 
-## Extra Credit - HTTPS - +20%
+Copy in your `haproxy` configuration file.  Create a `Dockerfile` that will build from the [`haproxy` Official Iamge](https://hub.docker.com/_/haproxy/) and copies your `haproxy` configuration file to the default location for `haproxy` in the container filesystem.
+
+Build and push a container image to a **public** DockerHub repository in your account (don't overwrite your website repository :wink:)
+
+Create a copy of your Project 3 CloudFormation template (with your modifications per this project's requirements) named `yourlastname-nohands-cf.yml`. Modify your CloudFormation template to pull and run your `haproxy` container image - do not install `haproxy` to the instance.
+
+Add a section to [Part 4](#part-4---README) explaining your additions.
+
+## Extra Credit - HTTPS - +10%
+
+Your project must have commits against the required work *before* doing the extra credit portions.
 
 Enable HTTPS (SSL encryption) for your load balancer.  I am going to leave some choice here of whether you have only your load balancer decrypt / encrypt packets for the hosts or have the hosts handle the decryption / encryption.
 
-You will owe a very good write up on all elements involved to set up HTTPS.  A start, which mentions some additional things you'll need, is [HAProxy SSL Termination](https://www.haproxy.com/blog/haproxy-ssl-termination)
+A start, which mentions some additional things you'll need, is [HAProxy SSL Termination](https://www.haproxy.com/blog/haproxy-ssl-termination)
+
+Add a section to [Part 4](#part-4---README) explaining your additions.
 
 ### Useful HTTPS Resources
 These are a collection of sites I used to set up HTTPS and get the correct SSL certificate (remember haproxy wants a "combo" file of the private and public cert)
@@ -183,8 +243,11 @@ These are a collection of sites I used to set up HTTPS and get the correct SSL c
 ## Submission
 
 1. Your repo should contain:
-   - `YOURLASTNAME-cf.yml` (your modified CloudFormation template)
-   - a folder with your website content
+   - a folder named `web-content` with:
+      - your web site files
+      - your `Dockerfile`
+   - `YOURLASTNAME-lb-cf.yml` (your modified CloudFormation template)
+   - your `haproxy.cfg` file
    - `README.md`
 
 2. In Pilot, paste the link to your project folder.  
@@ -192,6 +255,8 @@ These are a collection of sites I used to set up HTTPS and get the correct SSL c
 
 3. **Only delete the NAT Gateway** once your project is complete.  I will turn on your AWS environments for grading to check the load balancer is operational.
    - Once project grades are posted you may return and delete the stack
+
+4. You may complete *one or both* of the extra credit offerings.
 
 ## Rubric
 
