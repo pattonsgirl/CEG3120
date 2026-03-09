@@ -56,18 +56,22 @@ Create a folder in your repo named `Project2` that contains your deliverables:
 
 4. `Security Group` Settings:
 
-   - Allow SSH for a set of trusted networks including:
+   - Allow SSH from a set of trusted source networks including:
      - Your home / where you usually connect to your instances from
-     - Wright State (CIDR block 130.108.0.0/16)
-     - Instances within the VPC or subnet
+     - Wright State (addresses in CIDR block 130.108.0.0/16)
+     - Instances within the VPC
+   - Allow ICMP from a set of trusted source networks including:
+     - Your home / where you usually connect to your instances from
+     - Wright State (addresses in CIDR block 130.108.0.0/16)
+     - Instances within the VPC
    - Allow HTTP over port 80 from any IP source
    - Allow HTTP over port 8080 from any IP source
 
 
 5. `Network ACL` Settings:
-
-    - Add rule to deny outgoing requests to [wttr.in](https://wttr.in/)
-      - For simplicity, you may deny any protocols and any port attempt to `wttr.in`
+    - Verify that for Inbound & Outbound there is a rule that `Allow`s any IP (v4 only is sufficient) on all ports
+    - Deny inbound connections attempts to SSH from `107.23.4.178` (this is another AWS instance I have in another class)
+    - Deny outbound connections on any port to [wttr.in](https://wttr.in/)
 
 6. `Instance` settings:
 

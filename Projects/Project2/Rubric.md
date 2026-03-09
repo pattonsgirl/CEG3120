@@ -13,9 +13,9 @@
 - [ ] VPC range to `192.168.0.0/23`
 - [ ] Subnet range to `192.168.0.0 - 192.168.0.255`
 - [ ] Resources have added tag with Name and Value of `LASTNAME-CF-RESOURCE`
-- [ ] Security Group rule for inbound SSH within VPC
-- [ ] Security Group rule for inbound SSH from home / trusted network(s)
-- [ ] Security Group rule for inbound SSH from WSU
+- [ ] Security Group rule for inbound SSH & ICMP within VPC
+- [ ] Security Group rule for inbound SSH & ICMP from home / trusted network(s)
+- [ ] Security Group rule for inbound SSH & ICMP from WSU
 - [ ] Security Group rule for inbound HTTP to port 80 from any IP
 - [ ] Security Group rule for inbound HTTP to port 8080 from any IP
 - [ ] Network ACL denies outgoing traffic to `wttr.in` but allows all other traffic outbound
