@@ -74,27 +74,36 @@ If you **could not perform** a task via the Cloud Formation template, you'll nee
 Modify the template in the following ways:
 
 1. Use AMI of your choice that is Ubuntu 18+ or Amazon Linux 2+
+
 2. VPC CIDR block: `192.168.0.0/23`
+
 3. Public subnet range: `192.168.0.0 - 192.168.0.255`
+
 4. Private subnet range: `192.168.1.0 - 192.168.1.255`
+
 5. Modify one SecurityGroup for use with your proxy instance:
    - Allow `ssh` requests within VPC CIDR block
    - Allow `ssh` requests from your home IP
    - Allow `ssh` requests from Wright State IP block (`130.108.0.0/16`)
    - Allow `http` requests from within VPC CIDR block
    - Allow `http` requests from any IP
+   - *Optional* allow ICMP for `ping`
    - *If doing Extra Credit* add `https` rules **in addition to** `http` rules
-5. Create one SecurityGroup for use with your host pool instances:
+
+6. Create one SecurityGroup for use with your host pool instances:
    - Allow `ssh` requests from your proxy instance on your VPC
    - Allow `http` requests from within VPC CIDR block
+   - *Optional* allow ICMP for `ping`
    - *If doing Extra Credit* add `https` rules **in addition to** `http` rules
-6. For the load balancer (proxy) instance:
+
+7. For the load balancer (proxy) instance:
    - utilize the SecurityGroup for your proxy instance
    - assign private IP on the public subnet
    - use instance `UserData` to configure a unique `hostname` on the instance
    - use instance `UserData` to install `haproxy`
       - depending on AMI, also perform steps to start & enable service
-7. Create three host instances (one is templated, two more need to be added)
+
+8. Create three host instances (one is templated, two more need to be added)
    - utilize the SecurityGroup for your host pool instances
    - tag each with a unique Name Value
    - assign each a private IP on the private subnet
@@ -105,7 +114,7 @@ Modify the template in the following ways:
         - [Start containers automatically - Docker Docs](https://docs.docker.com/engine/containers/start-containers-automatically/)
 
 > Why no NACL?
-> A VPC has a default NACL that the subnets are 
+> A VPC has a default NACL that the subnets are inherently associated with if no other NACL is specified. The default NACL has an Inbound Allow All traffic from any source and Outbound Allow All traffic to any source - this is sufficient for our purposes since Security Groups will still determine what new requests are allowed to get to the server.
 
 **The deliverable for this part is the CloudFormation template in your Project 3 folder. Do not forget to add citations in [Part 4](#part-4---README) if additional resources were used.**
 

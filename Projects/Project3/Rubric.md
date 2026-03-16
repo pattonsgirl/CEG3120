@@ -27,22 +27,26 @@
 
 3. Enable the `haproxy` statistics page with either a `frontend` section or a `listen` section
 
-## CloudFormation template: / 27
+## CloudFormation template: / 33
 
 - [ ] AMI adjusted to Ubuntu 18+ or Amazon Linux 2
 - [ ] VPC CIDR block: `192.168.0.0/23`
 - [ ] Public subnet range: `192.168.0.0 - 192.168.0.255`
 - [ ] Private subnet range: `192.168.1.0 - 192.168.1.255`
-- Security Group:
+- One SecurityGroup for use with proxy instance:
    - [ ] rule to allow `ssh` requests from within VPC CIDR block
    - [ ] rule to allow `ssh` requests from your home IP
    - [ ] rule to allow `ssh` requests from Wright State IP block
    - [ ] rule to allow `http` requests from within VPC CIDR block
    - [ ] rule to allow `http` requests from any IP
-   - Additional Rules if doing HTTPS EC:
+   - - Additional Rules if doing HTTPS EC:
       - [ ] rule to allow `https` requests from within VPC CIDR block
       - [ ] rule to allow `https` requests from any IP
+- One SecurityGroup for use with host pool instances:
+   - [ ] rule to allow `ssh` requests from proxy instance on VPC
+   - [ ] rule to allow `http` requests from within VPC CIDR block
 - Load balancer (proxy) instance:
+   - [ ] uses proxy Security Group
    - [ ] assigned private IP on public subnet
    - [ ] uses command in `UserData` to configure a unique `hostname` on the instance
    - [ ] uses command in `UserData` to install `haproxy`
@@ -50,6 +54,7 @@
       - [ ] (if Amazon Linux 2) service start & enable steps
 - [ ] Creates three instances to use as hosts in the HAProxy pool
 - Host instance 1:
+   - [ ] uses host pool Security Group
    - [ ] tagged with a unique Name Value
    - [ ] assigned private IP on private subnet
    - [ ] uses command in `UserData` to configure a unique `hostname` on the instance
@@ -58,6 +63,7 @@
    - Possible additions:
       - [ ] (if Amazon Linux 2) docker service start & enable steps
 - Host instance 2:
+   - [ ] uses host pool Security Group
    - [ ] tagged with a unique Name Value
    - [ ] assigned private IP on private subnet
    - [ ] uses command in `UserData` to configure a unique `hostname` on the instance
@@ -66,6 +72,7 @@
    - Possible additions:
       - [ ] (if Amazon Linux 2) docker service start & enable steps
 - Host instance 3:
+   - [ ] uses host pool Security Group
    - [ ] tagged with a unique Name Value
    - [ ] assigned private IP on private subnet
    - [ ] uses command in `UserData` to configure a unique `hostname` on the instance
