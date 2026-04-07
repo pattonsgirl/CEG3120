@@ -35,6 +35,7 @@ Just about [every language has a linter](https://github.com/caramelomartins/awes
 
 Among the not listed is `ruff` a newer python linter that is storming through the community
 - [GitHub - `ruff`](https://github.com/charliermarsh/ruff)
+- Ruff is a great example of a repo that uses branches, Actions, Releases, tags, etc. Explore!
 
 ## git-hooks
 
