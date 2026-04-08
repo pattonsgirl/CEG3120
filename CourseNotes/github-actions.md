@@ -188,6 +188,8 @@ $ git push origin v1.6.1
 
 ### Releases
 
+Releases are based on git `tags` - [About Releases - GitHub Docs](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
+
 Creates a `.tar.gz` of repo at given point
 
 Why is this useful?
@@ -195,15 +197,31 @@ Why is this useful?
   - [Docker - ADD vs COPY](https://docs.docker.com/develop/develop-images/dockerfile_best-practices)
 - Could trigger a workflow if a release occurs (great for software packages)
 
-## Secrets
+## Secrets & Environment Variables
 
-[GitHub Docs - Encrypted Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+Secrets are encrypted environment variables used to store sensitive information—such as API keys, passwords, or access tokens—securely. They allow you to use this data in GitHub Actions workflows or GitHub Codespaces without exposing it in your codebase or workflow logs - [How it Works: GitHub Secrets - GitHub Docs](https://docs.github.com/en/actions/concepts/security/secrets)
+
+[Use Secrets in Workflows - GitHub Docs](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets).  
+There are three kinds of secrets - repository, environment, and organization. Repo secrets are only for use within repo, org secrets can be set at org level and viewed / used in all org repos. Environment secrets are weird... see below.
 
 Environment Secrets
 - Secrets for your environments? Environment secrets help secure automation related to specific deployment environments. Example: secrets specific to development versus production and systems you may have unique accounts for.
+- [Managing Environments for Deployment - GitHub Docs](https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments)
+- [Deploy to Environment in Workflow](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/deploy-to-environment)
 - [Adam the Automater - Environment Secrets](https://adamtheautomator.com/github-actions-secrets/#Creating_Secrets_For_an_Environment)
-
 - [Forcing the viewing of secrets... even though you shouldn't](https://stackoverflow.com/questions/63003669/how-can-i-see-my-git-secrets-unencrypted)
+
+Environment Variables
+- GitHub environment variables allow you to store and reuse non-sensitive configuration data within your workflows and codespaces. [Supported variables - GitHub Docs](https://docs.github.com/en/actions/reference/workflows-and-actions/variables)
+- [Storing and referrring to info stored in environment variables in workflows](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables)
+
+## GitHub Secret Scanning
+
+When credentials like API keys and passwords are committed to repositories as hardcoded secrets, they become targets for unauthorized access. Secret scanning automatically detects credential leaks so you can secure them before they're exploited. [About Secret Scanning - GitHub Docs](https://docs.github.com/en/code-security/concepts/secret-security/about-secret-scanning)
+
+[Supported Secret Scanning Patterns - GitHub Docs](https://docs.github.com/en/code-security/reference/secret-security/supported-secret-scanning-patterns)
+
+[Becoming a secret scanning partner - GitHub Docs](https://docs.github.com/en/code-security/tutorials/secret-scanning-partner-program)
 
 ## Semantic Versioning
 
