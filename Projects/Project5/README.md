@@ -142,7 +142,7 @@ Create a diagram (or diagrams) of the continuous deployment process configured i
 
 ### Documentation
 
-In `README-CI.md`, **add to the top of the document** the following details:
+In `README-CD.md`, **add to the top of the document** the following details:
 
 1. Continuous Deployment Project Overview
     - What is the goal of this project
