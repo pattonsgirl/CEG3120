@@ -1,6 +1,6 @@
 # Final Review for CEG 3120
 
-## Week 1 / 2
+## Week 1 / 4
 
 - create aws stack
 - terminal command reminder
@@ -11,6 +11,7 @@
   - .ssh/config
   - .ssh/authorized_keys
   - .ssh/known_hosts
+  - viewing status of / start / stop ssh service
 - git & GitHub
   - clone
   - init
@@ -26,36 +27,74 @@
   - Pull Requests
   - .gitignore
   - markdown essentials
+- containers
+  - isolation
+  - docker
+    - pull
+    - push
+    - ps
+    - images
+    - run (`-it`, `-d`, `-p HOST:CONTAINER`, bind mount)
+    - attach
+    - exec
+    - start
+    - stop / kill
+    - rm
+    - build (`-t`)
+    - import
+    - export
+    - inspect
+    - logs
+    - login
+  - Dockerfile
+    - FROM
+    - COPY
+    - WORKDIR
+    - RUN
+    - CMD 
 
 ### Project 0
 
 - git guide
+- docker guide
+- ssh with different tools (GitHub & AWS)
 
-## Week 2 / 3
 
-- networking review
+### Project 0.5
+
+- build instructions for a container
+  - git server built into a container
+  - containerize your own app with dependencies
+  - containerize Duncan's pre-req scraper
+
+## Background Networking Know-How
+
+- networking know how
   - IPv4 addresses
   - Subnets & CIDR blocks
   - routes
   - gateways
   - NAT
   - Firewalls
+    - stateful vs stateless
+    - whitelist vs blacklist
     - network wide
     - per machine (iptables)
 
-## Week 3 / 4
+## Week 5 / 7
 
 - the cloud
-  - types of cloud services
-  - regions
+  - types of cloud services (IaaS, PaaS, SaaS)
+  - regions - in that others exist and define their own AMI IDs, instance types, etc.
+
 - AWS
   - VPC
-  - Subnets (private vs public)
+  - Subnets (~~private~~ vs public)
   - Routes & route tables
   - Internet Gateway
   - Security Group vs Network ACLs
   - Elastic IPs vs public IP
-  - NAT Gateway (focus on public)
+  - ~~NAT Gateway (focus on public)~~
   - Instance types
   - AMIs
   - Volumes
@@ -64,10 +103,11 @@
 
 - Manually creating the resources
   - VPC
+  - NACL & SG configuration
   - instance type & AMI
-  - EIP to instance
+  - SSH to instance with EIP
 
-## Week 5 / 6
+## Week 7 / 8
 
 - Using CloudFormation Templates
   - using YAML/JSON formatted files
@@ -78,7 +118,7 @@
 - Create CloudFormation template
   - should mimic what was manually created
 
-## Week 6 / 7
+## Week 9 / 10
 
 - system logs & service control
 - installing and configuring a webserver
@@ -103,25 +143,8 @@
 - Configure load balancer
 - Configure hosts in backend pool to serve content
 
-## Week 8 / 9 / 10
+## Week 11 / 12
 
-- containers using Docker
-  - purpose & constraints
-  - images & image selection
-    - `docker pull ___`
-    - `docker images`
-    - `docker image rm ___`
-  - Running containers
-    - `docker run` + options (`--name`, `--rm`, `-v`, `-p`, `-d`, `-it`)
-    - `docker ps` + `-a`
-    - `docker kill ___` (or) `docker stop ___`
-    - `docker rm ___` (and why...)
-  - Dockerfiles (recipes)
-    - `docker build` + `-t`
-    - `FROM`, `WORKDIR`, `RUN`, `COPY`, `CMD`
-  - using a container registry (DockerHub)
-    - `docker push ___`
-    - tagging considerations
 - Continuous integration using GitHub Actions
 - Terminology in GitHub Actions:
   - workflow (and where it goes)
@@ -131,17 +154,16 @@
     - steps
   - actions
     - `uses`, `with`
-
-### Project 4
-
-- containerize a website
-- use GitHub action to build image on push and push image to DockerHub
-
-## Week 11 / 12
-
 - semantic versioning
 - `git` tags
 - versioning DockerHub images with GitHub Actions
+
+### Project 4
+
+- use GitHub action to build image on push and push image to DockerHub using semantic versioning
+
+## Week 13 / 14
+
 - Continuous Deployment
 - WebHooks / reverse APIs
   - payload sender
@@ -156,5 +178,5 @@
 
 ### Project 5
 
-- versioning DockerHub images with GitHub Actions
 - use DockerHub or GitHub to send payload with WebHooks
+- configure and run webhook listener on server to process payload deliveries
