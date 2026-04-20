@@ -89,12 +89,12 @@
 
 - AWS
   - VPC
-  - Subnets (~~private~~ vs public)
+  - Subnets (private vs public)
   - Routes & route tables
   - Internet Gateway
   - Security Group vs Network ACLs
   - Elastic IPs vs public IP
-  - ~~NAT Gateway (focus on public)~~
+  - NAT Gateway (focus on public)
   - Instance types
   - AMIs
   - Volumes
