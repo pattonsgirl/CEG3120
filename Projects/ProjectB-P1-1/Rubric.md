@@ -1,4 +1,4 @@
-# Project 0 Rubric
+# Project 1.1 Rubric
 
 ## Total Score: / 48
 

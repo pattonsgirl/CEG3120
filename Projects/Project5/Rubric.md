@@ -1,120 +1,160 @@
-# Project 5 Rubric
+# Project 3 Rubric
 
-## Project Score: / 63
+## Project Score: / 66
 
-## GitHub Repository Contents ( / 7)
+## Required Documents: / 5
+- a folder named `web-content` with:
+   - [ ] your web site files
+   - [ ] `Dockerfile`
+- [ ] `YOURLASTNAME-lb-cf.yml` 
+- [ ]  `haproxy.cfg` file
+- [ ] `README.md`
 
-- [ ] `README-CD.md` (and `README-CI.md` from P4)
-- [ ]  `web-content` folder with application
-- [ ] `Dockerfile`
-- [ ] GitHub action `yml` file in `.github/workflows`
-- `deployment` folder with:
-  - [ ] `bash` script
-  - [ ] `webhook` / `hook` definition file
-  - [ ] `webhook` service file
+## Dockerfile: / 2
 
-## Part 4- Project Description & Diagram ( / 10)
+- [ ] Builds from `httpd:2.4`
+- [ ] Copies all content in `web-content` into the container filesystem in the default web content directory for `httpd` 
 
-Documentation Requirements:
+## haproxy configuration file: / 6
 
-1. Continuous Deployment Project Overview
-    - [ ] What is the goal of this project
-    - [ ] What tools are used in this project and what are their roles
-    - Diagram of project
-        - [ ] clean layout
-        - [ ] what happens in GitHub
-        - [ ] what happens in DockerHub
-        - [ ] what happens on AWS instance
-    - [ ] [If applicable] What is **not working** in this project
-2. Resources Section
-    - [ ] Uses good formatting
-    - [ ] Citations appropriate to project / include notes on how they were used
-3. README.md in root of repository:
-    - [ ] Summarizes the project contents in the repository
-    - [ ] Links to `README-CI.md` and `README-CD.md` with a brief summary about what users will find in each document
+- [ ] Creates a frontend section named `lastname-frontend`
+   - [ ] binds to host port `80`
+   - [ ] defines the default backend as `lastname-pool`
 
-## Part 1 - Script a Refresh ( / 20)
+- [ ] Creates a backend section named `lastname-pool`
+   - [ ] defines a balancing algorithm 
+   - [ ] adds your three hosts as servers in the pool
 
-Documenation Requirements:
+3. Enable the `haproxy` statistics page with either a `frontend` section or a `listen` section
 
-1. EC2 Instance Details
-    - [ ] AMI information
-    - [ ] Instance type 
-    - [ ] Recommended volume size
-    - [ ] Security Group configuration
-    - [ ] Security Group configuration justification / explanation
-2. Docker Setup on OS on the EC2 instance
-    - [ ] How to install Docker for OS on the EC2 instance
-    - [ ] Additional dependencies based on OS on the EC2 instance
-    - [ ] How to confirm Docker is installed and that OS on the EC2 instance can successfully run containers
-3. Testing on EC2 Instance
-    - [ ] How to pull container image from DockerHub repository
-    - [ ] How to run container from image 
-      - Note the differences between using the `-it` flag and the `-d` flags and which you would recommend once the testing phase is complete
-    - [ ] How to verify that the container is successfully serving the web applicatio
-4. Scripting Container Application Refresh
-    - [ ] Description of the bash script
-    - [ ] How to test / verify that the script successfully performs its taskings
-    - [ ] **LINK to bash script** in repository
+## CloudFormation template: / 33
 
-Task Requirements - 2 pts each:
+- [ ] AMI adjusted to Ubuntu 18+ or Amazon Linux 2
+- [ ] VPC CIDR block: `192.168.0.0/23`
+- [ ] Public subnet range: `192.168.0.0 - 192.168.0.255`
+- [ ] Private subnet range: `192.168.1.0 - 192.168.1.255`
+- One SecurityGroup for use with proxy instance:
+   - [ ] rule to allow `ssh` requests from within VPC CIDR block
+   - [ ] rule to allow `ssh` requests from your home IP
+   - [ ] rule to allow `ssh` requests from Wright State IP block
+   - [ ] rule to allow `http` requests from within VPC CIDR block
+   - [ ] rule to allow `http` requests from any IP
+   - - Additional Rules if doing HTTPS EC:
+      - [ ] rule to allow `https` requests from within VPC CIDR block
+      - [ ] rule to allow `https` requests from any IP
+- One SecurityGroup for use with host pool instances:
+   - [ ] rule to allow `ssh` requests from proxy instance on VPC
+   - [ ] rule to allow `http` requests from within VPC CIDR block
+- Load balancer (proxy) instance:
+   - [ ] uses proxy Security Group
+   - [ ] assigned private IP on public subnet
+   - [ ] uses command in `UserData` to configure a unique `hostname` on the instance
+   - [ ] uses command in `UserData` to install `haproxy`
+   - Possible additions:
+      - [ ] (if Amazon Linux 2) service start & enable steps
+- [ ] Creates three instances to use as hosts in the HAProxy pool
+- Host instance 1:
+   - [ ] uses host pool Security Group
+   - [ ] tagged with a unique Name Value
+   - [ ] assigned private IP on private subnet
+   - [ ] uses command in `UserData` to configure a unique `hostname` on the instance
+   - [ ] uses command in `UserData` to install `docker`
+   - [ ] uses command in `UserData` to use `docker` to pull and run web site container with specified flags
+   - Possible additions:
+      - [ ] (if Amazon Linux 2) docker service start & enable steps
+- Host instance 2:
+   - [ ] uses host pool Security Group
+   - [ ] tagged with a unique Name Value
+   - [ ] assigned private IP on private subnet
+   - [ ] uses command in `UserData` to configure a unique `hostname` on the instance
+   - [ ] uses command in `UserData` to install `docker`
+   - [ ] uses command in `UserData` to use `docker` to pull and run web site container with specified flags
+   - Possible additions:
+      - [ ] (if Amazon Linux 2) docker service start & enable steps
+- Host instance 3:
+   - [ ] uses host pool Security Group
+   - [ ] tagged with a unique Name Value
+   - [ ] assigned private IP on private subnet
+   - [ ] uses command in `UserData` to configure a unique `hostname` on the instance
+   - [ ] uses command in `UserData` to install `docker`
+   - [ ] uses command in `UserData` to use `docker` to pull and run web site container with specified flags
+   - Possible additions:
+      - [ ] (if Amazon Linux 2) docker service start & enable steps
 
-- bash script will:
-  - [ ] stop and remove the formerly running container
-  - [ ] pull the `latest` tagged image from your DockerHub repository
-  - [ ] run a new container process with the pull'ed image
+## README.md documentation for configuration: / 26
 
-## Part 2 - Listen ( / 19)
+1. Project description:
+   - [ ] Provides an overview of the project goal
+   - [ ] Provide a description of how to use the CF template to create a stack
+   - [ ] Provide a description of what resources are built
+   - [ ] **Diagram** is visible in description section
+2. Diagram:
+   - [ ] cleanly presented
+   - Explains the CF template for the project in terms of:
+         - [ ] networking (subnets) & routes (include IGW and NAT GW)
+         - [ ] firewalls (Security Groups)
+         - [ ] instances (what is on what subnet, including NAT GW)
 
-Documentation Requirements:
+3. Building a web service container:
+   - [ ] Explanation and links to web site content
+   - [ ] Explanation of and link to `Dockerfile`
+   - [ ] Instructions to build and push container image to your DockerHub repository
+      - [ ]  Instructions to create PAT && recommended PAT scope
+   - [ ] Link to DockerHub repository with your site image
 
-1. Configuring a `webhook` Listener on EC2 Instance
-    - [ ] How to install [adnanh's `webhook`](https://github.com/adnanh/webhook) to the EC2 instance
-    - [ ] How to verify successful installation
-    - [ ] Summary of the `webhook` definition file
-    - [ ] How to verify definition file was loaded by `webhook`
-    - How to verify `webhook` is receiving payloads that trigger it
-      - [ ] how to monitor logs from running `webhook`
-      - [ ] what to look for in `docker` process views
-    - [ ] **LINK to definition file** in repository
-2. Configure a `webhook` Service on EC2 Instance 
-    - [ ] Summary of `webhook` service file contents
-    - [ ] How to `enable` and `start` the `webhook` service
-    - [ ] How to verify `webhook` service is capturing payloads and triggering bash script
-    - [ ] **LINK to service file** in repository
+4. Connections to instances within the VPC:
+   - [ ] Description of purpose for configuring in `/etc/hosts` AND / OR `.ssh/config` files.
+   - [ ] Explanation of entries in `/etc/hosts` AND / OR `.ssh/config` files.
+   - [ ] Required setup to `ssh` among the instances
+   - [ ] How to `ssh` among the instances using one or both of the above files for ease of use.
 
-Task Requirements - 2 pts each: 
+5. Setting up the HAProxy load balancing instance:
+   - [ ] General pupose of and required location for the `haproxy` configuration file
+   - [ ] Link to `haproxy` configuration file in repo
+   - [ ] Explanation of added sections in configuration file
+   - [ ] Explain how to test the haproxy configuration file after revisions but before reloading the service
+   - [ ] Explain scenarios when your `haproxy` service needs to be controlled - start, stop, restart / reload.  Provide the command to control the `haproxy` service based on the scenario.
 
--  webhook service file
-  - [ ] correctly formatted
-  - [ ] starts webhook and loads hook definition file
-- webhook hook definition file
-  - [ ] successfully defines a hook
-  - [ ] runs bash script when triggered
+6. Prove the load balancer is working:
+   - [ ] Link to the via Load Balancer Public IP
+   - [ ] Use a mix of screenshots and explanitory text to prove that your load balancer is successfully **using your pool of hosts**
+   - [ ] Use a mix of screenshots and explanitory text to prove that your load balancer is successfully **using the algorithm selected to distribute traffic**
 
-## Part 3 - Send a Payload ( / 7)
+7. [ ] Citations / resources used
+   - if using generative AI, provide the tool name and the prompt(s) used
+   - if using websites, provide the link and a short description of what you used on the page
+   - NO CITATIONS will result in a minimum of a 30% deducation and be considered for reporting as an Academic Integrity Violation.  You may scatted your sources and citations to be relevant to sections or place them all in one section.
 
-Documentation Requirements:
+## Extra Credit - HAProxy Container Image
 
-1. Configuring a Payload Sender
-    - [ ] Justification for selecting GitHub or DockerHub as the payload sender
-    - [ ] How to enable your selection to send payloads to the EC2 `webhook` listener
-    - [ ] Explain what triggers will send a payload to the EC2 `webhook` listener
-    - [ ] How to verify a successful payload delivery
-    - [ ] How to validate that your webhook *only triggers* when requests are coming from appropriate sources (GitHub or DockerHub)
+Worth +10%
 
-Task Requirements - 2 pts each:
+If documentation requirements are not complete, no extra credit will be rewarded.
 
-- webhook hook definition file
-  - [ ] only triggers from validated sources (secret or verification of sender)
+- [ ] Explanation and links to haproxy configuration file
+- [ ] Explanation of and link to `Dockerfile`
+- [ ] Link to DockerHub repository with your haproxy container
+- [ ] Link to your `yourlastname-nohands-cf.yml` 
+   - [ ] Notes on the difference(s) between it and `YOURLASTNAME-lb-cf.yml` 
+
+## Extra Credit - Setup HTTPS 
+
+Worth +10%
+
+If documentation requirements are not complete, no extra credit will be rewarded.
+
+Documentation scope: 
+1. [ ] Creating a self-signed certificate
+2. [ ] Changes needed to your `YOURLASTNAME-lb-cf.yml` to enable HTTPS communications
+3. [ ] Documents `haproxy` requirements to handle HTTPS
+4. [ ] Documents server configuration changes to handle HTTPS
+5. [ ] Screenshot(s) to prove that HTTPS is now operational
 
 ## Common Point Deductions:
 
-- [ ] (-5%) DockerHub / GitHub does not have a configured Webhook
-- [ ] (-5%) webhook on instance does not trigger with payload from DockerHub or GitHub
-- [ ] (-5%) hook does not use trigger rules to check for "valid" message
-- [ ] (-10%) Documentation fails to address what was not implemented / implies the project is fully functional.  Always document shortcomings and note what is "research" on how the rest should be done
-- [ ] (-30%) Documentation not well organized with markdown OR includes project descriptive text
-- [ ] No citations of referenced material
-> [!WARNING]
-> May result in Academic Integrity Violation with a penalty of a 0 on the project
+- [ ] NO CITATIONS will result in a minimum of a 30% deducation and be considered for reporting as an Academic Integrity Violation.  You may scatted your sources and citations to be relevant to sections or place them all in one section.
+- [ ] (-100%) Documentation not well organized with markdown OR includes project / rubric descriptive text
+- [ ] (-10%) CF Template does not build
+- [ ] (-10%) Documentation fails to address what was not implemented and implies the project is fully functional.  Always document shortcomings and note what is "research" on how the rest should be done
+- [ ] (-5%) Security Group rules allow access beyond project specifications
+

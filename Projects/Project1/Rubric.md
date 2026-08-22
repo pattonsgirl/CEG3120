@@ -1,73 +1,132 @@
 # Project 1 Rubric
 
-## Project Score: / 42
+## Total Score: / 48
 
-## Part 1 - Build a VPC ( / 23)
+## Command line git ( / 15)
 
-1. VPC
-   - [ ] description
-   - [ ] screenshot w/ proof of configuration per project requirements
-2. Subnet 
-   - [ ] description
-   - [ ] prompt responses
-   - [ ] screenshot w/ proof of configuration per project requirements
-3. Internet Gateway 
-   - [ ] description
-   - [ ] screenshot w/ proof of configuration per project requirements
-4. Route Table 
-   - [ ] description
-   - [ ] screenshot w/ proof of configuration per project requirements
-5. Security Group 
-   - [ ] description
-   - screenshot w/ proof of configuration:
-      - [ ] SSH and ICMP from:
-         - [ ] WSU block
-         - [ ] VPC block
-         - [ ] Home IP block
-      - [ ] HTTP from anywhere
-6. Network ACL 
-   - [ ] description
-   - [ ] Screenshot with Inbound Deny SSH from `107.23.4.178` & rest of chain
-   - [ ] Screenshot with Outbound Deny connections on any port to `wttr.in` & rest of chain
-7. Key Pair 
-   - [ ] description
-   - [ ] prompt responses
-   - [ ] screenshot w/ proof of configuration per project requirements
-8. Elastic IP 
-   - [ ] description + prompt responses
-   - [ ] screenshot w/ proof of configuration per project requirements
+0.5 points each
 
-## Part 2 - EC2 Instance Creation ( / 12)
+- status
+    - [ ] command example
+    - [ ] explanation
+- log
+    - [ ] command example
+    - [ ] explanation
+- clone
+    - [ ] command example
+    - [ ] explanation
+- remote
+    - [ ] command example
+    - [ ] explanation
+- add
+    - [ ] command example
+    - [ ] explanation
+- rm 
+    - [ ] command example
+    - [ ] explanation
+    - [ ] untrack vs untrack & remove from workspace
+- commit
+    - [ ] command example
+    - [ ] explanation
+- push
+    - [ ] command example
+    - [ ] explanation
+- pull
+    - [ ] command example
+    - [ ] explanation
+- branch
+    - [ ] command example
+    - [ ] explanation
+- checkout
+    - [ ] command example
+    - [ ] explanation
+- fetch
+    - [ ] command example
+    - [ ] explanation
+- merge
+    - [ ] command example
+    - [ ] explanation
+- init
+    - [ ] command example
+    - [ ] explanation
+    - [ ] initialize folder vs bare repository
 
-1. Instance details documents
-   - [ ] description of an instance
-   - how-to instance launch process guide includes:
-      - [ ] Attach the instance to desired subnet
-      - [ ] Using the security group designed for the instance
-      - [ ] Attach volume to the instance
-      - [ ] Tagging the instance with a Name value
-   - [ ] AMI selected - AMI ID & OS w/ version
-   - [ ] default username of the instance type selected
-   - [ ] instance type selected 
-   - [ ] keypair selected
-   - [ ] justification of why or why not a keypair must be selected
-2. [ ] How to associate the EIP with the instance
-3. [ ] Screenshot with instance details that validates configuration per project requirements
+## git files & folders ( / 4)
 
-## Part 3 - Instance Configuration ( / 7)
+Provide descriptions of expected contents and what these are used for
 
-1. [ ] Steps performed to `ssh` to instance
-2. [ ] Steps performed to change hostname of instance
-3. [ ] Screenshot of `ssh` connection with hostname changed in CLI prompt
-4. Security settings:
-   - [ ] Proof that Security Group is applying to instance per project requirements
-   - [ ] Proof that Network ACL is applying to instance subnet per project requirements
-5. Docker setup:
-   - [ ] Steps to install docker accurate to selected AMI
-   - [ ] Proof that docker engine is running & that user can run container processes without `sudo`
+- .git folder
+    - [ ] explain the overall purpose of the folder
+    - [ ] purpose each item in the folder's contents
+- .gitignore file
+    - [ ] specifies location for proper function - in root of repository folder
+    - [ ] explains the purpose
 
-## Point Deductions - Penalty total: 
+## Command line docker ( / 11)
 
-- [ ] images not included in markdown documentation - 3 point penalty
-- [ ] poor markdown formatting - 3 point penalty
-- [ ] project tasking text in documentation - 3 point penalty
+0.5 points each
+
+- ps
+    - [ ] command example
+    - [ ] explanation
+    - [ ] includes active and ability to view all
+- images
+    - [ ] command example
+    - [ ] explanation
+- run
+    - [ ] command example
+    - [ ] explanation
+    - [ ] includes flags: `-it`, `-p`, `--name`
+- start
+    - [ ] command example
+    - [ ] explanation
+- stop
+    - [ ] command example
+    - [ ] explanation
+- exec
+    - [ ] command example
+    - [ ] explanation
+- import
+    - [ ] command example
+    - [ ] explanation
+- export
+    - [ ] command example
+    - [ ] explanation
+- kill
+    - [ ] command example
+    - [ ] explanation
+- rm
+    - [ ] command example
+    - [ ] explanation
+    - [ ] includes removing a container versus removing an image
+
+## SSH ( / 9)
+
+Provide basic how-to-use guides.
+
+- SSH authentication to GitHub repositories
+    - [ ] creating key pair
+    - [ ] setting up public key in user settings
+    - [ ] getting the ssh URI for cloning
+- SSH authentication to an AWS instance
+    - [ ] where to retrieve private key
+    - [ ] permissions needed for private key
+    - [ ] where to find public IP
+    - [ ] writing an `ssh` command to establish a connection
+- Using the `config` file in the `.ssh` folder
+    - [ ] example entry
+    - [ ] using entry after block is configured
+
+## Demonstrations ( / 8)
+
+2 pts each
+
+- [ ] A commit history of more than one.  Commit messages should state changes at points in time
+- [ ] A commit in your GitHub history indicating that content was merged from another branch
+- [ ] More than the `main` branch is selectable in GitHub.  We can switch to the other branch and see content that may not be synced to `main`
+- [ ] GitHub repo should contain a `.gitignore` file that shows you are ignoring a set of files (or a folder) to prevent accidentally tracking them
+
+## Point Deductions
+
+- [ ] (-20%) Submission not in course repository
+- [ ] (-20%) Submission does not use markdown to provide a clean visual of information

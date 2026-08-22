@@ -1,212 +1,281 @@
-# Project 5
+# Project 3
 
 - [Objectives](#Objectives)
-- [Project Overview](#Project-Overview)
-- [Part 1 - Script a Refresh](#part-1---script-a-refresh)
-- [Part 2 - Listen](#part-2---listen)
-- [Part 3 - Send a Payload](#part-3---send-a-payload)
-- [Part 4 - Project Description & Diagram](#part-4---project-description--diagram)
-- [Part 5 - Demonstration](#part-5---demonstration)
+- [Project Description](#Project-Description)
+  - [Provided Resources](#Provided-Resources)
+- [Part 1 - Create a Docker Image](#part-1---create-a-docker-image)
+- [Part 2 - CloudFormation Template TODOs](#part-2---cloudformation-template-todos)
+- [Part 3 - Setup Proxy Server](#part-3---setup-proxy-server)
+- [Part 4 - README](#part-4---readme)
+- [Recommended Resources and Warnings](#recommended-resources-and-warnings)
+- [Extra Credit - Haproxy Container Image](#extra-credit---haproxy-container-image---10) 
+- [Extra Credit - HTTPS](#extra-credit---https---10)
 - [Submission](#Submission)
 - [Rubric](Rubric.md)
 
-## Objectives
+## Objectives:
 
-- Implement semantic versioning for images using `git tag` metadata in Actions
-- Use `webhook`s to keep production up to date
+- Build a container image from Apache's httpd project with web content - publish it to DockerHub
+- Modify the project CF template to meet requirements for this project
+- Run the website container on hosts in the pool
+- Configure `haproxy` as a load balancer / application delivery controller to direct traffic to the pool
 
-## Project Overview
+## Project Description
 
-Now that developers can trigger image updates through GitHub Actions, it's time to work on deploying the image in your DockerHub repository to servers that will run the application in the container.
+In your repository, create a `Project3` folder.
 
-The server running the application in the container will be an EC2 instance.
+For this project, you will have three required deliverables:
 
-**Recommended instance specifications**
-- 2 CPU Core (included in `t2.medium`)
-- 4 GB RAM (included in `t2.medium`)
-- 30 GB volume storage
+1. CloudFormation template with modifications per project requirements
+2. Folder with your website files and Dockerfile
+3. Documentation (and specified screenshots) for configuring the load balancer and hosts in the pool after stack creation. 
 
-This project requires completion of [Project 4](../Project4/). If you did not accomplish Project 4 you should meet with the instructor at your earliest availability.
+### Provided Resources
 
-The documentation requirements are embedded in their respective parts (in order of how I would recommend setting things up). [Part 4 - Project Description & Diagram](#part-4---project-description--diagram) should be at the **top of your README-CD.md** since it is the description and diagramming requirement.
+The following is provided in this project folder:
 
-## Part 1 - Script a Refresh
+- [`lb-cf-template.yml`](lb-cf-template.yml)
+  - Note: this templated is updated from previous versions to get you started on this project
 
-On your AWS instance, build a bash script that stops and removes the formerly running container, pulls the `latest` tagged image from your DockerHub repository, and runs a new container process with the pull'ed image
+## Part 1 - Create a Docker Image
 
-### Tasks
+1. In your `Project3` folder, create a folder named `web-content`.  The files that follow must exist in this folder.
 
-1. Build (or use a CF-template to build) an EC2 instance
-2. Install Docker to your EC2 instance
-3. Test that your EC2 instance can run a container from your DockerHub repository image
-4. Craft a bash script that will:
-    - stop and remove the formerly running container
-    - pull the `latest` tagged image from your DockerHub repository
-    - run a new container process with the pull'ed image
-      - run as a detached process and with flags to resume running when docker is started (on system start)
-    - **copy the bash script** to folder named `deployment` in your GitHub repository
+2. Bring **or** create a website with:
+   - a minimum of **two** html files (`index` and one other)
+   - a minimum of **one** css file
 
-### Documentation
+You may use generative AI to create you a site per a theme, but you must **cite** which generative AI system you used and the prompt you fed to it.
 
-Create `README-CD.md` in root folder of your GitHub repository that details the following:
+3. Create a `Dockerfile` with the following two instructions:
+   - Build from `httpd:2.4`
+   - Copy all content in `web-content` into the container filesystem in the default web content directory for `httpd` 
 
-1. EC2 Instance Details
-    - AMI information
-    - Instance type 
-    - Recommended volume size
-    - Security Group configuration
-    - Security Group configuration justification / explanation
-2. Docker Setup on OS on the EC2 instance
-    - How to install Docker for OS on the EC2 instance
-    - Additional dependencies based on OS on the EC2 instance
-    - How to confirm Docker is installed and that OS on the EC2 instance can successfully run containers
-3. Testing on EC2 Instance
-    - How to pull container image from DockerHub repository
-    - How to run container from image 
-      - Note the differences between using the `-it` flag and the `-d` flags and which you would recommend once the testing phase is complete
-    - How to verify that the container is successfully serving the web application
-4. Scripting Container Application Refresh
-    - Description of the bash script
-    - How to test / verify that the script successfully performs its taskings
-    - **LINK to bash script** in repository
+4. Build and tag a container image using your `Dockerfile` as the build instructions
 
-### Resources
+5. Login to DockerHub on the command line.  Use a Personal Access Token (PAT) instead of a password.
 
-## Part 2 - Listen
+6. Push your container image to a **public** DockerHub repository in your account.
 
-On the application server, you will configure a listening service to receive messages from DockerHub or GitHub
-- this listening serve will run your script if a message is delivered
-- you will need to enable some protection method to validate requests are coming from appropriate sources (GitHub or DockerHub)
+Recommended: pull your container image and run it to test that it serves your web content.
 
-### Tasks
+**Do not forget to add citations in [Part 4](#part-4---README) of resources used.**
 
-1. Install [adnanh's `webhook`](https://github.com/adnanh/webhook) to your EC2 instance
-2. Create a configuration file - a hook definition - for `webhook` to load when ran.  The hook definition should:
-    - Trigger your bash script to run when a payload is received
-    - Validate that the payload came from a trusted source via a shared secret or by validating payload is from DockerHub or GitHub
-    - **ADD hook definition** to folder named `deployment` in your GitHub repository
-3. Set up a service file such that the `webhook` is set to start listening as soon as the EC2 instance is on.  Enable this service and verify it triggers your bash script to run when a message is received
-    - **ADD webhook service file** to folder named `deployment` in your GitHub repository
+Documentation requirements will be listed in [Part 4](#part-4---README)
 
-### Documenation
+## Part 2 - CloudFormation Template TODOs
 
-In `README-CD.md`, include the following details:
+Your deliverable for this portion is only **your CloudFormation template**.
 
-1. Configuring a `webhook` Listener on EC2 Instance
-    - How to install [adnanh's `webhook`](https://github.com/adnanh/webhook) to the EC2 instance
-    - How to verify successful installation
-    - Summary of the `webhook` definition file
-    - How to verify definition file was loaded by `webhook`
-    - How to verify `webhook` is receiving payloads that trigger it
-      - how to monitor logs from running `webhook`
-      - what to look for in `docker` process views
-    - **LINK to definition file** in repository
-2. Configure a `webhook` Service on EC2 Instance 
-    - Summary of `webhook` service file contents
-    - How to `enable` and `start` the `webhook` service
-    - How to verify `webhook` service is capturing payloads and triggering bash script
-    - **LINK to service file** in repository
+Copy [`lb-cf-template.yml`](lb-cf-template.yml) to your `Project3` folder.  Name it `YOURLASTNAME-lb-cf.yml`
 
-## Part 3 - Send a Payload
+If you **could not perform** a task via the Cloud Formation template, you'll need to document how you manually performed the task during [Part 4](#part-4---README) for a partial credit opportunity.  You may specify your research into completing taskings as long as you highlight that it is research based - not something your project implemented.
 
-Utilize either DockerHub or GitHub to send a message to your application server when a change is detected
-- DockerHub - a newly pushed image
-- GitHub - the completion of an Action that pushes a new image
+Modify the template in the following ways:
 
-### Tasks
+1. Use AMI of your choice that is Ubuntu 18+ or Amazon Linux 2+
 
-1. Configure DockerHub or GitHub to send a Webhook payload to your EC2 instance when an appropriate event occurs
-2. Validate that your webhook *only triggers* when requests are coming from appropriate sources (GitHub or DockerHub)
+2. VPC CIDR block: `192.168.0.0/23`
 
-### Documentation
+3. Public subnet range: `192.168.0.0 - 192.168.0.255`
 
-In `README-CD.md`, include the following details:
+4. Private subnet range: `192.168.1.0 - 192.168.1.255`
 
-1. Configuring a Payload Sender
-    - Justification for selecting GitHub or DockerHub as the payload sender
-    - How to enable your selection to send payloads to the EC2 `webhook` listener
-    - Explain what triggers will send a payload to the EC2 `webhook` listener
-    - How to verify a successful payload delivery
-    - How to validate that your webhook *only triggers* when requests are coming from appropriate sources (GitHub or DockerHub)
+5. Modify one SecurityGroup for use with your proxy instance:
+   - Allow `ssh` requests within VPC CIDR block
+   - Allow `ssh` requests from your home IP
+   - Allow `ssh` requests from Wright State IP block (`130.108.0.0/16`)
+   - Allow `http` requests from within VPC CIDR block
+   - Allow `http` requests from any IP
+   - *Optional* allow ICMP for `ping`
+   - *If doing Extra Credit* add `https` rules **in addition to** `http` rules
 
-### Resources
+6. Create one SecurityGroup for use with your host pool instances:
+   - Allow `ssh` requests from your proxy instance on your VPC
+   - Allow `http` requests from within VPC CIDR block
+   - *Optional* allow ICMP for `ping`
+   - *If doing Extra Credit* add `https` rules **in addition to** `http` rules
 
-- [adnanh's `webhook`](https://github.com/adnanh/webhook)
-- [Using GitHub actions and `webhook`s](https://levelup.gitconnected.com/automated-deployment-using-docker-github-actions-and-webhooks-54018fc12e32)
-- [Using DockerHub and `webhook`s](https://blog.devgenius.io/build-your-first-ci-cd-pipeline-using-docker-github-actions-and-webhooks-while-creating-your-own-da783110e151)
-- [Linux Handbook - How to Create a `systemd` Service](https://linuxhandbook.com/create-systemd-services/)
+7. For the load balancer (proxy) instance:
+   - utilize the SecurityGroup for your proxy instance
+   - assign private IP on the public subnet
+   - use instance `UserData` to configure a unique `hostname` on the instance
+   - use instance `UserData` to install `haproxy`
+      - depending on AMI, also perform steps to start & enable service
 
-## Part 4 - Project Description & Diagram
+8. Create three host instances (one is templated, two more need to be added)
+   - utilize the SecurityGroup for your host pool instances
+   - tag each with a unique Name Value
+   - assign each a private IP on the private subnet
+   - use instance `UserData` to configure a unique `hostname` on the instance
+   - install docker
+   - pull and run your DockerHub image in detached mode bound to host port 80 and container port 80. Use the appropriate flag to have the container restart automatically if the system is rebooted / if the docker service has an outage.
+        - [Detached mode - Docker Docs](https://docs.docker.com/reference/cli/docker/container/run/#detach)
+        - [Start containers automatically - Docker Docs](https://docs.docker.com/engine/containers/start-containers-automatically/)
 
-Create a diagram (or diagrams) of the continuous deployment process configured in this project.  It should (at minimum) address how the GitHub Action running results the server running a new container process - again, according to the workflow that this project enables.
+> Why no NACL?
+> A VPC has a default NACL that the subnets are inherently associated with if no other NACL is specified. The default NACL has an Inbound Allow All traffic from any source and Outbound Allow All traffic to any source - this is sufficient for our purposes since Security Groups will still determine what new requests are allowed to get to the server.
 
-### Documentation
+**The deliverable for this part is the CloudFormation template in your Project 3 folder. Do not forget to add citations in [Part 4](#part-4---README) if additional resources were used.**
 
-In `README-CD.md`, **add to the top of the document** the following details:
+## Part 3 - Setup Proxy Server
 
-1. Continuous Deployment Project Overview
-    - What is the goal of this project
-    - What tools are used in this project and what are their roles
-    - Diagram of project
-    - [If applicable] What is **not working** in this project
-2. Resources Section
-    - Note: this can be at document top, scattered within document as resources were used, or placed at bottom
-    - Add resources used in the project by linking them and making a statement of how it was used.  If generative AI was used, state which platform and what prompts were given and again, a statement of how it was used.
+Configure your proxy server per the following requirements.  If you **could not perform** a task or your project is not functional, note what is / is not working and what you've tried for debugging in [Part 4](#part-4---README).  
 
-Create a `README.md` in the root folder of your GitHub repository:
+**Do not forget to add citations in [Part 4](#part-4---README) of resources used.**
 
-1. Summarize the project contents in the repository
-2. Link to `README-CI.md` and `README-CD.md` with a brief summary about what users will find in each document. 
+Configure the following in your `haproxy` configuration file
 
-### Resources
+1. Create a frontend section named `lastname-frontend`
+   - bind to host port `80`
+   - define the default backend as `lastname-pool`
 
-You can use whatever tools you would like, here are some recommended tools that people use
+2. Create a backend section named `lastname-pool`
+   - define a balancing algorithm (round robin is anticipated - others may be chosen)
+      - [Haproxy - supported algorithms](https://www.haproxy.com/documentation/haproxy-configuration-manual/latest/#4.2-balance)
+   - add your three hosts as servers in the pool.  Don't forget to define the port the application is running on the hosts.
 
-- [Lucid Charts](https://www.lucidchart.com/pages/)
-- [Textographo](https://textografo.com/)
-- [Mermaid - new markdown feature](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
-- [Eraser - Cloud Diagrams](https://docs.tryeraser.com/docs/cloud-diagrams)
-- PowerPoint and OneNote are still good choices
+3. Enable the `haproxy` statistics page with either a `frontend` section or a `listen` section
 
-## Part 5 - Demonstration
+4. Validate your `haproxy` configuration file. Address errors if the message is not `Configuration file is valid`
 
-You must demonstration your project implementation **in person**. A booking link will be provided with my available times.
+5. Reload the `haproxy` service and confirm your load balancer is distributing traffic among the hosts in your pool.
 
-For full credit, all of the following must be demonstrated. Partial credit will be evaluated based on your understanding of the issue and amount of time needed to debug / fix.
+6. View the logs and stats of the `haproxy` server via the following methods - your focus is on finding evidence that the algorithm is distrubuting among your hosts:
+   - following the `haproxy` log file with `tail`
+   - `halog` on the `haproxy` log file 
+   - viewing the `stats` page
 
-1. current state of site running on server, before making a change
-    - show the page in the browser
-    - show the docker status
-2. making a change to the project file (from your local system)
-3. `commit` and `push` of the change (from your local system)
-4. `tag` the `commit` and `push` the `tag` (from your local system)
-5. the GitHub Action triggering, relevant logs that it worked
-6. DockerHub receiving a new set of tagged images (modified time should be visible)
-7. Payload sent log from DockerHub or GitHub
-8. status of `webhook` running as a service on the server
-9. `webhook` logs that validate container refresh has been triggered
-10. post-change state of site running on server
-    - show the page in the browser
-    - show the docker status
+Recommended: generate traffic that actually puts your `haproxy` server to the test. [`hey` is a tiny program that sends some load to a web application](https://github.com/rakyll/hey). It is available in `apt` - have not looked up package name for other package managers. 
+
+Add your `haproxy` configuration file to your `Project3` folder.
+
+Documentation requirements will be listed in [Part 4](#part-4---README)
+
+## Part 4 - README
+
+In your `Project3` folder, create a `README.md` file.  This document will be an overall guide to your project.
+
+Your documentation should be written with as though someone is using it as a guide to recreate your project (like a blog post would do).
+
+If you could not complete a step or steps in any of the tasks above you document shortcomings / stuck points and note what is "research" on how the rest should be done for partial credit.
+
+**Do not forget to add citations in your `README.md` of resources used.**
+
+1. Project description
+   - Provide an overview of the project goal
+   - Provide a description of how to use the CF template to create a stack
+   - Provide a description of what resources are built
+   - Diagram that assists with describing the CF template stack
+      - your diagram should at minimum display the resources your CF template creates in terms of:
+         - networking (subnets) & routes (include IGW and NAT GW)
+         - firewalls (Security Groups)
+         - instances (what is on what subnet, including NAT GW)
+      - See [Project 2 for diagram resources](../Project2/README.md)
+
+2. Building a web service container:
+   - Explanation and links to web site content
+   - Explanation of and link to `Dockerfile`
+   - Instructions to build and push container image to your DockerHub repository
+      - Add instructions to create PAT && recommended PAT scope
+   - Link to DockerHub repository with your site image
+
+3. Connections to instances within the VPC:
+   > While this project is changing to take more advantage of `docker`, you still need to acknowlege how to navigate around your instances. Play with using `/etc/hosts` AND / OR `.ssh/config` to simplify connecting among your systems.
+   - Description of purpose for configuring in `/etc/hosts` AND / OR `.ssh/config` files.
+   - Explanation of entries in `/etc/hosts` AND / OR `.ssh/config` files.
+   - Required setup to `ssh` among the instances
+   - How to `ssh` among the instances using one or both of the above files for ease of use.
+
+4. Setting up the HAProxy load balancing instance:
+   - General pupose of and required location for the `haproxy` configuration file
+   - Link to `haproxy` configuration file in repo
+   - Explanation of added sections in configuration file
+   - Explain how to test the haproxy configuration file after revisions but before reloading the service
+   - Explain scenarios when your `haproxy` service needs to be controlled - start, stop, restart / reload.  Provide the command to control the `haproxy` service based on the scenario.
+
+5. Prove the load balancer is working:
+   - Link to the via Load Balancer Public IP
+   - Use a mix of screenshots and explanitory text to prove that your load balancer is successfully **using your pool of hosts**
+   - Use a mix of screenshots and explanitory text to prove that your load balancer is successfully **using the algorithm selected to distribute traffic**
+   - Hint: remember being asked to look at logs and the statistics page in Part 3 - lean on this to help with "proof"
+
+6. Citations / resources used
+   - if using generative AI, provide the tool name and the prompt(s) used
+   - if using websites, provide the link and a short description of what you used on the page
+   - NO CITATIONS will result in a minimum of a 30% deducation and be considered for reporting as an Academic Integrity Violation.  You may scatted your sources and citations to be relevant to sections or place them all in one section.
+
+
+## Recommended Resources and Warnings
+
+### AWS Notes
+- You can have a maximum of **FIVE Elastic IP Addresses and FIVE VPCs**
+
+### HAProxy Resources
+- [An Introduction to HAProxy and Load Balancing Concepts](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts)
+- [The Four Essential Sections of an HAProxy Configuration](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration/)
+- [Testing your HAProxy Configuration](https://www.haproxy.com/blog/testing-your-haproxy-configuration)
+- [HAProxy Stats Page - Guide to all metrics](https://www.haproxy.com/blog/exploring-the-haproxy-stats-page)
+   - [HAProxy listen section x stats](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration#what-about-listen)
+- [Introduction to HAProxy logging & parsing logs](https://www.haproxy.com/blog/introduction-to-haproxy-logging)
+   - [Article from Sematext that covers similar things](https://sematext.com/blog/haproxy-logs/)
+
+### Other Knowledge
+- [How to edit `/etc/hosts`](https://linuxize.com/post/how-to-edit-your-hosts-file/)
+- [The SSH config file](https://linuxize.com/post/using-the-ssh-config-file/)
+- [How to SFTP](https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server)
+- [Generate HTTP traffic with `hey`](https://github.com/rakyll/hey)
+
+## Extra Credit - Haproxy Container Image - +10%
+
+Your project must have commits against the required work *before* doing the extra credit portions.
+
+Create a folder in `Project3` called `haproxy`.
+
+Copy in your `haproxy` configuration file.  Create a `Dockerfile` that will build from the [`haproxy` Official Iamge](https://hub.docker.com/_/haproxy/) and copies your `haproxy` configuration file to the default location for `haproxy` in the container filesystem.
+
+Build and push a container image to a **public** DockerHub repository in your account (don't overwrite your website repository :wink:)
+
+Create a copy of your Project 3 CloudFormation template (with your modifications per this project's requirements) named `yourlastname-nohands-cf.yml`. Modify your CloudFormation template to pull and run your `haproxy` container image - do not install `haproxy` to the instance.
+
+Add a section to [Part 4](#part-4---README) explaining your additions.
+
+## Extra Credit - HTTPS - +10%
+
+Your project must have commits against the required work *before* doing the extra credit portions.
+
+Enable HTTPS (SSL encryption) for your load balancer.  I am going to leave some choice here of whether you have only your load balancer decrypt / encrypt packets for the hosts or have the hosts handle the decryption / encryption.
+
+A start, which mentions some additional things you'll need, is [HAProxy SSL Termination](https://www.haproxy.com/blog/haproxy-ssl-termination)
+
+Add a section to [Part 4](#part-4---README) explaining your additions.
+
+### Useful HTTPS Resources
+These are a collection of sites I used to set up HTTPS and get the correct SSL certificate (remember haproxy wants a "combo" file of the private and public cert)
+- [Haproxy - HAProxy SSL Termination (Offloading) Everything You Need to Know](https://www.haproxy.com/blog/haproxy-ssl-termination)
+- [Tecmint - How to Configure a CA SSL Certificate in HAProxy](https://www.tecmint.com/configure-ssl-certificate-haproxy/)
+- [Linuxize - Creating an SSL certificate](https://linuxize.com/post/creating-a-self-signed-ssl-certificate/)
+- [StackOverflow - haproxy - unable to load SSL private key from PEM file](https://stackoverflow.com/questions/27947982/haproxy-unable-to-load-ssl-private-key-from-pem-file)
+- [Cloud 66 - Help - Remove passphrase from certificate key](https://help.cloud66.com/docs/security/remove-passphrase)
 
 ## Submission
 
-1. Commit and push your changes to your repository. Verify that these changes show in your course  
-   repository.
+1. Your repo should contain:
+   - a folder named `web-content` with:
+      - your web site files
+      - your `Dockerfile`
+   - `YOURLASTNAME-lb-cf.yml` (your modified CloudFormation template)
+   - your `haproxy.cfg` file
+   - `README.md`
 
-    Your repo should contain:
-    - `README-CD.md` (and `README-CI.md` from P4)
-    - `web-content` folder with application
-    - `Dockerfile`
-    - GitHub action `yml` file in `.github/workflows`
-    - `deployment` folder with:
-      - `bash` script
-      - `webhook` / `hook` definition file
-      - `webhook` service file
+2. In Pilot, paste the link to your project folder.  
+   - Sample link: https://github.com/WSU-kduncan/ceg3120-YOURGITHUBUSERNAME/blob/main/Project3
 
-2. In Pilot, paste the link to your project folder.
+3. **Only delete the NAT Gateway** once your project is complete.  I will turn on your AWS environments for grading to check the load balancer is operational.
+   - Once project grades are posted you may return and delete the stack
+
+4. You may complete *one or both* of the extra credit offerings.
 
 ## Rubric
 
-[Project Rubric](Rubric.md)
-
+[Rubric](Rubric.md)
