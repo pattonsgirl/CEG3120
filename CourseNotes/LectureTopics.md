@@ -26,3 +26,9 @@ Day 3:
 - in-dev requirements vs. in-production
 - breaking down `git@github.com:pattonsgirl/CEG2350.git`
 - start a container with ubuntu, make a git user
+
+Day 4:
+- starting and connecting to an exited container
+- fixing git user
+- installing git
+- ssh?
