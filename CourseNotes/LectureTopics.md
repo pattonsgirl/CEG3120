@@ -13,7 +13,16 @@ Day 2:
 Day 3:
 - `chroot`
 - copying required files for `bash`
+- https://github.com/pattonsgirl/CEG3120/blob/main/CourseNotes/container-exercises.md
+- what would it take to build a git server?
+    - hardware
+    - OS
+    - git
+    - networking
+    - what are good questions to ask?
 - picking a base image
     - comfort?
     - function?
 - in-dev requirements vs. in-production
+- breaking down `git@github.com:pattonsgirl/CEG2350.git`
+- start a container with ubuntu, make a git user
