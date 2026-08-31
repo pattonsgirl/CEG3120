@@ -28,7 +28,16 @@ Day 3:
 - start a container with ubuntu, make a git user
 
 Day 4:
-- starting and connecting to an exited container
+- starting and connecting to an exited container 
+    - docker `start` and `attach` (to PID 1 of container), `exec` (after started) to spawn a completely new separate process inside the container.
 - fixing git user
+    - the woes of using `useradd`, review of permissions
+        - `rwx`, user, group, other
+        - `chmod`, `chown`, `chgrp`
+- cleaning up
+    - docker `rm` for container processes, `rmi` for container images
+
+Day 5:
 - installing git
-- ssh?
+    - what's with `apt`?
+- ssh
