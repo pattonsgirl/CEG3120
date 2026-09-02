@@ -53,6 +53,10 @@ Day 5:
         - service
         - process
 
+- sidebar - paste in vim in container shell
+    1. In Vim, press Esc to ensure you are in Normal mode.
+    2. Type the following command and hit `Enter`: `:set mouse=`
+
 Day 6:
 - port binds
 - docker `export` vs `import`
