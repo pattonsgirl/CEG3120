@@ -58,5 +58,11 @@ Day 5:
     2. Type the following command and hit `Enter`: `:set mouse=`
 
 Day 6:
-- port binds
+- `init` a git repo
+- get `sshd` running
 - docker `export` vs `import`
+- port binds
+
+Day 7:
+- Dockerfile
+- setting the default process (`sshd`)
