@@ -49,7 +49,7 @@ Day 5:
         - `config`
     - server
         - `authorized_keys`
-    - `sshd`
+    - `sshd` vs `ssh` (server program vs client)
         - service
         - process
 
