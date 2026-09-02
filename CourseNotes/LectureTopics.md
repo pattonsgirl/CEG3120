@@ -40,4 +40,19 @@ Day 4:
 Day 5:
 - installing git
     - what's with `apt`?
-- ssh
+    - note the additional packages - one of them is `openssh-client`
+- installing / configuring ssh
+    - `apt install openssh-server`
+    - `ssh-keygen`
+    - client
+        - `known_hosts`
+        - `config`
+    - server
+        - `authorized_keys`
+    - `sshd`
+        - service
+        - process
+
+Day 6:
+- port binds
+- docker `export` vs `import`
