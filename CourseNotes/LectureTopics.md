@@ -58,11 +58,21 @@ Day 5:
     2. Type the following command and hit `Enter`: `:set mouse=`
 
 Day 6:
+
 - `init` a git repo
 - get `sshd` running
+    - starting and checking service status
+        - mentioning `systemctl`
+        - focusing on `service`
+    - concept: will need this to be the **foreground** process
 - docker `export` vs `import`
 - port binds
+    - `-p` host:container
 
 Day 7:
+- `init` a git repo
+    - existing / new project locally 
+    - just a git tracking dir, not a working dir - `init`
 - Dockerfile
 - setting the default process (`sshd`)
+    - `/usr/sbin/sshd -D`
