@@ -72,7 +72,13 @@ Day 6:
 Day 7:
 - `init` a git repo
     - existing / new project locally 
-    - just a git tracking dir, not a working dir - `init`
+    - just a git tracking dir, not a working dir - `--bare`
+- Configuring the `config` file
 - Dockerfile
+    - templating what we built for a DIY git server
+
+Day 8:
+- Dockerfile
+    - `FROM`, `RUN`, `COPY`, `CMD`
 - setting the default process (`sshd`)
     - `/usr/sbin/sshd -D`
