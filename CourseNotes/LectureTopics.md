@@ -78,7 +78,18 @@ Day 7:
     - templating what we built for a DIY git server
 
 Day 8:
+
+- sketch out Dockerfile based on how we built diy git container
 - Dockerfile
-    - `FROM`, `RUN`, `COPY`, `CMD`
+    - `FROM`, `RUN`, `COPY`, `CMD`, `WORKDIR`
+- building an image from a Dockerfile
+    - `docker build -t image_name:tag .` - the `.` sets build context (what files it has access to)
 - setting the default process (`sshd`)
+    - we aren't controlling a service - instead we are setting sshd (the ssh server) as the foreground process
     - `/usr/sbin/sshd -D`
+- run a container process from image built by dockerfile - profit?
+
+Day 9:
+
+- AWS invites
+- AWS core concepts
