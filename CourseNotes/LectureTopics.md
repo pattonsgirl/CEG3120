@@ -91,5 +91,21 @@ Day 8:
 
 Day 9:
 
+- DockerHub & `docker login`
+    - Personal Access Tokens (name, longevity, appropriate rights)
+- `tag` original / source to new name
+    - If for DockerHub, remember repo ref must be included (`wsukduncan/repo_name:tag`)
+- `push` an image
 - AWS invites
-- AWS core concepts
+- AWS - easy mode
+    - grab a template
+    - build a stack
+    - sign in
+        - default private key (vockey) is available for download through AWS Details
+    - ssh in
+
+Day 10:
+
+- install docker
+- `pull` an image
+- AWS concepts
