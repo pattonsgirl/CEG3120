@@ -98,7 +98,7 @@ Day 9:
 - `push` an image
 - AWS invites
 - AWS - easy mode
-    - grab a template
+    - grab a template - https://wsu-cecs-cf-templates.s3.us-east-2.amazonaws.com/course-templates/ceg2350.yml
     - build a stack
     - sign in
         - default private key (vockey) is available for download through AWS Details
@@ -106,6 +106,25 @@ Day 9:
 
 Day 10:
 
-- install docker
+- AWS outage for instructor account - talked through concepts, no live demos
+- install docker on OS (Ubuntu)
+    - https://docs.docker.com/engine/install/ubuntu/
+    - Post installation: https://docs.docker.com/engine/install/linux-postinstall/
 - `pull` an image
-- AWS concepts
+    - consequences of private (must log in, even to pull) vs public repos
+- AWS concepts, ref https://github.com/pattonsgirl/CEG3120/blob/main/CourseNotes/AWS-VPC-EC2.md
+    - review networking - specifically subnets and CIDR notation
+    - VPC
+    - Subnets (private and public)
+    - Route table (for each subnet)
+    - Internet Gateway
+
+Day 11:
+
+- Build VPC, subnets, Internet Gateway, and route tables in AWS
+- Security: **Network** Access Control List (NACL)
+    - Inbound and outbound control
+    - Allow or deny control
+    - Rules apply in order (first match wins)
+    - Can set whitelist or blacklist perspective
+- Security: Security Groups
