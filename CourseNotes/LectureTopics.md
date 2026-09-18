@@ -112,6 +112,7 @@ Day 10:
     - Post installation: https://docs.docker.com/engine/install/linux-postinstall/
 - `pull` an image
     - consequences of private (must log in, even to pull) vs public repos
+- IaaS, PaaS, SaaS - course will focus on AWS concepts in IaaS tools (VPC, EC2, CloudFormation)
 - AWS concepts, ref https://github.com/pattonsgirl/CEG3120/blob/main/CourseNotes/AWS-VPC-EC2.md
     - review networking - specifically subnets and CIDR notation
     - VPC
@@ -121,10 +122,22 @@ Day 10:
 
 Day 11:
 
+- Sent invites to `ceg3120-aws-NAME-f26` repos
 - Build VPC, subnets, Internet Gateway, and route tables in AWS
 - Security: **Network** Access Control List (NACL)
     - Inbound and outbound control
     - Allow or deny control
-    - Rules apply in order (first match wins)
+    - Rules apply in order (first match wins - pay attention to rule numbering)
     - Can set whitelist or blacklist perspective
+    - Rules apply to associated subnets (across the whole subnet network)
 - Security: Security Groups
+    - allow only
+    - can control Inbound and Outbound
+    - associated with an instance / resource, which is on a subnet (thus has NACL & route table)
+
+Day 12:
+
+- Security Groups vs NACLs
+    - stateful vs stateless
+- instance creation
+
