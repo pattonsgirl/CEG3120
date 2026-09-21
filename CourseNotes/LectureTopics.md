@@ -130,14 +130,32 @@ Day 11:
     - Rules apply in order (first match wins - pay attention to rule numbering)
     - Can set whitelist or blacklist perspective
     - Rules apply to associated subnets (across the whole subnet network)
+    - STATELESS
 - Security: Security Groups
     - allow only
     - can control Inbound and Outbound
-    - associated with an instance / resource, which is on a subnet (thus has NACL & route table)
+    - associated with an instance / resource, which is on a subnet (subnet has NACL & route table)
+    - whitelist by default (no rule, not allowed in)
+    - STATEFUL
 
 Day 12:
 
 - Security Groups vs NACLs
     - stateful vs stateless
 - instance creation
+    - AMI
+    - instance types
+    - key pairs
+        - if create - one time prompt to download private key
+        - if `vockey` - private key is accessible in AWS Details tab
 
+Day 13:
+
+- Finish instance creation
+    - network configuration
+    - volume selection
+- Talk through security example
+
+Day 14:
+
+- CloudFormation templates
