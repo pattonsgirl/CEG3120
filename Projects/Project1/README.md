@@ -1,6 +1,6 @@
 # Project 1 - Basics Guide
 
-In your repo for this course, create a folder named `basics-guide` with a file named `README.md`. 
+In your `ceg3120-basics`, create a folder named `basics-guide` with a file named `README.md`. 
 
 In this file you will be creating your own documentation on the commands & tasks you will use repetitively in this course.
 
@@ -83,9 +83,9 @@ Provide basic how-to-use guides.  This should be short and sweet so that you can
 
 ## Submission
 
-1. Commit and push your changes to your repository. Verify that these changes show in your course repository, https://github.com/WSU-kduncan/ceg3120f24-YOURGITHUBNAME
+1. Commit and push your changes to your repository. Verify that these changes show in your course repository, https://github.com/WSU-kduncan/ceg3120-basics-lastname-f26
 
-2. In Pilot, paste the link to your project folder. Sample link: https://github.com/WSU-kduncan/ceg3120f24-YOURGITHUBUSERNAME/tree/main/git-guide
+2. In Pilot, paste the link to your project folder. Sample link: https://github.com/WSU-kduncan/ceg3120-basics-lastname-f26/tree/main/git-guide
 
 ## Rubric
 

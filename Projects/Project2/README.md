@@ -1,6 +1,6 @@
-# Project 0.5 - DIY Container
+# Project 2 - DIY Container
 
-In your `essentials` repository for this course, pick one of the below DIY container implementations.
+In your `ceg3120-basics` repository for this course, pick one of the below DIY container implementations.
 
 ## Option 1: DIY git server
 

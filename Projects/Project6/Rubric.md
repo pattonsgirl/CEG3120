@@ -1,4 +1,4 @@
-# Project 4 Rubric
+# Project 6 Rubric
 
 ## Project Score: / 55
 

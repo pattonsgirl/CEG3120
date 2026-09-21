@@ -1,4 +1,4 @@
-# Project 0.5 - DIY Container - Rubric
+# Project 2 - DIY Container - Rubric
 
 ## Implementation:
 

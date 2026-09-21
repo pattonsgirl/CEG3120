@@ -1,4 +1,4 @@
-# Project 3
+# Project 5 - Balance
 
 - [Objectives](#Objectives)
 - [Project Description](#Project-Description)
@@ -22,7 +22,7 @@
 
 ## Project Description
 
-In your repository, create a `Project3` folder.
+In your `ceg3120-aws-lastname-f26` create a `AWS-LB` folder.
 
 For this project, you will have three required deliverables:
 
@@ -39,7 +39,7 @@ The following is provided in this project folder:
 
 ## Part 1 - Create a Docker Image
 
-1. In your `Project3` folder, create a folder named `web-content`.  The files that follow must exist in this folder.
+1. In your `AWS-LB` folder, create a folder named `web-content`.  The files that follow must exist in this folder.
 
 2. Bring **or** create a website with:
    - a minimum of **two** html files (`index` and one other)
@@ -67,7 +67,7 @@ Documentation requirements will be listed in [Part 4](#part-4---README)
 
 Your deliverable for this portion is only **your CloudFormation template**.
 
-Copy [`lb-cf-template.yml`](lb-cf-template.yml) to your `Project3` folder.  Name it `YOURLASTNAME-lb-cf.yml`
+Copy [`lb-cf-template.yml`](lb-cf-template.yml) to your `AWS-LB` folder.  Name it `YOURLASTNAME-lb-cf.yml`
 
 If you **could not perform** a task via the Cloud Formation template, you'll need to document how you manually performed the task during [Part 4](#part-4---README) for a partial credit opportunity.  You may specify your research into completing taskings as long as you highlight that it is research based - not something your project implemented.
 
@@ -116,7 +116,7 @@ Modify the template in the following ways:
 > Why no NACL?
 > A VPC has a default NACL that the subnets are inherently associated with if no other NACL is specified. The default NACL has an Inbound Allow All traffic from any source and Outbound Allow All traffic to any source - this is sufficient for our purposes since Security Groups will still determine what new requests are allowed to get to the server.
 
-**The deliverable for this part is the CloudFormation template in your Project 3 folder. Do not forget to add citations in [Part 4](#part-4---README) if additional resources were used.**
+**The deliverable for this part is the CloudFormation template in your AWS-LB folder. Do not forget to add citations in [Part 4](#part-4---README) if additional resources were used.**
 
 ## Part 3 - Setup Proxy Server
 
@@ -148,13 +148,13 @@ Configure the following in your `haproxy` configuration file
 
 Recommended: generate traffic that actually puts your `haproxy` server to the test. [`hey` is a tiny program that sends some load to a web application](https://github.com/rakyll/hey). It is available in `apt` - have not looked up package name for other package managers. 
 
-Add your `haproxy` configuration file to your `Project3` folder.
+Add your `haproxy` configuration file to your `AWS-LB` folder.
 
 Documentation requirements will be listed in [Part 4](#part-4---README)
 
 ## Part 4 - README
 
-In your `Project3` folder, create a `README.md` file.  This document will be an overall guide to your project.
+In your `AWS-LB` folder, create a `README.md` file.  This document will be an overall guide to your project.
 
 Your documentation should be written with as though someone is using it as a guide to recreate your project (like a blog post would do).
 
@@ -196,14 +196,14 @@ If you could not complete a step or steps in any of the tasks above you document
 
 5. Prove the load balancer is working:
    - Link to the via Load Balancer Public IP
-   - Use a mix of screenshots and explanitory text to prove that your load balancer is successfully **using your pool of hosts**
-   - Use a mix of screenshots and explanitory text to prove that your load balancer is successfully **using the algorithm selected to distribute traffic**
+   - Use a mix of screenshots and explanatory text to prove that your load balancer is successfully **using your pool of hosts**
+   - Use a mix of screenshots and explanatory text to prove that your load balancer is successfully **using the algorithm selected to distribute traffic**
    - Hint: remember being asked to look at logs and the statistics page in Part 3 - lean on this to help with "proof"
 
 6. Citations / resources used
    - if using generative AI, provide the tool name and the prompt(s) used
    - if using websites, provide the link and a short description of what you used on the page
-   - NO CITATIONS will result in a minimum of a 30% deducation and be considered for reporting as an Academic Integrity Violation.  You may scatted your sources and citations to be relevant to sections or place them all in one section.
+   - NO CITATIONS will result in a minimum of a 30% deduction and be considered for reporting as an Academic Integrity Violation.  You may scatted your sources and citations to be relevant to sections or place them all in one section.
 
 
 ## Recommended Resources and Warnings
@@ -230,9 +230,9 @@ If you could not complete a step or steps in any of the tasks above you document
 
 Your project must have commits against the required work *before* doing the extra credit portions.
 
-Create a folder in `Project3` called `haproxy`.
+Create a folder in `AWS-LB` called `haproxy`.
 
-Copy in your `haproxy` configuration file.  Create a `Dockerfile` that will build from the [`haproxy` Official Iamge](https://hub.docker.com/_/haproxy/) and copies your `haproxy` configuration file to the default location for `haproxy` in the container filesystem.
+Copy in your `haproxy` configuration file.  Create a `Dockerfile` that will build from the [`haproxy` Official Image](https://hub.docker.com/_/haproxy/) and copies your `haproxy` configuration file to the default location for `haproxy` in the container filesystem.
 
 Build and push a container image to a **public** DockerHub repository in your account (don't overwrite your website repository :wink:)
 
@@ -269,7 +269,7 @@ These are a collection of sites I used to set up HTTPS and get the correct SSL c
    - `README.md`
 
 2. In Pilot, paste the link to your project folder.  
-   - Sample link: https://github.com/WSU-kduncan/ceg3120-YOURGITHUBUSERNAME/blob/main/Project3
+   - Sample link: https://github.com/WSU-kduncan/ceg3120-aws-lastname-f26/blob/main/AWS-LB/README.md
 
 3. **Only delete the NAT Gateway** once your project is complete.  I will turn on your AWS environments for grading to check the load balancer is operational.
    - Once project grades are posted you may return and delete the stack

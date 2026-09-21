@@ -1,4 +1,4 @@
-# Project 1
+# Project 3 - Manual VPC & EC2
 
 ## Objectives:
 
@@ -10,7 +10,7 @@
 
 For this project you need access to your AWS "console". Return to the AWS Learner Lab page and click "Start Lab".  **Once the icon next to "AWS" is green (or timer countdown begins), click "AWS" to open the console.**
 
-Create a `Project1` folder in your GitHub Classrooms repo. Create a file named `README.md` in the folder. Do your documentation work here. I recommend having your repo cloned to a desktop OS where you can access VSCode - markdown preview is super helpful.
+In your `ceg3120-aws-lastname-f26` create a `AWS-Manual` folder. Create a file named `README.md` in the folder. Do your documentation work here. I recommend having your repo cloned to a desktop OS where you can access VSCode - markdown preview is super helpful.
 
 If you fail to complete a portion of the project, note where you got stuck in your implementation - you may leave notes that show research into how next steps should be configured for partial credit as long as your clearly state differences between research and implementation.
 
@@ -128,13 +128,13 @@ For each step below, provide a description of steps to complete the tasks and an
 
 ## Submission
 
-1. Commit and push your changes to your repository. Verify that these changes show in your course repository, https://github.com/WSU-kduncan/ceg3120-YOURGITHUBNAME
+1. Commit and push your changes to your repository. Verify that these changes show in your course repository, https://github.com/WSU-kduncan/ceg3120-aws-lastname-f26
 
    - Your repo should contain:
    - `images` folder (optional depending on how you implement including screenshots)
    - `README.md`
 
-2. In Pilot, paste the link to your project folder. Sample link: https://github.com/WSU-kduncan/ceg3120-YOURGITHUBUSERNAME/blob/main/Projects/Project1
+2. In Pilot, paste the link to your project folder. Sample link: https://github.com/WSU-kduncan/ceg3120-aws-lastname-f26/blob/main/AWS-Manual/README.md
 
 3. You may delete all created resources once done to save monies. No really, trash it - especially the instance and disassociate and release the elastic IP.  If I have questions about your work, your documentation should be good enough to quickly rebuild.
 

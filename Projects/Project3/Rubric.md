@@ -1,4 +1,4 @@
-# Project 1 Rubric
+# Project 3 Rubric
 
 ## Project Score: / 42
 

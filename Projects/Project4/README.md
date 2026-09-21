@@ -1,4 +1,4 @@
-# Project 2
+# Project 4 - CF Template
 
 ## Objectives:
 
@@ -11,7 +11,7 @@ For this project you need access to your AWS console. Return to LearnerLab and s
 
 **Once the icon next to "AWS" is green, click "AWS" to open the console.**
 
-Create a `Project2` folder in your GitHub Classrooms repo. This project is mostly modifying a CloudFormation template, so you are welcome to work wherever you are comfortable. I would float towards VSCode myself.
+In your `ceg3120-aws-lastname-f26` create a `AWS-CF` folder. This project is mostly modifying a CloudFormation template, so you are welcome to work wherever you are comfortable. I would float towards VSCode myself.
  
 ## Project Description
 
@@ -19,7 +19,7 @@ I think we can agree that manually creating a VPC network to host an instance an
 
 The "cloud" agrees, and therefore cloud services created templates. In AWS, these are called CloudFormation templates. In these files, you layout every detail of how you want your EC2 setup to be, from VPC to instance(s). AWS CloudFormation can take these files as input, and feed the values into API calls that create and configure the resources.
 
-Create a folder in your repo named `Project2` that contains your deliverables:
+Create a folder in your repo named `AWS-CF` that contains your deliverables:
 - a **CloudFormation template named `YOURNAME-CF.yml`**.
   - A [base YAML template - `cf-template.yml`](cf-template.yml) has been provided for you. Due to how many things are in these templates, I would use this base and make the modifications requested. You can Google how these are defined the way they are, additional parameters, etc.
 - a `README.md` file that includes:
@@ -128,7 +128,7 @@ Your instance should be hosting two different websites - one on port 80 (via the
 
 ## Submission
 
-1. Commit and push your changes to your repository. Verify that these changes show in your course repository, https://github.com/WSU-kduncan/ceg3120f24-YOURGITHUBNAME
+1. Commit and push your changes to your repository. Verify that these changes show in your course repository, https://github.com/WSU-kduncan/ceg3120-aws-lastname-f26
 
    - Your repo should contain:
    - `YOURLASTNAME-cf.yml`
@@ -137,7 +137,7 @@ Your instance should be hosting two different websites - one on port 80 (via the
       - Diagram explaining project CF Template
       - Companion notes / descriptions for diagram
 
-2. In Pilot, paste the link to your project folder. Sample link: https://github.com/WSU-kduncan/ceg3120f24-YOURGITHUBUSERNAME/blob/main/Projects/Project2
+2. In Pilot, paste the link to your project folder. Sample link: https://github.com/WSU-kduncan/ceg3120-aws-lastname-f26/blob/main/AWS-CF/README.md
 
 3. Do not leave stacks running. Once your template creates a stack and instance to specification successfully, you may delete the stack
 

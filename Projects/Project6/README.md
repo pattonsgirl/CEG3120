@@ -1,4 +1,4 @@
-# Project 4
+# Project 6 - CI
 
 - [Objectives](#Objectives)
 - [Project Overview](#Project-Overview)
@@ -19,7 +19,7 @@
 
 For this project you will be creating a fresh repository in order to have a public repo & admin rights in the repository. The former means you can `wget` files easily from your own repository; the latter is needed to configure repository secrets. 
 
-The link to create the **new repository** is in Pilot under Content -> Projects -> `P4 CI -> P5 CD` -> `CREATE or ACCESS GitHub Repository for Projects 4 & 5` . This is the repo you will be using for Projects 4 & 5.
+Perform all work in your `ceg3120-cicd-lastname-f26` repository.
 
 The documentation requirements are embedded in their respective parts (in order of how I would recommend setting things up). [Part 4 - Project Description & Diagram](#part-4---project-description--diagram) should be at the **top of your README-CI.md** since it is the description and diagramming requirement.
 

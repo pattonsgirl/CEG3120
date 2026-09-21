@@ -1,4 +1,4 @@
-# Project 5
+# Project 7 - CD
 
 - [Objectives](#Objectives)
 - [Project Overview](#Project-Overview)
@@ -27,6 +27,8 @@ The server running the application in the container will be an EC2 instance.
 - 30 GB volume storage
 
 This project requires completion of [Project 4](../Project4/). If you did not accomplish Project 4 you should meet with the instructor at your earliest availability.
+
+Perform all work in your `ceg3120-cicd-lastname-f26` repository.
 
 The documentation requirements are embedded in their respective parts (in order of how I would recommend setting things up). [Part 4 - Project Description & Diagram](#part-4---project-description--diagram) should be at the **top of your README-CD.md** since it is the description and diagramming requirement.
 
