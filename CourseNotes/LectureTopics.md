@@ -154,8 +154,14 @@ Day 13:
 - Finish instance creation
     - network configuration
     - volume selection
+        - https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html
+- AWS Regions and Availability Zones
+    - https://aws.amazon.com/about-aws/global-infrastructure/regions_az/ 
+    - If logged in, can use this view: https://us-east-1.console.aws.amazon.com/awsglobalview/home?region=us-east-1#RegionsAndZones:tabId=lz 
+- Sign in to your AWS instance
 - Talk through security example
 
 Day 14:
 
+- Testing and breaking security at NACL & SG Layer
 - CloudFormation templates
