@@ -163,5 +163,15 @@ Day 13:
 
 Day 14:
 
-- Testing and breaking security at NACL & SG Layer
 - CloudFormation templates
+- https://github.com/pattonsgirl/CEG3120/blob/main/CourseNotes/AWS-CF-Breakdown.md
+
+Day 15:
+
+- CloudFormation - debugging strategies
+
+Day 16:
+
+- Testing and breaking security at NACL & SG Layer
+
+
