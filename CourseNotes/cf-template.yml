@@ -81,16 +81,8 @@ Resources:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
       VpcId: !Ref VPC
-      GroupDescription: Enable SSH access via port 22 and open all insternal ports.
+      GroupDescription: Enable SSH access via port 22 and open all internal ports.
       SecurityGroupIngress:
-        - IpProtocol: tcp
-          FromPort: '22'
-          ToPort: '22'
-          CidrIp: !Ref SSHLocation
-        - IpProtocol: tcp
-          FromPort: '22'
-          ToPort: '22'
-          CidrIp: 130.108.0.0/16  # WSU CIDR
         - IpProtocol: -1
           FromPort: '-1'
           ToPort: '-1'

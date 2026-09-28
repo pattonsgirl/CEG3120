@@ -169,9 +169,13 @@ Day 14:
 Day 15:
 
 - CloudFormation - debugging strategies
+- Infrastructure Compose for template validation
+- Compiling and reading errors during stack build
 
 Day 16:
 
+- CloudFormation - debugging instances / script
+- `journalctl` / cloud log
 - Testing and breaking security at NACL & SG Layer
 
 
