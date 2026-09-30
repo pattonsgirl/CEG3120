@@ -121,10 +121,10 @@ Resources:
         Fn::Base64:
           !Sub |
             #!/bin/bash -xe
-            apt-get update && \
-            apt-get install -y \
-              git \
-              htop \
-              sl && \
-            echo "This is from the CF template" > /home/ubuntu/hello.txt && \
+            apt-get update 
+            apt-get install -y 
+              git 
+              htop 
+              sl 
+            echo "This is from the CF template" > /home/ubuntu/hello.txt
             reboot
