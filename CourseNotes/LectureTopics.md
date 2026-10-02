@@ -213,6 +213,24 @@ Day 16:
 ```
 
 Day 17:
-- Testing and breaking security at NACL & SG Layer
+
+- Testing and breaking connectivity at NACL & SG Layer
+- `nslookup` - domains only (`wttr.in`), not protocols (`https://wttr.in`)
+    - if googling "ips for domain" be careful - they might be a DNS resolver!
+- Demo one: NACL inbound, denying `5.9.243.187`
+- Demo two: `ping` uses ICMP - why can't I `ping 34.198.162.255` from the instance? Toying with Security Groups and stateful resolution
+
+Day 18:
+
+- Docker bind mounts & volumes
+
+Day 19:
+
+- NAT Gateway
+- configuring a private subnet
+
+Day 20:
+
+- Midterm exam
 
 
