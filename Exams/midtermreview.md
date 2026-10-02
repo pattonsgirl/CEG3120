@@ -106,9 +106,7 @@
   - instance type & AMI
   - SSH to instance with EIP
 
-# Midterm will expect introductory understanding here
-
-## Week 7 / 8
+## Week 6 / 7
 
 - Using CloudFormation Templates
   - using YAML/JSON formatted files
