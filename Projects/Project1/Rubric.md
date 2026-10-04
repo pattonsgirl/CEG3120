@@ -1,6 +1,6 @@
 # Project 1 Rubric
 
-## Total Score: / 48
+## Total Score: / 50.5
 
 ## Command line git ( / 15)
 
@@ -53,6 +53,8 @@
 
 ## git files & folders ( / 4)
 
+1 pt each
+
 Provide descriptions of expected contents and what these are used for
 
 - .git folder
@@ -62,7 +64,7 @@ Provide descriptions of expected contents and what these are used for
     - [ ] specifies location for proper function - in root of repository folder
     - [ ] explains the purpose
 
-## Command line docker ( / 11)
+## Command line docker ( / 14.5)
 
 0.5 points each
 
@@ -86,10 +88,19 @@ Provide descriptions of expected contents and what these are used for
 - exec
     - [ ] command example
     - [ ] explanation
+- attach
+    - [ ] command example
+    - [ ] explanation
 - import
     - [ ] command example
     - [ ] explanation
 - export
+    - [ ] command example
+    - [ ] explanation
+- inspect
+    - [ ] command example
+    - [ ] explanation
+- logs
     - [ ] command example
     - [ ] explanation
 - kill
@@ -130,3 +141,4 @@ Provide basic how-to-use guides.
 
 - [ ] (-20%) Submission not in course repository
 - [ ] (-20%) Submission does not use markdown to provide a clean visual of information
+- [ ] (-10%) Missing a `Resources` section
