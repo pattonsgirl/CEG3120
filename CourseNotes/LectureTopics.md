@@ -239,7 +239,9 @@ Day 18:
     - `docker run -d --name vol1 -p 8083:80 -v webdata:/usr/share/nginx/html nginx:alpine`
     - volumes are seeded from images contents
     - `docker exec vol1 sh -c 'echo "<h1>Volume data</h1>" > /usr/share/nginx/html/index.html'`
+    - `docker run -d --name vol2 -p 8084:80 -v webdata:/usr/share/nginx/html nginx:alpine`
     - To remove the data, you need to remove the volume: `docker volume rm webdata`
+    - usually in combo with docker compose files
 - Reflect: what's best when?
     - COPY - container files isolated from host. Changes do not persist
     - Bind mount - container files bound to host. Changes persist
