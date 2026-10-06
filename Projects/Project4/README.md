@@ -1,6 +1,6 @@
 # Project 4 - CF Template
 
-**Due:** See Pilot, 11:59 PM. Late policy: 2-hour grace period, then -10% per day for up to 3 days. Work committed after that is not graded.
+**Due:** TBD, 11:59 PM. Late policy: 2-hour grace period, then -10% per day for up to 3 days. Work committed after that is not graded.
 
 ## Objectives:
 
@@ -101,14 +101,13 @@ In your **aws** repository (`ceg3120-aws-lastname-f26`) - not your basics reposi
           | docker | `docker.io` (or Docker's install script) | `docker` |
 
         - If you are using an AMI where the service needs to be **enabled and started**, add commands to do so for `apache2` and `docker`
-     4. Copy the raw contents of the following files to specific directories on the instance with `wget -O` or `curl -fsSL -o`, using **these raw URLs**:
+     4. Copy the raw contents of the following files to specific directories on the instance with `wget -O` or `curl -fsSL -o`, using **these exact raw URLs**:
         - [wordle.sh](https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project4/wordle.sh) to the default user's home directory
           - `https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project4/wordle.sh`
-          - The script must be **owned by the default user** and **executable** - UserData runs as root, so files it downloads are owned by root.
+          - The script must be **owned by the default user** (`chown`) and **executable** (`chmod +x`) - UserData runs as root, so files it downloads are owned by root.
         - [index.html](https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project4/dockerfile-demo/index.html) to the default apache2 web content directory. This page will display when you use HTTP to connect to port 80 on your instance.
           - `https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project4/dockerfile-demo/index.html`
-          - Note: you may bring in any index file **BUT** download it with `wget` or `curl`. 
-        - Avoid hard coding (copy / pasting) file contents in your template - it will rarely go well.
+          - Note: you may bring in any index file **BUT** download it with `wget` or `curl`. Hard coding file contents in your template will rarely go well.
         - A `github.com/.../blob/...` link downloads GitHub's web page, not the file - use the `raw.githubusercontent.com` URL.
         - Your course repository is private - the instance has no credentials to download from it.
      5. Run the [wsukduncan/cheatsheet](https://hub.docker.com/r/wsukduncan/cheatsheet) image in detached mode bound to host port 8080 and container port 80. Use the appropriate flag to have the container restart automatically if the system is rebooted / if the docker service has an outage.
@@ -138,6 +137,12 @@ In your **aws** repository (`ceg3120-aws-lastname-f26`) - not your basics reposi
   - **Companion notes:** walk the reader through the *diagram* - the path traffic takes into your instance, and what each NACL and security group rule does and why.
   - **Testing and proof:** your screenshots - see [Testing and Proof](#testing-and-proof).
   - **Sources:** cite every source you used, including AI tools, and say what you used each one for.
+
+## Formatting, Task Text, and Images
+
+- **Formatting:** your README should be easy to read on GitHub - headings, lists, code formatting for commands, file names, and IPs (`` `curl -m 5 wttr.in` `` or fenced code blocks), and tables that render. Poor formatting is up to a 10% deduction, scaled by severity - 10% if the document is illegible.
+- **Task text:** do not leave project task text in your documentation. It muddles what your work was versus what the assignment tasking is, and is a 5% formatting deduction. Section headings are fine; pasting the instruction bullets or prompts is not.
+- **Images:** every screenshot and your diagram must be **embedded** so it displays in your README on GitHub - not just uploaded to the repo. Use relative paths (`images/stack.png`), match the filename's capitalization exactly, and avoid spaces in filenames (or wrap the path in angle brackets: `![stack](<images/my stack.png>)`). After you push, open your README on GitHub and confirm every image appears. No embedded screenshots is a 5% deduction; some missing or not displaying is 2.5%.
 
 ## Testing and Proof
 

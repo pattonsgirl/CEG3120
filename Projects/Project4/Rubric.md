@@ -67,6 +67,9 @@ Screenshots embedded in the README, each with a sentence saying what it proves.
 - [ ] CF Template does not build a successful stack (fails validation, or no `CREATE_COMPLETE` proof) - 2 point penalty
 - [ ] Security Group has additional rules that make it too open - 1 point penalty per rule
 - [ ] Bad NACL rule order (allow-all evaluated before a deny) - 1 point penalty
+- [ ] images not included in markdown documentation - 5% penalty (no screenshots embedded); 2.5% penalty (some screenshots missing or not displaying) - the diagram is scored under README Documentation
+- [ ] poor markdown formatting - up to 10% penalty, scaled by severity (10% = illegible)
+    - includes project tasking text left in the documentation (pasted instruction bullets or prompts) - 5% penalty
 - [ ] Single or mass commit - project not built up over multiple small, descriptive commits - 5% penalty
 - [ ] No citations - sources (including AI tools) not cited in the README - 10% penalty
 - [ ] Late submission - 10% per day, up to 3 days
