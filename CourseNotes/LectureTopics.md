@@ -223,6 +223,31 @@ Day 17:
 Day 18:
 
 - Docker bind mounts & volumes
+- create something silly:
+    - `echo "<h1>Keep It Simple</h1>" > index.html`
+- have html content, want a container with a web serving service
+    - https://hub.docker.com/_/nginx
+- COPY
+    - may use `docker cp`
+    - going to focus on `Dockerfile` `COPY` instruction
+- Bind mount 
+    - bind folder / file on host to folder / file in container
+    - `docker run -d --name bind -p 8082:80 -v "$(pwd)/site":/usr/share/nginx/html nginx:alpine`
+    - note that if container is removed, host files are not effected
+- Volume - persistent storage
+    - `docker volume create webdata`
+    - `docker run -d --name vol1 -p 8083:80 -v webdata:/usr/share/nginx/html nginx:alpine`
+    - volumes are seeded from images contents
+    - `docker exec vol1 sh -c 'echo "<h1>Volume data</h1>" > /usr/share/nginx/html/index.html'`
+    - `docker run -d --name vol2 -p 8084:80 -v webdata:/usr/share/nginx/html nginx:alpine`
+    - To remove the data, you need to remove the volume: `docker volume rm webdata`
+    - usually in combo with docker compose files
+- Reflect: what's best when?
+    - COPY - container files isolated from host. Changes do not persist
+    - Bind mount - container files bound to host. Changes persist
+    - Volume - data needs to stay persistent across container. Changes persist
+        - mainly seen when dealing with databases
+        - AI models don't favor this - preference for bind mounts as data usually also needs accessibility from host
 
 Day 19:
 
