@@ -83,8 +83,8 @@ Create a folder in your repo named `AWS-CF` that contains your deliverables:
         - Note these are the names of the executable once installed with the `apt` package manager - you'll need to find the correct package name & package repository manager per your AMI / Linux distribution
         - If you are using an AMI where the service needs to be **enabled and started**, add commands to so for `apache2` and `docker`
      4. Copy the raw contents of the following files to specific directories on the instance:
-        - [wordle.sh](https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project2/wordle.sh) to the default user's home directory
-        - [index.html](https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project2/dockerfile-demo/index.html) to the default apache2 web content directory. This page will display when you use HTTP to connect to port 80 on your instance.
+        - [wordle.sh](https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project4/wordle.sh) to the default user's home directory
+        - [index.html](https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project4/dockerfile-demo/index.html) to the default apache2 web content directory. This page will display when you use HTTP to connect to port 80 on your instance.
             - Note: you may bring in any index file **BUT** you'll want one you can grab with a `wget` or `curl`. Hard coding in your files will rarely go well.
      5. Run the [wsukduncan/cheatsheet](https://hub.docker.com/r/wsukduncan/cheatsheet) image in detached mode bound to host port 8080 and container port 80. Use the appropriate flag to have the container restart automatically if the system is rebooted / if the docker service has an outage.
         - [Detached mode - Docker Docs](https://docs.docker.com/reference/cli/docker/container/run/#detach)
