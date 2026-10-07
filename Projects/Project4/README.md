@@ -90,26 +90,14 @@ In your **aws** repository (`ceg3120-aws-lastname-f26`) - not your basics reposi
      2. Change `hostname` to "YOURLASTNAME-AMI" where `YOURLASTNAME` is your last name and where `AMI` is some identifier of the AMI you chose (e.g. `Duncan-Ubuntu24`, `Duncan-AL2023`)
         - The hostname must survive the reboot at the end of the script - use `hostnamectl set-hostname`.
      3. Install `git`, `python3`, `pip3`, `apache2`, `wamerican` and `docker`
-        - These are the names of the executables / packages on Ubuntu. Use the correct package names & package manager for your AMI:
-
-          | Requirement | Ubuntu (`apt-get`) | Amazon Linux 2023 (`dnf`) |
-          |---|---|---|
-          | git | `git` | `git` |
-          | python3 / pip3 | `python3`, `python3-pip` | `python3`, `python3-pip` |
-          | apache2 | `apache2` | `httpd` |
-          | wamerican | `wamerican` | `words` |
-          | docker | `docker.io` (or Docker's install script) | `docker` |
-
+        - These are the names of the executables / packages on Ubuntu. Use the correct package names & package manager for your AMI. You are responsible for looking up the correct installer name for your AMI's default package manager for the required list of packages.
         - If you are using an AMI where the service needs to be **enabled and started**, add commands to do so for `apache2` and `docker`
      4. Copy the raw contents of the following files to specific directories on the instance with `wget -O` or `curl -fsSL -o`, using **these exact raw URLs**:
         - [wordle.sh](https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project4/wordle.sh) to the default user's home directory
           - `https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project4/wordle.sh`
-          - The script must be **owned by the default user** (`chown`) and **executable** (`chmod +x`) - UserData runs as root, so files it downloads are owned by root.
+          - The script must be **owned by the default user** and **executable** - UserData runs as root, so files it downloads are owned by root.
         - [index.html](https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project4/dockerfile-demo/index.html) to the default apache2 web content directory. This page will display when you use HTTP to connect to port 80 on your instance.
           - `https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project4/dockerfile-demo/index.html`
-          - Note: you may bring in any index file **BUT** download it with `wget` or `curl`. Hard coding file contents in your template will rarely go well.
-        - A `github.com/.../blob/...` link downloads GitHub's web page, not the file - use the `raw.githubusercontent.com` URL.
-        - Your course repository is private - the instance has no credentials to download from it.
      5. Run the [wsukduncan/cheatsheet](https://hub.docker.com/r/wsukduncan/cheatsheet) image in detached mode bound to host port 8080 and container port 80. Use the appropriate flag to have the container restart automatically if the system is rebooted / if the docker service has an outage.
         - [Detached mode - Docker Docs](https://docs.docker.com/reference/cli/docker/container/run/#detach)
         - [Start containers automatically - Docker Docs](https://docs.docker.com/engine/containers/start-containers-automatically/)
@@ -134,6 +122,7 @@ In your **aws** repository (`ceg3120-aws-lastname-f26`) - not your basics reposi
       - [Eraser - Cloud Diagrams](https://docs.tryeraser.com/docs/cloud-diagrams)
       - [mhlabs - CFN Diagram Generator](https://github.com/mhlabs/cfn-diagram)
       - PowerPoint and OneNote are still good choices
+      - Paper drawings as accepted, but feedback will be to practice with a digital tool
   - **Companion notes:** walk the reader through the *diagram* - the path traffic takes into your instance, and what each NACL and security group rule does and why.
   - **Testing and proof:** your screenshots - see [Testing and Proof](#testing-and-proof).
   - **Sources:** cite every source you used, including AI tools, and say what you used each one for.
@@ -146,28 +135,33 @@ In your **aws** repository (`ceg3120-aws-lastname-f26`) - not your basics reposi
 
 ## Testing and Proof
 
-Build your stack, then add these screenshots to `AWS-CF/images/` and embed each one in your README **with a sentence saying what it proves**:
+Build your stack, then add these screenshots to `AWS-CF/images/` and embed each one in your README **with a sentence saying what it proves**.
+
+If something scripting into your `UserData` script did not work, [try browsing the boot logs](https://www.cyberciti.biz/faq/ubuntu-view-boot-log/) - `/var/log/cloud-init-output.log` has the output of your UserData script.
 
 1. **Stack build** - the CloudFormation console showing your stack with status `CREATE_COMPLETE` (stack name visible), and the **Resources** tab listing your resources.
 2. **SSH and hostname** - an SSH session to your Elastic IP with your new hostname in the prompt, plus the output of `hostnamectl`.
-3. **Installed software** - versions from `git --version`, `python3 --version`, `pip3 --version`, `apache2 -v` (or `httpd -v`), `docker --version`, and proof the word list exists (`ls /usr/share/dict/words`).
-4. **wordle.sh permissions** - as the **default user, without `sudo`**:
-   - `ls -l ~/wordle.sh` showing the default user as owner and the `x` (execute) permission
+3. **Installed software** proof using either:
+   - output from `/var/log/cloud-init-output.log` that verifies successful installation
+   - versions from `git --version`, `python3 --version`, `pip3 --version`, `apache2 -v` (or `httpd -v`), `docker --version`, and proof the word list exists (`ls /usr/share/dict/words`).
+4. **Running Services** of `apache2` and `docker` using `systemctl`
+5. **wordle.sh permissions** - as the **default user, without `sudo`**:
+   - `ls -l ~/wordle.sh` showing owners and permissions
    - `./wordle.sh` running and accepting at least one guess
-5. **Docker container**:
-   - `docker ps` (as the default user, without `sudo` - log out and back in after adding the user to the `docker` group) showing `wsukduncan/cheatsheet` running with `0.0.0.0:8080->80/tcp`
+6. **Docker container**:
+   - `docker ps` (as the default user, without `sudo`) showing `wsukduncan/cheatsheet` running with `0.0.0.0:8080->80/tcp`
    - `docker inspect --format '{{.HostConfig.RestartPolicy.Name}}' <container>` showing your restart policy
    - a browser showing `http://<Elastic IP>:8080`
    - a browser showing `http://<Elastic IP>` (port 80, your `index.html`) - type the full `http://`, since browsers may switch to `https://`, which isn't open
-6. **Security group tests** - one **allowed** and one **blocked** test:
+7. **Security group tests** - one **allowed** and one **blocked** test:
    - allowed: `ping` and `ssh` to your Elastic IP from home or campus succeed
-   - blocked: the same `ping` from a network that is **not** in your rules (e.g. a phone hotspot) times out
-7. **Network ACL tests** - from the instance:
+   - blocked: the same `ping` from a network that is **not** in your rules (e.g. a phone hotspot or other non-"approved" network) times out
+       - You may modify the security group rules to remove an allowed network, as long as you provide proof and documentation of how your test is valid.
+8. **Network ACL tests** - from the instance:
    - `curl -m 5 wttr.in` times out
-   - `curl -I http://example.com` returns `200 OK` (so you know outbound works in general)
+   - `curl -I http://google.com` returns `200 OK` (so you know outbound works in general)
    - for the `107.23.4.178` SSH deny, which you can't test from that address, a screenshot of your NACL's inbound rules in the console
 
-If something did not work, [try browsing the boot logs](https://www.cyberciti.biz/faq/ubuntu-view-boot-log/) - `/var/log/cloud-init-output.log` has the output of your UserData script.
 
 ## Commits, Sources, and AI
 
