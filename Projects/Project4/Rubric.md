@@ -35,31 +35,31 @@ Instance `UserData` script:
 - [ ] Changes hostname to `LASTNAME-AMI` so it persists after reboot
 - [ ] Installs `wamerican`, `git`, `python3`, `pip3` with the AMI's package names (0.25 pt / each)
 - [ ] Installs `apache2` and `docker`, enabled and started as needed for the AMI (0.5 pt / each)
-- [ ] Copies `wordle.sh` (course raw URL) to the default user's home - owned by that user and executable
-- [ ] Copies `index.html` (course raw URL or another downloaded page) to the web root
+- [ ] Copies `wordle.sh` (course raw URL) to the default user's home with appropriate ownership & permissions (0.5 pt / each)
+- [ ] Copies `index.html` (course raw URL) to the web root
 - Docker container `wsukduncan/cheatsheet`
     - [ ] runs detached
-    - [ ] restarts automatically (`always` or `unless-stopped`)
+    - [ ] restarts automatically
     - [ ] host port 8080 bound to container port 80
 
 ## Testing & Proof ( / 8)
 
 Screenshots embedded in the README, each with a sentence saying what it proves.
 
-- [ ] Stack status `CREATE_COMPLETE` in the CloudFormation console
-- [ ] SSH to the Elastic IP with the new hostname in the prompt
-- [ ] Installed software versions (git, python3, pip3, apache2, docker, word list)
-- [ ] `wordle.sh` owned by the default user, executable, and running without `sudo`
-- [ ] `docker ps` showing the cheatsheet container on `8080->80` (without `sudo`) and its restart policy
-- [ ] Both websites in a browser: port 80 (`index.html`) and port 8080 (cheatsheet)
-- [ ] Security group: an allowed test (home/campus) **and** a blocked test (network not in the rules)
-- [ ] Network ACL: `curl wttr.in` times out while `curl example.com` succeeds
+- [ ] Stack build - stack status `CREATE_COMPLETE` (stack name visible) and the Resources tab
+- [ ] SSH to the Elastic IP with the new hostname in the prompt, plus `hostnamectl` output
+- [ ] Installed software - `/var/log/cloud-init-output.log` output verifying the installs **or** versions of git, python3, pip3, apache2 / httpd, docker, and the word list
+- [ ] Running services - `apache2` (or `httpd`) and `docker` active, shown with `systemctl`
+- [ ] `wordle.sh` - `ls -l ~/wordle.sh` showing owner and permissions, and the script running as the default user without `sudo`
+- [ ] Docker container - `docker ps` (without `sudo`) showing the cheatsheet container on `8080->80`, its restart policy, and both websites in a browser (port 80 `index.html` and port 8080 cheatsheet)
+- [ ] Security group - an allowed test (home/campus) **and** a blocked test (a network not in the rules, or an allowed network temporarily removed with proof and documentation of how the test is valid)
+- [ ] Network ACL - `curl wttr.in` times out while `curl google.com` succeeds, plus the NACL inbound rules screenshot for the `107.23.4.178` deny
 
 ## README Documentation ( / 4)
 
 - [ ] Description of what the template builds - matches the template
 - [ ] Companion notes that explain the diagram, including what the NACL and SG rules do and why
-- [ ] Diagram embedded and renders on GitHub
+- [ ] Diagram embedded and renders on GitHub (a photo of a paper drawing is accepted; feedback will automatically recommend a digital tool)
 - [ ] Diagram shows AWS resources and how traffic flows between them (not the template's sections)
 
 ## Point Deductions - Penalty Total: 
