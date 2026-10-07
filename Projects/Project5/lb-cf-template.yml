@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: >-
-   Creates 2 instances and 1 VPC.  Each instance gets a private IPon it's subnet and installs required software before logon.  The proxy server gets a public IP as does a NAT gateway.  The backend servers use the NAT gateway for world communications, but they do not have individual public IPs.
+   Before adjustments per project requirements, creates 2 instances and 1 VPC.  Each instance gets a private IP on it's respective subnet and installs required software before logon.  The proxy server gets a public IP as does the NAT gateway.  The backend servers use the NAT gateway for world communications per it's route table, but the backend servers do not have public IPs.
 Parameters:
   KeyName:
     Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
@@ -10,8 +10,7 @@ Parameters:
 Mappings:
   AWSRegionAMI: # AMI for Ubuntu server in each supported region 
     us-east-1:   # N. Virginia
-    # AMI ID for Ubuntu 20 (ubuntu + apt) - Amazon Linux 2 AMI ami-02e136e904f3da870 (ec2-user + yum)
-      HVM64: ami-09e67e426f25ce0d7 # TODO use AMI ID of choice
+      HVM64: ami-09e67e426f25ce0d7 # TODO use AMI ID of Ubuntu 24 or newer or Amazon Linux 2 or newer
 Resources:
   VPC:
     Type: 'AWS::EC2::VPC'
@@ -136,7 +135,7 @@ Resources:
         - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
-          CidrIp: 0.0.0.0/32  # TODO Replace with home / trusted public IP
+          CidrIp: 0.0.0.0/0  # TODO Replace with home / trusted public IP
           # TODO add rule(s) for port 80 access
       Tags: 
         - Key: Name

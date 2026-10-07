@@ -1,160 +1,152 @@
 # Project 5 Rubric
 
-## Project Score: / 66
+## Project Score: / 80
 
-## Required Documents: / 5
+Grading notes:
+- 1 point per box unless noted.
+- Research-only notes for an unfinished step (clearly labeled as research) earn up to half of that item's points.
+- Documented values (AMI, IPs, names, commands) must match your template and your running stack.
+
+## Required Documents ( / 5)
+
+In `AWS-LB/`:
 - a folder named `web-content` with:
-   - [ ] your web site files
+   - [ ] your web site files (at least two `.html` files, including `index.html`, and one `.css` file)
    - [ ] `Dockerfile`
 - [ ] `YOURLASTNAME-lb-cf.yml` 
-- [ ]  `haproxy.cfg` file
+- [ ] `haproxy.cfg` file
 - [ ] `README.md`
 
-## Dockerfile: / 2
+## Dockerfile & Image ( / 3)
 
 - [ ] Builds from `httpd:2.4`
-- [ ] Copies all content in `web-content` into the container filesystem in the default web content directory for `httpd` 
+- [ ] Copies the content of `web-content` into the default web content directory for `httpd` (`/usr/local/apache2/htdocs/`)
+- [ ] Image pushed to a **public** DockerHub repository, and it is the image the hosts run
 
-## haproxy configuration file: / 6
+## haproxy configuration file ( / 11)
 
 - [ ] Creates a frontend section named `lastname-frontend`
    - [ ] binds to host port `80`
    - [ ] defines the default backend as `lastname-pool`
-
 - [ ] Creates a backend section named `lastname-pool`
-   - [ ] defines a balancing algorithm 
-   - [ ] adds your three hosts as servers in the pool
+   - [ ] defines a balancing algorithm (2 pts)
+   - servers in the pool, each with the port the application runs on:
+      - [ ] host 1
+      - [ ] host 2
+      - [ ] host 3
+- [ ] Enables the `haproxy` statistics page with a `frontend` or `listen` section (2 pts)
 
-3. Enable the `haproxy` statistics page with either a `frontend` section or a `listen` section
+## CloudFormation template ( / 24)
 
-## CloudFormation template: / 33
-
-- [ ] AMI adjusted to Ubuntu 18+ or Amazon Linux 2
+- [ ] Template description revised to describe what the template builds (no `TODO`, no base-template text)
+- [ ] AMI changed to Ubuntu 24 or newer, or Amazon Linux 2 or newer
 - [ ] VPC CIDR block: `192.168.0.0/23`
-- [ ] Public subnet range: `192.168.0.0 - 192.168.0.255`
-- [ ] Private subnet range: `192.168.1.0 - 192.168.1.255`
-- One SecurityGroup for use with proxy instance:
-   - [ ] rule to allow `ssh` requests from within VPC CIDR block
-   - [ ] rule to allow `ssh` requests from your home IP
-   - [ ] rule to allow `ssh` requests from Wright State IP block
-   - [ ] rule to allow `http` requests from within VPC CIDR block
-   - [ ] rule to allow `http` requests from any IP
-   - - Additional Rules if doing HTTPS EC:
-      - [ ] rule to allow `https` requests from within VPC CIDR block
-      - [ ] rule to allow `https` requests from any IP
-- One SecurityGroup for use with host pool instances:
-   - [ ] rule to allow `ssh` requests from proxy instance on VPC
-   - [ ] rule to allow `http` requests from within VPC CIDR block
+- [ ] Public subnet range: `192.168.0.0/24`
+- [ ] Private subnet range: `192.168.1.0/24`
+- `Name` tag `LASTNAME-LB-<resource type>`:
+   - [ ] on the networking resources - VPC, both subnets, internet gateway, NAT gateway, both route tables (0.5 pt)
+   - [ ] on both security groups (0.5 pt)
+- Security Group for the proxy instance (no rules open to `0.0.0.0/0` except HTTP):
+   - [ ] `ssh` from within the VPC CIDR block (`192.168.0.0/23`)
+   - [ ] `ssh` from your home IP (`/32`)
+   - [ ] `ssh` from the Wright State IP block (`130.108.0.0/16`)
+   - [ ] `http` from any IP
+- Security Group for the host pool instances (no rules open to `0.0.0.0/0`):
+   - [ ] `ssh` from the proxy instance's private IP (`/32`)
+   - [ ] `http` from within the VPC CIDR block (`192.168.0.0/23`)
 - Load balancer (proxy) instance:
-   - [ ] uses proxy Security Group
-   - [ ] assigned private IP on public subnet
-   - [ ] uses command in `UserData` to configure a unique `hostname` on the instance
-   - [ ] uses command in `UserData` to install `haproxy`
-   - Possible additions:
-      - [ ] (if Amazon Linux 2) service start & enable steps
-- [ ] Creates three instances to use as hosts in the HAProxy pool
-- Host instance 1:
-   - [ ] uses host pool Security Group
+   - [ ] uses the proxy Security Group
    - [ ] tagged with a unique Name Value
-   - [ ] assigned private IP on private subnet
-   - [ ] uses command in `UserData` to configure a unique `hostname` on the instance
-   - [ ] uses command in `UserData` to install `docker`
-   - [ ] uses command in `UserData` to use `docker` to pull and run web site container with specified flags
-   - Possible additions:
-      - [ ] (if Amazon Linux 2) docker service start & enable steps
-- Host instance 2:
-   - [ ] uses host pool Security Group
-   - [ ] tagged with a unique Name Value
-   - [ ] assigned private IP on private subnet
-   - [ ] uses command in `UserData` to configure a unique `hostname` on the instance
-   - [ ] uses command in `UserData` to install `docker`
-   - [ ] uses command in `UserData` to use `docker` to pull and run web site container with specified flags
-   - Possible additions:
-      - [ ] (if Amazon Linux 2) docker service start & enable steps
-- Host instance 3:
-   - [ ] uses host pool Security Group
-   - [ ] tagged with a unique Name Value
-   - [ ] assigned private IP on private subnet
-   - [ ] uses command in `UserData` to configure a unique `hostname` on the instance
-   - [ ] uses command in `UserData` to install `docker`
-   - [ ] uses command in `UserData` to use `docker` to pull and run web site container with specified flags
-   - Possible additions:
-      - [ ] (if Amazon Linux 2) docker service start & enable steps
+   - [ ] assigned a private IP on the public subnet
+   - [ ] `UserData` sets a unique `hostname` that persists after reboot
+   - [ ] `UserData` installs `haproxy` (enabled and started as needed for the AMI) (2 pts)
+- Host pool instances - each box requires **all three** hosts:
+   - [ ] use the host pool Security Group
+   - [ ] tagged with unique Name Values
+   - [ ] assigned private IPs on the private subnet
+   - [ ] `UserData` sets a unique `hostname` on each that persists after reboot
+   - [ ] `UserData` installs `docker` (enabled and started as needed for the AMI)
+   - [ ] `UserData` pulls and runs your web site image detached (`-d`), with a restart policy (`always` / `unless-stopped`), bound to host port 80 and container port 80
 
-## README.md documentation for configuration: / 26
+## Testing & Proof ( / 16)
+
+Screenshots embedded in the README, each with a sentence saying what it proves.
+
+- [ ] Stack build - status `CREATE_COMPLETE` (stack name visible) and the Resources tab
+- [ ] SSH to the proxy's public IP with its hostname in the prompt
+- [ ] SSH from the proxy to a host using your `.ssh/config` or `/etc/hosts` entry, with the host's hostname in the prompt
+- [ ] `haproxy` service active (`systemctl status haproxy`) and `haproxy -c -f <config file>` reporting `Configuration file is valid` (2 pts)
+- [ ] On a host: `docker ps` showing your image on `80->80` and its restart policy (`docker inspect`)
+- [ ] From the proxy: `curl` to **each** host's private IP returns your site (2 pts)
+- [ ] Your site loading in a browser at `http://<proxy public IP>` (2 pts)
+- Traffic distributed across your pool by your algorithm:
+   - [ ] `haproxy` stats page showing all three servers UP, with traffic spread across them (2 pts)
+   - [ ] log evidence - a `tail` of the `haproxy` log or `halog` output showing requests going to different hosts (2 pts)
+   - [ ] explanation of how the evidence matches your balancing algorithm (2 pts)
+
+## README.md documentation ( / 21)
 
 1. Project description:
-   - [ ] Provides an overview of the project goal
-   - [ ] Provide a description of how to use the CF template to create a stack
-   - [ ] Provide a description of what resources are built
-   - [ ] **Diagram** is visible in description section
+   - [ ] Overview of the project goal
+   - [ ] How to use the CF template to create a stack
+   - [ ] What resources are built
 2. Diagram:
-   - [ ] cleanly presented
-   - Explains the CF template for the project in terms of:
-         - [ ] networking (subnets) & routes (include IGW and NAT GW)
-         - [ ] firewalls (Security Groups)
-         - [ ] instances (what is on what subnet, including NAT GW)
-
+   - [ ] Embedded and renders on GitHub (a photo of a paper drawing is accepted; feedback recommends a digital tool)
+   - Shows the stack in terms of:
+      - [ ] networking (subnets) & routes (including the IGW and NAT GW)
+      - [ ] firewalls (Security Groups)
+      - [ ] instances (what is on what subnet, including the NAT GW)
+   - [ ] Companion notes that explain the diagram, including how a request reaches a host through the load balancer
 3. Building a web service container:
-   - [ ] Explanation and links to web site content
+   - [ ] Explanation of and links to web site content
    - [ ] Explanation of and link to `Dockerfile`
-   - [ ] Instructions to build and push container image to your DockerHub repository
-      - [ ]  Instructions to create PAT && recommended PAT scope
-   - [ ] Link to DockerHub repository with your site image
-
+   - [ ] Instructions to build and push the container image to your DockerHub repository, including creating a PAT and the recommended PAT scope
+   - [ ] Link to the DockerHub repository with your site image
 4. Connections to instances within the VPC:
-   - [ ] Description of purpose for configuring in `/etc/hosts` AND / OR `.ssh/config` files.
-   - [ ] Explanation of entries in `/etc/hosts` AND / OR `.ssh/config` files.
+   - [ ] Purpose of configuring `/etc/hosts` AND / OR `.ssh/config`
+   - [ ] Explanation of your entries in `/etc/hosts` AND / OR `.ssh/config`
    - [ ] Required setup to `ssh` among the instances
-   - [ ] How to `ssh` among the instances using one or both of the above files for ease of use.
-
+   - [ ] How to `ssh` among the instances using one or both of the above files
 5. Setting up the HAProxy load balancing instance:
-   - [ ] General pupose of and required location for the `haproxy` configuration file
-   - [ ] Link to `haproxy` configuration file in repo
-   - [ ] Explanation of added sections in configuration file
-   - [ ] Explain how to test the haproxy configuration file after revisions but before reloading the service
-   - [ ] Explain scenarios when your `haproxy` service needs to be controlled - start, stop, restart / reload.  Provide the command to control the `haproxy` service based on the scenario.
-
-6. Prove the load balancer is working:
-   - [ ] Link to the via Load Balancer Public IP
-   - [ ] Use a mix of screenshots and explanitory text to prove that your load balancer is successfully **using your pool of hosts**
-   - [ ] Use a mix of screenshots and explanitory text to prove that your load balancer is successfully **using the algorithm selected to distribute traffic**
-
-7. [ ] Citations / resources used
-   - if using generative AI, provide the tool name and the prompt(s) used
-   - if using websites, provide the link and a short description of what you used on the page
-   - NO CITATIONS will result in a minimum of a 30% deducation and be considered for reporting as an Academic Integrity Violation.  You may scatted your sources and citations to be relevant to sections or place them all in one section.
+   - [ ] General purpose of and required location for the `haproxy` configuration file
+   - [ ] Link to the `haproxy` configuration file in the repo
+   - [ ] Explanation of the added sections in the configuration file
+   - [ ] How to test the configuration file after revisions but before reloading the service
+   - [ ] Scenarios when the `haproxy` service needs to be controlled (start, stop, restart / reload), with the command for each
 
 ## Extra Credit - HAProxy Container Image
 
-Worth +10%
+Worth +10%. Your project must have commits against the required work *before* the extra credit work. If documentation requirements are not complete, no extra credit will be awarded.
 
-If documentation requirements are not complete, no extra credit will be rewarded.
-
-- [ ] Explanation and links to haproxy configuration file
-- [ ] Explanation of and link to `Dockerfile`
-- [ ] Link to DockerHub repository with your haproxy container
+- [ ] Explanation of and link to the haproxy configuration file
+- [ ] Explanation of and link to the `Dockerfile`
+- [ ] Link to the DockerHub repository with your haproxy container
 - [ ] Link to your `yourlastname-nohands-cf.yml` 
    - [ ] Notes on the difference(s) between it and `YOURLASTNAME-lb-cf.yml` 
 
 ## Extra Credit - Setup HTTPS 
 
-Worth +10%
+Worth +10%. Your project must have commits against the required work *before* the extra credit work. If documentation requirements are not complete, no extra credit will be awarded.
 
-If documentation requirements are not complete, no extra credit will be rewarded.
+- [ ] Creating a self-signed certificate
+- [ ] Changes to `YOURLASTNAME-lb-cf.yml` to enable HTTPS (`https` rules **in addition to** the `http` rules on both security groups as needed)
+- [ ] `haproxy` requirements to handle HTTPS
+- [ ] Server configuration changes to handle HTTPS
+- [ ] Screenshot(s) proving HTTPS is operational
 
-Documentation scope: 
-1. [ ] Creating a self-signed certificate
-2. [ ] Changes needed to your `YOURLASTNAME-lb-cf.yml` to enable HTTPS communications
-3. [ ] Documents `haproxy` requirements to handle HTTPS
-4. [ ] Documents server configuration changes to handle HTTPS
-5. [ ] Screenshot(s) to prove that HTTPS is now operational
+## Point Deductions - Penalty Total: 
 
-## Common Point Deductions:
+- Incomplete work - the CF template has apparent issues or doesn't build (fails validation, or no `CREATE_COMPLETE` proof). Apply **one** tier, based on how the README documents it:
+   - [ ] 10% penalty - README indicates the work is complete
+   - [ ] 5% penalty - README notes the areas where blockers were hit
+   - [ ] 2% penalty - README notes the blockers, the things tried, and clearly delineates next steps that have not been tested; the CF template's errors are in line with what the README describes (it may not build)
+- [ ] Security Group has additional rules that make it too open - 1 point penalty per rule
+- [ ] images not included in markdown documentation - 5% penalty (no screenshots embedded); 2.5% penalty (some screenshots missing or not displaying) - the diagram is scored under README documentation
+- [ ] poor markdown formatting - up to 10% penalty, scaled by severity (10% = illegible)
+    - includes project / rubric tasking text left in the documentation - 5% penalty
+- [ ] Single or mass commit - project not built up over multiple small, descriptive commits - 5% penalty
+- [ ] No citations - sources (including AI tools, with the prompts used) not cited - 10% penalty
+- [ ] Late submission - 10% per day, up to 3 days
+- [ ] Submission appears AI-generated without citation or describes work not done - score held at 0 pending an instructor meeting
 
-- [ ] NO CITATIONS will result in a minimum of a 30% deducation and be considered for reporting as an Academic Integrity Violation.  You may scatted your sources and citations to be relevant to sections or place them all in one section.
-- [ ] (-100%) Documentation not well organized with markdown OR includes project / rubric descriptive text
-- [ ] (-10%) CF Template does not build
-- [ ] (-10%) Documentation fails to address what was not implemented and implies the project is fully functional.  Always document shortcomings and note what is "research" on how the rest should be done
-- [ ] (-5%) Security Group rules allow access beyond project specifications
-
+Percentage deductions are taken from the total possible (e.g. 10% of 80 = 8).
