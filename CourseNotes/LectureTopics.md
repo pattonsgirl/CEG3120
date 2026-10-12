@@ -253,9 +253,38 @@ Day 19:
 
 - NAT Gateway
 - configuring a private subnet
+- Early concept: how / why do companies set up load balancers
+- Q: How we will connect to the instance on the private subnet?
 
 Day 20:
 
 - Midterm exam
+
+Day 21:
+
+- Upcoming project tools
+    - HAProxy for load balancing: https://www.haproxy.org/
+    - Web server using nginx or apache containers:
+        - https://hub.docker.com/_/nginx
+        - https://hub.docker.com/_/httpd
+        - *Optional rabbit hole* https://www.digitalocean.com/community/tutorials/apache-vs-nginx-practical-considerations
+    - Web content for web server
+        - use old HTML site with two static pages and some image files
+        - use AI to generate on topic of choice
+            - keep it appropriate
+            - SITE how you generated it
+            - EXPLAIN what it does
+- Resources in zones continuing issue - would recommend building in alternative zones inside us-east-1 such as us-east-1a, us-east-1b, us-east-1c, or us-east-1d via your subnet configuration
+- Building NAT Gateway and configuring the private subnet
+    - NEW: NAT Gateways now "auto-configure" - allocating an EIP for themselves & associating with the public subnet
+- Configure private route table to point external traffic to NAT Gateway
+- Adding an instance to the private subnet
+- SG interference
+
+Day 22:
+
+- When does an instance need public network access?
+- Load balancing - vocab lesson
+- Load balancing - strategies
 
 
