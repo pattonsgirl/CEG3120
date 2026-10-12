@@ -122,7 +122,7 @@ In your **aws** repository (`ceg3120-aws-lastname-f26`) - not your basics reposi
       - [Eraser - Cloud Diagrams](https://docs.tryeraser.com/docs/cloud-diagrams)
       - [mhlabs - CFN Diagram Generator](https://github.com/mhlabs/cfn-diagram)
       - PowerPoint and OneNote are still good choices
-      - Paper drawings as accepted, but feedback will be to practice with a digital tool
+      - Paper drawings are accepted, but feedback will be to practice with a digital tool
   - **Companion notes:** walk the reader through the *diagram* - the path traffic takes into your instance, and what each NACL and security group rule does and why.
   - **Testing and proof:** your screenshots - see [Testing and Proof](#testing-and-proof).
   - **Sources:** cite every source you used, including AI tools, and say what you used each one for.
