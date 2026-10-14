@@ -286,5 +286,11 @@ Day 22:
 - When does an instance need public network access?
 - Load balancing - vocab lesson
 - Load balancing - strategies
+- https://github.com/pattonsgirl/CEG3120/blob/main/CourseNotes/load-balancers.md
+
+Day 23:
+
+- (Optional watch) Concurrency tests on different stacks https://www.youtube.com/watch?v=sQXFhh_PiG4&t=29s
+- LB strats to keep session persistence
 
 
