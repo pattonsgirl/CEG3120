@@ -288,9 +288,33 @@ Day 22:
 - Load balancing - strategies
 - https://github.com/pattonsgirl/CEG3120/blob/main/CourseNotes/load-balancers.md
 
+
 Day 23:
 
+- Project 5: recommend getting website running in container & outlining what systems will go where - intent & design
+    - https://github.com/pattonsgirl/CEG3120/tree/main/Projects/Project5
+- Two subnets - public and private. One instance on public, will run proxy. Three on private, EIP through NAT Gateway
+- HAProxy will run the proxying service on the proxy server
+- Docker container running on hosts in pool on private subnet
+- 4 HAProxy sections - https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration
+    - global
+    - defaults
+    - frontend
+    - backend
+- load balancing algorithms
+    - https://www.haproxy.com/glossary/what-are-load-balancing-algorithms
+- health checks
+    - TCP tests (think ping)
+    - HTTP checks - request based on status codes: https://www.iana.org/assignments/http-status-codes
+- cookies
+    - https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies
+
+Day 24:
+
 - (Optional watch) Concurrency tests on different stacks https://www.youtube.com/watch?v=sQXFhh_PiG4&t=29s
+- Stats
+- Health monitoring
 - LB strats to keep session persistence
+- [AWS Calculator (no account)](https://calculator.aws/#/addService?trk=e8c13544-17d6-4cc0-abab-a4348449de09&sc_channel=ps&ef_id=Cj0KCQjwlsfWBhD4ARIsACL7p1FwMZYGx4m91RpBA7DT22Jsyivj6sc39YdRBj1gdwiHrGSZdzDcLGQaAsgHEALw_wcB:G:s&gads_camp=23532472510&gads_ag=199502799824&gads_ad=795877020713&gads_kw=aws&gads_matchtype=p&gads_network=g&gads_device=c&gads_geo=9015845&gad_source=1&gad_campaignid=24281356734&gbraid=0AAAAADjHtp-hFBhEhKRiaL_DgGsQWqddV&gclid=Cj0KCQjwlsfWBhD4ARIsACL7p1FwMZYGx4m91RpBA7DT22Jsyivj6sc39YdRBj1gdwiHrGSZdzDcLGQaAsgHEALw_wcB)
 
 
