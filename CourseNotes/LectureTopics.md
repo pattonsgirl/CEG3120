@@ -311,10 +311,41 @@ Day 23:
 
 Day 24:
 
-- (Optional watch) Concurrency tests on different stacks https://www.youtube.com/watch?v=sQXFhh_PiG4&t=29s
-- Stats
-- Health monitoring
-- LB strats to keep session persistence
-- [AWS Calculator (no account)](https://calculator.aws/#/addService?trk=e8c13544-17d6-4cc0-abab-a4348449de09&sc_channel=ps&ef_id=Cj0KCQjwlsfWBhD4ARIsACL7p1FwMZYGx4m91RpBA7DT22Jsyivj6sc39YdRBj1gdwiHrGSZdzDcLGQaAsgHEALw_wcB:G:s&gads_camp=23532472510&gads_ag=199502799824&gads_ad=795877020713&gads_kw=aws&gads_matchtype=p&gads_network=g&gads_device=c&gads_geo=9015845&gad_source=1&gad_campaignid=24281356734&gbraid=0AAAAADjHtp-hFBhEhKRiaL_DgGsQWqddV&gclid=Cj0KCQjwlsfWBhD4ARIsACL7p1FwMZYGx4m91RpBA7DT22Jsyivj6sc39YdRBj1gdwiHrGSZdzDcLGQaAsgHEALw_wcB)
+- Layer 4 (TCP mode) versus Layer 7 (HTTP mode): https://www.haproxy.com/blog/layer-4-and-layer-7-proxy-mode
+
+| Feature | `mode tcp` (Layer 4) | `mode http` (Layer 7) |
+|---|---|---|
+| **OSI Layer** | Layer 4 (Transport) | Layer 7 (Application) |
+| **Inspection Depth** | Looks only at IP addresses and ports. | Inspects URLs, HTTP headers, cookies, and body. |
+| **Performance** | Extremely fast and lightweight; lower CPU overhead. | Higher CPU usage due to parsing full text streams. |
+| **SSL/TLS Handling** | Passes encrypted traffic straight to backend (SSL Passthrough). | Decrypts and encrypts traffic (SSL Termination). |
+| **Routing Decisions** | Based strictly on destination IP, port, or SNI (Server Name Indication). | Based on URL paths, request methods, domain headers, etc. |
+| **Modifications** | Cannot alter the payload or inject headers. | Can inject headers (e.g., X-Forwarded-For), alter cookies, or compress data. |
+
+- Load Balancing algorithms: https://www.youtube.com/watch?v=dBmxNsS3BGE
+- Enabling stats: https://www.haproxy.com/blog/exploring-the-haproxy-stats-page
+    - Ex: ip:8404/stats
+
+Day 25:
+
+- - [AWS Calculator (no account)](https://calculator.aws/#/addService?trk=e8c13544-17d6-4cc0-abab-a4348449de09&sc_channel=ps&ef_id=Cj0KCQjwlsfWBhD4ARIsACL7p1FwMZYGx4m91RpBA7DT22Jsyivj6sc39YdRBj1gdwiHrGSZdzDcLGQaAsgHEALw_wcB:G:s&gads_camp=23532472510&gads_ag=199502799824&gads_ad=795877020713&gads_kw=aws&gads_matchtype=p&gads_network=g&gads_device=c&gads_geo=9015845&gad_source=1&gad_campaignid=24281356734&gbraid=0AAAAADjHtp-hFBhEhKRiaL_DgGsQWqddV&gclid=Cj0KCQjwlsfWBhD4ARIsACL7p1FwMZYGx4m91RpBA7DT22Jsyivj6sc39YdRBj1gdwiHrGSZdzDcLGQaAsgHEALw_wcB)
+- Blackholes (post deleting NAT Gateway)
+- Demo
+- Super simple test traffic
+- Session persistence
+    - Persistence profiles: https://www.youtube.com/watch?v=5yFXd38C9ZQ
+        - source IP: client IP noted, requests go to same server
+            - ineffective for dynamic IPs or NAT
+        - cookie-based: LB puts cookie in client's browser with session identifier
+            - better for dynamic IPs
+        - server-inserted: app server (host) puts cookie in response, LB uses cookie for persistence
+    - This is separate from AUTH!: https://www.youtube.com/watch?v=iX8g4LqF8p8
+
+Day 26: 
+
+- Scalability: https://www.youtube.com/watch?v=EWS_CIxttVw&t=17s
+- Which language (stack) can handle the most users?: https://www.youtube.com/watch?v=sQXFhh_PiG4&list=WL&index=100&t=1s
+- k6 performance testing: https://www.youtube.com/watch?v=ghuo8m7AXEM&t=55s
+
 
 
