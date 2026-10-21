@@ -328,10 +328,14 @@ Day 24:
 
 Day 25:
 
-- - [AWS Calculator (no account)](https://calculator.aws/#/addService?trk=e8c13544-17d6-4cc0-abab-a4348449de09&sc_channel=ps&ef_id=Cj0KCQjwlsfWBhD4ARIsACL7p1FwMZYGx4m91RpBA7DT22Jsyivj6sc39YdRBj1gdwiHrGSZdzDcLGQaAsgHEALw_wcB:G:s&gads_camp=23532472510&gads_ag=199502799824&gads_ad=795877020713&gads_kw=aws&gads_matchtype=p&gads_network=g&gads_device=c&gads_geo=9015845&gad_source=1&gad_campaignid=24281356734&gbraid=0AAAAADjHtp-hFBhEhKRiaL_DgGsQWqddV&gclid=Cj0KCQjwlsfWBhD4ARIsACL7p1FwMZYGx4m91RpBA7DT22Jsyivj6sc39YdRBj1gdwiHrGSZdzDcLGQaAsgHEALw_wcB)
+- [AWS Calculator (no account)](https://calculator.aws/#/addService?trk=e8c13544-17d6-4cc0-abab-a4348449de09&sc_channel=ps&ef_id=Cj0KCQjwlsfWBhD4ARIsACL7p1FwMZYGx4m91RpBA7DT22Jsyivj6sc39YdRBj1gdwiHrGSZdzDcLGQaAsgHEALw_wcB:G:s&gads_camp=23532472510&gads_ag=199502799824&gads_ad=795877020713&gads_kw=aws&gads_matchtype=p&gads_network=g&gads_device=c&gads_geo=9015845&gad_source=1&gad_campaignid=24281356734&gbraid=0AAAAADjHtp-hFBhEhKRiaL_DgGsQWqddV&gclid=Cj0KCQjwlsfWBhD4ARIsACL7p1FwMZYGx4m91RpBA7DT22Jsyivj6sc39YdRBj1gdwiHrGSZdzDcLGQaAsgHEALw_wcB)
 - Blackholes (post deleting NAT Gateway)
-- Demo
-- Super simple test traffic
+- Super simple test traffic - https://github.com/rakyll/hey
+- Strategies to perform scalability tests:
+    - number of requests; longevity of high load requests
+    - Which language (stack) can handle the most users?: https://www.youtube.com/watch?v=sQXFhh_PiG4&list=WL&index=100&t=1s
+- Side topic: testing resiliency
+    - Netflix's Chaos Monkey: https://netflix.github.io/chaosmonkey/Outage-checker/
 - Session persistence
     - Persistence profiles: https://www.youtube.com/watch?v=5yFXd38C9ZQ
         - source IP: client IP noted, requests go to same server
@@ -343,8 +347,8 @@ Day 25:
 
 Day 26: 
 
+- Demo
 - Scalability: https://www.youtube.com/watch?v=EWS_CIxttVw&t=17s
-- Which language (stack) can handle the most users?: https://www.youtube.com/watch?v=sQXFhh_PiG4&list=WL&index=100&t=1s
 - k6 performance testing: https://www.youtube.com/watch?v=ghuo8m7AXEM&t=55s
 
 
