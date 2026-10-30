@@ -25,6 +25,7 @@ services:
     networks:
       - monitoring
 
+#This declares the named volume Grafana uses. Docker manages where it lives on disk.
 volumes:
   grafana-storage:
   prometheus-data:

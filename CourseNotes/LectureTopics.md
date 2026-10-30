@@ -349,10 +349,69 @@ Day 26:
 
 - Demo
 
-Day 27:
+Day 27 / 28 / 29:
 
-- Scalability: https://www.youtube.com/watch?v=EWS_CIxttVw&t=17s
-- k6 performance testing: https://www.youtube.com/watch?v=ghuo8m7AXEM&t=55s
+A detour into monitoring services & docker compose files
+
+- Prometheus Node Exporter
+    - install on each server / node you want to monitor
+        - Don't forget NAT Gateways if you have hosts that now need external routes
+    - https://prometheus.io/docs/guides/node-exporter/
+    - sudo apt install -y prometheus-node-exporter
+
+- Prometheus
+    - https://prometheus.io/
+    - https://hub.docker.com/r/prom/prometheus
+
+- Grafana
+    - https://grafana.com/docs/grafana/latest/introduction/
+    - https://grafana.com/docs/grafana/latest/setup-grafana/installation/docker/
+    - https://hub.docker.com/r/grafana/grafana
+
+- Docker Compose
+    - https://docs.docker.com/compose/intro/compose-application-model/ - main page to get info on sections
+    - https://docs.docker.com/compose/intro/compose-application-model/ - key commands for docker compose / diagram on how a docker compose works
+    - verify / install docker compose plugin
+        - https://docs.docker.com/compose/install/linux/
+    - (if needed) installing docker compose - may need to add docker official repo to apt
+        - https://hostim.dev/learn/docker/fix-docker-compose-plugin-error/
+
+- Setup monitor
+    - new instance (eg. monitor)
+        - *would strongly recommend a t2.medium*
+        - *think about volumes*
+    - [docker-compose.yml](monitoring-helpers/docker-compose.yml) file
+        - define set of services (prometheus & grafana)
+            - add volumes for persistent storage
+            - bind mount configuration file for prometheus
+    - [prometheus.yml](monitoring-helpers/prometheus.yml) file
+        - define systems for prometheus to query and query frequency
+    - Browse to Grafana on port 3000
+        - Navigate to Connections > Data Sources > Add data source
+        - Select Prometheus and set the URL to your Prometheus server (e.g., http://prometheus:9090) - Save and Test
+        - Go to Dashboards > New > Import
+        - Enter Dashboard ID 1860 (the popular "Node Exporter Full" community dashboard) and click Load.
+            - https://grafana.com/grafana/dashboards/1860-node-exporter-full/
+
+- Grafana k6
+    - https://k6.io/
+    - https://grafana.com/docs/k6/latest/
+    - https://grafana.com/docs/k6/latest/using-k6/ - test parameters
+    - https://hub.docker.com/r/grafana/k6
+        - note this version is *without* the web browser.  Who needs GUIs?
+
+- Setup tester
+    - [build or borrow test files](k6-tests/)
+    - `docker run --rm -i -v "$PWD:/scripts:ro" -e BASE_URL=http://34.196.111.132/ grafana/k6 run /scripts/smoke.js`
+        - `--rm` = docker rm when done
+        - `-i` = keeps the container's STDIN open, and lets you send input to the container through standard input 
+            - can end test with CTRL+C for example
+        - `-v "$PWD:/scripts:ro"` = bind mounting current directory to containers `/scripts` folder in *read only* mode - container cannot edit
+        - `-e BASE_URL=http://34.196.111.132/` = set environment variable; test scripts use env variable
+        - `grafana/k6` = docker hub image name
+        - `run /scripts/smoke.js` = k6 run command; specify which test to run
+    - YouTube: types of tests overview: https://www.youtube.com/watch?v=ghuo8m7AXEM&t=55s
+
 
 
 
