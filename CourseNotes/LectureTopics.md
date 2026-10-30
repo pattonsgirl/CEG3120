@@ -413,5 +413,10 @@ A detour into monitoring services & docker compose files
     - YouTube: types of tests overview: https://www.youtube.com/watch?v=ghuo8m7AXEM&t=55s
 
 
+Day 30:
+
+- CI / CD
+- GitHub Actions
+- YouTube - How big tech ships code to production: https://www.youtube.com/watch?v=551lh10g_go
 
 
