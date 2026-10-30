@@ -348,6 +348,9 @@ Day 25:
 Day 26: 
 
 - Demo
+
+Day 27:
+
 - Scalability: https://www.youtube.com/watch?v=EWS_CIxttVw&t=17s
 - k6 performance testing: https://www.youtube.com/watch?v=ghuo8m7AXEM&t=55s
 

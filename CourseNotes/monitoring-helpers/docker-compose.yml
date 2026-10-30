@@ -1,0 +1,36 @@
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: always
+    volumes:
+      #mounts a config file from your project folder into the container. This file tells Prometheus what to scrape and how often
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      #keeps its metrics database by default, so collected data now survives container removal
+      - prometheus-data:/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - monitoring
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      #stores Grafana’s dashboards, users, and settings in a named volume, so they survive container restarts and rebuilds.
+      - grafana-storage:/var/lib/grafana
+    networks:
+      - monitoring
+
+volumes:
+  grafana-storage:
+  prometheus-data:
+
+#creates a user-defined bridge network. Containers on it can reach each other by service name.
+#That’s why, when you add Prometheus as a data source in Grafana, the URL is http://prometheus:9090 and not localhost:9090.
+#Inside the Grafana container, localhost means Grafana itself.
+networks:
+  monitoring:

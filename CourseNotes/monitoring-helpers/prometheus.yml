@@ -1,0 +1,16 @@
+global:
+  scrape_interval: 15s       # how often to scrape targets
+  evaluation_interval: 15s   # how often to evaluate rules
+
+scrape_configs:
+  # Prometheus scraping its own metrics
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  # Ubuntu server running prometheus-node-exporter
+  - job_name: "proxy"
+    static_configs:
+      - targets: ["10.0.0.10:9100"]
+        labels:
+          instance: "proxy-server"
