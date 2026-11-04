@@ -415,8 +415,40 @@ A detour into monitoring services & docker compose files
 
 Day 30:
 
-- CI / CD
+- Continuous Integration vs Delivery vs Deployment: https://www.atlassian.com/continuous-delivery/principles/continuous-integration-vs-delivery-vs-deployment
+- Silly diagrams in OneNote to give our remaining tools purpose based on roles in an org
+    - developers should just focus on code
+    - dev ops should focus on pipelines to push code live
 - GitHub Actions
+- Webhooks
+    - Third party services can send payloads based on triggers
+        - https://docs.docker.com/docker-hub/repos/manage/webhooks/
+        - https://docs.github.com/en/webhooks/about-webhooks
+        - https://docs.hostinger.com/api-reference/endpoints/mail/webhooks
+- Webhooks listener by Adnanh
+    - https://github.com/adnanh/webhook
+    - Take in a payload (listening service)
+    - Parse payload
+    - Do stuff if requirements are met
+- Cyber thoughts:
+    - https://thehackernews.com/2026/10/gheist-uses-stolen-github-tokens-to.html
+
+Day 31:
+
+- Overview of GitHub Actions: https://github.com/pattonsgirl/CEG3120/blob/main/CourseNotes/github-actions.md
+- Exercises to explore GitHub Actions: https://github.com/pattonsgirl/CEG3120/blob/main/CourseNotes/github-action-exercises.md
+- GitHub hosted runners: https://docs.github.com/en/actions/concepts/runners/github-hosted-runners
+    - What's on the runner: https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md
+- GitHub Marketplace Actions: https://github.com/marketplace?type=actions
+- A good one for us: https://github.com/marketplace/actions/build-and-push-docker-images
+    - BEWARE IMPOSTERS / UNVERIFIED ACTIONS: https://github.com/marketplace/actions/build-push-docker-images
+- Using Secrets / Variables in an Action workflow: 
+    - Secrets: https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets
+    - Variables: https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables
+
+Day 32:
+
+- Side step - rabbit hole - Environments: https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments
 - YouTube - How big tech ships code to production: https://www.youtube.com/watch?v=551lh10g_go
 
 
