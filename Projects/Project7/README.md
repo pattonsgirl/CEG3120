@@ -12,6 +12,7 @@
 - [Submission](#Submission)
 - [Rubric](Rubric.md)
 - [Demonstration](Demonstration-Rubric.md)
+- [Troubleshooting](FAQ.md)
 
 ## Objectives
 
@@ -259,3 +260,6 @@ These are in addition to your in-person [demonstration](#demonstration).
 
 [Demonstration Rubric](Demonstration-Rubric.md)
 
+## Troubleshooting
+
+[Project FAQ](FAQ.md)

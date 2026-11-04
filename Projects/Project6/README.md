@@ -11,6 +11,7 @@
 - [Commits, Sources, and AI](#commits-sources-and-ai)
 - [Submission](#Submission)
 - [Rubric](Rubric.md)
+- [Troubleshooting](FAQ.md)
 
 ## Objectives
 
@@ -247,3 +248,7 @@ Complete items 1 - 5 during Parts 1 and 2, **before** you change your workflow f
 ## Rubric
 
 [Project Rubric](Rubric.md)
+
+## Troubleshooting
+
+[Project FAQ](FAQ.md)
