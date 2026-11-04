@@ -188,3 +188,7 @@ Each refresh leaves the older image on your instance.
 docker image prune
 df -h
 ```
+
+---
+
+> **Note:** These were identified by Claude as common troubleshooting points. As always, do your own research to verify your error and cite your sources!

@@ -171,3 +171,7 @@ Create a new version instead of moving an existing tag.  A version should always
 
 ## No workflow run on another branch or on a commit without a tag
 This is correct if your trigger is set up for that part of the project.  These are the negative tests in [Testing and Proof](README.md#testing-and-proof) - you do not need to fix them.
+
+---
+
+> **Note:** These were identified by Claude as common troubleshooting points. As always, do your own research to verify your error and cite your sources!
