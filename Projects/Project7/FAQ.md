@@ -139,10 +139,10 @@ sudo ss -tlnp | grep 9000
 ### Reason
 This is expected for some deliveries:
 
-- The `ping` GitHub sends when you create a webhook is not a workflow run
-- A workflow run sends a payload when it is requested, when it is in progress, and when it is completed - only a successful completed run should pass your rules
+- The `ping` GitHub sends when you create a webhook is not the event you chose
+- Some events send more than one payload for the same activity - read your deliveries to see which ones should pass your rules
 
-It is a problem if a **successful completed** run also shows this message.
+It is a problem if a delivery that should deploy your site also shows this message.
 
 ### Solution
 In **Recent Deliveries**, open that delivery and compare its payload to your rules.
@@ -169,7 +169,7 @@ In **Recent Deliveries**, open a delivery and select **Redeliver** to send the s
 Your script may have pulled before the new image was pushed, or it may be running something other than `latest`.
 
 ### Solution
-- Confirm your webhook uses the **Workflow runs** event, not `push`
+- Compare the time of the delivery to the modified time of the `latest` tag in DockerHub - the payload must be sent after the new image is pushed
 - Confirm the Action succeeded and the `latest` tag in DockerHub has a new modified time
 - Confirm your script runs the same image and tag that it pulled
 - Compare the image the container is running against the image pulled:

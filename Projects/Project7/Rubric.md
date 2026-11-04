@@ -103,7 +103,7 @@ Documentation Requirements:
 
 1. Configuring a GitHub Webhook
     - [ ] How to enable GitHub to send payloads to the EC2 `webhook` listener
-    - [ ] Explain what triggers will send a payload to the EC2 `webhook` listener, and why that event is used instead of `push`
+    - [ ] Which event you chose, what triggers it to send a payload to the EC2 `webhook` listener, and why you chose it over the other events you considered, including `push`
     - [ ] How to verify a successful payload delivery
     - [ ] How to validate that your webhook *only triggers* when requests are coming from GitHub
 2. GitHub Webhooks vs. DockerHub Webhooks
@@ -111,9 +111,9 @@ Documentation Requirements:
 
 Task Requirements - 2 pts each:
 
-- [ ] GitHub webhook configured for the **Workflow runs** event, with successful deliveries to the instance
+- [ ] GitHub webhook configured for an event that sends its payload after the new image is in DockerHub, with successful deliveries to the instance
 - webhook hook definition file
-  - [ ] only triggers on a valid GitHub signature (shared secret) and a successful completed workflow run
+  - [ ] only triggers on a valid GitHub signature (shared secret) and when the new image is ready to pull
 
 ## Testing & Proof ( / 10)
 
