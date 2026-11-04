@@ -97,7 +97,7 @@ On the application server, you will configure a listening service to receive mes
 2. Create a configuration file - a hook definition - for `webhook` to load when ran.  The hook definition should:
     - Trigger your bash script to run when a payload is received
     - Validate that the payload came from GitHub by checking the signature in its `X-Hub-Signature-256` header with a shared secret
-    - Only trigger for a workflow run that has completed successfully
+    - Only trigger when your new image is ready to pull
     - **ADD hook definition** to folder named `deployment` in your GitHub repository
       - Your webhook secret is exposed once a copy of this file is in your public repository.  In a production system, that secret would no longer be trusted.  For this project, you are not required to change it and you will not be penalized for using it.
 3. Set up a service file such that the `webhook` is set to start listening as soon as the EC2 instance is on.  Enable this service and verify it triggers your bash script to run when a message is received
@@ -126,7 +126,7 @@ In `README-CD.md`, include the following details:
 
 Utilize a GitHub webhook to send a message to your application server when your GitHub Action has finished pushing a new image.
 
-Choose the event carefully.  A `push` event is sent when your commit or tag reaches GitHub, before your workflow has built a new image - your script would pull the old `latest`.  Use the **Workflow runs** event, which sends payloads as a workflow run changes state, and have your hook only trigger on a successful completed run.
+Choose the event carefully.  Your script pulls `latest`, so a payload is only useful once the new image is in DockerHub.  Research the events GitHub offers, select the one that fits your pipeline, and defend your choice in your documentation.
 
 ### Tasks
 
@@ -134,7 +134,7 @@ Choose the event carefully.  A `push` event is sent when your commit or tag reac
     - Payload URL using your Elastic IP, `webhook` port, and hook ID
     - Content type `application/json`
     - The same shared secret your hook definition uses
-    - Only the **Workflow runs** event selected
+    - Only the event you chose selected
 2. Validate that your webhook *only triggers* when requests are coming from GitHub
 3. Research DockerHub webhooks and compare them with GitHub webhooks
 
@@ -144,7 +144,7 @@ In `README-CD.md`, include the following details:
 
 1. Configuring a GitHub Webhook
     - How to enable GitHub to send payloads to the EC2 `webhook` listener
-    - Explain what triggers will send a payload to the EC2 `webhook` listener, and why that event is used instead of `push`
+    - Which event you chose, what triggers it to send a payload to the EC2 `webhook` listener, and why you chose it over the other events you considered, including `push`
     - How to verify a successful payload delivery
     - How to validate that your webhook *only triggers* when requests are coming from GitHub
 2. GitHub Webhooks vs. DockerHub Webhooks - contrast the two:
@@ -160,7 +160,7 @@ In `README-CD.md`, include the following details:
 - [`webhook` - Hook Rules](https://github.com/adnanh/webhook/blob/master/docs/Hook-Rules.md)
 - [GitHub - Creating webhooks](https://docs.github.com/en/webhooks/using-webhooks/creating-webhooks)
 - [GitHub - Validating webhook deliveries](https://docs.github.com/en/webhooks/using-webhooks/validating-webhook-deliveries)
-- [GitHub - `workflow_run` webhook event](https://docs.github.com/en/webhooks/webhook-events-and-payloads#workflow_run)
+- [GitHub - Webhook events and payloads](https://docs.github.com/en/webhooks/webhook-events-and-payloads)
 - [GitHub - Viewing webhook deliveries](https://docs.github.com/en/webhooks/testing-and-troubleshooting-webhooks/viewing-webhook-deliveries)
 - [Docker - DockerHub webhooks](https://docs.docker.com/docker-hub/repos/manage/webhooks/)
 - [Linux Handbook - How to Create a `systemd` Service](https://linuxhandbook.com/create-systemd-services/)
