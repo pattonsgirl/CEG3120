@@ -6,14 +6,19 @@
 - [Part 2 - Listen](#part-2---listen)
 - [Part 3 - Send a Payload](#part-3---send-a-payload)
 - [Part 4 - Project Description & Diagram](#part-4---project-description--diagram)
-- [Part 5 - Demonstration](#part-5---demonstration)
+- [Testing and Proof](#testing-and-proof)
+- [Formatting, Task Text, and Images](#formatting-task-text-and-images)
+- [Commits, Sources, and AI](#commits-sources-and-ai)
 - [Submission](#Submission)
 - [Rubric](Rubric.md)
+- [Demonstration](Demonstration-Rubric.md)
 
 ## Objectives
 
-- Implement semantic versioning for images using `git tag` metadata in Actions
-- Use `webhook`s to keep production up to date
+- Script a refresh of a running container
+- Use GitHub webhooks to keep production up to date
+- Validate that a webhook payload came from a trusted sender
+- Contrast GitHub webhooks with DockerHub webhooks
 
 ## Project Overview
 
@@ -26,7 +31,7 @@ The server running the application in the container will be an EC2 instance.
 - 4 GB RAM (included in `t2.medium`)
 - 30 GB volume storage
 
-This project requires completion of [Project 4](../Project4/). If you did not accomplish Project 4 you should meet with the instructor at your earliest availability.
+This project requires completion of [Project 6](../Project6/). If you did not accomplish Project 6 you should meet with the instructor at your earliest availability.
 
 Perform all work in your `ceg3120-cicd-lastname-f26` repository.
 
@@ -39,6 +44,11 @@ On your AWS instance, build a bash script that stops and removes the formerly ru
 ### Tasks
 
 1. Build (or use a CF-template to build) an EC2 instance
+    - Assign an Elastic IP, so that the address your webhook sends to does not change
+    - Configure the Security Group:
+      - `ssh` from your home IP (`/32`) and the Wright State IP block (`130.108.0.0/16`)
+      - the port your site runs on from any IP
+      - the `webhook` port (`9000` by default) from GitHub's webhook IP ranges (the `hooks` list at [api.github.com/meta](https://api.github.com/meta)) and your home IP (`/32`) for testing
 2. Install Docker to your EC2 instance
 3. Test that your EC2 instance can run a container from your DockerHub repository image
 4. Craft a bash script that will:
@@ -76,21 +86,23 @@ Create `README-CD.md` in root folder of your GitHub repository that details the 
 
 ## Part 2 - Listen
 
-On the application server, you will configure a listening service to receive messages from DockerHub or GitHub
-- this listening serve will run your script if a message is delivered
-- you will need to enable some protection method to validate requests are coming from appropriate sources (GitHub or DockerHub)
+On the application server, you will configure a listening service to receive messages from GitHub
+- this listening service will run your script if a message is delivered
+- you will need to validate that requests are coming from GitHub
 
 ### Tasks
 
 1. Install [adnanh's `webhook`](https://github.com/adnanh/webhook) to your EC2 instance
 2. Create a configuration file - a hook definition - for `webhook` to load when ran.  The hook definition should:
     - Trigger your bash script to run when a payload is received
-    - Validate that the payload came from a trusted source via a shared secret or by validating payload is from DockerHub or GitHub
+    - Validate that the payload came from GitHub by checking the signature in its `X-Hub-Signature-256` header with a shared secret
+    - Only trigger for a workflow run that has completed successfully
     - **ADD hook definition** to folder named `deployment` in your GitHub repository
+      - Your webhook secret is exposed once a copy of this file is in your public repository.  In a production system, that secret would no longer be trusted.  For this project, you are not required to change it and you will not be penalized for using it.
 3. Set up a service file such that the `webhook` is set to start listening as soon as the EC2 instance is on.  Enable this service and verify it triggers your bash script to run when a message is received
     - **ADD webhook service file** to folder named `deployment` in your GitHub repository
 
-### Documenation
+### Documentation
 
 In `README-CD.md`, include the following details:
 
@@ -111,36 +123,52 @@ In `README-CD.md`, include the following details:
 
 ## Part 3 - Send a Payload
 
-Utilize either DockerHub or GitHub to send a message to your application server when a change is detected
-- DockerHub - a newly pushed image
-- GitHub - the completion of an Action that pushes a new image
+Utilize a GitHub webhook to send a message to your application server when your GitHub Action has finished pushing a new image.
+
+Choose the event carefully.  A `push` event is sent when your commit or tag reaches GitHub, before your workflow has built a new image - your script would pull the old `latest`.  Use the **Workflow runs** event, which sends payloads as a workflow run changes state, and have your hook only trigger on a successful completed run.
 
 ### Tasks
 
-1. Configure DockerHub or GitHub to send a Webhook payload to your EC2 instance when an appropriate event occurs
-2. Validate that your webhook *only triggers* when requests are coming from appropriate sources (GitHub or DockerHub)
+1. Configure a webhook in your GitHub repository to send a payload to your EC2 instance
+    - Payload URL using your Elastic IP, `webhook` port, and hook ID
+    - Content type `application/json`
+    - The same shared secret your hook definition uses
+    - Only the **Workflow runs** event selected
+2. Validate that your webhook *only triggers* when requests are coming from GitHub
+3. Research DockerHub webhooks and compare them with GitHub webhooks
 
 ### Documentation
 
 In `README-CD.md`, include the following details:
 
-1. Configuring a Payload Sender
-    - Justification for selecting GitHub or DockerHub as the payload sender
-    - How to enable your selection to send payloads to the EC2 `webhook` listener
-    - Explain what triggers will send a payload to the EC2 `webhook` listener
+1. Configuring a GitHub Webhook
+    - How to enable GitHub to send payloads to the EC2 `webhook` listener
+    - Explain what triggers will send a payload to the EC2 `webhook` listener, and why that event is used instead of `push`
     - How to verify a successful payload delivery
-    - How to validate that your webhook *only triggers* when requests are coming from appropriate sources (GitHub or DockerHub)
+    - How to validate that your webhook *only triggers* when requests are coming from GitHub
+2. GitHub Webhooks vs. DockerHub Webhooks - contrast the two:
+    - What event sends a payload, and when that happens in your pipeline
+    - How the receiving server can verify who sent the payload
+    - Which you would use for this deployment, and why
 
 ### Resources
 
 - [adnanh's `webhook`](https://github.com/adnanh/webhook)
 - [Using GitHub actions and `webhook`s](https://levelup.gitconnected.com/automated-deployment-using-docker-github-actions-and-webhooks-54018fc12e32)
 - [Using DockerHub and `webhook`s](https://blog.devgenius.io/build-your-first-ci-cd-pipeline-using-docker-github-actions-and-webhooks-while-creating-your-own-da783110e151)
+- [`webhook` - Hook Rules](https://github.com/adnanh/webhook/blob/master/docs/Hook-Rules.md)
+- [GitHub - Creating webhooks](https://docs.github.com/en/webhooks/using-webhooks/creating-webhooks)
+- [GitHub - Validating webhook deliveries](https://docs.github.com/en/webhooks/using-webhooks/validating-webhook-deliveries)
+- [GitHub - `workflow_run` webhook event](https://docs.github.com/en/webhooks/webhook-events-and-payloads#workflow_run)
+- [GitHub - Viewing webhook deliveries](https://docs.github.com/en/webhooks/testing-and-troubleshooting-webhooks/viewing-webhook-deliveries)
+- [Docker - DockerHub webhooks](https://docs.docker.com/docker-hub/repos/manage/webhooks/)
 - [Linux Handbook - How to Create a `systemd` Service](https://linuxhandbook.com/create-systemd-services/)
 
 ## Part 4 - Project Description & Diagram
 
-Create a diagram (or diagrams) of the continuous deployment process configured in this project.  It should (at minimum) address how the GitHub Action running results the server running a new container process - again, according to the workflow that this project enables.
+Create a diagram (or diagrams) of the continuous deployment process configured in this project.  It should (at minimum) address how the GitHub Action running results in the server running a new container process - again, according to the workflow that this project enables.
+
+Your diagram must have a clean layout and show what happens in GitHub, in DockerHub, and on your AWS instance.
 
 ### Documentation
 
@@ -164,32 +192,44 @@ Create a `README.md` in the root folder of your GitHub repository:
 
 You can use whatever tools you would like, here are some recommended tools that people use
 
-- [Lucid Charts](https://www.lucidchart.com/pages/)
+- [Lucid Charts](https://lucid.co/lucidchart/)
 - [Textographo](https://textografo.com/)
-- [Mermaid - new markdown feature](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
-- [Eraser - Cloud Diagrams](https://docs.tryeraser.com/docs/cloud-diagrams)
+- [Mermaid - new markdown feature](https://github.blog/developer-skills/github/include-diagrams-markdown-files-mermaid/)
+- [Eraser - Cloud Diagrams](https://docs.eraser.io/cloud-architecture-diagrams)
 - PowerPoint and OneNote are still good choices
 
-## Part 5 - Demonstration
+## Testing and Proof
 
-You must demonstration your project implementation **in person**. A booking link will be provided with my available times.
+Add these screenshots to an `images` folder in your repository and embed each one in `README-CD.md` **with a sentence saying what it proves**.
 
-For full credit, all of the following must be demonstrated. Partial credit will be evaluated based on your understanding of the issue and amount of time needed to debug / fix.
+These are in addition to your in-person [demonstration](#demonstration).
 
-1. current state of site running on server, before making a change
-    - show the page in the browser
-    - show the docker status
-2. making a change to the project file (from your local system)
-3. `commit` and `push` of the change (from your local system)
-4. `tag` the `commit` and `push` the `tag` (from your local system)
-5. the GitHub Action triggering, relevant logs that it worked
-6. DockerHub receiving a new set of tagged images (modified time should be visible)
-7. Payload sent log from DockerHub or GitHub
-8. status of `webhook` running as a service on the server
-9. `webhook` logs that validate container refresh has been triggered
-10. post-change state of site running on server
-    - show the page in the browser
-    - show the docker status
+1. **Instance and Security Group** - your EC2 instance running, and its Security Group inbound rules, including the port your `webhook` listens on.
+2. **Docker on the instance** - `docker --version`, and `docker ps` running without `sudo`.
+3. **Site from your image** - `docker ps` showing your DockerHub image running with its port mapping, and a browser showing your site at the instance's public IP.
+4. **Refresh script** - `docker ps` before and after running your script, showing a new container ID running the `latest` image.
+5. **Restart behavior** - `docker inspect --format '{{.HostConfig.RestartPolicy.Name}}' <container>` showing your restart policy, and `uptime` with `docker ps` after a reboot showing the container came back on its own.
+6. **Hook loaded** - `webhook` log output showing your definition file was loaded and your hook is available.
+7. **Service** - `systemctl status webhook` showing the service `active` and `enabled`, including after the reboot from item 5.
+8. **Payload delivery** - your GitHub webhook's **Recent Deliveries** showing a successful delivery to your instance, and the `webhook` log entry for that delivery.
+9. **Negative test** - send a request to your hook that does not meet your trigger rules (for example, a `curl` POST without a valid signature).  Show the response, the `webhook` log entry, and `docker ps` showing that the container ID did not change.
+10. **End to end** - after pushing a new `tag` with a visible change, the site in a browser and `docker ps` before and after, showing a new container ID and your change without you logging in to the instance.
+
+## Formatting, Task Text, and Images
+
+- **Formatting:** your README should be easy to read on GitHub - headings, lists, code formatting for commands and file names (`` `docker ps` `` or fenced code blocks), and tables that render. Poor formatting is up to a 10% deduction, scaled by severity - 10% if the document is illegible.
+- **Task text:** do not leave project or rubric task text in your documentation. It muddles what your work was versus what the assignment tasking is, and is a 5% formatting deduction. Section headings are fine; pasting the instruction bullets or prompts is not.
+- **Images:** every screenshot and your diagram must be **embedded** so it displays in your README on GitHub - not just uploaded to the repo. Use relative paths (`images/delivery.png`), match the filename's capitalization exactly, and avoid spaces in filenames (or wrap the path in angle brackets: `![delivery](<images/my delivery.png>)`). After you push, open your README on GitHub and confirm every image appears. No embedded screenshots is a 5% deduction; some missing or not displaying is 2.5%.
+
+## Commits, Sources, and AI
+
+- **Commit as you work.** The project should be built up over **multiple small commits**, with messages that say what changed (e.g. "Add hook definition with signature rule"). One or two commits for the whole project, or messages like "update", "fixes", or "complete", lose points.
+- **Cite your sources.** Cite every source you use - documentation, tutorials, forums, and AI tools - and say what you used it for. You may place citations next to the sections they relate to or in one Sources section.
+   - if using generative AI, provide the tool name and the prompt(s) used
+   - if using websites, provide the link and a short description of what you used on the page
+   - A submission with no citations loses 10%.
+- **Your work must be your own and must describe what you built.** Submissions that appear AI-generated without citation, or that describe work you didn't do, are held at 0 until you meet with the instructor.
+- **Never commit secrets** - your `.pem` key or your DockerHub PAT. A committed secret is a 5% deduction. If a secret is ever committed, replace it right away - removing it from the file does not remove it from your `git` history. The webhook secret in your hook definition file is the one exception for this project - see [Part 2](#part-2---listen).
 
 ## Submission
 
@@ -197,7 +237,8 @@ For full credit, all of the following must be demonstrated. Partial credit will 
    repository.
 
     Your repo should contain:
-    - `README-CD.md` (and `README-CI.md` from P4)
+    - `README.md`
+    - `README-CD.md` (and `README-CI.md` from P6)
     - `web-content` folder with application
     - `Dockerfile`
     - GitHub action `yml` file in `.github/workflows`
@@ -205,10 +246,16 @@ For full credit, all of the following must be demonstrated. Partial credit will 
       - `bash` script
       - `webhook` / `hook` definition file
       - `webhook` service file
+    - `images` folder with your screenshots
+    - diagram image(s), or a Mermaid diagram in `README-CD.md`
 
 2. In Pilot, paste the link to your project folder.
 
 ## Rubric
 
 [Project Rubric](Rubric.md)
+
+## Demonstration
+
+[Demonstration Rubric](Demonstration-Rubric.md)
 

@@ -1,4 +1,4 @@
-# FAQ Guide for Project 5
+# FAQ Guide for Project 7
 
 Goal of this guide is to track errors as they crop up and recommended solutions.
 
