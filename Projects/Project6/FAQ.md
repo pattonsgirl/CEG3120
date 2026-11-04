@@ -68,6 +68,3 @@ A 1 CPU core and 1 GB RAM system is insufficient to run the processes required b
 
 Build an EC2 instance with 2+ CPU cores and 2+ GB RAM.  Keep an eye on cost estimates to pick a reasonable solution.  Would also recommend 30+ GB of storage.
 
-# GitHub Actions
-
-# Webhooks
