@@ -450,6 +450,15 @@ Day 32:
 
 - GitHub Action workflows in action!
 - Side step - rabbit hole - Environments: https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments
+- Semantic versioning:
+    - https://semver.org/
+        - https://docs.github.com/en/rest?apiVersion=2026-03-10
+        - https://docs.discord.com/developers/reference
+        - https://bungie-net.github.io/
+
+Day 33:
+
+- Semantic strategies for Docker images with GitHub Actions
 - YouTube - How big tech ships code to production: https://www.youtube.com/watch?v=551lh10g_go
 
 
