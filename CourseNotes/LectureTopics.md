@@ -465,6 +465,14 @@ Day 33:
 
 Day 34:
 
+Veteran's Day - no school
+
+Day 35: 
+
+- Project 6 workday
+
+Day 36:
+
 - Services with webhook deliveries
     - GitHub Webhooks
     - DockerHub Webhooks
