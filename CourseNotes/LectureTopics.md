@@ -458,7 +458,16 @@ Day 32:
 
 Day 33:
 
+- https://thehackernews.com/2026/11/claude-codes-dont-ask-again-file.html?m=1
+    - https://gist.github.com/subfuzion/db7f57fff2fb6998a16c
 - Semantic strategies for Docker images with GitHub Actions
 - YouTube - How big tech ships code to production: https://www.youtube.com/watch?v=551lh10g_go
+
+Day 34:
+
+- Services with webhook deliveries
+    - GitHub Webhooks
+    - DockerHub Webhooks
+    - comparing payloads
 
 

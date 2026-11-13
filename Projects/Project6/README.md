@@ -23,7 +23,9 @@
 
 For this project you will be creating a fresh repository in order to have a public repo & admin rights in the repository. The former means you can `wget` files easily from your own repository; the latter is needed to configure repository secrets. 
 
-Perform all work in your `ceg3120-cicd-lastname-f26` repository.
+You should receive a repository invite to `WSU-kduncan/ceg3120-cicd-lastname-f26`
+
+If you work in an alternate repository, please at minimum add a link to the repo sent by the instructor.
 
 The documentation requirements are embedded in their respective parts (in order of how I would recommend setting things up). [Part 4 - Project Description & Diagram](#part-4---project-description--diagram) should be at the **top of your README-CI.md** since it is the description and diagramming requirement.
 
