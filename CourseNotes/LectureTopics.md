@@ -474,8 +474,41 @@ Day 35:
 Day 36:
 
 - Services with webhook deliveries
-    - GitHub Webhooks
-    - DockerHub Webhooks
-    - comparing payloads
+    - GitHub Webhooks: https://docs.github.com/en/webhooks/webhook-events-and-payloads
+    - DockerHub Webhooks: https://docs.docker.com/docker-hub/repos/manage/webhooks/
+    - comparing payloads & configuration settings
+- Diagramming out the **when** of things - when does GitHub "know" that DockerHub has a new image?
+- Things to chew on:
+    - How do you know a payload came from a valid source?
+        - In a world of dynamic public IPs, it's not always as easy as just whitelist good ones
+    - What info does a payload contain that you can check for info / status on?
+
+Day 37:
+
+- Payload delivery
+- Play with silly simple script:
+    - Don't forget those Security Groups!
+
+```
+from http.server import HTTPServer, BaseHTTPRequestHandler
+import json
+
+class Handler(BaseHTTPRequestHandler):
+    def do_POST(self):
+        length = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(length).decode("utf-8")
+        print("\n--- HEADERS ---\n", self.headers)
+        print("--- PAYLOAD ---")
+        try:
+            print(json.dumps(json.loads(body), indent=2))
+        except Exception:
+            print(body)
+        self.send_response(200)
+        self.end_headers()
+
+HTTPServer(("0.0.0.0", 4040), Handler).serve_forever()
+```
+
+- Adnanh's webhook *listener*: https://github.com/adnanh/webhook
 
 
